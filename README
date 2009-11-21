@@ -1,0 +1,23 @@
+
+README
+
+project at the Boston Music Hack Day (11/21/2009)
+http://boston.musichackday.org/
+
+started by
+
+Ron Weis                - ronw@ee.columbia.edu
+Thierry Bertin-Mahieux  - thierry@ee.columbia.edu
+
+
+MAIN IDEA:
+
+- grap EchoNest features on a lot of songs
+
+- do clustering using LSH
+
+- see if we find patterns
+
+
+
+Cheers!
