@@ -1,0 +1,34 @@
+
+TODO:
+
+
+- find proper LSH implementation
+	- and understand it
+
+- find proper EchoNest features
+	- rythm ones?
+	- how de we align them to beats
+	- how do we analyze events
+		- concatenate chroma features?
+		- difference between chromas more interesting?
+		- max chroma?
+		- ...
+	- visualization
+		- Ron's python stuff?
+
+- manage query
+	- is there any query?
+	- just look at clusters?
+	- how do we find clusters...?
+
+- How fast can it get?
+
+- demo
+	- show a cluster
+	- find a meaningful query
+		- talk to musicologist!!!!!
+
+- fancy stuff
+	- link songs to MusicBrainz to justify clusters
+
+
