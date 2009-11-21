@@ -8,7 +8,7 @@
 # Simple idea:
 #   - data to temp file
 #   - call command line LSH
-#   - read output file
+#   - parse output file
 #
 #########################################################################
 
