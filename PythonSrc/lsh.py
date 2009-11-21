@@ -141,14 +141,17 @@ def lsh_query(queries, fInputs, fModelName, fQueriesName='',
     return fRes
 
 
-
+ 
 
 #########################################################################
 # help menu
 #########################################################################
 def die_with_usage() :
-    print 'lsh.py'
-    print 'should be used as a library'
+    print "lsh.py"
+    print "should be used as a library"
+    print "usage:"
+    print "lsh_model(data,'lsh_model.txt','data.txt','/lsh/bin/')"
+    print "lsh_query(queries,'data.txt','lsh_model.txt','queries.txt','/lsh/bin/','lsh_results.txt')"
     sys.exit(0)
 
 
