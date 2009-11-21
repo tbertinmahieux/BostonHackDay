@@ -131,6 +131,7 @@ def lsh_query(queries, fInputs, fModelName, fQueriesName='',
     # make sure we use absolute path names
     fInputs = os.path.abspath(fInputs)
     fModelName = os.path.abspath(fModelName)
+    fRes = os.path.abspath(fRes)
 
     # fQueriesName
     if fQueriesName == '':
@@ -152,7 +153,8 @@ def lsh_query(queries, fInputs, fModelName, fQueriesName='',
 
     # lsh_fromParams path
     cmd = 'bin/lsh_fromParams'
-    cmd = cmd + ' ' + fInputs + ' ' + fModelName
+    cmd = cmd + ' ' + fInputs + ' ' + fQueriesName
+    cmd = cmd + ' ' + fModelName
     cmd = cmd + ' > ' + fRes
 
     # call 
