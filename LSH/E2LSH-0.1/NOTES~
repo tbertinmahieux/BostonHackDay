@@ -1,0 +1,5 @@
+2008-03-26: trying on everything
+
+first recreate beatles results
+  hog:~/projects/musicmine/E2LSH-0.1 > time bin/lsh 5.0 ../beatles-F.txt ../beatles-F.txt > beatles-F-5p0.txt
+915.578u 56.028s 16:59.95 95.2% 0+0k 0+0io 4637pf+0w

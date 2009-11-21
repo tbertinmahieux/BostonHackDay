@@ -1,0 +1,3051 @@
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000368
+Query point 0: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000000	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000367
+Query point 1: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000001	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000339
+Query point 2: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000002	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 3: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000003	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000302
+Query point 4: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000004	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000318
+Query point 5: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000005	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000325
+Query point 6: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000006	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 7: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000007	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000316
+Query point 8: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000008	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000339
+Query point 9: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000009	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 10: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000010	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 11: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000011	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 12: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000012	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 13: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000013	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 14: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000014	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 15: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000015	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 16: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000016	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000328
+Query point 17: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000017	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000260
+Query point 18: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000018	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000340
+Query point 19: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000019	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 20: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000020	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 21: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000021	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 22: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000022	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 23: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000023	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000245
+Query point 24: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000024	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 25: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000025	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 26: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000026	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000277
+Query point 27: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000027	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 28: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000028	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 29: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000029	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000296
+Query point 30: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000030	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 31: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000031	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 32: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000032	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000293
+Query point 33: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000033	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 34: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000034	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000297
+Query point 35: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000035	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 36: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000036	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 37: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000037	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 38: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000038	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 39: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000039	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 40: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000040	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 41: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000041	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 42: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000042	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000272
+Query point 43: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000043	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 44: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000044	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000376
+Query point 45: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000045	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 46: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000046	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 47: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000047	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 48: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000048	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000320
+Query point 49: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000049	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000272
+Query point 50: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000050	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000330
+Query point 51: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000051	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 52: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000052	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000312
+Query point 53: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000053	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000329
+Query point 54: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000054	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000315
+Query point 55: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000055	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 56: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000056	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000320
+Query point 57: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000057	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000331
+Query point 58: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000058	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000320
+Query point 59: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000059	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 60: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000060	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 61: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000061	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000249
+Query point 62: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000062	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000271
+Query point 63: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000063	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 64: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000064	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 65: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000065	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 66: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000066	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000318
+Query point 67: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000067	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000277
+Query point 68: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000068	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 69: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000069	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 70: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000070	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000336
+Query point 71: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000071	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000366
+Query point 72: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000072	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 73: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000073	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000271
+Query point 74: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000074	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 75: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000075	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000303
+Query point 76: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000076	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 77: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000077	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 78: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000078	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000299
+Query point 79: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000079	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 80: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000080	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 81: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000081	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 82: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000082	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 83: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000083	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000320
+Query point 84: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000084	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000263
+Query point 85: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000085	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000327
+Query point 86: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000086	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000293
+Query point 87: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000087	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 88: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000088	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 89: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000089	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000325
+Query point 90: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000090	dist:0.000000
+000000093	dist:1.926692
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000344
+Query point 91: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000091	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000329
+Query point 92: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000092	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 93: found 3 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000093	dist:0.000000
+000000099	dist:1.654630
+000000090	dist:1.926692
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000329
+Query point 94: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000094	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 95: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000095	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000364
+Query point 96: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000096	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000316
+Query point 97: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000097	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000364
+Query point 98: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000098	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000317
+Query point 99: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000099	dist:0.000000
+000000093	dist:1.654630
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000290
+Query point 100: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000100	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 101: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000101	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 102: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000102	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000299
+Query point 103: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000103	dist:0.000000
+000000163	dist:1.902043
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000288
+Query point 104: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000104	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 105: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000105	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000329
+Query point 106: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000106	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000267
+Query point 107: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000107	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 108: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000108	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000299
+Query point 109: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000109	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000371
+Query point 110: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000110	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 111: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000111	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000331
+Query point 112: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000112	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 113: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000113	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 114: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000114	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 115: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000115	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000362
+Query point 116: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000116	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000376
+Query point 117: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000117	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 118: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000118	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 119: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000119	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 120: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000120	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000310
+Query point 121: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000121	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 122: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000122	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 123: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000123	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000317
+Query point 124: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000124	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000297
+Query point 125: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000125	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000298
+Query point 126: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000126	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 127: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000127	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 128: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000128	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 129: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000129	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 130: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000130	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000364
+Query point 131: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000131	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000334
+Query point 132: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000132	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000327
+Query point 133: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000133	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 134: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000134	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 135: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000135	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000286
+Query point 136: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000136	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000290
+Query point 137: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000137	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000315
+Query point 138: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000138	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000296
+Query point 139: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000139	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000288
+Query point 140: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000140	dist:0.000000
+000000149	dist:1.888804
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000267
+Query point 141: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000141	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 142: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000142	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 143: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000143	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000342
+Query point 144: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000144	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 145: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000145	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 146: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000146	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 147: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000147	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 148: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000148	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000322
+Query point 149: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000149	dist:0.000000
+000000140	dist:1.888804
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 150: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000150	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 151: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000151	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 152: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000152	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 153: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000153	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000271
+Query point 154: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000154	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 155: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000155	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000302
+Query point 156: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000156	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000286
+Query point 157: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000157	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000271
+Query point 158: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000158	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000302
+Query point 159: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000159	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000324
+Query point 160: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000160	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 161: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000161	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000297
+Query point 162: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000162	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000315
+Query point 163: found 3 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000163	dist:0.000000
+000000242	dist:1.918819
+000000103	dist:1.902043
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000292
+Query point 164: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000164	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 165: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000165	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 166: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000166	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 167: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000167	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000297
+Query point 168: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000168	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000292
+Query point 169: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000169	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 170: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000170	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 171: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000171	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000310
+Query point 172: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000172	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 173: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000173	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000328
+Query point 174: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000174	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000326
+Query point 175: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000175	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 176: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000176	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 177: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000177	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000265
+Query point 178: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000178	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 179: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000179	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000292
+Query point 180: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000180	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000322
+Query point 181: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000181	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 182: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000182	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 183: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000183	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000315
+Query point 184: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000184	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 185: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000185	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000353
+Query point 186: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000186	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 187: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000187	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 188: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000188	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 189: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000189	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000328
+Query point 190: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000190	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 191: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000191	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000313
+Query point 192: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000192	dist:0.000000
+000000197	dist:1.701158
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000249
+Query point 193: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000193	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 194: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000194	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 195: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000195	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 196: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000196	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 197: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000197	dist:0.000000
+000000192	dist:1.701158
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000319
+Query point 198: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000198	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000326
+Query point 199: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000199	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 200: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000200	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000326
+Query point 201: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000201	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000370
+Query point 202: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000202	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 203: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000203	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000312
+Query point 204: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000204	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 205: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000205	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000322
+Query point 206: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000206	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 207: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000207	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000381
+Query point 208: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000208	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 209: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000209	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 210: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000210	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000326
+Query point 211: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000211	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 212: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000212	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 213: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000213	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 214: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000214	dist:0.000000
+000000216	dist:1.501150
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000265
+Query point 215: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000215	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 216: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000216	dist:0.000000
+000000214	dist:1.501150
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 217: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000217	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000292
+Query point 218: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000218	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000376
+Query point 219: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000219	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 220: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000220	dist:0.000000
+000000221	dist:1.984314
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000298
+Query point 221: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000221	dist:0.000000
+000000220	dist:1.984314
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000366
+Query point 222: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000222	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 223: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000223	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000318
+Query point 224: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000224	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 225: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000225	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000333
+Query point 226: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000226	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000315
+Query point 227: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000227	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000322
+Query point 228: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000228	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000384
+Query point 229: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000229	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 230: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000230	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 231: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000231	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 232: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000232	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000320
+Query point 233: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000233	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 234: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000234	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000277
+Query point 235: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000235	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000250
+Query point 236: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000236	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 237: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000237	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 238: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000238	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000350
+Query point 239: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000239	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000239
+Query point 240: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000240	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 241: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000241	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000344
+Query point 242: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000242	dist:0.000000
+000000163	dist:1.918819
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000296
+Query point 243: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000243	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000370
+Query point 244: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000244	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 245: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000245	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 246: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000246	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000286
+Query point 247: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000247	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 248: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000248	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000320
+Query point 249: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000249	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 250: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000250	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000316
+Query point 251: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000251	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 252: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000252	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 253: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000253	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000375
+Query point 254: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000254	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000303
+Query point 255: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000255	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 256: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000256	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000345
+Query point 257: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000257	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 258: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000258	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 259: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000259	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 260: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000260	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 261: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000261	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000271
+Query point 262: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000262	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 263: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000263	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000267
+Query point 264: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000264	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 265: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000265	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 266: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000266	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000290
+Query point 267: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000267	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000326
+Query point 268: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000268	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 269: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000269	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000330
+Query point 270: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000270	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 271: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000271	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000336
+Query point 272: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000272	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000356
+Query point 273: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000273	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000324
+Query point 274: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000274	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000374
+Query point 275: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000275	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 276: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000276	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000436
+Query point 277: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000277	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 278: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000278	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000303
+Query point 279: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000279	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 280: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000280	dist:0.000000
+000000287	dist:1.757506
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000272
+Query point 281: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000281	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000290
+Query point 282: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000282	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000359
+Query point 283: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000283	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000352
+Query point 284: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000284	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000353
+Query point 285: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000285	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000347
+Query point 286: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000286	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000361
+Query point 287: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000287	dist:0.000000
+000000280	dist:1.757506
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000348
+Query point 288: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000288	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000263
+Query point 289: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000289	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000350
+Query point 290: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000290	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 291: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000291	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 292: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000292	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 293: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000293	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000348
+Query point 294: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000294	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000302
+Query point 295: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000295	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 296: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000296	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000277
+Query point 297: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000297	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000276
+Query point 298: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000298	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 299: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000299	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 300: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000300	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000263
+Query point 301: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000301	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000250
+Query point 302: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000302	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 303: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000303	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 304: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000304	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000337
+Query point 305: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000305	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000276
+Query point 306: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000306	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 307: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000307	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 308: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000308	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000250
+Query point 309: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000309	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 310: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000310	dist:0.000000
+000000319	dist:1.706280
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 311: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000311	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000355
+Query point 312: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000312	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 313: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000313	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 314: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000314	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 315: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000315	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000319
+Query point 316: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000316	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 317: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000317	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000342
+Query point 318: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000318	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000276
+Query point 319: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000319	dist:0.000000
+000000310	dist:1.706280
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 320: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000320	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000272
+Query point 321: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000321	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000302
+Query point 322: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000322	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000301
+Query point 323: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000323	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 324: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000324	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 325: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000325	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000297
+Query point 326: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000326	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 327: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000327	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 328: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000328	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 329: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000329	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 330: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000330	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000325
+Query point 331: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000331	dist:0.000000
+000000333	dist:1.497221
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000255
+Query point 332: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000332	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 333: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000333	dist:0.000000
+000000331	dist:1.497221
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000242
+Query point 334: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000334	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000322
+Query point 335: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000335	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000313
+Query point 336: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000336	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 337: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000337	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000324
+Query point 338: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000338	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000335
+Query point 339: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000339	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000333
+Query point 340: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000340	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 341: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000341	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000315
+Query point 342: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000342	dist:0.000000
+000000345	dist:1.987725
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000368
+Query point 343: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000343	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000317
+Query point 344: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000344	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000341
+Query point 345: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000345	dist:0.000000
+000000342	dist:1.987725
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000303
+Query point 346: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000346	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000370
+Query point 347: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000347	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 348: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000348	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000339
+Query point 349: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000349	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 350: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000350	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 351: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000351	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 352: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000352	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 353: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000353	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 354: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000354	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 355: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000355	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 356: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000356	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000290
+Query point 357: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000357	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 358: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000358	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 359: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000359	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000324
+Query point 360: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000360	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 361: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000361	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000322
+Query point 362: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000362	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000343
+Query point 363: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000363	dist:0.000000
+000000368	dist:1.945005
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 364: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000364	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000373
+Query point 365: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000365	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 366: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000366	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000317
+Query point 367: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000367	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000341
+Query point 368: found 3 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000368	dist:0.000000
+000000363	dist:1.945005
+000000892	dist:1.974534
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000350
+Query point 369: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000369	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 370: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000370	dist:0.000000
+000000685	dist:1.882227
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000298
+Query point 371: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000371	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000412
+Query point 372: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000372	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000329
+Query point 373: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000373	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000324
+Query point 374: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000374	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 375: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000375	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000303
+Query point 376: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000376	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000369
+Query point 377: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000377	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000345
+Query point 378: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000378	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000301
+Query point 379: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000379	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000325
+Query point 380: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000380	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 381: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000381	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 382: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000382	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000338
+Query point 383: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000383	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000323
+Query point 384: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000384	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000334
+Query point 385: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000385	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000305
+Query point 386: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000386	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000332
+Query point 387: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000387	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000328
+Query point 388: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000388	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000394
+Query point 389: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000389	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000244
+Query point 390: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000390	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000345
+Query point 391: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000391	dist:0.000000
+000000393	dist:1.998362
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000248
+Query point 392: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000392	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 393: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000393	dist:0.000000
+000000391	dist:1.998362
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 394: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000394	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000249
+Query point 395: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000395	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000301
+Query point 396: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000396	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000318
+Query point 397: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000397	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 398: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000398	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 399: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000399	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000326
+Query point 400: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000400	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000319
+Query point 401: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000401	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 402: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000402	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 403: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000403	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000265
+Query point 404: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000404	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 405: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000405	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 406: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000406	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000319
+Query point 407: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000407	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000341
+Query point 408: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000408	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000313
+Query point 409: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000409	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000358
+Query point 410: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000410	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 411: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000411	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 412: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000412	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000297
+Query point 413: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000413	dist:0.000000
+000000417	dist:1.862171
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000310
+Query point 414: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000414	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 415: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000415	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 416: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000416	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000301
+Query point 417: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000417	dist:0.000000
+000000413	dist:1.862171
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 418: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000418	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000386
+Query point 419: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000419	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000299
+Query point 420: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000420	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 421: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000421	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 422: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000422	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 423: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000423	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000331
+Query point 424: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000424	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 425: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000425	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000335
+Query point 426: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000426	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000366
+Query point 427: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000427	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000377
+Query point 428: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000428	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000366
+Query point 429: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000429	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 430: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000430	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000312
+Query point 431: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000431	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000290
+Query point 432: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000432	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000260
+Query point 433: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000433	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000288
+Query point 434: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000434	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 435: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000435	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000366
+Query point 436: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000436	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 437: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000437	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000265
+Query point 438: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000438	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000327
+Query point 439: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000439	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 440: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000440	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000405
+Query point 441: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000441	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000267
+Query point 442: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000442	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 443: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000443	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000343
+Query point 444: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000444	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 445: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000445	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 446: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000446	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 447: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000447	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000326
+Query point 448: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000448	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 449: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000449	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000355
+Query point 450: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000450	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000336
+Query point 451: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000451	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000340
+Query point 452: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000452	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 453: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000453	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 454: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000454	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000344
+Query point 455: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000455	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000243
+Query point 456: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000456	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000299
+Query point 457: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000457	dist:0.000000
+000000458	dist:1.751547
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 458: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000458	dist:0.000000
+000000457	dist:1.751547
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000479
+Query point 459: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000459	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 460: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000460	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000286
+Query point 461: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000461	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 462: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000462	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 463: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000463	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000290
+Query point 464: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000464	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000316
+Query point 465: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000465	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000387
+Query point 466: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000466	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 467: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000467	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 468: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000468	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000313
+Query point 469: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000469	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000326
+Query point 470: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000470	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000245
+Query point 471: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000471	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 472: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000472	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000388
+Query point 473: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000473	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 474: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000474	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 475: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000475	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000335
+Query point 476: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000476	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 477: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000477	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 478: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000478	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 479: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000479	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000301
+Query point 480: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000480	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000327
+Query point 481: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000481	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 482: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000482	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 483: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000483	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000340
+Query point 484: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000484	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000303
+Query point 485: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000485	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 486: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000486	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000272
+Query point 487: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000487	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 488: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000488	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000310
+Query point 489: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000489	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 490: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000490	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000293
+Query point 491: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000491	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 492: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000492	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000301
+Query point 493: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000493	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 494: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000494	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 495: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000495	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 496: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000496	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 497: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000497	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 498: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000498	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000334
+Query point 499: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000499	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 500: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000500	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 501: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000501	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 502: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000502	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 503: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000503	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000363
+Query point 504: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000504	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000310
+Query point 505: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000505	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000315
+Query point 506: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000506	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000298
+Query point 507: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000507	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 508: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000508	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 509: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000509	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000271
+Query point 510: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000510	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 511: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000511	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 512: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000512	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 513: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000513	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 514: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000514	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000296
+Query point 515: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000515	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000276
+Query point 516: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000516	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000286
+Query point 517: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000517	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 518: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000518	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000263
+Query point 519: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000519	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 520: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000520	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 521: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000521	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 522: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000522	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000334
+Query point 523: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000523	dist:0.000000
+000000524	dist:1.624300
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000312
+Query point 524: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000524	dist:0.000000
+000000523	dist:1.624300
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 525: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000525	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 526: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000526	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 527: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000527	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 528: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000528	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 529: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000529	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 530: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000530	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000260
+Query point 531: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000531	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 532: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000532	dist:0.000000
+000000534	dist:1.713810
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000245
+Query point 533: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000533	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000277
+Query point 534: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000534	dist:0.000000
+000000532	dist:1.713810
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000249
+Query point 535: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000535	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 536: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000536	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 537: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000537	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 538: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000538	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000331
+Query point 539: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000539	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 540: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000540	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 541: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000541	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000265
+Query point 542: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000542	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000246
+Query point 543: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000543	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000255
+Query point 544: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000544	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 545: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000545	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000243
+Query point 546: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000546	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 547: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000547	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000236
+Query point 548: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000548	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 549: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000549	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000276
+Query point 550: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000550	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000299
+Query point 551: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000551	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000263
+Query point 552: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000552	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000396
+Query point 553: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000553	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 554: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000554	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 555: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000555	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000312
+Query point 556: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000556	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 557: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000557	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000293
+Query point 558: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000558	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 559: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000559	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000337
+Query point 560: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000560	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000248
+Query point 561: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000561	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 562: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000562	dist:0.000000
+000000567	dist:1.706340
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 563: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000563	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000271
+Query point 564: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000564	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000301
+Query point 565: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000565	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000315
+Query point 566: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000566	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000312
+Query point 567: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000567	dist:0.000000
+000000562	dist:1.706340
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 568: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000568	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 569: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000569	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 570: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000570	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 571: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000571	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000263
+Query point 572: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000572	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000252
+Query point 573: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000573	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000252
+Query point 574: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000574	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 575: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000575	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000290
+Query point 576: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000576	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000297
+Query point 577: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000577	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 578: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000578	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 579: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000579	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000240
+Query point 580: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000580	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000234
+Query point 581: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000581	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000250
+Query point 582: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000582	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000248
+Query point 583: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000583	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000244
+Query point 584: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000584	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 585: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000585	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000324
+Query point 586: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000586	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 587: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000587	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 588: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000588	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 589: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000589	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000242
+Query point 590: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000590	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 591: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000591	dist:0.000000
+000000592	dist:1.674619
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 592: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000592	dist:0.000000
+000000591	dist:1.674619
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 593: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000593	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 594: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000594	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000260
+Query point 595: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000595	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 596: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000596	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000252
+Query point 597: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000597	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 598: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000598	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000252
+Query point 599: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000599	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 600: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000600	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000267
+Query point 601: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000601	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 602: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000602	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000271
+Query point 603: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000603	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000244
+Query point 604: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000604	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000235
+Query point 605: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000605	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000276
+Query point 606: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000606	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 607: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000607	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000286
+Query point 608: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000608	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 609: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000609	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000237
+Query point 610: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000610	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 611: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000611	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 612: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000612	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000245
+Query point 613: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000613	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 614: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000614	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 615: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000615	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 616: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000616	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000240
+Query point 617: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000617	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000303
+Query point 618: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000618	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000248
+Query point 619: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000619	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 620: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000620	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000239
+Query point 621: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000621	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000320
+Query point 622: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000622	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 623: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000623	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 624: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000624	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 625: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000625	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000238
+Query point 626: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000626	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 627: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000627	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000237
+Query point 628: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000628	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 629: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000629	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 630: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000630	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000385
+Query point 631: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000631	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 632: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000632	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 633: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000633	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 634: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000634	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000343
+Query point 635: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000635	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 636: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000636	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000265
+Query point 637: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000637	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000276
+Query point 638: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000638	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 639: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000639	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000245
+Query point 640: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000640	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000298
+Query point 641: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000641	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000335
+Query point 642: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000642	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 643: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000643	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 644: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000644	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000267
+Query point 645: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000645	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000313
+Query point 646: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000646	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 647: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000647	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000312
+Query point 648: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000648	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000277
+Query point 649: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000649	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000242
+Query point 650: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000650	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 651: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000651	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000288
+Query point 652: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000652	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 653: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000653	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 654: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000654	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000301
+Query point 655: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000655	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000345
+Query point 656: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000656	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000305
+Query point 657: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000657	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000299
+Query point 658: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000658	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 659: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000659	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000255
+Query point 660: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000660	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 661: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000661	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000240
+Query point 662: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000662	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000275
+Query point 663: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000663	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000244
+Query point 664: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000664	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 665: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000665	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000235
+Query point 666: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000666	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 667: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000667	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000277
+Query point 668: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000668	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 669: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000669	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000242
+Query point 670: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000670	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000303
+Query point 671: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000671	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000263
+Query point 672: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000672	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 673: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000673	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 674: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000674	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000288
+Query point 675: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000675	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000313
+Query point 676: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000676	dist:0.000000
+000000678	dist:1.576144
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 677: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000677	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000349
+Query point 678: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000678	dist:0.000000
+000000676	dist:1.576144
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000292
+Query point 679: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000679	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000315
+Query point 680: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000680	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000244
+Query point 681: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000681	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 682: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000682	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000327
+Query point 683: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000683	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 684: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000684	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 685: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000685	dist:0.000000
+000000370	dist:1.882227
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000386
+Query point 686: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000686	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 687: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000687	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 688: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000688	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000235
+Query point 689: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000689	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 690: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000690	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000260
+Query point 691: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000691	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 692: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000692	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 693: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000693	dist:0.000000
+000000697	dist:1.769489
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000244
+Query point 694: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000694	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000305
+Query point 695: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000695	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 696: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000696	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 697: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000697	dist:0.000000
+000000693	dist:1.769489
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000250
+Query point 698: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000698	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000232
+Query point 699: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000699	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000260
+Query point 700: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000700	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 701: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000701	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 702: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000702	dist:0.000000
+000000704	dist:1.897753
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000241
+Query point 703: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000703	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000255
+Query point 704: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000702	dist:1.897753
+000000704	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000365
+Query point 705: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000705	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000302
+Query point 706: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000706	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 707: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000707	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 708: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000708	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000285
+Query point 709: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000709	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000255
+Query point 710: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000710	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 711: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000711	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 712: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000712	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000242
+Query point 713: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000713	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 714: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000714	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 715: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000715	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 716: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000716	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 717: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000717	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 718: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000718	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000322
+Query point 719: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000719	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 720: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000720	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 721: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000721	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 722: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000722	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000263
+Query point 723: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000723	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000286
+Query point 724: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000724	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000320
+Query point 725: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000725	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 726: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000726	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000342
+Query point 727: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000727	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000246
+Query point 728: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000728	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 729: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000729	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 730: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000730	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 731: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000731	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 732: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000732	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 733: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000733	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 734: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000734	dist:0.000000
+000000736	dist:1.663110
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 735: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000735	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 736: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000736	dist:0.000000
+000000734	dist:1.663110
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 737: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000737	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000240
+Query point 738: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000738	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000248
+Query point 739: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000739	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 740: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000740	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 741: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000741	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 742: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000742	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 743: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000743	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 744: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000744	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 745: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000745	dist:0.000000
+000000747	dist:1.670438
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000243
+Query point 746: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000746	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000255
+Query point 747: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000747	dist:0.000000
+000000745	dist:1.670438
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000243
+Query point 748: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000748	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 749: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000749	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000252
+Query point 750: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000750	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000241
+Query point 751: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000751	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000340
+Query point 752: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000752	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000292
+Query point 753: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000753	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000272
+Query point 754: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000754	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 755: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000755	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 756: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000756	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 757: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000757	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000276
+Query point 758: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000758	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000300
+Query point 759: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000759	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000244
+Query point 760: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000760	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000271
+Query point 761: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000761	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000296
+Query point 762: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000762	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000323
+Query point 763: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000763	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 764: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000764	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000352
+Query point 765: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000765	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000293
+Query point 766: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000766	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000312
+Query point 767: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000767	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 768: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000768	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000332
+Query point 769: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000769	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 770: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000770	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000302
+Query point 771: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000771	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000242
+Query point 772: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000772	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 773: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000773	dist:0.000000
+000000781	dist:1.529791
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000241
+Query point 774: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000774	dist:0.000000
+000000777	dist:1.963217
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 775: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000775	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000267
+Query point 776: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000776	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000237
+Query point 777: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000777	dist:0.000000
+000000774	dist:1.963217
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000246
+Query point 778: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000778	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000238
+Query point 779: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000779	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000246
+Query point 780: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000780	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000239
+Query point 781: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000781	dist:0.000000
+000000773	dist:1.529791
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 782: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000782	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000246
+Query point 783: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000783	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000327
+Query point 784: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000784	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 785: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000785	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000288
+Query point 786: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000786	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000288
+Query point 787: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000787	dist:0.000000
+000000789	dist:1.698481
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000230
+Query point 788: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000788	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000272
+Query point 789: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000789	dist:0.000000
+000000787	dist:1.698481
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000332
+Query point 790: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000790	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 791: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000791	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000267
+Query point 792: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000792	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000235
+Query point 793: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000793	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 794: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000794	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 795: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000795	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 796: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000796	dist:0.000000
+000000799	dist:1.747051
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 797: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000797	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000323
+Query point 798: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000798	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000248
+Query point 799: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000799	dist:0.000000
+000000796	dist:1.747051
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000322
+Query point 800: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000800	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 801: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000801	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 802: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000802	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 803: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000803	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000305
+Query point 804: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000804	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000343
+Query point 805: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000805	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 806: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000806	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 807: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000807	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000360
+Query point 808: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000808	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000232
+Query point 809: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000809	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 810: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000810	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 811: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000811	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 812: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000812	dist:0.000000
+000000815	dist:1.858529
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 813: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000813	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000343
+Query point 814: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000814	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000242
+Query point 815: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000815	dist:0.000000
+000000812	dist:1.858529
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 816: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000816	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 817: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000817	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000244
+Query point 818: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000818	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000298
+Query point 819: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000819	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 820: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000820	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 821: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000821	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000396
+Query point 822: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000822	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000279
+Query point 823: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000823	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 824: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000824	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000239
+Query point 825: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000825	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000364
+Query point 826: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000826	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 827: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000827	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000307
+Query point 828: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000828	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000327
+Query point 829: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000829	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 830: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000830	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000341
+Query point 831: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000831	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000319
+Query point 832: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000832	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 833: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000833	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 834: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000834	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000341
+Query point 835: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000835	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 836: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000836	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 837: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000837	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 838: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000838	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000354
+Query point 839: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000839	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 840: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000840	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 841: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000841	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 842: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000842	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 843: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000843	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000297
+Query point 844: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000844	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 845: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000845	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000267
+Query point 846: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000846	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000250
+Query point 847: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000847	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 848: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000848	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 849: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000849	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 850: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000850	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 851: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000851	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 852: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000852	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000252
+Query point 853: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000853	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000375
+Query point 854: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000854	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000245
+Query point 855: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000855	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000340
+Query point 856: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000856	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 857: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000857	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 858: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000858	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 859: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000859	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 860: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000860	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 861: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000861	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 862: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000862	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000322
+Query point 863: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000863	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000306
+Query point 864: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000864	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 865: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000865	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000282
+Query point 866: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000866	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 867: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000867	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000291
+Query point 868: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000868	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 869: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000869	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000309
+Query point 870: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000870	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000297
+Query point 871: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000871	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 872: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000872	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000246
+Query point 873: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000873	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 874: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000874	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 875: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000875	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000246
+Query point 876: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000876	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 877: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000877	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000330
+Query point 878: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000878	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000334
+Query point 879: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000879	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 880: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000880	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 881: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000881	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000321
+Query point 882: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000882	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000260
+Query point 883: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000883	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 884: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000884	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000256
+Query point 885: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000885	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000318
+Query point 886: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000886	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 887: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000887	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000371
+Query point 888: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000888	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 889: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000889	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000379
+Query point 890: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000890	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 891: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000891	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000391
+Query point 892: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000892	dist:0.000000
+000000368	dist:1.974534
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 893: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000893	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000314
+Query point 894: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000894	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000288
+Query point 895: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000895	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 896: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000896	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 897: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000897	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000332
+Query point 898: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000898	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000250
+Query point 899: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000899	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000347
+Query point 900: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000900	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000308
+Query point 901: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000901	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000354
+Query point 902: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000902	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000249
+Query point 903: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000903	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 904: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000904	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 905: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000905	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000339
+Query point 906: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000906	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000286
+Query point 907: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000907	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000280
+Query point 908: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000908	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 909: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000909	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 910: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000910	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000283
+Query point 911: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000911	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000277
+Query point 912: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000912	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000274
+Query point 913: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000913	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 914: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000914	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 915: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000915	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000311
+Query point 916: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000916	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000292
+Query point 917: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000917	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000286
+Query point 918: found 3 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000918	dist:0.000000
+000000920	dist:1.588995
+000000921	dist:1.741826
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000339
+Query point 919: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000919	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 920: found 3 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000920	dist:0.000000
+000000918	dist:1.588995
+000000921	dist:1.462488
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000304
+Query point 921: found 3 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000921	dist:0.000000
+000000920	dist:1.462488
+000000918	dist:1.741826
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 922: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000922	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000328
+Query point 923: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000923	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000255
+Query point 924: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000924	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000243
+Query point 925: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000925	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000292
+Query point 926: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000926	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000290
+Query point 927: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000927	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000287
+Query point 928: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000928	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 929: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000929	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000249
+Query point 930: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000930	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000344
+Query point 931: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000931	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000333
+Query point 932: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000932	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000262
+Query point 933: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000933	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000340
+Query point 934: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000934	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 935: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000935	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000295
+Query point 936: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000936	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000338
+Query point 937: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000937	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000268
+Query point 938: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000938	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000284
+Query point 939: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000939	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 940: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000940	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000348
+Query point 941: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000941	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 942: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000942	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000276
+Query point 943: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000943	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000252
+Query point 944: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000944	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 945: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000945	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000345
+Query point 946: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000946	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000292
+Query point 947: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000947	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 948: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000948	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000263
+Query point 949: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000949	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 950: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000950	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000250
+Query point 951: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000951	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000255
+Query point 952: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000952	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000249
+Query point 953: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000953	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000278
+Query point 954: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000954	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000239
+Query point 955: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000955	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000246
+Query point 956: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000956	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000246
+Query point 957: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000957	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000270
+Query point 958: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000958	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000289
+Query point 959: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000959	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000269
+Query point 960: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000960	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000281
+Query point 961: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000961	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000257
+Query point 962: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000962	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000237
+Query point 963: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000963	dist:0.000000
+000000967	dist:1.196104
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000231
+Query point 964: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000964	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000237
+Query point 965: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000965	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000238
+Query point 966: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000966	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000230
+Query point 967: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000967	dist:0.000000
+000000963	dist:1.196104
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000239
+Query point 968: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000968	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000232
+Query point 969: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000969	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000254
+Query point 970: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000970	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000247
+Query point 971: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000971	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000242
+Query point 972: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000972	dist:0.000000
+000000979	dist:1.412232
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000273
+Query point 973: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000973	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000301
+Query point 974: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000974	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 975: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000975	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000253
+Query point 976: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000976	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000235
+Query point 977: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000977	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000258
+Query point 978: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000978	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000260
+Query point 979: found 2 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000979	dist:0.000000
+000000972	dist:1.412232
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000244
+Query point 980: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000980	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000294
+Query point 981: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000981	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000259
+Query point 982: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000982	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000228
+Query point 983: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000983	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000251
+Query point 984: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000984	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000238
+Query point 985: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000985	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000229
+Query point 986: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000986	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000261
+Query point 987: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000987	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000266
+Query point 988: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000988	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000265
+Query point 989: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000989	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000264
+Query point 990: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000990	dist:0.000000
+Total time for R-NN query at radius 2.000000 (radius no. 0):	0.000228
+Query point 991: found 1 NNs at distance 2.000000 (radius no. 0). NNs are:
+000000991	dist:0.000000
+Mean query time: 0.000290

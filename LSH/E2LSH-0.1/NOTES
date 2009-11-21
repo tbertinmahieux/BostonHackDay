@@ -1,0 +1,40 @@
+2008-03-26: trying on everything
+
+first recreate beatles results
+  hog:~/projects/musicmine/E2LSH-0.1 > time bin/lsh 5.0 ../beatles-F.txt ../beatles-F.txt > beatles-F-5p0.txt
+915.578u 56.028s 16:59.95 95.2% 0+0k 0+0io 4637pf+0w
+ - top matches ~ 45 matches
+
+trying the 613,471 patterns of a20-1 (first 60 albums/701 tracks)
+with r=5.0
+ - finished 87050 queries in 49554 sec (2am-3:30pm) with 1G RAM
+   = 6300 queries/hr
+ - 6 points with > 200 matches
+with r=4.0
+ - finished 74005 patterns in 23161 sec (4pm-10:30pm) with 1G RAM
+   = 11500 queries/hr
+ - 4 points with > 18 matches
+with r=4.0 and 2G RAM
+ - finished 54367 patterns in 9027 sec (10:30-01:15) with 2G RAM
+   = 21700 queries/hr
+ - 6 points with > 15 matches
+with r=4.5 and 2G RAM
+ - finished 102626 patterns in 8h02m = 13000/hr
+ - 7 points with > 30 matches
+
+New a20-top10x5-cp4 data, N = 70606
+ r=3.0
+ - finished 70606 patterns in 1279 sec
+ - 6 patterns with > 2900 matches
+ r=2.8
+ - finished 70606 patterns in 861 sec
+ - 8 patterns with > 1700 matches
+ r=2.5
+ - 496 sec
+ - 7 patterns > 800
+ r=2.3
+ - 380 sec
+ - 4 patterns > 500
+ r=2.2
+ - 340 sec
+ - 4 patterns > 380
