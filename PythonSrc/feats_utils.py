@@ -15,19 +15,58 @@ import sys
 import os
 import scipy as SP
 import scipy.io
+from plottools import plotall as PA
+import matplotlib
+import matplotlib.pyplot as P 
+import numpy as N
+try:
+    import scikits.samplerate as samplerate
+except:
+    import pysamplerate as samplerate
 
 
+##############################################################
+# does a resampling
+# done columnwise is data is a matrix
+# BIG HACK in the case we don't get the exactnew size,
+# we add or remove a delta in the ratio
+##############################################################
+def resample(data, newsize) :
+    delta = .0001
+    res = N.zeros([N.shape(data)[0],newsize])
+    for l in range(N.shape(data)[0]):
+        newdata  = samplerate.resample(data[l,:],
+                                       newsize * 1. / N.shape(data)[1]);
+        if N.asarray(newdata).shape[0] > newsize :
+            newdata  = samplerate.resample(data[l,:],
+                                       newsize * 1. / N.shape(data)[1] - delta);
+        if N.asarray(newdata).shape[0] > newsize :
+            newdata  = samplerate.resample(data[l,:],
+                                       newsize * 1. / N.shape(data)[1] + delta);
+        if N.asarray(newdata).shape[0] != newsize :
+            print 'resample, bad new size!!!'
+            continue
+        res[l,:] = newdata.T
+    return res
+
+
+
+##############################################################
+# imshow
+# wrapper around matplotlib.pyplot with proper params
+##############################################################
+def imshow(data) :
+    PA([data],
+       aspect='auto', interpolation='nearest')
+    P.show()
 
 
 ##############################################################
 # read a matlabfile
 # uses scipy utility function
 ##############################################################
-def reat_matfile(filename):
+def read_matfile(filename):
     return SP.io.loadmat(filename)
-
-
-
 
 
 
@@ -51,3 +90,18 @@ if __name__ == '__main__' :
 
     if len(sys.argv) < 2 :
         die_with_usage()
+
+
+    print('dummy tests!')
+
+    # load and plot
+    data = read_matfile('../tr0002q11c3fa8332d.mat')
+    chromas = data['btchroma']
+    beats = data['barbts']
+    P.figure()
+    imshow(chromas)
+
+    # resample and show
+    chromas2 = resample(chromas,50)
+    P.figure()
+    imshow(chromas2)
