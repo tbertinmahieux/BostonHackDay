@@ -30,7 +30,7 @@ import numpy as N
 def command_with_output(cmd):
     if not type(cmd) == unicode :
         cmd = unicode(cmd,'utf-8')
-    #should this be a part of slashify or command_with_output?
+    # hack just for Darwin, those lucky people
     if sys.platform=='darwin' :
         cmd = unicodedata.normalize('NFC',cmd)
     child = os.popen(cmd.encode('utf-8'))
