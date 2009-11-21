@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/40/trunk/examples
+END
+get_similars.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/24/trunk/examples/get_similars.py
+END
+click_plot.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/40/trunk/examples/click_plot.py
+END
+hotttest_tempos.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/24/trunk/examples/hotttest_tempos.py
+END
+show_artist.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/24/trunk/examples/show_artist.py
+END
+wanderer.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/36/trunk/examples/wanderer.py
+END

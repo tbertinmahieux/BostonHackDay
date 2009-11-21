@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/53/trunk/src/pyechonest
+END
+urllib2_file.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/3/trunk/src/pyechonest/urllib2_file.py
+END
+util.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/41/trunk/src/pyechonest/util.py
+END
+document.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/30/trunk/src/pyechonest/document.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/3/trunk/src/pyechonest/__init__.py
+END
+track.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/50/trunk/src/pyechonest/track.py
+END
+config.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/49/trunk/src/pyechonest/config.py
+END
+decorators.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/src/pyechonest/decorators.py
+END
+artist.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/53/trunk/src/pyechonest/artist.py
+END
