@@ -41,27 +41,31 @@ def command_with_output(cmd):
 
 
 #########################################################################
-# write an input numpy matrix to a file and apply the E2LSH algorithm.
-# E2LSH bin must be in the path, or provided as an input
+# lsh_model(input,fModelName,fInName,lshDir)
+#
+# Write an input numpy matrix to a file and apply the E2LSH algorithm.
+# Here we just create the model! what E2LSH call the params
+# We then use the lsh_query function to use this model.
+# E2LSH bin must be in the path, or provided as an input.
 # output file path is returned.
 #
 # INPUT
 #
-#     input - numpy matrix, one example per line, all examples same size
-#  fOutName - E2LSH output file name, if none a dummy name will be used
-#   fInName - file name for the E2LSH input, if none temp file is used
-# e2lshPath - path to LSH bin, if not assume it's in path
+#      input - numpy matrix, one example per line, all examples same size
+# fModelName - E2LSH model file name, default='lsh_model.txt'
+#    fInName - file name for the E2LSH input, if none temp file is used
+#     lshDir - path to LSH bin, if not assume it's in path
 #
 # OUTPUT
 #
-#  fOutName - file name of the E2LSH program
+# fModelName - file name of the E2LSH program
 #
 #########################################################################
-def e2lsh(input, fOutName='', fInName='', e2lshPath='') :
-    print 'lsh.e2lsh, not implemented yet'
+def lsh_model(input, fModelName='', fInName='', lshDir='') :
 
-    # fOutName
-
+    # fModelName
+    if fModelName == '' :
+        fModelName = 'lsh_model.txt'
 
     # fInName
     if fInName == '':
@@ -76,12 +80,67 @@ def e2lsh(input, fOutName='', fInName='', e2lshPath='') :
         fIn.write('\n')
     fIn.close()
 
-    # e2lsh lsh path
-    cmd = os.path.join(e2lshPath,'lsh')
+    # lsh_computeParams path
+    cmd = os.path.join(lshDir,'lsh_computeParams')
+    cmd = cmd + ' R ' + fInName + ' > ' + fOutName
 
-    # call e2lsh
+    # call 
+    result = command_with_output(cmd)
 
-    return
+    # return ouput file of lsh
+    return fOutName
+
+
+
+#########################################################################
+# lsh_query(queries,fModelName,fInName,lshDir)
+#
+# Query a given model.
+# We then use the lsh_query function to use this model.
+# E2LSH bin must be in the path, or provided as an input.
+#
+# INPUT
+#
+#      queries - numpy matrix, one example per line
+#      fInputs - file name containing input data, fInName from lsh_model
+#   fModelName - E2LSH model file name
+# fQueriesName - file name for the E2LSH input, if none temp file is used
+#       lshDir - path to LSH bin, if not assume it's in path
+#         fRes - filename for results file, default='lsh_results.txt'
+#
+# OUTPUT
+#
+#         fRes - filename for results file (from LSH program)
+#
+#########################################################################
+def lsh_query(queries, fInputs, fModelName, fQueriesName='',
+              lshDir='', fRes='lsh_results.txt') :
+
+    # fQueriesName
+    if fInName == '':
+        fIn = tempfile.NamedTemporaryFile('w')
+        fInName = fIn.name
+    else :
+        fIn = open(fInName,'w')
+
+    # numpy input to file
+    for l in range(N.shape(queries)[0]) :
+        queries[l].tofile(fIn,sep=' ')
+        fIn.write('\n')
+    fIn.close()
+
+    # lsh_fromParams path
+    cmd = os.path.join(lshDir,'lsh_fromParams')
+    cmd = cmd + ' ' + fInputs + ' ' + fModelName
+    cmd = cmd + ' > ' + fRes
+
+    # call 
+    result = command_with_output(cmd)
+
+    # return result file name
+    return fRes
+
+
 
 
 #########################################################################
@@ -104,5 +163,5 @@ if __name__ == '__main__' :
 
     input = N.zeros([3,2])
     #e2lsh(input,'out.txt','in.txt')
-    print command_with_output('ls')
+    #print command_with_output('ls')
     
