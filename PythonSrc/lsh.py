@@ -124,6 +124,16 @@ def lsh_model(input, radius, fModelName='', fInName='', lshDir='') :
 #
 #         fRes - filename for results file (from LSH program)
 #
+# USAGE
+#
+#     res = lsh_parse_result('lsh_results.txt')
+#     # for query 2
+#     (pts,dists) = res[2]
+#     # first point found and its dist from query 2
+#     if len(pts) > 0 :
+#        print pts[0]
+#        print dists[0]
+#
 #########################################################################
 def lsh_query(queries, fInputs, fModelName, fQueriesName='',
               lshDir='', fRes='lsh_results.txt') :
