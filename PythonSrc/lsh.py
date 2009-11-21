@@ -167,6 +167,64 @@ def lsh_query(queries, fInputs, fModelName, fQueriesName='',
     return fRes
 
 
+#########################################################################
+# lsh_parse_result(fRes)
+#
+# Parse a result file from E2LSH into python
+#
+# INPUT
+#
+#  fRes - filename for results file
+#
+# OUTPUT
+#
+#   map - a dictionnary of queryID -> tuple(points,dists)
+#         queryID goes from 0 to .... #queries - 1
+#         tuple t contains t[0] - array of data points
+#                          t[1] - array of distance to the query
+#         len(t) is 2, len(t[0]) equals len(t[1])
+#
+#########################################################################
+def lsh_parse_result(fRes):
+
+    # init result map
+    res_map = dict()
+
+
+    # open file
+    fIn = open(fRes,'r')
+
+    # iterate on res file
+    querycnt = -1
+    for line in fIn.xreadlines() :
+
+        # skip the Total time line...
+        if line[:len('Total time')] == 'Total time' :
+            continue
+        # reachin Query point line, init stuff...
+        if line[:len('Query point')] == 'Query point' :
+            querycnt = querycnt + 1
+            points = N.array([])
+            dists = N.array([])
+            continue
+        if line[:len('Mean query')] == 'Mean query' :
+            continue
+        # reading one query res
+        [p,d] = line.strip().split('\t')
+        # save it to arrays
+        points = N.append(points,int(p))
+        [junk,d] = d.split(':')
+        dists = N.append(dists,float(d))
+        # save results to map... slow repetitive way but works
+        res_map[querycnt] = (points,dists)
+
+    # close file
+    fIn.close()
+
+    # return map
+    return res_map
+
+
 
 
 #########################################################################
@@ -178,6 +236,7 @@ def die_with_usage() :
     print "usage:"
     print "lsh_model(data,10,'lsh_model.txt','data.txt','/E2LSH')"
     print "lsh_query(queries,'data.txt','lsh_model.txt','queries.txt','/E2LSH','lsh_results.txt')"
+    print "lsh_parse_result(fRes)"
     sys.exit(0)
 
 
@@ -199,12 +258,19 @@ if __name__ == '__main__' :
     lshDir = '/home/thierry/Columbia/BostonHackDay/LSH/E2LSH-0.1'
 
     print 'creating model...'
-    print "lsh_model(data,10,'lsh_model.txt','data.txt',lshDir)"
-    lsh_model(data,10,'lsh_model.txt','data.txt',lshDir)
+    print "lsh_model(data,1,'lsh_model.txt','data.txt',lshDir)"
+    lsh_model(data,1,'lsh_model.txt','data.txt',lshDir)
 
     print 'querying model...'
     print "lsh_query(queries,'data.txt','lsh_model.txt','queries.txt',lshDir,'lsh_results.txt')"
     lsh_query(queries,'data.txt','lsh_model.txt','queries.txt',lshDir,'lsh_results.txt')
 
+    print 'reading results...'
+    print "res = lsh_parse_result('lsh_results.txt')"
+    res = lsh_parse_result('lsh_results.txt')
+    print 'first result: points then distances'
+    print res[0][0]
+    print res[0][1]
+    
     print 'done'
     
