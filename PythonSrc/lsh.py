@@ -52,26 +52,29 @@ def command_with_output(cmd):
 # INPUT
 #
 #      input - numpy matrix, one example per line, all examples same size
+#     radius - search radius, see E2LSH info
 # fModelName - E2LSH model file name, default='lsh_model.txt'
 #    fInName - file name for the E2LSH input, if none temp file is used
-#     lshDir - path to LSH bin, if not assume it's in path
+#     lshDir - dir where to find bin/lsh
 #
 # OUTPUT
 #
 # fModelName - file name of the E2LSH program
 #
 #########################################################################
-def lsh_model(input, fModelName='', fInName='', lshDir='') :
+def lsh_model(input, radius, fModelName='', fInName='', lshDir='') :
 
     # fModelName
     if fModelName == '' :
         fModelName = 'lsh_model.txt'
+    fModelName = os.path.abspath(fModelName)
 
     # fInName
     if fInName == '':
         fIn = tempfile.NamedTemporaryFile('w')
         fInName = fIn.name
     else :
+        fInName = os.path.abspath(fInName)
         fIn = open(fInName,'w')
 
     # numpy input to file
@@ -80,15 +83,24 @@ def lsh_model(input, fModelName='', fInName='', lshDir='') :
         fIn.write('\n')
     fIn.close()
 
-    # lsh_computeParams path
-    cmd = os.path.join(lshDir,'lsh_computeParams')
-    cmd = cmd + ' R ' + fInName + ' > ' + fOutName
+    # get to the right dir
+    currdir = os.path.abspath(os.path.curdir)
+    os.chdir(lshDir)
 
-    # call 
+    # lsh_computeParams path
+    cmd = 'bin/lsh_computeParams'
+    cmd = cmd + ' ' + str(radius)
+    cmd = cmd + ' ' + fInName + ' . > ' + fModelName
+
+    # call
+    print cmd
     result = command_with_output(cmd)
 
+    # get back to currdir
+    os.chdir(currdir)
+
     # return ouput file of lsh
-    return fOutName
+    return fModelName
 
 
 
@@ -105,7 +117,7 @@ def lsh_model(input, fModelName='', fInName='', lshDir='') :
 #      fInputs - file name containing input data, fInName from lsh_model
 #   fModelName - E2LSH model file name
 # fQueriesName - file name for the E2LSH input, if none temp file is used
-#       lshDir - path to LSH bin, if not assume it's in path
+#       lshDir - dir where to find bin/lsh
 #         fRes - filename for results file, default='lsh_results.txt'
 #
 # OUTPUT
@@ -116,32 +128,44 @@ def lsh_model(input, fModelName='', fInName='', lshDir='') :
 def lsh_query(queries, fInputs, fModelName, fQueriesName='',
               lshDir='', fRes='lsh_results.txt') :
 
+    # make sure we use absolute path names
+    fInputs = os.path.abspath(fInputs)
+    fModelName = os.path.abspath(fModelName)
+
     # fQueriesName
-    if fInName == '':
-        fIn = tempfile.NamedTemporaryFile('w')
-        fInName = fIn.name
+    if fQueriesName == '':
+        fQueries = tempfile.NamedTemporaryFile('w')
+        fQueriesName = fQueries.name
     else :
-        fIn = open(fInName,'w')
+        fQueriesName = os.path.abspath(fQueriesName)
+        fQueries = open(fQueriesName,'w')
 
     # numpy input to file
     for l in range(N.shape(queries)[0]) :
-        queries[l].tofile(fIn,sep=' ')
-        fIn.write('\n')
-    fIn.close()
+        queries[l].tofile(fQueries,sep=' ')
+        fQueries.write('\n')
+    fQueries.close()
+
+    # get to the right dir
+    currdir = os.path.abspath(os.path.curdir)
+    os.chdir(lshDir)
 
     # lsh_fromParams path
-    cmd = os.path.join(lshDir,'lsh_fromParams')
+    cmd = 'bin/lsh_fromParams'
     cmd = cmd + ' ' + fInputs + ' ' + fModelName
     cmd = cmd + ' > ' + fRes
 
     # call 
     result = command_with_output(cmd)
 
+    # get back to currdir
+    os.chdir(currdir)
+
     # return result file name
     return fRes
 
 
- 
+
 
 #########################################################################
 # help menu
@@ -150,8 +174,8 @@ def die_with_usage() :
     print "lsh.py"
     print "should be used as a library"
     print "usage:"
-    print "lsh_model(data,'lsh_model.txt','data.txt','/lsh/bin/')"
-    print "lsh_query(queries,'data.txt','lsh_model.txt','queries.txt','/lsh/bin/','lsh_results.txt')"
+    print "lsh_model(data,10,'lsh_model.txt','data.txt','/E2LSH')"
+    print "lsh_query(queries,'data.txt','lsh_model.txt','queries.txt','/E2LSH','lsh_results.txt')"
     sys.exit(0)
 
 
@@ -164,7 +188,21 @@ if __name__ == '__main__' :
     if len(sys.argv) <= 1 :
         die_with_usage()
 
-    input = N.zeros([3,2])
-    #e2lsh(input,'out.txt','in.txt')
-    #print command_with_output('ls')
+
+    print 'dummy test'
+
+    data = N.random.rand(100,13)
+    queries = N.random.rand(10,13)
+
+    lshDir = '/home/thierry/Columbia/BostonHackDay/LSH/E2LSH-0.1'
+
+    print 'creating model...'
+    print "lsh_model(data,10,'lsh_model.txt','data.txt',lshDir)"
+    lsh_model(data,10,'lsh_model.txt','data.txt',lshDir)
+
+    print 'querying model...'
+    print "lsh_query(queries,'data.txt','lsh_model.txt','queries.txt',lshDir,'lsh_results.txt')"
+    lsh_query(queries,'data.txt','lsh_model.txt','queries.txt',lshDir,'lsh_results.txt')
+
+    print 'done'
     
