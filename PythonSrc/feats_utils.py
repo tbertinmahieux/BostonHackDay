@@ -31,6 +31,8 @@ import numpy as N
 def resample(data, newsize):
     return SP.signal.resample(data, newsize, axis=1)
 
+def matfile_to_enid(matfile):
+    return os.path.split(matfile)[-1].replace('.mat', '').upper()
 
 def matfile_to_barfeats(matfile, newsize=16):
     """Convert beat-synchronous chroma features from matfile to a set
@@ -47,7 +49,9 @@ def matfile_to_barfeats(matfile, newsize=16):
             end = chroma.shape[1]
         barfeats[:,n] = resample(chroma[:,bars[n]:end], newsize).flatten()
 
-    return barfeats
+    enid = matfile_to_enid(matfile)
+    barlabels = ['%s:%d' % (enid, x) for x in bars]
+    return barfeats, barlabels
 
 
 ##############################################################
