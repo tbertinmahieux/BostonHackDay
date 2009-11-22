@@ -111,6 +111,44 @@ def get_all_matfiles(basedir) :
     return allfiles
 
 
+
+def read_feat_file(filename,sep=' ') :
+    """ we read a file of features, one example per line,
+    same number of features per example. Returns a numpy
+    array."""
+    # count lines
+    cntlines = 0
+    fid = open(filename,'r')
+    for line in fid.xreadlines():
+        if line == '' or line.strip() == '':
+            continue
+        cntlines = cntlines + 1
+    fid.close()
+    # count features
+    fid = open(filename,'r')
+    for line in fid.xreadlines():
+        if line == '' or line.strip() == '':
+            continue
+        numfeats = len(line.strip().split(sep))
+        break
+    fid.close()
+    # init big array
+    result = N.zeros([cntlines,numfeats])
+    # read!
+    fid = open(filename,'r')
+    cnt = 0
+    for line in fid.xreadlines():
+        if line == '' or line.strip() == '':
+            continue
+        result[cnt,:] = N.asarray(line.strip().split(sep))
+        cnt = cnt + 1
+    fid.close()
+    # return
+    return result
+    
+
+
+
 ##############################################################
 # imshow
 # wrapper around matplotlib.pyplot with proper params
