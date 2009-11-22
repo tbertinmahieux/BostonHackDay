@@ -160,6 +160,12 @@ def lsh_query(queries, fInputs, fModelName, fQueriesName='',
     fModelName = os.path.abspath(fModelName)
     fRes = os.path.abspath(fRes)
 
+    # if the query is an array, make sure it is understood
+    if len(queries.shape) == 1
+        length = queries.shape[0]
+        queries = queries.reshape([1,length])
+        print 'WATCHOUT: one query, an array of length:'+str(length)
+
     # fQueriesName
     if fQueriesName == '':
         fQueriesTemp = tempfile.NamedTemporaryFile('w')
