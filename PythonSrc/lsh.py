@@ -62,7 +62,8 @@ def command_with_output(cmd):
 # fModelName - file name of the E2LSH program
 #
 #########################################################################
-def lsh_model(input, radius, fModelName='', fInName='', lshDir='') :
+def lsh_model(input, radius, fModelName='', fInName='',
+              lshDir='', successProb=.9) :
 
     # fInName
     if fInName == '':
@@ -79,10 +80,10 @@ def lsh_model(input, radius, fModelName='', fInName='', lshDir='') :
         fIn.write('\n')
     fIn.close()
 
-    return lsh_model_inputfile(fInName,radius,fModelName,lshDir)
+    return lsh_model_inputfile(fInName,radius,fModelName,lshDir,successProb)
 
 
-def lsh_model_inputfile(inputfilename, radius, fModelName='', lshDir='') :
+def lsh_model_inputfile(inputfilename, radius, fModelName='', lshDir='', successProb=.9) :
     """Similar to lsh_model but the input is a file, not a numpy matrix."""
 
     # fModelName
@@ -100,7 +101,8 @@ def lsh_model_inputfile(inputfilename, radius, fModelName='', lshDir='') :
     # lsh_computeParams path
     cmd = 'bin/lsh_computeParams'
     cmd = cmd + ' ' + str(radius)
-    cmd = cmd + ' ' + fInName + ' . > ' + fModelName
+    cmd = cmd + ' ' + fInName + ' . ' + str(successProb)
+    cmd = cmd + ' > ' + fModelName
 
     # call
     result = command_with_output(cmd)
