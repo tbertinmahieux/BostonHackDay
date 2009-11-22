@@ -149,6 +149,7 @@ def get_matfile_from_enid(basedir, enid):
         localtarget = os.path.join(root,target)
         if os.path.isfile(localtarget) :
             return os.path.abspath(localtarget)
+    print 'matfile for enid:' + enid + ' not found, basedir:' + basedir
     return ''
 
 
