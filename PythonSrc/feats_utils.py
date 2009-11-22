@@ -41,7 +41,7 @@ def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False, downbeatinvaria
     of fixed length chroma features for every bar."""
     mat = read_matfile(matfile)
     chroma = mat['btchroma']
-    bars = mat['barbts'][:,0]
+    bars = mat['barbts'].flatten()
 
     if keyinvariant and downbeatinvariant:
         invariance_fun = lambda bar: N.abs(N.fft.rfft2(bar))
