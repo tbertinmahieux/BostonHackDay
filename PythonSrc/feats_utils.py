@@ -41,7 +41,12 @@ def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False, downbeatinvaria
     of fixed length chroma features for every bar."""
     mat = read_matfile(matfile)
     chroma = mat['btchroma']
-    bars = mat['barbts'].flatten()
+    bars = mat['barbts']
+    try:
+        bars = bars.flatten()
+    except:
+        print 'problem with file: ' + matfile
+        return N.array([]),N.array([])
 
     if keyinvariant and downbeatinvariant:
         invariance_fun = lambda bar: N.abs(N.fft.rfft2(bar))
@@ -67,7 +72,7 @@ def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False, downbeatinvaria
     return N.asarray(barfeats).T, barlabels
 
 
-def matfiles_to_feats_to_txt(matfiles,featfile,descfile):
+def matfiles_to_feats_to_txt(matfiles,featfile,descfile, newsize=16):
     """Take all matlab files, get barfeats, output the results
     into 2 text files, one for features and one for description.
     There's one bar per line, e.g. both file should have as many
@@ -77,14 +82,18 @@ def matfiles_to_feats_to_txt(matfiles,featfile,descfile):
     fidDesc = open(descfile,'w')
     # iterate over matfiles
     for matfile in matfiles :
-        barfeats, barlabels = matfile_to_barfeats(matfile)
+        barfeats, barlabels = matfile_to_barfeats(matfile,newsize)
         # iterate over beats
+        if barfeats.shape[0] < 1 :
+            print 'problem with file: ' + matfile
+            continue
         for n in range(barfeats.shape[1]) :
             # write features
-            N.tofile(fidFeat,sep=' ')
+            barfeats[:,n].tofile(fidFeat,sep=' ')
             fidFeat.write('\n')
             # write descriptions
-            fidDesc.write(barlables[n])
+            #fidDesc.write(barlabels[(n-1)*newsize])
+            fidDesc.write(barlabels[n])
             fidDesc.write('\n')
     # close files, and done
     fidFeat.close()
