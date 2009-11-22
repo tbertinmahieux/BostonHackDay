@@ -43,6 +43,9 @@ function play_en_wrapper(inFile, outFile, wavfile)
     pos2 = ceil(stoptime * 22050)+1;
     disp(pos1)
     disp(pos2)
+    if pos2 > len(signal)
+        pos2 = len(signal)
+    end
     signal = signal(pos1:pos2);
     
     disp('saving to .wav')
