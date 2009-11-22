@@ -35,11 +35,12 @@ import lsh
 
 
 
-def play_en(enid,matdir,starttime=0,endtime=30) :
+def play_en(enid,matdir,starttime=0,stoptime=30) :
     """Try to call play_en matlab code from python.
     Start time and stop time in seconds."""
 
     tmpFileIn = 'dummy_playenwrapperpy_infile.mat'
+    tmpFileIn2 = 'dummy_playenwrapperpy_infile2.mat'
     tmpFileOut = 'dummy_playenwrapperpy_outfile.mat'
 
     # find the right file
@@ -48,12 +49,14 @@ def play_en(enid,matdir,starttime=0,endtime=30) :
     # copy it
     shutil.copyfile(matfile,tmpFileIn)
 
-    # save M to file
-    #d = dict()
-    #d['M'] = M
-    #print 'm.shape:'
-    #print M.shape
-    #scipy.io.savemat(tmpFileIn,d)
+
+    # give info about starttime and stoptime
+    d = dict()
+    d['starttime'] = N.asarray([starttime])
+    d['stoptime'] = N.asarray([stoptime])
+    scipy.io.savemat(tmpFileIn2,d)
+
+
 
     cmd = './run_matlab_command.sh play_en_wrapper '
     #cmd = cmd + tmpFileIn + ' ' + tmpFileOut
