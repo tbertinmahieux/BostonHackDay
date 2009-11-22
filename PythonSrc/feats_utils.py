@@ -34,24 +34,35 @@ def resample(data, newsize):
 def matfile_to_enid(matfile):
     return os.path.split(matfile)[-1].replace('.mat', '').upper()
 
-def matfile_to_barfeats(matfile, newsize=16):
+def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False, downbeatinvariant=False):
     """Convert beat-synchronous chroma features from matfile to a set
     of fixed length chroma features for every bar."""
     mat = read_matfile(matfile)
     chroma = mat['btchroma']
     bars = mat['barbts'][:,0]
 
-    barfeats = N.empty((chroma.shape[0] * newsize, len(bars)))
+    if keyinvariant and downbeatinvariant:
+        invariance_fun = lambda bar: N.abs(N.fft.rfft2(bar))
+    elif keyinvariant:
+        invariance_fun = lambda bar: N.abs(N.fft.rfft(bar, axis=0))
+    elif downbeatinvariant:
+        invariance_fun = lambda bar: N.abs(N.fft.rfft(bar, axis=1))
+    else:
+        invariance_fun = lambda bar: bar
+
+    barfeats = []
     for n in xrange(len(bars)):
         try:
             end = bars[n+1]
         except IndexError:
             end = chroma.shape[1]
-        barfeats[:,n] = resample(chroma[:,bars[n]:end], newsize).flatten()
+        feat = invariance_fun(resample(chroma[:,bars[n]:end], newsize))
+        barfeats.append(feat.flatten())
 
     enid = matfile_to_enid(matfile)
     barlabels = ['%s:%d' % (enid, x) for x in bars]
-    return barfeats, barlabels
+
+    return N.asarray(barfeats).T, barlabels
 
 
 ##############################################################
