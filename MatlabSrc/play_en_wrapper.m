@@ -12,8 +12,26 @@ function play_en_wrapper(inFile, outFile)
 % inFile should contain M
 % outFile will contain signal
     
-    load -ascii inFile
+    if nargin < 1
+        inFile = './dummy_playenwrapperpy_infile.mat'
+    end
+    if nargin < 2
+        outFile = './dummy_playenwrapperpy_outfile.mat'
+    end
     
-    signal = play_en(M)
+    disp('loading')
     
-    save outFile signal -ascii
+    load(inFile)
+    
+    disp('play en')
+    
+    signal = play_en(M);
+    
+    disp('saving')
+    
+    %save(outFile,'signal','-ascii')
+    save(outFile,'signal')
+    
+    disp('done')
+    
+    
