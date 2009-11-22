@@ -41,8 +41,8 @@ def sample_feats(feats, labels, nsamp=90000):
     smallfeats = N.empty((len(randidx), len(feats[0])))
     smalllabels = []
     for n,x in enumerate(randidx):
+        smalllabels.append(str(labels[x]))
         smallfeats[n] = feats[x]
-        smalllabels.append(labels[x])
     return smallfeats, smalllabels, randidx
 
 def cluster_feats(feats, labels, ncw=1000, niter=20):
@@ -79,7 +79,7 @@ def meta_to_dict(meta):
     return d
     
 
-def read_features_into_h5(h5filename, matfiles, barfeats_params):
+def write_features_into_h5(h5filename, matfiles, barfeats_params):
     h5file = tables.openFile(h5filename, mode='a')
 
     h5file.createArray('/', 'matfiles', matfiles)
@@ -99,7 +99,7 @@ def read_features_into_h5(h5filename, matfiles, barfeats_params):
                                    expectedrows=100 * len(matfiles))
 
     for x in matfiles:
-        feats, labels = matfile_to_barfeats(matfiles[0], **barfeats_params)
+        feats, labels = matfile_to_barfeats(x, **barfeats_params)
         for n in xrange(len(labels)):
             h5feats.append(feats[:,n])
             h5labels.append(N.array([labels[n]], dtype=h5labels.atom.dtype))
