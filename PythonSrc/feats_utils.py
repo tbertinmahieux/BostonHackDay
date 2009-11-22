@@ -15,14 +15,11 @@ import sys
 import os
 import scipy as SP
 import scipy.io
+import scipy.signal
 from plottools import plotall as PA
 import matplotlib
 import matplotlib.pyplot as P 
 import numpy as N
-try:
-    import scikits.samplerate as samplerate
-except:
-    import pysamplerate as samplerate
 
 
 ##############################################################
@@ -32,26 +29,12 @@ except:
 # we add or remove a delta in the ratio
 ##############################################################
 def resample(data, newsize):
-    #rs = samplerate.resample
-    rs = lambda x,y: samplerate.resample(x, y, type='sinc_fastest')
-
-    delta = .0001
-    res = N.zeros([N.shape(data)[0],newsize])
-    for l in range(N.shape(data)[0]):
-        newdata  = rs(data[l,:], newsize * 1. / N.shape(data)[1]);
-        if N.asarray(newdata).shape[0] > newsize :
-            newdata  = rs(data[l,:], newsize * 1. / N.shape(data)[1] - delta);
-        if N.asarray(newdata).shape[0] > newsize :
-            newdata  = rs(data[l,:], newsize * 1. / N.shape(data)[1] + delta);
-        if N.asarray(newdata).shape[0] != newsize :
-            print 'resample, bad new size!!!'
-            continue
-        res[l,:] = newdata.T
-    return res
+    return SP.signal.resample(data, newsize, axis=1)
 
 
 def matfile_to_barfeats(matfile, newsize=16):
-    """"""
+    """Convert beat-synchronous chroma features from matfile to a set
+    of fixed length chroma features for every bar."""
     mat = read_matfile(matfile)
     chroma = mat['btchroma']
     bars = mat['barbts'][:,0]
@@ -61,7 +44,7 @@ def matfile_to_barfeats(matfile, newsize=16):
         try:
             end = bars[n+1]
         except IndexError:
-            end = len(chroma)
+            end = chroma.shape[1]
         barfeats[:,n] = resample(chroma[:,bars[n]:end], newsize).flatten()
 
     return barfeats
