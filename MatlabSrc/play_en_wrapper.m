@@ -39,8 +39,8 @@ function play_en_wrapper(inFile, outFile, wavfile)
 
     disp('cutting wav file')
     load(inFile2)
-    pos1 = floor(starttime * 22050) + 1;
-    pos2 = ceil(stoptime * 22050)+1;
+    pos1 = floor(starttime * 16000) + 1;
+    pos2 = ceil(stoptime * 16000)+1;
     disp(pos1)
     disp(pos2)
     length = max(size(signal,1),size(signal,2))
@@ -50,7 +50,7 @@ function play_en_wrapper(inFile, outFile, wavfile)
     signal = signal(pos1:pos2);
     
     disp('saving to .wav')
-    wavwrite(signal,22050,wavfile)
+    wavwrite(signal,16000,wavfile)
     
     disp('done')
     
