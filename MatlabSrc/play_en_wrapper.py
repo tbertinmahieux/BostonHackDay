@@ -17,6 +17,9 @@ import feats_utils
 import lsh
 
 
+
+
+
 #########################################################################
 # read from a process
 # originally written by Douglas Eck: douglas.eck@umontreal.ca
@@ -39,6 +42,8 @@ def play_en(enid,matdir,starttime=0,stoptime=30) :
     """Try to call play_en matlab code from python.
     Start time and stop time in seconds."""
 
+    matdir = os.path.abspath(matdir)
+
     tmpFileIn = 'dummy_playenwrapperpy_infile.mat'
     tmpFileIn2 = 'dummy_playenwrapperpy_infile2.mat'
     tmpFileOut = 'dummy_playenwrapperpy_outfile.mat'
@@ -58,7 +63,7 @@ def play_en(enid,matdir,starttime=0,stoptime=30) :
 
 
 
-    cmd = './run_matlab_command.sh play_en_wrapper '
+    cmd = os.path.join(os.path.abspath('.'),'run_matlab_command.sh play_en_wrapper ')
     #cmd = cmd + tmpFileIn + ' ' + tmpFileOut
 
     # call
