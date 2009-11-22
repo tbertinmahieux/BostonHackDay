@@ -13,6 +13,7 @@
 import string
 import sys
 import os
+import os.path
 import scipy as SP
 import scipy.io
 import scipy.signal
@@ -20,6 +21,7 @@ from plottools import plotall as PA
 import matplotlib
 import matplotlib.pyplot as P 
 import numpy as N
+import glob
 
 
 ##############################################################
@@ -52,6 +54,41 @@ def matfile_to_barfeats(matfile, newsize=16):
     enid = matfile_to_enid(matfile)
     barlabels = ['%s:%d' % (enid, x) for x in bars]
     return barfeats, barlabels
+
+
+def matfiles_to_feats_to_txt(matfiles,featfile,descfile):
+    """Take all matlab files, get barfeats, output the results
+    into 2 text files, one for features and one for description.
+    There's one bar per line, e.g. both file should have as many
+    lines. The feat file format fits with E2LSH input format."""
+
+    fidFeat = open(featfile,'w')
+    fidDesc = open(descfile,'w')
+    # iterate over matfiles
+    for matfile in matfiles :
+        barfeats, barlabels = matfile_to_barfeats(matfile)
+        # iterate over beats
+        for n in range(barfeats.shape[1]) :
+            # write features
+            N.tofile(fidFeat,sep=' ')
+            fidFeat.write('\n')
+            # write descriptions
+            fidDesc.write(barlables[n])
+            fidDesc.write('\n')
+    # close files, and done
+    fidFeat.close()
+    fidDesc.close()
+
+
+def get_all_matfiles(dir) :
+    """From a root directory, go through all subdirectories
+    and find all matlab files. Return them in a list."""
+    allfiles = []
+    for root, dirs, files in os.walk(basedir):
+        matfiles = glob.glob(os.path.join(root,'*.mat'))
+        for f in matfiles :
+            allfiles.append(f)
+    return allfiles
 
 
 ##############################################################
