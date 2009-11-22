@@ -35,10 +35,13 @@ def convert_matfile_to_beat_synchronous_chromagram(matfile, savedir):
                      matfile, savefile)
         return
         
-    btchroma, barbts = get_beat_synchronous_chromagram(matfile)
+    btchroma, barbts, segstart, btstart, barstart, duration \
+              = get_beat_synchronous_chromagram(matfile)
 
     logging.info('Saving results to %s', savefile)
-    sp.io.savemat(savefile, {'btchroma': btchroma.T, 'barbts': barbts})
+    sp.io.savemat(savefile, dict(btchroma=btchroma.T, barbts=barbts,
+                                 segstart=segstart, btstart=btstart,
+                                 barstart=barstart, duration=duration))
 
 
 def get_beat_synchronous_chromagram(matfile):
@@ -66,7 +69,7 @@ def get_beat_synchronous_chromagram(matfile):
     for n, x in enumerate(barstart):
         barbts[n] = np.nonzero((btstart - x) == 0)[0][0]
 
-    return btchroma, barbts
+    return btchroma, barbts, segstart, btstart, barstart, entrack.duration
 
     
 def get_time_warp_matrix(segstart, btstart, duration):
