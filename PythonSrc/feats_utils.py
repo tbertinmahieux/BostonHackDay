@@ -91,14 +91,14 @@ def matfiles_to_feats_to_txt(matfiles,featfile,descfile):
     fidDesc.close()
 
 
-def get_all_matfiles(dir) :
+def get_all_matfiles(basedir) :
     """From a root directory, go through all subdirectories
     and find all matlab files. Return them in a list."""
     allfiles = []
     for root, dirs, files in os.walk(basedir):
         matfiles = glob.glob(os.path.join(root,'*.mat'))
         for f in matfiles :
-            allfiles.append(f)
+            allfiles.append( os.path.abspath(f) )
     return allfiles
 
 
