@@ -9,7 +9,6 @@
 #
 ##############################################################
 
-
 import string
 import sys
 import os
@@ -22,6 +21,34 @@ import matplotlib
 import matplotlib.pyplot as P 
 import numpy as N
 import glob
+import tables
+
+def read_features_into_h5(h5filename, matfiles, barfeats_params):
+    h5file = tables.openFile(h5filename, mode='a')
+
+    h5file.createArray('/', 'matfiles', matfiles)
+    h5file.createArray('/', 'barfeats_params', '%s' % barfeats_params)
+    
+    feats,labels = matfile_to_barfeats(matfiles[0], **barfeats_params)
+    featdim = feats.shape[0]
+    h5feats = h5file.createEArray('/', 'feats',
+                                  tables.Float64Atom(shape=(featdim,)),
+                                  (0,),
+                                  expectedrows=100 * len(matfiles))
+    ENID_LEN = 18
+    BARID_LEN = ENID_LEN + 5
+    h5labels = h5file.createEArray('/', 'labels',
+                                   tables.StringAtom(itemsize=BARID_LEN),
+                                   (0,),
+                                   expectedrows=100 * len(matfiles))
+
+    for x in matfiles:
+        feats, labels = matfile_to_barfeats(matfiles[0], **barfeats_params)
+        for n in xrange(len(labels)):
+            h5feats.append(feats[:,n])
+            h5labels.append(N.array([labels[n]], dtype=h5labels.atom.dtype))
+
+    h5file.close()
 
 
 ##############################################################
@@ -34,6 +61,7 @@ def resample(data, newsize):
     return SP.signal.resample(data, newsize, axis=1)
 
 def matfile_to_enid(matfile):
+    """Convert matfilename to an echo nest track id."""
     return os.path.split(matfile)[-1].replace('.mat', '').upper()
 
 def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False, downbeatinvariant=False):
