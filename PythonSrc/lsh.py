@@ -92,13 +92,6 @@ def lsh_model_inputfile(inputfilename, radius, fModelName='', lshDir='') :
 
     # fInName
     fInName = os.path.abspath(inputfilename)
-    fIn = open(fInName,'w')
-
-    # numpy input to file
-    for l in range(input.shape[0]) :
-        input[l].tofile(fIn,sep=' ')
-        fIn.write('\n')
-    fIn.close()
 
     # get to the right dir
     currdir = os.path.abspath(os.path.curdir)
@@ -110,7 +103,6 @@ def lsh_model_inputfile(inputfilename, radius, fModelName='', lshDir='') :
     cmd = cmd + ' ' + fInName + ' . > ' + fModelName
 
     # call
-    print cmd
     result = command_with_output(cmd)
 
     # get back to currdir
@@ -161,7 +153,7 @@ def lsh_query(queries, fInputs, fModelName, fQueriesName='',
     fRes = os.path.abspath(fRes)
 
     # if the query is an array, make sure it is understood
-    if len(queries.shape) == 1
+    if len(queries.shape) == 1:
         length = queries.shape[0]
         queries = queries.reshape([1,length])
         print 'WATCHOUT: one query, an array of length:'+str(length)
