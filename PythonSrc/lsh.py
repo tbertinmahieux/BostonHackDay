@@ -252,7 +252,7 @@ def lsh_parse_result(fRes):
         # save results to map... slow repetitive way but works
         cntres = cntres + 1
         if cntres == nRes:
-            res_map[querycnt] = (points,dists)
+            res_map[querycnt] = (N.int32(points),dists)
 
     # close file
     fIn.close()
