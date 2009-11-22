@@ -23,6 +23,19 @@ import numpy as N
 import glob
 import tables
 
+try:
+    from pyechonest import config
+    from pyechonest import track
+
+    config.ECHO_NEST_API_KEY = os.environ['ECHONEST_API_KEY']
+
+    def get_metadata_from_enid(enid):
+        return track.get_metadata(enid)
+except ImportError:
+    print 'Cannot find pyechonest'
+
+
+
 def read_features_into_h5(h5filename, matfiles, barfeats_params):
     h5file = tables.openFile(h5filename, mode='a')
 
@@ -32,7 +45,7 @@ def read_features_into_h5(h5filename, matfiles, barfeats_params):
     feats,labels = matfile_to_barfeats(matfiles[0], **barfeats_params)
     featdim = feats.shape[0]
     h5feats = h5file.createEArray('/', 'feats',
-                                  tables.Float64Atom(shape=(featdim,)),
+                                  tables.Float32Atom(shape=(featdim,)),
                                   (0,),
                                   expectedrows=100 * len(matfiles))
     ENID_LEN = 18
@@ -64,7 +77,8 @@ def matfile_to_enid(matfile):
     """Convert matfilename to an echo nest track id."""
     return os.path.split(matfile)[-1].replace('.mat', '').upper()
 
-def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False, downbeatinvariant=False):
+def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False,
+                        downbeatinvariant=False, barsperfeat=1):
     """Convert beat-synchronous chroma features from matfile to a set
     of fixed length chroma features for every bar."""
     mat = read_matfile(matfile)
@@ -86,12 +100,13 @@ def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False, downbeatinvaria
         invariance_fun = lambda bar: bar
 
     barfeats = []
-    for n in xrange(len(bars)):
+    for n in xrange(0, len(bars), barsperfeat):
         try:
-            end = bars[n+1]
+            end = bars[n+barsperfeat]
         except IndexError:
             end = chroma.shape[1]
-        feat = invariance_fun(resample(chroma[:,bars[n]:end], newsize))
+        feat = invariance_fun(resample(chroma[:,bars[n]:end],
+                                       newsize*barsperfeat))
         barfeats.append(feat.flatten())
 
     enid = matfile_to_enid(matfile)
