@@ -37,7 +37,7 @@ except ImportError:
 
 
 def sample_feats(feats, labels, nsamp=90000):
-    randidx = sorted(N.random.permutation(npts)[:nsamp])
+    randidx = sorted(N.random.permutation(nsamp)[:nsamp])
     smallfeats = N.empty((len(randidx), len(feats[0])))
     smalllabels = []
     for n,x in enumerate(randidx):
