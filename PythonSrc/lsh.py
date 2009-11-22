@@ -234,19 +234,25 @@ def lsh_parse_result(fRes):
         # reachin Query point line, init stuff...
         if line[:len('Query point')] == 'Query point' :
             querycnt = querycnt + 1
-            points = N.array([])
-            dists = N.array([])
+            # how many results
+            pos = line.find('found ')
+            nRes = int(line[pos+len('found '):].split(' ')[0])
+            cntres = 0
+            points = N.zeros([nRes])
+            dists = N.zeros([nRes])
             continue
         if line[:len('Mean query')] == 'Mean query' :
             continue
         # reading one query res
         [p,d] = line.strip().split('\t')
         # save it to arrays
-        points = N.append(points,int(p))
+        points[cntres] = int(p)
         [junk,d] = d.split(':')
-        dists = N.append(dists,float(d))
+        dists[cntres] = float(d)
         # save results to map... slow repetitive way but works
-        res_map[querycnt] = (points,dists)
+        cntres = cntres + 1
+        if cntres == nRes:
+            res_map[querycnt] = (points,dists)
 
     # close file
     fIn.close()
