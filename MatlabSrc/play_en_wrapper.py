@@ -5,12 +5,16 @@ needs to have the matlab files + matlab installed!
 """
 
 import os
+import shutil
 import sys
 import string
 import numpy as N
 import scipy
 import scipy.io
 
+sys.path.append('../PythonSrc')
+import feats_utils
+import lsh
 
 
 #########################################################################
@@ -31,26 +35,33 @@ def command_with_output(cmd):
 
 
 
-def play_en(M) :
+def play_en(enid,beat,matdir) :
     """Try to call play_en matlab code from python."""
 
+    tmpFileIn = 'dummy_playenwrapperpy_infile.mat'
+    tmpFileOut = 'dummy_playenwrapperpy_outfile.mat'
 
-    tmpfileIn = 'dummy_playenwrapperpy_infile.mat'
-    tmpfileOut = 'dummy_playenwrapperpy_outfile.mat'
+    # find the right file
+    matfile = feats_utils.get_matfile_from_enid(matdir, enid)
+
+    # copy it
+    shutil.copyfile(matfile,tmpFileIn)
 
     # save M to file
-    d = dict()
-    d['M'] = M
-    scipy.io.savemat(tmpFileIn,d)
+    #d = dict()
+    #d['M'] = M
+    #print 'm.shape:'
+    #print M.shape
+    #scipy.io.savemat(tmpFileIn,d)
 
-    cmd = 'run_matlab_command.sh play_en_wrapper.m '
-    cmd = cmd + tmpFileIn + ' ' + tmpFileOut
+    cmd = './run_matlab_command.sh play_en_wrapper '
+    #cmd = cmd + tmpFileIn + ' ' + tmpFileOut
 
     # call
-    result = command_with_output(cmd)
+    result = lsh.command_with_output(cmd)
 
     # read file
     mfile = scipy.io.loadmat(tmpFileOut)
 
-    return mfile[signal]
+    return mfile['signal']
 
