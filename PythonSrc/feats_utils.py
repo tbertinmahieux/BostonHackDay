@@ -82,10 +82,9 @@ def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False,
     """Convert beat-synchronous chroma features from matfile to a set
     of fixed length chroma features for every bar."""
     mat = read_matfile(matfile)
-    chroma = mat['btchroma']
-    bars = mat['barbts']
     try:
-        bars = bars.flatten()
+        chroma = mat['btchroma']
+        bars = mat['barbts'].flatten()
     except:
         print 'problem with file: ' + matfile
         return N.array([]),N.array([])
@@ -115,7 +114,9 @@ def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False,
     return N.asarray(barfeats).T, barlabels
 
 
-def matfiles_to_feats_to_txt(matfiles,featfile,descfile, newsize=16):
+def matfiles_to_feats_to_txt(matfiles,featfile,descfile, newsize=16,
+                             keyinvariant=False,
+                             downbeatinvariant=False, barsperfeat=1):
     """Take all matlab files, get barfeats, output the results
     into 2 text files, one for features and one for description.
     There's one bar per line, e.g. both file should have as many
@@ -125,7 +126,10 @@ def matfiles_to_feats_to_txt(matfiles,featfile,descfile, newsize=16):
     fidDesc = open(descfile,'w')
     # iterate over matfiles
     for matfile in matfiles :
-        barfeats, barlabels = matfile_to_barfeats(matfile,newsize)
+        barfeats, barlabels = matfile_to_barfeats(matfile,newsize,
+                                                  keyinvariant,
+                                                  downbeatinvariant,
+                                                  barsperfeat)
         # iterate over beats
         if barfeats.shape[0] < 1 :
             print 'problem with file: ' + matfile
@@ -221,7 +225,10 @@ def imshow(data) :
 # uses scipy utility function
 ##############################################################
 def read_matfile(filename):
-    return SP.io.loadmat(filename)
+    try:
+        return SP.io.loadmat(filename)
+    except:
+        return dict()
 
 
 
