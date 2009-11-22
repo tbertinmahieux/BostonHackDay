@@ -71,14 +71,15 @@ def lsh_model(input, radius, fModelName='', fInName='', lshDir='') :
 
     # fInName
     if fInName == '':
-        fIn = tempfile.NamedTemporaryFile('w')
-        fInName = fIn.name
+        fInTemp = tempfile.NamedTemporaryFile('w')
+        fInName = os.path.abspath(fInTemp.name)
+        fIn = fInTemp.file
     else :
         fInName = os.path.abspath(fInName)
         fIn = open(fInName,'w')
 
     # numpy input to file
-    for l in range(N.shape(input)[0]) :
+    for l in range(input.shape[0]) :
         input[l].tofile(fIn,sep=' ')
         fIn.write('\n')
     fIn.close()
@@ -145,8 +146,9 @@ def lsh_query(queries, fInputs, fModelName, fQueriesName='',
 
     # fQueriesName
     if fQueriesName == '':
-        fQueries = tempfile.NamedTemporaryFile('w')
-        fQueriesName = fQueries.name
+        fQueriesTemp = tempfile.NamedTemporaryFile('w')
+        fQueriesName = fQueriesTemp.name
+        fQueries = fQueriesTemp.file
     else :
         fQueriesName = os.path.abspath(fQueriesName)
         fQueries = open(fQueriesName,'w')
