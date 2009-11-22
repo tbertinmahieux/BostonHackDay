@@ -64,11 +64,6 @@ def command_with_output(cmd):
 #########################################################################
 def lsh_model(input, radius, fModelName='', fInName='', lshDir='') :
 
-    # fModelName
-    if fModelName == '' :
-        fModelName = 'lsh_model.txt'
-    fModelName = os.path.abspath(fModelName)
-
     # fInName
     if fInName == '':
         fInTemp = tempfile.NamedTemporaryFile('w')
@@ -77,6 +72,27 @@ def lsh_model(input, radius, fModelName='', fInName='', lshDir='') :
     else :
         fInName = os.path.abspath(fInName)
         fIn = open(fInName,'w')
+
+    # numpy input to file
+    for l in range(input.shape[0]) :
+        input[l].tofile(fIn,sep=' ')
+        fIn.write('\n')
+    fIn.close()
+
+    return lsh_model_inputfile(fInName,radius,fModelName,lshDir)
+
+
+def lsh_model_inputfile(inputfilename, radius, fModelName='', lshDir='') :
+    """ similar to lsh_model but the input is a file, not a numpy matrix."""
+
+    # fModelName
+    if fModelName == '' :
+        fModelName = 'lsh_model.txt'
+    fModelName = os.path.abspath(fModelName)
+
+    # fInName
+    fInName = os.path.abspath(inputfilename)
+    fIn = open(fInName,'w')
 
     # numpy input to file
     for l in range(input.shape[0]) :
