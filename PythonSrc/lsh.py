@@ -83,7 +83,7 @@ def lsh_model(input, radius, fModelName='', fInName='', lshDir='') :
 
 
 def lsh_model_inputfile(inputfilename, radius, fModelName='', lshDir='') :
-    """ similar to lsh_model but the input is a file, not a numpy matrix."""
+    """Similar to lsh_model but the input is a file, not a numpy matrix."""
 
     # fModelName
     if fModelName == '' :
@@ -193,6 +193,8 @@ def lsh_query(queries, fInputs, fModelName, fQueriesName='',
 
     # return result file name
     return fRes
+
+
 
 
 #########################################################################
