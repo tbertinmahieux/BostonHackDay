@@ -23,6 +23,7 @@ import numpy as N
 import glob
 import tables
 
+
 try:
     from pyechonest import config
     from pyechonest import track
@@ -35,6 +36,48 @@ except ImportError:
     print 'Cannot find pyechonest'
 
 
+def sample_feats(feats, labels, nsamp=90000):
+    randidx = sorted(N.random.permutation(npts)[:nsamp])
+    smallfeats = N.empty((len(randidx), len(feats[0])))
+    smalllabels = []
+    for n,x in enumerate(randidx):
+        smallfeats[n] = feats[x]
+        smalllabels.append(labels[x])
+    return smallfeats, smalllabels, randidx
+
+def cluster_feats(feats, labels, ncw=1000, niter=20):
+    codebook, quant = SP.cluster.vq.kmeans2(feats, ncw, niter, minit='points')
+    # sort codebook by popularity of codeword
+    return codebook, quant
+
+def quantize_feats(feats, codebook):
+    quant, dist = SP.cluster.vq.vq(feats, codebook)
+    return quant, dist
+
+def plot_cluster(memberlabels, matdir, metadir, featlen=16, subplot=(3,3)):
+    enids = [str(x).split(':')[0] for x in memberlabels]
+    beatidx = [int(str(x).split(':')[1]) for x in memberlabels]
+    
+    matfiles = [get_matfile_from_enid(matdir, x) for x in enids]
+    feats = [SP.io.loadmat(x)['btchroma'][:,bidx:bidx+featlen]
+             for x,bidx in zip(matfiles, beatidx)]
+    feattimes = [SP.io.loadmat(x)['btstart'].flatten()[bidx]
+                 for x,bidx in zip(matfiles, beatidx)]
+
+    meta = [meta_to_dict(SP.io.loadmat(get_matfile_from_enid(metadir, x)))
+            for x in enids]
+    bardesc = ['%s: %s (%.1f)' % (x['artist'], x['title'], ft)
+               for x,ft in zip(meta, feattimes)]
+
+    PA(feats, title=bardesc, subplot=subplot)
+    
+    
+def meta_to_dict(meta):
+    d = dict(artist=None, title=None)
+    for row in meta['data']:
+        d[row[0][0][:-1]] = row[1][0]
+    return d
+    
 
 def read_features_into_h5(h5filename, matfiles, barfeats_params):
     h5file = tables.openFile(h5filename, mode='a')
@@ -62,6 +105,13 @@ def read_features_into_h5(h5filename, matfiles, barfeats_params):
             h5labels.append(N.array([labels[n]], dtype=h5labels.atom.dtype))
 
     h5file.close()
+
+
+def read_features_from_h5(h5filename):
+    f = tables.openFile(h5filename, 'r')
+    feats = f.getNode('/feats')
+    labels = f.getNode('/labels')
+    return feats, labels
 
 
 ##############################################################
@@ -163,7 +213,7 @@ def get_matfile_from_enid(basedir, enid):
     until a matfile that fits the Echno Nest id is found.
     Return the absolute path. Returns an empty string if not
     found."""
-    target = enid + '.mat'
+    target = enid.lower() + '.mat'
     for root, dirs, files in os.walk(basedir):
         localtarget = os.path.join(root,target)
         if os.path.isfile(localtarget) :
