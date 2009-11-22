@@ -55,10 +55,12 @@ copy_reg.pickle(functools.partial, _reduce_partial)
 
 
 def dump(obj, filename):
-    with open(filename, 'wb') as f:
-        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+    f = open(filename, 'wb')
+    pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+    f.close()
 
 def load(filename):
-    with open(filename, 'rb') as f:
-        return pickle.load(f)
-
+    f = open(filename, 'rb')
+    pkl = pickle.load(f)
+    f.close()
+    return pkl

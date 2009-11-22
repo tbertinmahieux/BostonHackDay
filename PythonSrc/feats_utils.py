@@ -186,7 +186,10 @@ def matfiles_to_feats_to_txt(matfiles,featfile,descfile, newsize=16,
             continue
         for n in range(barfeats.shape[1]) :
             # write features
-            barfeats[:,n].tofile(fidFeat,sep=' ')
+            try:
+                barfeats[:,n].tofile(fidFeat,sep=' ')
+            except:
+                continue
             fidFeat.write('\n')
             # write descriptions
             #fidDesc.write(barlabels[(n-1)*newsize])
