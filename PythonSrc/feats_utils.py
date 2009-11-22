@@ -139,6 +139,19 @@ def get_all_matfiles(basedir) :
     return allfiles
 
 
+def get_matfile_from_enid(basedir, enid):
+    """From a root directory, go through all subdirectories
+    until a matfile that fits the Echno Nest id is found.
+    Return the absolute path. Returns an empty string if not
+    found."""
+    target = enid + '.mat'
+    for root, dirs, files in os.walk(basedir):
+        localtarget = os.path.join(root,target)
+        if os.path.isfile(localtarget) :
+            return os.path.abspath(localtarget)
+    return ''
+
+
 
 def read_feat_file(filename,sep=' ') :
     """ we read a file of features, one example per line,
