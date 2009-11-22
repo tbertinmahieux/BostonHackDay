@@ -22,6 +22,8 @@ function play_en_wrapper(inFile, outFile, wavfile)
         wavfile = './dummy_wavfile.wav'
     end
     
+    inFile2 = './dummy_playenwrapperpy_infile2.mat'
+    
     disp('loading')
     
     load(inFile)
@@ -36,8 +38,9 @@ function play_en_wrapper(inFile, outFile, wavfile)
     save(outFile,'signal')
 
     disp('cutting wav file')
-    pos1 = floor(starttime * 22050);
-    pos2 = ceil(stoptime * 22050);
+    load(inFile2)
+    pos1 = floor(starttime * 22050) + 1;
+    pos2 = ceil(stoptime * 22050)+1;
     disp(pos1)
     disp(pos2)
     signal = signal(pos1:pos2);
