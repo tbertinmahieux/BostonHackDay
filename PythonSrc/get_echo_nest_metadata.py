@@ -52,12 +52,22 @@ def get_beat_synchronous_chromagram(matfile):
     entrack = track.Track(enid)
     
     # Echo Nest "segment" synchronous chroma
+    # 12 values per line (one segment per line)
+    # result for track: 'TR0002Q11C3FA8332D'
+    #    segchroma.shape = (708, 12)
     segchroma = analysis.pitches.T
 
+    # get the series of starts for segments and beats
+    # result for track: 'TR0002Q11C3FA8332D'
+    #    segstart.shape = (708,)
+    #    btstart.shape = (304,)
     segstart = analysis.start[0]
     btstart = np.array([x['start'] for x in entrack.beats])
     
     # Move segment chromagram onto a regular grid
+    # result for track: 'TR0002Q11C3FA8332D'
+    #    warpmat.shape = (304, 708)
+    #    btchroma.shape = (304, 12)
     warpmat = get_time_warp_matrix(segstart, btstart, entrack.duration)
     btchroma = np.dot(warpmat, segchroma)
 
@@ -73,25 +83,56 @@ def get_beat_synchronous_chromagram(matfile):
 
     
 def get_time_warp_matrix(segstart, btstart, duration):
+    """
+    Returns a matrix (#beats,#segs)
+    #segs should be larger than #beats, i.e. many events or segs
+    happen in one beat.
+    """
+
+    # length of beats and segments in seconds
+    # result for track: 'TR0002Q11C3FA8332D'
+    #    seglen.shape = (708,)
+    #    btlen.shape = (304,)
+    #    duration = 238.91546    meaning approx. 3min59s
     seglen = np.concatenate((segstart[1:], [duration])) - segstart
     btlen = np.concatenate((btstart[1:], [duration])) - btstart
 
     warpmat = np.zeros((len(segstart), len(btstart)))
+    # iterate over beats (columns of warpmat)
     for n in xrange(len(btstart)):
+        # beat start time and end time in seconds
         start = btstart[n]
         end = start + btlen[n]
+        # np.nonzero returns index of nonzero elems
+        # find first segment that start after segment start - 1
         start_idx = np.nonzero((segstart - start) >= 0)[0][0] - 1
+        # find first segment that start after segment end
         try:
             end_idx = np.nonzero((segstart - end) >= 0)[0][0]
         except IndexError:
             end_idx = start_idx
+        # fill col of warpmat with 1 for the elem in between
+        # (including start_idx, excluding end_idx)
         warpmat[start_idx:end_idx, n] = 1
-        warpmat[start_idx, n] = ((start - segstart[start_idx])
+        
+        # FOLLOWING CODE SEEMS WRONG... SEE NEW CODE BELOW
+        #warpmat[start_idx, n] = ((start - segstart[start_idx])
+        #                         / seglen[start_idx])
+        #warpmat[end_idx, n] = ((segstart[end_idx] - end)
+        #                       / seglen[end_idx])
+
+        # if the beat started after the segment, keep the proportion
+        # of the segment that is inside the beat
+        warpmat[start_idx, n] = 1. - ((start - segstart[start_idx])
                                  / seglen[start_idx])
-        warpmat[end_idx, n] = ((segstart[end_idx] - end)
+        # if the segment ended after the beat ended, keep the proportion
+        # of the segment that is inside the beat
+        warpmat[end_idx, n] = ((end - segstart[end_idx])
                                / seglen[end_idx])
+        # normalize so the 'energy' for one beat is one
         warpmat[:,n] /= np.sum(warpmat[:,n])
 
+    # return the transpose, meaning (#beats , #segs)
     return warpmat.T
 
 
