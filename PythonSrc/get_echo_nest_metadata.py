@@ -74,8 +74,12 @@ def get_beat_synchronous_chromagram(matfile):
     # Renormalize.
     btchroma = (btchroma.T / btchroma.max(axis=1)).T
 
+    # get the start time of bars
+    # result for track: 'TR0002Q11C3FA8332D'
+    #    barstart.shape = (98,)
     barstart = np.array([x['start'] for x in entrack.bars])
     barbts = np.zeros(barstart.shape)
+    # get the first (only?) beat the starts at the same time as the bar
     for n, x in enumerate(barstart):
         barbts[n] = np.nonzero((btstart - x) == 0)[0][0]
 
