@@ -15,6 +15,7 @@ import scipy as sp
 import scipy.io
 import pylab as P
 
+import feats_utils as FU
 
 
 class DataIterator:
@@ -180,11 +181,7 @@ if __name__ == '__main__' :
     dt = DataIterator()
 
     # find all files from current dir
-    allfiles = []
-    for root, dirs, files in os.walk('.'):
-        matfiles = glob.glob(os.path.join(root,'*.mat'))
-        for f in matfiles :
-            allfiles.append( os.path.abspath(f) )
+    allfiles = FU.get_all_matfiles('.')
 
     # SET THE DATA ITERATOR
     dt.setMatfiles(allfiles) # set the matlab files

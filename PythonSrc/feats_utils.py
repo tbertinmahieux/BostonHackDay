@@ -28,7 +28,10 @@ try:
     from pyechonest import config
     from pyechonest import track
 
-    config.ECHO_NEST_API_KEY = os.environ['ECHONEST_API_KEY']
+    try:
+        config.ECHO_NEST_API_KEY = os.environ['ECHONEST_API_KEY']
+    except:
+        config.ECHO_NEST_API_KEY = os.environ['ECHO_NEST_API_KEY']
 
     def get_metadata_from_enid(enid):
         return track.get_metadata(enid)
@@ -114,13 +117,8 @@ def read_features_from_h5(h5filename):
     return feats, labels
 
 
-##############################################################
-# does a resampling
-# done columnwise is data is a matrix
-# BIG HACK in the case we don't get the exactnew size,
-# we add or remove a delta in the ratio
-##############################################################
 def resample(data, newsize):
+    """ resample the data, columnwise """
     return SP.signal.resample(data, newsize, axis=1)
 
 def matfile_to_enid(matfile):
