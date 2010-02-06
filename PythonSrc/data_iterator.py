@@ -71,7 +71,7 @@ class DataIterator:
 
     def resetIterations(self):
         """ Reshuffle files and set the counters to 0 """
-        self.matfiles = np.random.shuffle(self.matfiles)
+        np.random.shuffle(self.matfiles)
         self.fidx = 0
         self.pidx = 0
         self.nPatternSeen = 0
@@ -139,6 +139,8 @@ class DataIterator:
                 if self.passSize < 0:
                     self.passSize = self.nPatternSeen
                 if self.stopAfterOnePass == 1:
+                    self.fidx = 0
+                    self.pidx = 0
                     raise StopIteration
                 else:
                     self.fidx = 0
