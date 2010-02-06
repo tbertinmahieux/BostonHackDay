@@ -140,7 +140,7 @@ def normalize_pattern(pattern, newsize=16, keyinvariant=False,
     else:
         invariance_fun = lambda bar: bar
     # apply transform
-    feat = invariance_fun(resample(pattern,newsize))
+    return invariance_fun(resample(pattern,newsize))
 
 def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False,
                         downbeatinvariant=False, barsperfeat=1):
