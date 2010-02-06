@@ -125,6 +125,23 @@ def matfile_to_enid(matfile):
     """Convert matfilename to an echo nest track id."""
     return os.path.split(matfile)[-1].replace('.mat', '').upper()
 
+
+def normalize_pattern(pattern, newsize=16, keyinvariant=False,
+                      downbeatinvariant=False):
+    """Take a pattern, a matrix 12xN, resize it to the right length
+    and applies the invariant. Used by matfile_to_barfeats, and
+    can be applied to the output of a DataIterator"""
+    if keyinvariant and downbeatinvariant:
+        invariance_fun = lambda bar: N.abs(N.fft.rfft2(bar))
+    elif keyinvariant:
+        invariance_fun = lambda bar: N.abs(N.fft.rfft(bar, axis=0))
+    elif downbeatinvariant:
+        invariance_fun = lambda bar: N.abs(N.fft.rfft(bar, axis=1))
+    else:
+        invariance_fun = lambda bar: bar
+    # apply transform
+    feat = invariance_fun(resample(pattern,newsize))
+
 def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False,
                         downbeatinvariant=False, barsperfeat=1):
     """Convert beat-synchronous chroma features from matfile to a set
@@ -137,14 +154,14 @@ def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False,
         print 'problem with file: ' + matfile
         return N.array([]),N.array([])
 
-    if keyinvariant and downbeatinvariant:
-        invariance_fun = lambda bar: N.abs(N.fft.rfft2(bar))
-    elif keyinvariant:
-        invariance_fun = lambda bar: N.abs(N.fft.rfft(bar, axis=0))
-    elif downbeatinvariant:
-        invariance_fun = lambda bar: N.abs(N.fft.rfft(bar, axis=1))
-    else:
-        invariance_fun = lambda bar: bar
+    #if keyinvariant and downbeatinvariant:
+    #    invariance_fun = lambda bar: N.abs(N.fft.rfft2(bar))
+    #elif keyinvariant:
+    #    invariance_fun = lambda bar: N.abs(N.fft.rfft(bar, axis=0))
+    #elif downbeatinvariant:
+    #    invariance_fun = lambda bar: N.abs(N.fft.rfft(bar, axis=1))
+    #else:
+    #    invariance_fun = lambda bar: bar
 
     barfeats = []
     for n in xrange(0, len(bars), barsperfeat):
@@ -152,8 +169,8 @@ def matfile_to_barfeats(matfile, newsize=16, keyinvariant=False,
             end = bars[n+barsperfeat]
         except IndexError:
             end = chroma.shape[1]
-        feat = invariance_fun(resample(chroma[:,bars[n]:end],
-                                       newsize*barsperfeat))
+        feat = normalize_pattern(chroma[:,bars[n]:end],newsize*barsperfeat,
+                                 keyinvariant,downbeatinvariant)
         barfeats.append(feat.flatten())
 
     enid = matfile_to_enid(matfile)
