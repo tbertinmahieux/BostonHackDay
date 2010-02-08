@@ -176,6 +176,19 @@ def pickleable_wrapper(args):
     #time.sleep(np.random.rand(1)[0])
     return convert_matfile_to_beat_synchronous_chromagram(*args)
 
+
+def get_all_matfiles(basedir) :
+    """From a root directory, go through all subdirectories
+    and find all matlab files. Return them in a list.
+    This is copied from feats_utils... too bad!!!!! damn imports!"""
+    allfiles = []
+    for root, dirs, files in os.walk(basedir):
+        matfiles = glob.glob(os.path.join(root,'*.mat'))
+        for f in matfiles :
+            allfiles.append( os.path.abspath(f) )
+    return allfiles
+
+
 def main(matfilepath, savedir, nprocesses=100):
     """
     Compute the beat synchronous chromagrams for each song in
@@ -188,16 +201,17 @@ def main(matfilepath, savedir, nprocesses=100):
     logging.info('Reading .mat files from %s', matfilepath)
     logging.info('Saving files to %s', savedir)
     logging.info('Using %d processes', nprocesses)
-    matfiles = glob.glob(os.path.join(matfilepath, '*/*/*.mat'))
+    #matfiles = glob.glob(os.path.join(matfilepath, '*/*/*.mat'))
+    matfiles = get_all_matfiles(matfilepath)
 
     args = [(x, savedir) for x in np.random.permutation(matfiles)]
     if nprocesses > 1:
-        pool = multiprocessing.Pool(processes=nprocesses)
-        pool.map(pickleable_wrapper, args)
-    else:
         if not use_multiproc:
             "multiprocessing package not available on this machine"
             sys.exit(0)
+        pool = multiprocessing.Pool(processes=nprocesses)
+        pool.map(pickleable_wrapper, args)
+    else:
         for argset in args:
             pickleable_wrapper(argset)
              
