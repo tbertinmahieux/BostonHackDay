@@ -1,11 +1,8 @@
 import glob
 import logging
-import multiprocessing
 import os
 import sys
 import time
-
-print 'ECHONEST_API_KEY' in os.environ
 
 import scipy as sp
 import scipy.io
@@ -26,6 +23,13 @@ try:
 except:
     pass
 
+try:
+    import multiprocessing
+    use_multiproc = True
+except:
+    use_multiproc = False
+
+
 def convert_matfile_to_beat_synchronous_chromagram(matfile, savedir):
     logging.info('Processing %s', matfile)
 
@@ -42,11 +46,11 @@ def convert_matfile_to_beat_synchronous_chromagram(matfile, savedir):
                      matfile, savefile)
         return
         
-    btchroma, barchroma, barbts, segstart, btstart, barstart, duration \
+    btchroma, barbts, segstart, btstart, barstart, duration \
               = get_beat_synchronous_chromagram(matfile)
 
     logging.info('Saving results to %s', savefile)
-    sp.io.savemat(savefile, dict(btchroma=btchroma.T, barchroma=barchroma.T,
+    sp.io.savemat(savefile, dict(btchroma=btchroma.T,
                                  barbts=barbts,       segstart=segstart,
                                  btstart=btstart,     barstart=barstart,
                                  duration=duration))
@@ -97,9 +101,9 @@ def get_beat_synchronous_chromagram(matfile):
 
     # CHROMA PER BAR
     # similar to chroma per beat
-    warpmat = get_time_warp_matrix(segstart, barstart, entrack.duration)
-    barchroma = np.dot(warpmat, segchroma)
-    barchroma = (barchroma.T / barchroma.max(axis=1)).T
+    #warpmat = get_time_warp_matrix(segstart, barstart, entrack.duration)
+    #barchroma = np.dot(warpmat, segchroma)
+    #barchroma = (barchroma.T / barchroma.max(axis=1)).T
 
     # get the start time of bars
     # result for track: 'TR0002Q11C3FA8332D'
@@ -110,7 +114,7 @@ def get_beat_synchronous_chromagram(matfile):
     for n, x in enumerate(barstart):
         barbts[n] = np.nonzero((btstart - x) == 0)[0][0]
 
-    return btchroma, barchroma, barbts, segstart, btstart, barstart, entrack.duration
+    return btchroma, barbts, segstart, btstart, barstart, entrack.duration
 
     
 def get_time_warp_matrix(segstart, btstart, duration):
@@ -191,6 +195,9 @@ def main(matfilepath, savedir, nprocesses=100):
         pool = multiprocessing.Pool(processes=nprocesses)
         pool.map(pickleable_wrapper, args)
     else:
+        if not use_multiproc:
+            "multiprocessing package not available on this machine"
+            sys.exit(0)
         for argset in args:
             pickleable_wrapper(argset)
              
