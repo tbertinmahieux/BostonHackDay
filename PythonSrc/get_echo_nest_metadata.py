@@ -66,8 +66,10 @@ def get_beat_synchronous_chromagram(matfile):
     """
 
     # analysis from Dan's matlab files
-    analysis =  sp.io.loadmat(matfile)['M']
-    #analysis =  sp.io.loadmat(matfile)['M'][0][0]
+    if sys.version_info[1]==5:
+        analysis =  sp.io.loadmat(matfile)['M']
+    else:
+        analysis =  sp.io.loadmat(matfile)['M'][0][0]
 
     # get EchoNest id, get full metadata including beats and bars
     enid = os.path.split(matfile)[-1].replace('.mat', '').upper()
@@ -85,8 +87,10 @@ def get_beat_synchronous_chromagram(matfile):
     #    segstart.shape = (708,)
     #    btstart.shape = (304,)
     #    barstart.shape = (98,)
-    segstart = analysis.start
-    #segstart = analysis.start[0]
+    if sys.version_info[1] == 5:
+        segstart = analysis.start
+    else:
+        segstart = analysis.start[0]
     btstart = np.array([x['start'] for x in entrack.beats])
     barstart = np.array([x['start'] for x in entrack.bars])
 
