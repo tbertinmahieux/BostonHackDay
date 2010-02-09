@@ -61,7 +61,7 @@ def convert_matfile_to_beat_synchronous_chromagram(matfile, savedir):
     except zlib.error:
         logging.error('PROBLEM ZLIB with file %s, skipping.',matfile)
         return
-    except InderError:
+    except IndexError:
         logging.error('PROBLEM INDEXERROR with file %s, skipping.',matfile)
         return
     except:
