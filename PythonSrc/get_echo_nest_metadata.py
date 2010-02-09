@@ -152,7 +152,12 @@ def get_time_warp_matrix(segstart, btstart, duration):
         end = start + btlen[n]
         # np.nonzero returns index of nonzero elems
         # find first segment that starts after beat starts - 1
-        start_idx = np.nonzero((segstart - start) >= 0)[0][0] - 1
+        try:
+            start_idx = np.nonzero((segstart - start) >= 0)[0][0] - 1
+        except IndexError:
+            # no segment start after that beats, can happen close
+            # to the end, simply ignore, maybe even break?
+            continue
         # find first segment that starts after beat ends
         try:
             end_idx = np.nonzero((segstart - end) >= 0)[0][0]
