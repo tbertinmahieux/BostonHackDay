@@ -3,6 +3,7 @@ import logging
 import os
 import sys
 import time
+import zlib
 
 import scipy as sp
 import scipy.io
@@ -57,6 +58,12 @@ def convert_matfile_to_beat_synchronous_chromagram(matfile, savedir):
                                      barbts=barbts,       segstart=segstart,
                                      btstart=btstart,     barstart=barstart,
                                      duration=duration))
+    except zlib.error:
+        logging.error('PROBLEM ZLIB with file %s, skipping.',matfile)
+        return
+    except InderError:
+        logging.error('PROBLEM INDEXERROR with file %s, skipping.',matfile)
+        return
     except:
         logging.error('PROBLEM with file %s, skipping.',matfile)
         return
@@ -97,6 +104,7 @@ def get_beat_synchronous_chromagram(matfile):
         segstart = analysis.start
     else:
         segstart = analysis.start[0]
+
     btstart = np.array([x['start'] for x in entrack.beats])
     barstart = np.array([x['start'] for x in entrack.bars])
 
