@@ -33,6 +33,16 @@ except:
     use_multiproc = False
 
 
+# create my own error for better logging
+class NoSegError(Exception):
+    def __init__(self):
+        pass
+    def __str__(self):
+        return 'error when a song has no segment, segstart empty.'
+
+
+
+
 def convert_matfile_to_beat_synchronous_chromagram(matfile, savedir):
     logging.info('Processing %s', matfile)
 
@@ -64,6 +74,8 @@ def convert_matfile_to_beat_synchronous_chromagram(matfile, savedir):
     except IndexError:
         logging.error('PROBLEM INDEXERROR with file %s, skipping.',matfile)
         return
+    except NoSegError:
+        logging.error('PROBLEM NOSEGMENT with file %s, skipping.',matfile)
     except:
         logging.error('PROBLEM with file %s, skipping.',matfile)
         return
@@ -149,7 +161,10 @@ def get_time_warp_matrix(segstart, btstart, duration):
     #    seglen.shape = (708,)
     #    btlen.shape = (304,)
     #    duration = 238.91546    meaning approx. 3min59s
-    seglen = np.concatenate((segstart[1:], [duration])) - segstart
+    try:
+        seglen = np.concatenate((segstart[1:], [duration])) - segstart
+    except TypeError:
+        raise NoSegError
     btlen = np.concatenate((btstart[1:], [duration])) - btstart
 
     warpmat = np.zeros((len(segstart), len(btstart)))
