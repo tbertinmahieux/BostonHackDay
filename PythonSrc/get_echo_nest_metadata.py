@@ -19,7 +19,9 @@ config.ANALYSIS_VERSION = 1
 
 try:
     import ronwtools
-    ronwtools.initialize_logging()
+    logfile = 'logging_' + time.ctime().replace('  ',' ').replace(' ','_') .replace(':','_')+ '.txt'
+    print 'logging to file: ' + logfile
+    ronwtools.initialize_logging(filename=logfile)
 except:
     pass
 
@@ -35,9 +37,9 @@ def convert_matfile_to_beat_synchronous_chromagram(matfile, savedir):
 
     path, filename = os.path.split(matfile)
     currdir = os.path.join(savedir, path)
-    print 'path='+path
-    print 'savedir=' + savedir
-    print 'currdir=' + currdir
+    logging.debug('path=%s.',path)
+    logging.debug('savedir=%s.',savedir)
+    logging.debug('currdir=%s.',currdir)
     if not os.path.exists(currdir):
         os.makedirs(currdir)
     savefile = os.path.join(currdir, filename)
@@ -45,16 +47,20 @@ def convert_matfile_to_beat_synchronous_chromagram(matfile, savedir):
         logging.info('Skipping file %s because %s already exists.',
                      matfile, savefile)
         return
+
+    try:
+        btchroma, barbts, segstart, btstart, barstart, duration \
+                  = get_beat_synchronous_chromagram(matfile)
+
+        logging.info('Saving results to %s', savefile)
+        sp.io.savemat(savefile, dict(btchroma=btchroma.T,
+                                     barbts=barbts,       segstart=segstart,
+                                     btstart=btstart,     barstart=barstart,
+                                     duration=duration))
+    except:
+        logging.error('PROBLEM with file %s, skipping.',matfile)
+        return
         
-    btchroma, barbts, segstart, btstart, barstart, duration \
-              = get_beat_synchronous_chromagram(matfile)
-
-    logging.info('Saving results to %s', savefile)
-    sp.io.savemat(savefile, dict(btchroma=btchroma.T,
-                                 barbts=barbts,       segstart=segstart,
-                                 btstart=btstart,     barstart=barstart,
-                                 duration=duration))
-
 
 def get_beat_synchronous_chromagram(matfile):
     """
