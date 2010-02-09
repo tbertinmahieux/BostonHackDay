@@ -55,7 +55,7 @@ def encode_scale_oneiter(signal,codebook,cbIsNormalized=False):
     euclidean norm of 1)
     """
     # find the right scaling
-    alphas = [project_factor(signal,r,cbIsNormalized) for r in codebook[:]]
+    alphas = [projection_factor(signal,r,cbIsNormalized) for r in codebook[:]]
     alphas = np.array(alphas).reshape(codebook.shape[0],1)
     # scale the codebook and compute the distance
     dists = [euclidean_dist(signal,r) for r in (alphas*codebook)[:]]
@@ -71,18 +71,27 @@ def encode_scale(signal,codebook,thresh,cbIsNormalized=False):
     - removes it from the signal
     - start again, until the signal changes by less than threshold
     (taking the norm of the difference of the signal, before and after)
+    Return weights (sum of the scaling) and remaining of signal
 
     If codebook is normalized, set cbIsNormalized to True,
     it is slightly faster. (Normalized means each element has an
     euclidean norm of 1)
     """
 
+    # to accumulate weights/scales
+    weights = np.zeros([codebook.shape[0],1])
+    
+    # main loop
     while True:
         oldSignal = signal
         # do one iteration
         idx, alpha, dist = encode_scale_oneiter(signal,codebook,cbIsNormalized)
+        # add to weights
+        weights[idx] += alpha
         # remove what's explained by the codebook
         signal = signal - alpha * codebook[idx]
         # measure difference
         if euclidean_norm(oldSignal - signal) < thresh:
             break
+
+    return weights, signal
