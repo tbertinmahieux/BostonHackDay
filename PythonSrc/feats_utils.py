@@ -126,6 +126,53 @@ def matfile_to_enid(matfile):
     return os.path.split(matfile)[-1].replace('.mat', '').upper()
 
 
+
+def keyinvariance_maxenergy(pattern):
+    """
+    A different way to try to be key invariant from the FFT.
+    Important feature: the relative pitch of the events must be
+    unchanged.
+    We compute the row with the max energy, and we rotate so it
+    row 0.
+    """
+    # find max row
+    max_r = N.argmax(N.sum(pattern,axis=1))
+    # roll
+    return N.roll(pattern,pattern.shape[0]-max_r,axis=0)
+
+
+def downbeatinvariance_maxenergy(pattern):
+    """
+    A different way to try to be key invariant from the FFT.
+    Important feature: notes played at the same time remain
+    together.
+    We compute the column with the max energy, and we rotate
+    so it is column 0.
+    """
+    # find max row
+    max_c = N.argmax(N.sum(pattern,axis=0))
+    # roll
+    return N.roll(pattern,pattern.shape[1]-max_c,axis=1)
+    
+
+def normalize_pattern_maxenergy(pattern, newsize=16, keyinvariant=False,
+                                downbeatinvariant=False):
+    """Take a pattern, a matrix 12xN, resize it to the right length
+    and applies the invariant.
+    Can be applied to the output of a DataIterator
+    Uses energy to make the pattern invariant.
+    """
+    if (not keyinvariant) and (not downbeatinvariant):
+        return resample(pattern,newsize)
+    if keyinvariant and (not downbeatinvariant):
+        return keyinvariance_maxenergy(resample(pattern,newsize))
+    if (not keyinvariant) and downbeatinvariant:
+        return downbeatinvariance_maxenergy(resample(pattern,newsize))
+    else:
+        return downbeatinvariance_maxenergy(
+            keyinvariance_maxenergy(resample(pattern,newsize)))
+
+
 def normalize_pattern(pattern, newsize=16, keyinvariant=False,
                       downbeatinvariant=False):
     """Take a pattern, a matrix 12xN, resize it to the right length
@@ -278,21 +325,21 @@ def read_feat_file(filename,sep=' ') :
 
 
 
-##############################################################
-# imshow
-# wrapper around matplotlib.pyplot with proper params
-##############################################################
 def imshow(data) :
+    """
+    Wrapper around matplotlib.pyplot with proper params
+    """
     PA([data],
        aspect='auto', interpolation='nearest')
     P.show()
 
 
-##############################################################
-# read a matlabfile
-# uses scipy utility function
-##############################################################
 def read_matfile(filename):
+    """
+    Read a matlabfile
+    Uses scipy utility function
+    TODO: load differently based on python version
+    """
     try:
         return SP.io.loadmat(filename)
     except:
@@ -300,10 +347,10 @@ def read_matfile(filename):
 
 
 
-##############################################################
-# help menu
-##############################################################
 def die_with_usage():
+    """
+    Help Menu
+    """
     print 'feats_utils.py'
     print 'a set of functions to get features, plot them,'
     print 'and transform them'
