@@ -131,7 +131,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001):
     # initialize codebook
     assert(feats.shape[0] >= K)
     fullrange = np.array(range(feats.shape[0]))
-    np.shuffle(fullrange)
+    np.random.shuffle(fullrange)
     start_codes_idx = fullrange[:K]
     codebook = feats[start_codes_idx,:]
     for code_idx in range(K):
@@ -151,6 +151,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001):
                                                    cbIsNormalized=True)
             # get that code closer by some learning rate
             codebook[idx,:] += (pattern - (weight * codebook[idx,:])) * lrate
+            codebook[idx,:] = normalize(codebook[idx,:])
             # add distance to sum
             sum_distance += dist
         # check threshold
