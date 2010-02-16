@@ -13,14 +13,15 @@ www.columbia.edu/~tb2332/
 
 import numpy as np
 import scipy as sp
-import scipy.spatial
-import scipy.spatial.distance as DIST
+#import scipy.spatial
+#import scipy.spatial.distance as DIST
 
 
 
 def euclidean_dist(a,b):
     """ typical euclidean distance """
-    return DIST.euclidean(a,b)
+    #return DIST.euclidean(a,b)
+    np.sqrt(np.square(a-b).sum())
 
 def euclidean_norm(a):
     """ regular euclidean norm of a numpy vector """
