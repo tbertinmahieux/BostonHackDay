@@ -34,7 +34,7 @@ def get_all_barfeats():
 
     # get features normalized (with default flags)
     tstart = time.time()
-    featsNorm = [FU.normalize_pattern(np.array(p).reshape(1,len(p))) for p in feats]
+    featsNorm = [FU.normalize_pattern(np.array(p).reshape(1,len(p)),16,true,true) for p in feats]
     print 'all patterns normalized in ' + str(time.time()-tstart) + 'seconds'
 
     # get one nice big matrix
