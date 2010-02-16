@@ -26,6 +26,13 @@ def euclidean_norm(a):
     """ regular euclidean norm of a numpy vector """
     return np.sqrt((a*a).sum())
 
+def normalize(a):
+    """ divides by the euclidean norm """
+    try:
+        return a/euclidean_norm(a)
+    except ZeroDivisionError:
+        return a
+        
 
 def projection_factor(v_from,v_to,v_to_normalized=False):
     """ if we project vector 'v_from' onto vector 'v_to', by how
@@ -95,3 +102,64 @@ def encode_scale(signal,codebook,thresh,cbIsNormalized=False):
             break
 
     return weights, signal
+
+
+
+def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001):
+    """
+    Online vector quantization
+    INPUT:
+      - matrix of vectors, one feature per row, all equal length
+      - K size of the codebook
+      - lrate
+      - max number of iteration, 1 iteration = whole data
+    OUTPUT:
+      - codebook (one code per row)
+      - average distance between a feature and it's encoding
+    Inspired by the algorithm here:
+    http://en.wikipedia.org/w/index.php?title=Vector_quantization&oldid=343764861
+    Codes are normalized, and can be scaled as to better feat a segment
+    Codebook initialized using data points.
+    Each vector of the codebook is normalized (euclidean norm = 1)
+    Thresholding is based on the average distance between points and there
+    encoding (as one code from the codebook).
+    For efficiency, distance computed during the algorithm and before the
+    modification of the codebook, so we break one iteration too late.
+    """
+
+    # initialize codebook
+    assert(feats.shape[0] >= K)
+    fullrange = np.array(range(feats.shape[0]))
+    np.shuffle(fullrange)
+    start_codes_idx = fullrange[:K]
+    codebook = feats[start_codes_idx,:]
+    for code_idx in range(K):
+        codebook[code_idx,:] = normalize(codebook[code_idx,:])
+
+    # init (for thresholding)
+    prev_sum_dist = -1
+    nFeats = feats.shape[0]
+    # iterate over max iter
+    for iteration in range(nIter):
+        # sum of distance
+        sum_distance = 0
+        # iterate over features
+        for pattern in feats[:]:
+            # find closest code
+            idx,weight,dist = encode_scale_oneiter(pattern,codebook,
+                                                   cbIsNormalized=True)
+            # get that code closer by some learning rate
+            codebook[idx,:] += (pattern - (weight * codebook[idx,:])) * lrate
+            # add distance to sum
+            sum_distance += dist
+        # check threshold
+        if prev_sum_dist >= 0:
+            if abs((prev_sum_dist - sum_distance) * 1./nFeats) < thresh:
+                break
+        prev_sum_dist = sum_distance
+            
+    # return codebook, average distance
+    return codebook,(sum_distance * 1. / nFeats)
+
+
+        
