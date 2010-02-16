@@ -21,7 +21,7 @@ import scipy as sp
 def euclidean_dist(a,b):
     """ typical euclidean distance """
     #return DIST.euclidean(a,b)
-    np.sqrt(np.square(a-b).sum())
+    return np.sqrt(np.square(a-b).sum())
 
 def euclidean_norm(a):
     """ regular euclidean norm of a numpy vector """
