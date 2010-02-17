@@ -25,17 +25,12 @@ def get_all_barfeats():
 
     # get all feats
     tstart = time.time()
-    feats = [p.flatten() for p in data_iter]
-    print 'all patterns acquired in ' + str(time.time()-tstart) + 'seconds'
+    featsNorm = [FU.normalize_pattern(np.array(p),16,True,True).flatten() for p in data_iter]
+    print 'all patterns acquired and normalized in ' + str(time.time()-tstart) + 'seconds'
 
     # some stats
     print 'number of matfiles: ' + str(len(allfiles))
-    print 'number of patterns: ' + str(len(feats))
-
-    # get features normalized (with default flags)
-    tstart = time.time()
-    featsNorm = [FU.normalize_pattern(np.array(p).reshape(1,len(p)),16,true,true) for p in feats]
-    print 'all patterns normalized in ' + str(time.time()-tstart) + 'seconds'
+    print 'number of patterns: ' + str(len(featsNorm))
 
     # get one nice big matrix
     featsNorm = np.array(featsNorm).reshape(len(featsNorm),featsNorm[0].shape[1])
