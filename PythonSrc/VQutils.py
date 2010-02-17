@@ -13,9 +13,7 @@ www.columbia.edu/~tb2332/
 
 import numpy as np
 import scipy as sp
-#import scipy.spatial
-#import scipy.spatial.distance as DIST
-
+import time
 
 
 def euclidean_dist(a,b):
@@ -106,14 +104,16 @@ def encode_scale(signal,codebook,thresh,cbIsNormalized=False):
 
 
 
-def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001):
+def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05):
     """
     Online vector quantization
     INPUT:
       - matrix of vectors, one feature per row, all equal length
-      - K size of the codebook
+      - K size of the codebook, or an existing codebook
       - lrate
       - max number of iteration, 1 iteration = whole data
+      - maxRise, stop if, after an iteration, we are worst than (maxRise*100)%
+                 of the best average distance ever obtained
     OUTPUT:
       - codebook (one code per row)
       - average distance between a feature and it's encoding
@@ -129,21 +129,27 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001):
     """
 
     # initialize codebook
-    assert(feats.shape[0] >= K)
-    fullrange = np.array(range(feats.shape[0]))
-    np.random.shuffle(fullrange)
-    start_codes_idx = fullrange[:K]
-    codebook = feats[start_codes_idx,:]
-    for code_idx in range(K):
-        codebook[code_idx,:] = normalize(codebook[code_idx,:])
-    print 'codebook:'
-    print codebook
+    if type(K) == type(0):
+        assert(feats.shape[0] >= K)
+        fullrange = np.array(range(feats.shape[0]))
+        np.random.shuffle(fullrange)
+        start_codes_idx = fullrange[:K]
+        codebook = feats[start_codes_idx,:]
+        for code_idx in range(K):
+            codebook[code_idx,:] = normalize(codebook[code_idx,:])
+    # existing codebook
+    else: 
+        codebook = K
+        K = codebook.shape
 
     # init (for thresholding)
     prev_sum_dist = -1
+    best_sum_dist = -1
     nFeats = feats.shape[0]
     # iterate over max iter
     for iteration in range(nIter):
+        # start time
+        tstart_iter = time.time()
         # sum of distance
         sum_distance = 0
         # iterate over features
@@ -159,13 +165,22 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001):
             codebook[idx,:] = normalize(codebook[idx,:])
             # add distance to sum
             sum_distance += dist
+        # update best sum dist
+        if best_sum_dist < 0 :
+            best_sum_dist = sum_distance
+        elif best_sum_dist > sum_distance:
+            best_sum_dist = sum_distance
         # check threshold
         if prev_sum_dist >= 0:
             if abs((prev_sum_dist - sum_distance) * 1./nFeats) < thresh:
                 print 'online_vq stops because of thresholding after iter: ' + str(iteration+1)
                 break
+        if best_sum_dist * (1. + maxRise) < sum_distance:
+            break
         prev_sum_dist = sum_distance
-            
+        # verbose
+        print 'iter '+str(iteration)+' done, avg.dist = ' + str(sum_distance * 1. / nFeats)+', iteration done in ' + str(time.time()-tstart_iter) + 'seconds.'
+        
     # return codebook, average distance
     return codebook,(sum_distance * 1. / nFeats)
 
