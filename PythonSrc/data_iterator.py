@@ -13,7 +13,7 @@ import glob
 import numpy as np
 import scipy as sp
 import scipy.io
-import pylab as P
+#import pylab as P
 
 import feats_utils as FU
 
@@ -146,10 +146,16 @@ class DataIterator:
                     self.fidx = 0
                     continue
             # load features
-            mat = sp.io.loadmat(self.matfiles[self.fidx], struct_as_record=True)
+            if sys.version_info[1] == 5:
+                mat = sp.io.loadmat(self.matfiles[self.fidx])
+            else:
+                mat = sp.io.loadmat(self.matfiles[self.fidx], struct_as_record=True)
             self.currfeats = mat['btchroma']
             self.barbts = mat['barbts']
             # enough features?
+            if type(self.barbts) == type(0.0): # weird problem sometimes
+                self.fidx = self.fidx + 1
+                continue
             if self.usebars == 0 and self.currfeats.shape[1] < self.featsize :
                 self.fidx = self.fidx + 1
                 continue
