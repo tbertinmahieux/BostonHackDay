@@ -152,6 +152,8 @@ class DataIterator:
                 mat = sp.io.loadmat(self.matfiles[self.fidx], struct_as_record=True)
             self.currfeats = mat['btchroma']
             self.barbts = mat['barbts']
+            if sys.version_info[1] != 5:
+                self.barbts = self.barbts[0]
             # enough features?
             if type(self.barbts) == type(0.0): # weird problem sometimes
                 self.fidx = self.fidx + 1
@@ -168,7 +170,7 @@ class DataIterator:
                 self.nPatternSeen = self.nPatternSeen + 1
                 return self.currfeats[:,0:self.pidx]
             else :
-                if len(self.barbts) <= self.usebars :
+                if np.array(self.barbts).size <= self.usebars :
                     self.pidx = self.currfeats.shape[1]
                 else:
                     self.pidx = self.barbts[self.usebars]
