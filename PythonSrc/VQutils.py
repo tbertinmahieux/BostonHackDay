@@ -136,6 +136,8 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001):
     codebook = feats[start_codes_idx,:]
     for code_idx in range(K):
         codebook[code_idx,:] = normalize(codebook[code_idx,:])
+    print 'codebook:'
+    print codebook
 
     # init (for thresholding)
     prev_sum_dist = -1
@@ -150,7 +152,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001):
             idx,weight,dist = encode_scale_oneiter(pattern,codebook,
                                                    cbIsNormalized=True)
             # get that code closer by some learning rate
-            codebook[idx,:] += (pattern - (weight * codebook[idx,:])) * lrate
+            codebook[idx,:] += (pattern / weight - codebook[idx,:]) * lrate
             codebook[idx,:] = normalize(codebook[idx,:])
             # add distance to sum
             sum_distance += dist
