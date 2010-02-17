@@ -150,6 +150,8 @@ class DataIterator:
                 mat = sp.io.loadmat(self.matfiles[self.fidx])
             else:
                 mat = sp.io.loadmat(self.matfiles[self.fidx], struct_as_record=True)
+            self.currfeats = mat['btchroma']
+            self.barbts = mat['barbts']
             # enough features?
             if type(self.barbts) == type(0.0): # weird problem sometimes
                 self.fidx = self.fidx + 1
