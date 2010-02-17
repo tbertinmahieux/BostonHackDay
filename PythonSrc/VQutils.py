@@ -55,7 +55,10 @@ def encode_scale_oneiter(signal,codebook,cbIsNormalized=False):
     codebook is one pattern per row.
     We allow the pattern to be scaled to be as close as possible
     to the signal
-    Returns <index of the pattern>,<scaling>,<distance>
+    Returns <indexes of the pattern>,<scalings>,<distances>
+    Indexes are returned starting from the code which has the smallest
+    scaled distance. If you only care about this code, do:
+    idx = idxs[0], alpha = alphas[idx], dist = dists[idx]
     If codebook is normalized, set cbIsNormalized to True,
     it is slightly faster. (Normalized means each element has an
     euclidean norm of 1)
@@ -66,8 +69,8 @@ def encode_scale_oneiter(signal,codebook,cbIsNormalized=False):
     # scale the codebook and compute the distance
     dists = [euclidean_dist(signal,r) for r in (alphas*codebook)[:]]
     # return the index, scaling, and distance for the MIN DISTANCE
-    idx = np.argmin(dists)
-    return idx,alphas[idx][0],dists[idx]
+    idxs = np.argsort(dists)
+    return idxs,alphas.flatten(),dists
 
 
 def encode_scale(signal,codebook,thresh,cbIsNormalized=False):
@@ -91,7 +94,9 @@ def encode_scale(signal,codebook,thresh,cbIsNormalized=False):
     while True:
         oldSignal = signal
         # do one iteration
-        idx, alpha, dist = encode_scale_oneiter(signal,codebook,cbIsNormalized)
+        idxs, alphas, dists = encode_scale_oneiter(signal,codebook,cbIsNormalized)
+        idx = idxs[0]
+        alpha = alphas[idx]        
         # add to weights
         weights[idx] += alpha
         # remove what's explained by the codebook
@@ -158,11 +163,24 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05):
             if np.isnan(pattern).any():
                 continue
             # find closest code
-            idx,weight,dist = encode_scale_oneiter(pattern,codebook,
-                                                   cbIsNormalized=True)
+            idxs,weights,dists = encode_scale_oneiter(pattern,codebook,
+                                                      cbIsNormalized=True)
+            idx = idxs[0]
+            weight = weights[idx]
+            dist = dists[idx]
             # get that code closer by some learning rate
             codebook[idx,:] += (pattern / weight - codebook[idx,:]) * lrate
             codebook[idx,:] = normalize(codebook[idx,:])
+
+            ######################
+            # TEST on repulsiveness
+            idx2 = idxs[1]
+            weight2 = weights[1]
+            codebook[idx2,:] += (pattern / weight2 + codebook[idx2,:]) * lrate
+            codebook[idx2,:] = normalize(codebook[idx2,:])
+            #####################
+
+            
             # add distance to sum
             sum_distance += dist
         # update best sum dist
