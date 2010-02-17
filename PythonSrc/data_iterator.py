@@ -161,7 +161,6 @@ class DataIterator:
                 continue
             if self.usebars >= 1 and np.array(self.barbts).size < self.usebars :
                 self.fidx = self.fidx + 1
-                print self.barbts
                 continue
             # get first feature
             if self.usebars == 0:
@@ -173,7 +172,6 @@ class DataIterator:
                     self.pidx = self.currfeats.shape[1]
                 else:
                     self.pidx = self.barbts[self.usebars]
-                print self.pidx
                 self.nPatternSeen = self.nPatternSeen + 1
                 return self.currfeats[:,0:self.pidx]
             
