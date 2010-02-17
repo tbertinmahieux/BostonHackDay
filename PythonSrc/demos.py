@@ -33,7 +33,7 @@ def get_all_barfeats():
     print 'number of patterns: ' + str(len(featsNorm))
 
     # get one nice big matrix
-    featsNorm = np.array(featsNorm).reshape(len(featsNorm),featsNorm[0].shape[1])
+    featsNorm = np.array(featsNorm)
 
     # and... we're done, let's launch the algo!
 
