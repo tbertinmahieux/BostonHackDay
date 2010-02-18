@@ -107,6 +107,45 @@ def encode_scale(signal,codebook,thresh,cbIsNormalized=False):
 
     return weights, signal
 
+def encode_dataset_scale(data,codebook,thresh,cbIsNormalized=False):
+    """
+    Iteratively encode a whole dataset, where each row is a signal
+    Data is a big numpy 2d array, number of signals = data.shape[0]
+    Codebook is one code per row.
+    Return:
+         weights, 'orderedweights'
+    orderedweights is a weird thing, we're interested in the shape
+    of the encoding histogram. We add the weights after sorting them.
+    Therefore, we don't care about which code did what, but how many
+    codes were really used per signal.
+    weights and ordered weights are normalized by number of signals
+    """
+    # initialize
+    cnt = 0
+    weights = []
+    orderedWeights = []
+    # iterate over data
+    for signal in data:
+        # check nan
+        if np.isnan(signal).any():
+            continue
+        # counter
+        cnt += 1
+        # encode
+        w,s = encode_scale(signal,codebook,thresh,cbIsNormalized)
+        if cnt == 1:
+            weights = np.array(w)
+            orderedWeights = np.array(np.sort(w))
+        else:
+            weights = weights + np.array(w)
+            orderedWeights = orderedWeights + np.array(np.sort(w))
+    # normalize
+    weights = weights * 1. / cnt
+    orderedWeights = orderedWeights * 1. / cnt
+    # return
+    weights, orderedWeights
+
+
 
 
 def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05):
