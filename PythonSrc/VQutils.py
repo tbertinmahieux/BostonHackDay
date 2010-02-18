@@ -118,7 +118,8 @@ def encode_dataset_scale(data,codebook,thresh,cbIsNormalized=False):
     of the encoding histogram. We add the weights after sorting them.
     Therefore, we don't care about which code did what, but how many
     codes were really used per signal.
-    weights and ordered weights are normalized by number of signals
+    - Weights and ordered weights are normalized by number of signals
+    - Weights are the sum of the weight absolute values per signal
     """
     # initialize
     cnt = 0
@@ -132,17 +133,13 @@ def encode_dataset_scale(data,codebook,thresh,cbIsNormalized=False):
         # counter
         cnt += 1
         # encode
-        try:
-            w,s = encode_scale(signal,codebook,thresh,cbIsNormalized)
-        except:
-            cnt -= 1
-            continue
+        w,s = encode_scale(signal,codebook,thresh,cbIsNormalized)
         if cnt == 1:
-            weights = np.array(w)
-            orderedWeights = np.array(np.sort(w))
+            weights = np.abs(np.array(w).flatten())
+            orderedWeights = np.abs(np.sort(np.array(w).flatten()))
         else:
-            weights = weights + np.array(w)
-            orderedWeights = orderedWeights + np.array(np.sort(w))
+            weights = weights + np.abs(np.array(w).flatten())
+            orderedWeights = orderedWeights + np.abs(np.sort(np.array(w).flatten()))
     # normalize
     print 'encoding of data done, counter=' + str(cnt)
     weights = weights * 1. / cnt
