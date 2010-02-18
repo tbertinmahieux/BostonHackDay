@@ -148,7 +148,7 @@ def encode_dataset_scale(data,codebook,thresh,cbIsNormalized=False):
     weights = weights * 1. / cnt
     orderedWeights = orderedWeights * 1. / cnt
     # return
-    weights, orderedWeights
+    return weights, orderedWeights
 
 
 
