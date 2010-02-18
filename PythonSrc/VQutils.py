@@ -125,7 +125,7 @@ def encode_dataset_scale(data,codebook,thresh,cbIsNormalized=False):
     weights = []
     orderedWeights = []
     # iterate over data
-    for signal in data:
+    for signal in data[:]:
         # check nan
         if np.isnan(signal).any():
             continue
