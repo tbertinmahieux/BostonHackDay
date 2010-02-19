@@ -206,7 +206,7 @@ def online_encoding_learn(feats,K,nIter=10,nEncode=-1,
             if pattern.sum() == 0 :
                 continue
             # encode
-            weights,residual = encode_scale(pattern,codebook,
+            weights,residual = encode_scale(pattern,codebook,1e-10,
                                             cbIsNormalized=True,maxIter=nEncode)
             # update codebook
             sumWeights = np.array(weights).sum()
