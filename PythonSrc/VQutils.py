@@ -211,7 +211,11 @@ def online_encoding_learn(feats,K,lrate=1.,nIter=10,nEncode=-1,
                                             cbIsNormalized=True,maxIter=nEncode)
             # update codebook
             sumWeights = np.array(weights).sum()
+            if abs(sumWeights) < 1e-10 :
+                continue
             for cbIdx in range(K):
+                if abs(weights[cbIdx]) < 1e-10:
+                    continue
                 codebook[cbIdx,:] += (residual / weights[cbIdx] - codebook[cbIdx,:]) * (weights[cbIdx] / sumWeights * lrate)
                 codebook[cbIdx,:] = normalize(codebook[cbIdx,:])
             # add residual
