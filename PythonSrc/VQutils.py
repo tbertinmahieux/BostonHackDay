@@ -219,6 +219,8 @@ def online_encoding_learn(feats,K,nIter=10,nEncode=-1,
         # update best sum reesidual
         if best_sum_residual < 0 or best_sum_residual > sum_residual:
             best_sum_residual = sum_residual
+        # verbose
+        print 'iter '+str(iteration)+' done, avg. residual = ' + str(sum_residual * 1. / nFeats)+', iteration done in ' + str(time.time()-tstart_iter) + 'seconds.'
         # check threshold
         if prev_sum_residual >= 0:
             if (sum_residual - prev_sum_residual) * 1./nFeats > thresh:
@@ -311,10 +313,9 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
             # add distance to sum
             sum_distance += dist
         # update best sum dist
-        if best_sum_dist < 0 :
-            best_sum_dist = sum_distance
-        elif best_sum_dist > sum_distance:
-            best_sum_dist = sum_distance
+        if best_sum_dist < 0 or best_sum_dist > sum_distance:
+        # verbose
+        print 'iter '+str(iteration)+' done, avg. dist = ' + str(sum_distance * 1. / nFeats)+', iteration done in ' + str(time.time()-tstart_iter) + 'seconds.'
         # check threshold
         if prev_sum_dist >= 0:
             if (sum_dist - prev_sum_dist) * 1./nFeats > thresh:
@@ -323,8 +324,6 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
         if best_sum_dist * (1. + maxRise) < sum_distance:
             break
         prev_sum_dist = sum_distance
-        # verbose
-        print 'iter '+str(iteration)+' done, avg.dist = ' + str(sum_distance * 1. / nFeats)+', iteration done in ' + str(time.time()-tstart_iter) + 'seconds.'
         
     # return codebook, average distance
     return codebook,(sum_distance * 1. / nFeats)
