@@ -314,6 +314,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
             sum_distance += dist
         # update best sum dist
         if best_sum_dist < 0 or best_sum_dist > sum_distance:
+            best_sum_dist = sum_distance
         # verbose
         print 'iter '+str(iteration)+' done, avg. dist = ' + str(sum_distance * 1. / nFeats)+', iteration done in ' + str(time.time()-tstart_iter) + 'seconds.'
         # check threshold
