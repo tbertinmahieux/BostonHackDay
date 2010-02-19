@@ -203,6 +203,8 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05):
             # make sure no nan
             if np.isnan(pattern).any():
                 continue
+            if pattern.sum() == 0 :
+                continue
             # find closest code
             idxs,weights,dists = encode_scale_oneiter(pattern,codebook,
                                                       cbIsNormalized=True)
@@ -244,4 +246,3 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05):
     return codebook,(sum_distance * 1. / nFeats)
 
 
-        
