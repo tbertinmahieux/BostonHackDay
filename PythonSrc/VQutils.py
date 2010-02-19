@@ -318,7 +318,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
         print 'iter '+str(iteration)+' done, avg. dist = ' + str(sum_distance * 1. / nFeats)+', iteration done in ' + str(time.time()-tstart_iter) + 'seconds.'
         # check threshold
         if prev_sum_dist >= 0:
-            if (sum_dist - prev_sum_dist) * 1./nFeats > thresh:
+            if (sum_distance - prev_sum_dist) * 1./nFeats > thresh:
                 print 'online_vq stops because of thresholding after iter: ' + str(iteration+1)
                 break
         if best_sum_dist * (1. + maxRise) < sum_distance:
