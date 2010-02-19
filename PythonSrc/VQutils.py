@@ -219,7 +219,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05):
             # TEST on repulsiveness
             idx2 = idxs[1]
             weight2 = weights[1]
-            codebook[idx2,:] += (pattern / weight2 + codebook[idx2,:]) * lrate * (dists[idx] / dists[idx2])
+            codebook[idx2,:] -= (pattern / weight2 - codebook[idx2,:]) * lrate * (dists[idx] / dists[idx2])
             codebook[idx2,:] = normalize(codebook[idx2,:])
             #####################
 
