@@ -73,7 +73,7 @@ def encode_scale_oneiter(signal,codebook,cbIsNormalized=False):
     return idxs,alphas.flatten(),dists
 
 
-def encode_scale(signal,codebook,thresh,cbIsNormalized=False):
+def encode_scale(signal,codebook,thresh,cbIsNormalized=False,maxIter=1e8):
     """
     Iteratively encode a signal using the codebook.
     - find the best element in the codebook (with scaling)
@@ -89,7 +89,9 @@ def encode_scale(signal,codebook,thresh,cbIsNormalized=False):
 
     # to accumulate weights/scales
     weights = np.zeros([codebook.shape[0],1])
-    
+
+    # count iterations
+    cntIter = 0
     # main loop
     while True:
         oldSignal = signal
@@ -103,6 +105,10 @@ def encode_scale(signal,codebook,thresh,cbIsNormalized=False):
         signal = signal - alpha * codebook[idx]
         # measure difference
         if euclidean_norm(oldSignal - signal) < thresh:
+            break
+        # check number of iterations
+        cntIter += 1
+        if cntIter >= maxIter:
             break
 
     return weights, signal
@@ -150,7 +156,84 @@ def encode_dataset_scale(data,codebook,thresh,cbIsNormalized=False):
 
 
 
-def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=True):
+def online_encoding_learn(feats,K,nIter=10,nEncode=-1,
+                          thresh=0.0000001,maxRise=.05):
+    """
+    Learn a codebook by encoding (think matching pursuit)
+    Input:
+      - feats    data, one example per row
+      - K        size of the codebook, or starting codebook
+      - nIter    number of iterations on the whole data
+      - nEncode  number of encoding iteration, default=codebook size
+      - maxRise, stop if, after an iteration, we are worst than (maxRise*100)%
+                 of the best average distance ever obtained
+    Return:
+      - codebook
+      - residual
+    """
+    
+    # initialize codebook
+    if type(K) == type(0):
+        assert(feats.shape[0] >= K)
+        fullrange = np.array(range(feats.shape[0]))
+        np.random.shuffle(fullrange)
+        start_codes_idx = fullrange[:K]
+        codebook = feats[start_codes_idx,:]
+        for code_idx in range(K):
+            codebook[code_idx,:] = normalize(codebook[code_idx,:])
+    # existing codebook
+    else: 
+        codebook = K
+        K = codebook.shape
+    # initialize number of encoding iter
+    if nEncode <= 0:
+        nEncode = K
+
+    prev_sum_residual = -1
+    best_sum_residual = -1
+    nFeats = feats.shape[0]
+    # iterate over max iter
+    for iteration in range(nIter):
+        # start time
+        tstart_iter = time.time()
+        # sum the norm of the residual
+        sum_residual = 0
+        # iterate over features
+        for pattern in feats[:]:
+            # make sure no nan or empty pattern
+            if np.isnan(pattern).any():
+                continue
+            if pattern.sum() == 0 :
+                continue
+            # encode
+            weights,residual = encode_scale(pattern,codebook,
+                                            cbIsNormalized=True,maxIter=nEncode)
+            # update codebook
+            sumWeights = np.array(weights).sum()
+            for cbIdx in range(K):
+                codebook[cbIdx,:] += (residual / weights[cbIdx] - codebook[cbIdx,:]) * (weights[cbIdx] / sumWeights)
+                codebook[cbIdx,:] = normalize(codebook[cbIdx,:])
+            # add residual
+            sum_residual += euclidean_norm(residual)
+
+        # update best sum reesidual
+        if best_sum_residual < 0 or best_sum_residual > sum_residual:
+            best_sum_residual = sum_residual
+        # check threshold
+        if prev_sum_residual >= 0:
+            if (sum_residual - prev_sum_residual) * 1./nFeats > thresh:
+                print 'online_encode_learn stops because of thresholding after iter: ' + str(iteration+1)
+                break
+        if best_sum_residual * (1. + maxRise) < sum_residual:
+            break
+        prev_sum_residual = sum_residual
+
+    # return codebook, plus recent residual norm sum
+    return codebook, (sum_residual * 1. / nFeats)
+
+
+
+def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False):
     """
     Online vector quantization
     INPUT:
@@ -190,8 +273,9 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=True):
 
     # init (for thresholding)
     prev_sum_dist = -1
-    best_sum_dist = -1
     nFeats = feats.shape[0]
+    # keep the best result
+    best_sum_dist = -1
     # iterate over max iter
     for iteration in range(nIter):
         # start time
@@ -233,7 +317,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=True):
             best_sum_dist = sum_distance
         # check threshold
         if prev_sum_dist >= 0:
-            if abs((prev_sum_dist - sum_distance) * 1./nFeats) < thresh:
+            if (sum_dist - prev_sum_dist) * 1./nFeats > thresh:
                 print 'online_vq stops because of thresholding after iter: ' + str(iteration+1)
                 break
         if best_sum_dist * (1. + maxRise) < sum_distance:
