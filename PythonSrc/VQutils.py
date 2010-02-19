@@ -156,13 +156,14 @@ def encode_dataset_scale(data,codebook,thresh,cbIsNormalized=False):
 
 
 
-def online_encoding_learn(feats,K,nIter=10,nEncode=-1,
+def online_encoding_learn(feats,K,lrate=1.,nIter=10,nEncode=-1,
                           thresh=0.0000001,maxRise=.05):
     """
     Learn a codebook by encoding (think matching pursuit)
     Input:
       - feats    data, one example per row
       - K        size of the codebook, or starting codebook
+      - lrate    learning rate
       - nIter    number of iterations on the whole data
       - nEncode  number of encoding iteration, default=codebook size
       - maxRise, stop if, after an iteration, we are worst than (maxRise*100)%
@@ -211,7 +212,7 @@ def online_encoding_learn(feats,K,nIter=10,nEncode=-1,
             # update codebook
             sumWeights = np.array(weights).sum()
             for cbIdx in range(K):
-                codebook[cbIdx,:] += (residual / weights[cbIdx] - codebook[cbIdx,:]) * (weights[cbIdx] / sumWeights)
+                codebook[cbIdx,:] += (residual / weights[cbIdx] - codebook[cbIdx,:]) * (weights[cbIdx] / sumWeights * lrate)
                 codebook[cbIdx,:] = normalize(codebook[cbIdx,:])
             # add residual
             sum_residual += euclidean_norm(residual)
@@ -223,7 +224,7 @@ def online_encoding_learn(feats,K,nIter=10,nEncode=-1,
         print 'iter '+str(iteration)+' done, avg. residual = ' + str(sum_residual * 1. / nFeats)+', iteration done in ' + str(time.time()-tstart_iter) + 'seconds.'
         # check threshold
         if prev_sum_residual >= 0:
-            if (sum_residual - prev_sum_residual) * 1./nFeats > thresh:
+            if abs((sum_residual - prev_sum_residual) * 1./nFeats) < thresh:
                 print 'online_encode_learn stops because of thresholding after iter: ' + str(iteration+1)
                 break
         if best_sum_residual * (1. + maxRise) < sum_residual:
