@@ -185,7 +185,7 @@ def online_encoding_learn(feats,K,lrate=1.,nIter=10,nEncode=-1,
     # existing codebook
     else: 
         codebook = K
-        K = codebook.shape
+        K = codebook.shape[0]
     # initialize number of encoding iter
     if nEncode <= 0:
         nEncode = K
@@ -276,7 +276,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
     # existing codebook
     else: 
         codebook = K
-        K = codebook.shape
+        K = codebook.shape[0]
 
     # init (for thresholding)
     prev_sum_dist = -1
