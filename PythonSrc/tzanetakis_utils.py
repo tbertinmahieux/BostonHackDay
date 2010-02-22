@@ -16,6 +16,7 @@ import scipy
 import scipy.io
 # other libraries developed in that project
 import feats_utils as FU
+import get_echo_nest_metadata as GENM
 # echonest stuff
 from pyechonest import track, config
 try:
@@ -53,8 +54,8 @@ def get_en_feats(filename):
        - segs start time   array
        - beats start time  array
        - bars start time   array
+       - duration          in seconds
     """
-    raise NotImplementedError
     entrack = track.upload(filename)
     segs = entrack.segments
     # pitches
@@ -67,8 +68,38 @@ def get_en_feats(filename):
     # bars start
     bar_start = [b['start'] for b in entrack.bars]
     # return
-    return pitches, seg_start, beat_start, bar_start
+    return pitches, seg_start, beat_start, bar_start, entrack.duration
 
+
+def filename_to_beatfeat_mat(filename):
+    """
+    Take a Tzanetakis song (or any song)
+    Get the echonest data
+    Save the echonest data into a matfile
+    Matfile is same path as the filename, extension changes
+    """
+    pitches, segstart, btstart, barstart, dur = get_en_feats(filename)
+    # warp it!
+    # see get_echo_nest_metadata.get_beat_synchronous_chromagram()
+    segchroma = pitches.T
+    warpmat = GENM.get_time_warp_matrix(segstart, btstart, dur)
+    btchroma = np.dot(warpmat, segchroma)
+    # Renormalize.
+    btchroma = (btchroma.T / btchroma.max(axis=1)).T
+    # get the start time of bars
+    # result for track: 'TR0002Q11C3FA8332D'
+    #    barstart.shape = (98,)
+    barbts = np.zeros(barstart.shape)
+    # get the first (only?) beat the starts at the same time as the bar
+    for n, x in enumerate(barstart):
+        barbts[n] = np.nonzero((btstart - x) == 0)[0][0]
+    # save to matlab file, see:
+    # get_echo_nest_metadata.convert_matfile_to_beat_synchronous_chromagram()
+    savefile = filename+'.mat'
+    sp.io.savemat(savefile, dict(btchroma=btchroma.T,
+                                 barbts=barbts,       segstart=segstart,
+                                 btstart=btstart,     barstart=barstart,
+                                 duration=dur))
 
 
 def die_with_usage():
