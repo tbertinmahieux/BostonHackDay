@@ -32,6 +32,7 @@ def get_data_maxener_16_true_false_bars2():
     # time?
     print 'all patterns acquired and normalized in ' + str(time.time()-tstart) + 'seconds'
     print 'featsNorm.shape = ',featsNorm.shape
+    return featsNorm
 
 
 def get_all_barfeats():
