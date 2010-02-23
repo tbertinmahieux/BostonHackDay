@@ -17,13 +17,19 @@ import time
 
 
 def euclidean_dist(a,b):
-    """ typical euclidean distance """
-    #return DIST.euclidean(a,b)
-    return np.sqrt(np.square(a-b).sum())
+    """
+    Typical euclidean distance. A and B must be row vectors!!!!
+    """
+    # tested for vectors of size 200, slightly beats:
+    #return np.sqrt(np.square(a-b).sum())
+    return np.sqrt(np.dot((a-b),(a-b).T)[0][0])
+
 
 def euclidean_norm(a):
     """ regular euclidean norm of a numpy vector """
-    return np.sqrt((a*a).sum())
+    #return np.sqrt((a*a).sum())
+    # slightly faster:
+    return np.sqrt(np.square(a).sum())
 
 def normalize(a):
     """ divides by the euclidean norm """
@@ -40,13 +46,13 @@ def projection_factor(v_from,v_to,v_to_normalized=False):
     It can be expressed as: |A|cos(theta)/|B| = dot(A,B)/|B|^2
     with A projected onto B
     """
-    if not v_to_normalized:
+    if v_to_normalized:
+        # trivial case
+        return np.dot(v_from,v_to)
+    else:
         # we must normalized by norm^2
         normTo = euclidean_norm(v_to)
         return np.dot(v_from,v_to) / (normTo * normTo)
-    else:
-        # trivial case
-        return np.dot(v_from,v_to)
 
 
 def encode_scale_oneiter(signal,codebook,cbIsNormalized=False):
@@ -112,6 +118,7 @@ def encode_scale(signal,codebook,thresh,cbIsNormalized=False,maxIter=1e8):
             break
 
     return weights, signal
+
 
 def encode_dataset_scale(data,codebook,thresh,cbIsNormalized=False):
     """
