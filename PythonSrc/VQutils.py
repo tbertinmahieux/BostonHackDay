@@ -211,7 +211,7 @@ def online_encoding_learn(feats,K,lrate=1.,nIter=10,nEncode=-1,
             # make sure no nan or empty pattern
             if np.isnan(pattern).any():
                 continue
-            if pattern.sum() == 0 :
+            if not (pattern>0).any():
                 continue
             # encode
             weights,residual = encode_scale(pattern,codebook,1e-10,
