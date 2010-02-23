@@ -71,8 +71,11 @@ def encode_scale_oneiter(signal,codebook,cbIsNormalized=False):
     euclidean norm of 1)
     """
     # find the right scaling
-    alphas = [projection_factor(signal,r,cbIsNormalized) for r in codebook[:]]
-    alphas = np.array(alphas).reshape(codebook.shape[0],1)
+    if cbIsNormalized:
+        alphas = np.inner(signal,codebook).T
+    else:
+        alphas = [projection_factor(signal,r,cbIsNormalized) for r in codebook[:]]
+        alphas = np.array(alphas).reshape(codebook.shape[0],1)
     # scale the codebook and compute the distance
     dists = [euclidean_dist(signal,r) for r in (alphas*codebook)[:]]
     # return the index, scaling, and distance for the MIN DISTANCE
