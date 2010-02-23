@@ -261,6 +261,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
     OUTPUT:
       - codebook (one code per row)
       - average distance between a feature and it's encoding
+      - list of which code to use for which data sample
     Inspired by the algorithm here:
     http://en.wikipedia.org/w/index.php?title=Vector_quantization&oldid=343764861
     Codes are normalized, and can be scaled as to better feat a segment
@@ -291,6 +292,9 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
     nFeats = feats.shape[0]
     # keep the best result
     best_sum_dist = -1
+    # know which code goes with each pattern
+    best_code_per_pattern = np.ones([nFeats.shape[0],1])
+    best_code_per_pattern *= -1
     # iterate over max iter
     for iteration in range(nIter):
         # start time
@@ -298,7 +302,10 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
         # sum of distance
         sum_distance = 0
         # iterate over features
+        whichPattern = -1
         for pattern in feats[:]:
+            # which pattern we're looking at
+            whichPattern += 1
             # make sure no nan
             if np.isnan(pattern).any():
                 continue
@@ -313,6 +320,8 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
             # get that code closer by some learning rate
             codebook[idx,:] += (pattern / weight - codebook[idx,:]) * lrate
             codebook[idx,:] = normalize(codebook[idx,:])
+            # remember that code for that pattern
+            best_code_per_pattern[whichPattern] = idx
 
             ######################
             # TEST on repulsiveness
@@ -340,6 +349,6 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
         prev_sum_dist = sum_distance
         
     # return codebook, average distance
-    return codebook,(sum_distance * 1. / nFeats)
+    return codebook,(sum_distance * 1. / nFeats), best_code_per_pattern
 
 
