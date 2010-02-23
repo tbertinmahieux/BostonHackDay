@@ -22,8 +22,9 @@ def euclidean_dist(a,b):
     """
     # tested for vectors of size 200, slightly beats:
     #return np.sqrt(np.square(a-b).sum())
-    return np.sqrt(np.dot((a-b),(a-b).T)[0][0])
-
+    # following faster, but does not work on boar?
+    #return np.sqrt(np.dot((a-b),(a-b).T)[0][0])
+    return np.sqrt(np.square(a-b).sum())
 
 def euclidean_norm(a):
     """ regular euclidean norm of a numpy vector """
