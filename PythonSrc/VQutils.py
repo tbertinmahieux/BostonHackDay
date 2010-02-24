@@ -286,6 +286,25 @@ def get_codes_ordering(best_code_per_p, nCodes):
     return np.flipud(np.argsort(freqs.flatten()))
 
 
+def find_best_code_per_pattern(dataset,codebook,scale=True):
+    """
+    Find the best code for each pattenr in the dataset.
+    Dataset: one code per row (samething for codebook)
+    If scale=True, we assume codebook normalized
+    return a vector, length=dataset size, contains the index
+    of the closest code for each pattern (or -1 if there was a problem)
+    """
+    best_code_per_p = np.ones([dataset.shape[0],1]) * -1
+    for k in range(dataset.shape[0]):
+        pattern = dataset[k,:].reshape(1,dataset.shape[1])
+        if scale:
+            idxs,weights,dists = encode_scale_oneiter(pattern,codebook,
+                                                      cbIsNormalized=True)
+        else:
+            idxs,dists = encode_oneiter(pattern,codebook)
+        best_code_per_p[k] = idxs[0]
+    # done
+    return best_code_per_p
 
 
 def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=True,repulse=False):
