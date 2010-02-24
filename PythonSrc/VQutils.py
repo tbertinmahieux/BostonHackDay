@@ -72,7 +72,7 @@ def encode_scale_oneiter(signal,codebook,cbIsNormalized=False):
     """
     # find the right scaling
     if cbIsNormalized:
-        alphas = np.inner(signal,codebook).T
+        alphas = np.inner(signal,codebook).reshape(codebook.shape[0],1)
     else:
         alphas = [projection_factor(signal,r,cbIsNormalized) for r in codebook[:]]
         alphas = np.array(alphas).reshape(codebook.shape[0],1)
