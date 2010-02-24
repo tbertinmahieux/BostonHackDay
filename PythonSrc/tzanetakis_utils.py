@@ -102,6 +102,11 @@ def filename_to_beatfeat_mat(filename,savefile=''):
         barbts[n] = np.nonzero((btstart - x) == 0)[0][0]
     # save to matlab file, see:
     # get_echo_nest_metadata.convert_matfile_to_beat_synchronous_chromagram()
+
+    # write file, need to create directories? dangerous but efficient...
+    directory = os.path.dirname(savefile)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     sp.io.savemat(savefile, dict(btchroma=btchroma.T,
                                  barbts=barbts,       segstart=segstart,
                                  btstart=btstart,     barstart=barstart,
