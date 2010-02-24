@@ -81,6 +81,8 @@ def filename_to_beatfeat_mat(filename,savefile=''):
     # skip if output exists
     if savefile == '':
         savefile = filename+'.mat'
+    if savefile[-4:] != '.mat':
+        savefile += '.mat' # because scipy.io.savemat will add it
     if os.path.exists(savefile):
         print 'file ' + savefile + ' exists, we skip'
         return
