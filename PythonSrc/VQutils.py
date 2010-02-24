@@ -296,7 +296,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
     # keep the best result
     best_sum_dist = -1
     # know which code goes with each pattern
-    best_code_per_pattern = np.ones([nFeats.shape[0],1])
+    best_code_per_pattern = np.ones([nFeats,1])
     best_code_per_pattern *= -1
     # iterate over max iter
     for iteration in range(nIter):
