@@ -62,22 +62,29 @@ def get_en_feats(filename):
     pitches = [s['pitches'] for s in entrack.segments]
     pitches = np.array(pitches).T
     # seg start
-    seg_start = [s['start'] for s in entrack.segments]
+    seg_start = np.array([s['start'] for s in entrack.segments])
     # beats start
-    beat_start = [b['start'] for b in entrack.beats]
+    beat_start = np.array([b['start'] for b in entrack.beats])
     # bars start
-    bar_start = [b['start'] for b in entrack.bars]
+    bar_start = np.array([b['start'] for b in entrack.bars])
     # return
     return pitches, seg_start, beat_start, bar_start, entrack.duration
 
 
-def filename_to_beatfeat_mat(filename):
+def filename_to_beatfeat_mat(filename,savefile=''):
     """
     Take a Tzanetakis song (or any song)
     Get the echonest data
     Save the echonest data into a matfile
     Matfile is same path as the filename, extension changes
     """
+    # skip if output exists
+    if savefile == '':
+        savefile = filename+'.mat'
+    if os.path.exists(savefile):
+        print 'file ' + savefile + ' exists, we skip'
+        return
+    # get EN features
     pitches, segstart, btstart, barstart, dur = get_en_feats(filename)
     # warp it!
     # see get_echo_nest_metadata.get_beat_synchronous_chromagram()
