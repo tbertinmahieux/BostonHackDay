@@ -336,6 +336,9 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=True,rep
     # know which code goes with each pattern
     best_code_per_pattern = np.ones([nFeats,1])
     best_code_per_pattern *= -1
+    # not scaled? artificial weights
+    if not scale:
+        weights = np.ones(K)
     # iterate over max iter
     for iteration in range(nIter):
         # start time
@@ -359,7 +362,6 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=True,rep
             else:
                 # no scaling, i.e. weights = 1
                 idxs,dists = encode_oneiter(pattern,codebook)
-                weights = np.ones([K,1])
             idx = idxs[0]
             weight = weights[idx]
             dist = dists[idx]
