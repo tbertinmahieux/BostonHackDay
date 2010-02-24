@@ -16,9 +16,9 @@ import os.path
 import scipy as SP
 import scipy.io
 import scipy.signal
-from plottools import plotall as PA
-import matplotlib
-import matplotlib.pyplot as P 
+#from plottools import plotall as PA
+#import matplotlib
+#import matplotlib.pyplot as P 
 import numpy as N
 import glob
 import tables
@@ -72,6 +72,9 @@ def plot_cluster(memberlabels, matdir, metadir, featlen=16, subplot=(3,3)):
     bardesc = ['%s: %s (%.1f)' % (x['artist'], x['title'], ft)
                for x,ft in zip(meta, feattimes)]
 
+    from plottools import plotall as PA
+    import matplotlib
+    import matplotlib.pyplot as P 
     PA(feats, title=bardesc, subplot=subplot)
     
     
@@ -329,6 +332,9 @@ def imshow(data) :
     """
     Wrapper around matplotlib.pyplot with proper params
     """
+    from plottools import plotall as PA
+    import matplotlib
+    import matplotlib.pyplot as P 
     PA([data],
        aspect='auto', interpolation='nearest')
     P.show()
