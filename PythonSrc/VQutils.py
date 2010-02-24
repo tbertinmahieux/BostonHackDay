@@ -56,6 +56,23 @@ def projection_factor(v_from,v_to,v_to_normalized=False):
         return np.dot(v_from,v_to) / (normTo * normTo)
 
 
+def encode_oneiter(signal,codebook):
+    """
+    Find the best pattern in the codebook, returns the distance.
+    codebook is one pattern per row.
+    Codebook is not scaled
+    Returns <indexes of the pattern>,<scalings>,<distances>
+    Indexes are returned starting from the code which has the smallest
+    distance. If you only care about this code, do:
+    idx = idxs[0], dist = dists[idx]
+    """
+    # compute the distances
+    dists = [euclidean_dist(signal,r) for r in codebook]
+    # return the index, scaling, and distance for the MIN DISTANCE
+    idxs = np.argsort(dists)
+    return idxs,dists
+
+
 def encode_scale_oneiter(signal,codebook,cbIsNormalized=False):
     """
     Find the best pattern in the codebook, returns the distance.
@@ -271,7 +288,7 @@ def get_codes_ordering(best_code_per_p, nCodes):
 
 
 
-def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False):
+def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=True,repulse=False):
     """
     Online vector quantization
     INPUT:
@@ -303,8 +320,9 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
         np.random.shuffle(fullrange)
         start_codes_idx = fullrange[:K]
         codebook = feats[start_codes_idx,:]
-        for code_idx in range(K):
-            codebook[code_idx,:] = normalize(codebook[code_idx,:])
+        if scale:
+            for code_idx in range(K):
+                codebook[code_idx,:] = normalize(codebook[code_idx,:])
     # existing codebook
     else: 
         codebook = K
@@ -335,14 +353,20 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
             if pattern.sum() == 0 :
                 continue
             # find closest code
-            idxs,weights,dists = encode_scale_oneiter(pattern,codebook,
+            if scale:
+                idxs,weights,dists = encode_scale_oneiter(pattern,codebook,
                                                       cbIsNormalized=True)
+            else:
+                # no scaling, i.e. weights = 1
+                idxs,dists = encode_oneiter(pattern,codebook)
+                weights = np.ones([K,1])
             idx = idxs[0]
             weight = weights[idx]
             dist = dists[idx]
             # get that code closer by some learning rate
             codebook[idx,:] += (pattern / weight - codebook[idx,:]) * lrate
-            codebook[idx,:] = normalize(codebook[idx,:])
+            if scale:
+                codebook[idx,:] = normalize(codebook[idx,:])
             # remember that code for that pattern
             best_code_per_pattern[whichPattern] = idx
 
@@ -352,7 +376,8 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False)
                 idx2 = idxs[1]
                 weight2 = weights[1]
                 codebook[idx2,:] -= (pattern / weight2 - codebook[idx2,:]) * lrate * (dists[idx] / dists[idx2])
-                codebook[idx2,:] = normalize(codebook[idx2,:])
+                if scale:
+                    codebook[idx2,:] = normalize(codebook[idx2,:])
             #####################
             
             # add distance to sum
