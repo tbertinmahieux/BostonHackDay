@@ -251,6 +251,26 @@ def online_encoding_learn(feats,K,lrate=1.,nIter=10,nEncode=-1,
 
 
 
+def get_codes_ordering(best_code_per_p, nCodes):
+    """
+    Receives an array as long as the number of features, with
+    the index of best code for each feature.
+    Returns an ordered list of the code index (by number of times
+    each code is used)
+    This is a small util function, nothing more.
+    Usage:
+       res = get_codes_ordering(best_code_per_p,200)
+       orderedCodebook = codebook[res]
+    """
+    freqs = np.zeros([nCodes,1])
+    best_code_per_p_flat = best_code_per_p.flatten()
+    for k in range(best_code_per_p.size):
+        freqs[best_code_per_p_flat[k]] += 1
+    return np.flipud(np.argsort(freqs.flatten()))
+
+
+
+
 def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,repulse=False):
     """
     Online vector quantization
