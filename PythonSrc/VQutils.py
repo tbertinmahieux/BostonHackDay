@@ -274,6 +274,7 @@ def get_codes_ordering(best_code_per_p, nCodes):
     the index of best code for each feature.
     Returns an ordered list of the code index (by number of times
     each code is used)
+    Also returns frequencies
     This is a small util function, nothing more.
     Usage:
        res = get_codes_ordering(best_code_per_p,200)
@@ -283,7 +284,7 @@ def get_codes_ordering(best_code_per_p, nCodes):
     best_code_per_p_flat = best_code_per_p.flatten()
     for k in range(best_code_per_p.size):
         freqs[best_code_per_p_flat[k]] += 1
-    return np.flipud(np.argsort(freqs.flatten()))
+    return np.flipud(np.argsort(freqs.flatten())), freqs
 
 
 def find_best_code_per_pattern(dataset,codebook,scale=True):
