@@ -24,6 +24,7 @@ def euclidean_dist(a,b):
     #return np.sqrt(np.square(a-b).sum())
     # following faster, but does not work on boar?
     #return np.sqrt(np.dot((a-b),(a-b).T)[0][0])
+    assert((a-b).size < 1000)
     return np.sqrt(np.square(a-b).sum())
 
 def euclidean_norm(a):
