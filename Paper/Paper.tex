@@ -7,6 +7,8 @@
 \usepackage{ismir2010,amsmath,cite}
 \usepackage{graphicx}
 \usepackage{url}
+\usepackage{algorithm,algorithmic}
+
 
 % Title.
 % ------
@@ -31,6 +33,8 @@
   {First author} {Affiliation1 \\ {\tt author1@ismir.edu}}
   {Second author} {\bf Retain these fake authors in\\\bf submission to preserve the formatting}
   {Third author} {Affiliation3 \\ {\tt author3@ismir.edu}}
+% what order do we use? Thierry, Ron, Dan? is Juan on?
+
 
 \begin{document}
 %
@@ -69,6 +73,9 @@ Nearest neighbor for music also includes \cite{Cano2004} and ...
 Echo Nest analyze API: \cite{EchoNest}.
 
 \subsection{Cowbell Dataset}
+We have $3,720,091$ non zero bars, a bar usually contains
+$4$ beats.
+
 
 \subsection{uspop2002}
 uspop: \cite{uspop2002}.
@@ -77,6 +84,32 @@ uspop: \cite{uspop2002}.
 \section{Algorithm}\label{sec:algo}
 
 Vector quantization. Online learning.
+
+\subsection{Codebook Learning}
+We initialize the codebook by choosing $K$ random points from our dataset.
+
+
+\begin{algorithm}
+\caption{Pseudocode of Vector Quantization}
+\label{alg:vq}
+\begin{algorithmic}
+\STATE$l$ learning rate
+\STATE$\{P_n\}$ set of patches
+\STATE$\{C_k\}$ codebook of $K$ codes
+%\STATE $m \leftarrow b$
+\REQUIRE $0 < l \leq 1$
+\FOR{$nIters$}
+\FOR{$p \in \{P_n\}$}
+\STATE$c \leftarrow min_{c \in C_k} dist(p,c)$
+\STATE$c \leftarrow c + (p - c) * l$
+\ENDFOR
+\ENDFOR
+\RETURN $u$
+\end{algorithmic}
+\end{algorithm}
+
+
+
 
 \section{Experiments}\label{sec:experiments}
 
@@ -91,7 +124,8 @@ We are awesome. Here's how:
 \item smarter shingles, based on beats and bars
 \item clusters good for encoding
 \item clusters good for something else?
-\item free online API, code available
+\item free online API, code available\footnote{code not released yet to preserve submission's anonymity}
+\item we have lab t-shirts
 \end{itemize}
 
 
