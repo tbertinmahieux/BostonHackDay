@@ -14,7 +14,7 @@ www.columbia.edu/~tb2332/
 import numpy as np
 import scipy as sp
 import time
-
+import copy
 
 def euclidean_dist(a,b):
     """
@@ -212,7 +212,7 @@ def online_encoding_learn(feats,K,lrate=1.,nIter=10,nEncode=-1,
             codebook[code_idx,:] = normalize(codebook[code_idx,:])
     # existing codebook
     else: 
-        codebook = K
+        codebook = copy.deepcopy(K)
         K = codebook.shape[0]
     # initialize number of encoding iter
     if nEncode <= 0:
@@ -344,7 +344,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=True,rep
                 codebook[code_idx,:] = normalize(codebook[code_idx,:])
     # existing codebook
     else: 
-        codebook = K
+        codebook = copy.deepcopy(K)
         K = codebook.shape[0]
 
     # init (for thresholding)
