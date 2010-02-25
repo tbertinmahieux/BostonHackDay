@@ -24,7 +24,6 @@ def euclidean_dist(a,b):
     #return np.sqrt(np.square(a-b).sum())
     # following faster, but does not work on boar?
     #return np.sqrt(np.dot((a-b),(a-b).T)[0][0])
-    assert((a-b).size == a.size)
     return np.sqrt(np.square(a-b).sum())
 
 def euclidean_norm(a):
@@ -71,7 +70,6 @@ def encode_oneiter(signal,codebook):
     dists = [euclidean_dist(signal,r) for r in codebook]
     # return the index, scaling, and distance for the MIN DISTANCE
     idxs = np.argsort(dists)
-    assert( dists[idxs[0]] == min(dists) )
     return idxs,dists
 
 
