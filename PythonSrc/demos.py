@@ -4,9 +4,21 @@ More of a demo than a useful code
 
 
 def get_data_maxener_16_true_false_bars2():
+    return get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2)
+
+def get_data_maxener_8_true_false_bars2():
+    return get_data_maxener(pSize=8,keyInv=True,downBeatInv=False,bars=2)
+
+
+def get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2):
     """
     Util function for something we do all the time
     Remove the empty patterns
+    INPUT:
+        - pSize        (default: 16)
+        - keyInv       (default: True)
+        - downBeatInv  (default: False)
+        - bars         (default: 2)
     """
     import data_iterator
     import feats_utils as FU
@@ -16,13 +28,15 @@ def get_data_maxener_16_true_false_bars2():
     tstart = time.time()
     # get maltab files
     allfiles = FU.get_all_matfiles('.')
+    print len(allfiles),' .mat files found'
     # create and set iterator
     data_iter = data_iterator.DataIterator()
     data_iter.setMatfiles(allfiles) # set matfiles
-    data_iter.useBars(2)            # a pattern spans two bars
+    data_iter.useBars( bars )            # a pattern spans two bars
     data_iter.stopAfterOnePass(True)# stop after one full iteration
     # get features
-    featsNorm = [FU.normalize_pattern_maxenergy(p,16,True,False).flatten() for p in data_iter]
+    featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv).flatten() for p in data_iter]
+    print 'found ', len(featsNorm),' patterns before removing empty ones'
     # make it an array
     featsNorm = np.array(featsNorm)
     # remove empyt patterns
