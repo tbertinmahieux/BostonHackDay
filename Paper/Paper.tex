@@ -102,7 +102,8 @@ MFCC vectors \cite{Barrington2009a}. This could be seen as complementary
 to our work. Chromas capture the harmonic information and some of the
 rythm while the MFCC are great timbral features.
 
-Nearest neighbor for music also includes \cite{Cano2004} and ...
+Nearest neighbor for music also includes \cite{Cano2004} and
+\cite{Holzapfel2009}.
 
 Other large-scale work use summarization of the features. We mention 
 gaussian mixtures \cite{Mandel2005}, aggregate features \cite{Bergstra2006a}
@@ -210,7 +211,7 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 
 \section{Experiments}\label{sec:experiments}
 
-\subsection{Setting}
+\subsection{Setting}\label{ssec:setting}
 We take one or two bars, normalize the patches to size 4, 8, or 16.
 We roll the patch to be invariant to the key (on the patch level, not on
 the song level). We learn a codebook of size $K$ over the cowbell dataset 
@@ -223,6 +224,24 @@ distance between a pattern and its encoding. We can also measure the use
 of the different codes.
 
 \subsection{Pattern length}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+size & {\bf 1 bar (4)} & {\bf 2 bars (16)} & {\bf 4 beats} & {\bf 7 beats} \\ 
+\hline \hline
+avg. dist & 1 & 2 & 3 & 4 \\ \hline
+something & 5 & 6 & 7 & 8 \\ \hline
+\end{tabular}
+\end{center}
+\caption{{Encoding score for different pattern sizes. We can select the
+size of the patterns based on bars. In this case, we put the actual size
+of the pattern in parentheses. If the pattern size is based on beats, the
+size is the number of beats.}}
+\label{tab:psize}
+\end{table}
+
 
 \subsection{Visualization}
 We can use an algorithm like locally linear embedding \cite{Roweis2000} (LLE) 
@@ -238,6 +257,36 @@ result can be seen in Figure \ref{fig:lle}.
 \end{center}
 \caption{{LLE visualization of the code book.}}
 \label{fig:lle}
+\end{figure}
+
+Another way is simply to present the codes in order of cluster size.
+We encode the training or testing set as explained in Subsection 
+\ref{ssec:setting} and we count how many patterns were closer to a particular
+code than any other code. In Figure \ref{fig:firstcodes}, we show the $25$
+most used codes out of a code book of size $200$.
+Code from Figure \ref{fig:code} is the 37th most used code in that
+code book. In Figure \ref{fig:closep}, we show a sample of patterns that
+fall into its cluster.
+
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{codes1}
+\end{center}
+\caption{{$25$ most used codes on the training set.}}
+\label{fig:firstcodes}
+\end{figure}
+
+The most common pattern is a sustained note, as we can see in Figure
+\ref{fig:firstcodes}. Another common pattern is a sustained note
+with an harmonic, as seen in the LLE visualization (Figure \ref{fig:lle}).
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{close_patterns1}
+\end{center}
+\caption{{Sample of the close patterns to code in Figure \ref{fig:code}.}}
+\label{fig:closep}
 \end{figure}
 
 \subsection{Specific Examples}
