@@ -53,18 +53,60 @@ available.
 %
 \section{Introduction}\label{sec:introduction}
 
-This template includes all the information about formatting manuscripts for the ISMIR 2010. 
-Please follow these guidelines to give the final proceedings a uniform look. 
-If you have any questions, please contact the Conference Management.
-This template can be downloaded from the ISMIR 2010 web site (http://ismir2010.ismir.net).
+The original goal of the \textit{Shingles} was retrieval, i.e. find very
+similar song segments based on their harmonic pattern. Part of the
+challenge was to handle tons of overlapping song segments represented
+by a rather long feature vector (a serie of chroma features).
+The LSH algorithm proved a great solution for performing a $k$-nearest
+neighbors ($k$nn) search in such a space. However, the paradigm of $k$nn has
+an intrinsec scaling limit.
+
+Finding a closest match is a tangible goal within a personal collection
+of a few thousands songs. It can be used to discover cover songs or
+find the seamless transitions in a playlist. However, the closest match
+in millions and millions of music excerpts do not help us organize such
+an amount of media. Some tasks are still important, for instance cover
+recognition, and improvements in $k$nn methods are always welcome.
+But it does not the describe the music space, nor does it necessarily
+make good recommendations. A similar argument in the recommendation
+domain is that precision becomes more important than recall passed a certain
+scale of data for many practical uses.
+
+We propose to move the \textit{Shingle} idea into the larger clustering paradigm.
+The goal is to find typical patterns that can be seen as cluster centroids.
+Those typical patterns help us understand a music collection from an
+harmonic point of view. Segments of songs can be described in regard to their
+proximity to the different centroids, thus creating some notion of distance
+among the song segments. These cluster of similar patterns can have many usages:
+\begin{enumerate}
+\item describing the music space
+\item finding potential similar songs and/or covers
+\item eliminating quickly very wrong matches in a query system
+\end{enumerate}
+
+We present a practical way to do such large-scale clustering using vector
+quantization. We present clustering results of an online algorithm on a data 
+set of $43$K songs, but the method applies to any data size. We show how to
+select different parameters such as the size of the \textit{Shingles} 
+using an encoding scheme on a test set of $4$K songs. Finally, we illustrate
+the method with some specific examples.
 
 
 \section{Previous Work}\label{sec:prevwork}
 The idea is closely related to the \textit{Shingles} described by
-Slaney and Casey \cite{Casey2006,Casey2007,Casey2008}. LSH: \cite{E2LSH}.
+Slaney and Casey \cite{Casey2006,Casey2007,Casey2008}. 
+LSH implementation: \cite{E2LSH}.
 Barrington et al. recently studied music texture using a set of ordered
-chroma vectors \cite{Barrington2009a}. 
+MFCC vectors \cite{Barrington2009a}. 
 Nearest neighbor for music also includes \cite{Cano2004} and ...
+
+Other large-scale work use summarization of the features. We mention 
+gaussian mixtures \cite{Mandel2005}, aggregate features \cite{Bergstra2006a}
+and linear dynamical systems \cite{Barrington2009a}. The chroma representation
+is close from an harmonic point of view to the actual music, in particular
+we can ``listen'' to the patches (see Section \ref{sec:experiments}).
+This is an advantage for analyzing a large data set, and in accordance with our goal
+we restrain ourselves from using generative models to compress our features.
 
 
 \section{Data}\label{sec:data}
@@ -124,9 +166,17 @@ We are awesome. Here's how:
 \item smarter shingles, based on beats and bars
 \item clusters good for encoding
 \item clusters good for something else?
-\item free online API, code available\footnote{code not released yet to preserve submission's anonymity}
+\item free online API, code available\footnote{code not released yet to preserve 
+submission's anonymity}
 \item we have lab t-shirts
 \end{itemize}
+
+As for enhancements, we specifically did not compress our features using
+gaussian mixtures or other generative model. That being said, these methods
+could be use to develop better distance measures between \textit{Shingles}.
+The use of the euclidean distance is arbitrary. Summarizing patches
+with gaussians, and then comparing the distance between those gaussians,
+could reduce the influence of the noise in the distance measure.
 
 
 
