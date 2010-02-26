@@ -96,8 +96,12 @@ the method with some specific examples.
 The idea is closely related to the \textit{Shingles} described by
 Slaney and Casey \cite{Casey2006,Casey2007,Casey2008}. 
 LSH: \cite{Datar2004}, LSH implementation: \cite{E2LSH}.
+
 Barrington et al. recently studied music texture using a set of ordered
-MFCC vectors \cite{Barrington2009a}. 
+MFCC vectors \cite{Barrington2009a}. This could be seen as complementary
+to our work. Chromas capture the harmonic information and some of the
+rythm while the MFCC are great timbral features.
+
 Nearest neighbor for music also includes \cite{Cano2004} and ...
 
 Other large-scale work use summarization of the features. We mention 
@@ -123,8 +127,9 @@ there are $4$ beats per bar. Thus an appropriate patch size for one bar
 is $12$x$4$ or $12$x$8$.
 
 Note that we do not claim that any of these informations (segments, beats, bars)
-are perfectly accurate. Practise showed us that they are reasonable, and the
-size of the data set should make up for the imperfections or noise.
+are perfectly accurate (e.g. in \cite{Barrington2009a} authors improve on the
+song segmentation features). Practise showed us that they are reasonable, 
+and the size of the data set should make up for the imperfections or noise.
 We also believe that patches sizes based on a number of beats or bars are more
 meaningful than an arbitrary time length. More on this in the experiments
 (Section \ref{sec:experiments}).
@@ -152,11 +157,30 @@ otherwise. We also tried to use Tzanetakis dataset \cite{Tzanetakis2002a}, but
 the $30$ seconds segments seemed hard to analyze by the Echo Nest API, most did
 not contain any bar.
 
-\section{Algorithm}\label{sec:algo}
+uspop2002 serves as testing set to measure how well a code book learned on
+the Cowbell data set can represent new songs.
 
-Vector quantization \cite{Gersho1991}. Online learning.
+\section{Algorithm}\label{sec:algo}
+In this section we present the creation of the harmonic patterns from
+the Echo Nest data. Then, we explain the online vector quantization algorithm
+used to learn a code book of those patterns.
+
+\subsection{Pattern Creation}
+Here we should explain key invariance, resizing, etc, and not in the
+experiment section.
+
 
 \subsection{Codebook Learning}
+We use an online version of the vector quantization algorithm 
+\cite{Gersho1991}. This can also be seen as an online Kmeans.
+The idea is as follow: take a sample from your data, find the closest
+code in the codebook, bring that code closer to the sample by some amount.
+The details are explained as Algorithm \ref{algo:vq}. note that this
+algorithm, though not optimal, is $O(n)$ with $n$ number of songs seen.
+Thus it scales linearly to any size of data set. The setting of the learning
+rate might become trickier, but this is not fundamentally a problem.
+
+
 We initialize the codebook by choosing $K$ random points from our dataset.
 
 
@@ -182,6 +206,8 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 
 
 
+
+
 \section{Experiments}\label{sec:experiments}
 
 \subsection{Setting}
@@ -189,7 +215,7 @@ We take one or two bars, normalize the patches to size 4, 8, or 16.
 We roll the patch to be invariant to the key (on the patch level, not on
 the song level). We learn a codebook of size $K$ over the cowbell dataset 
 using the VQ algorithm (Algorithm \ref{algo:vq}). A typical learning rate 
-is $1e-2$ for $20$ iterations over the whole dataset.
+is $0.01$ for $20$ iterations over the whole dataset.
 
 We use the codebook to encode our testing set (see Section \ref{sec:data}).
 Each pattern is encoded with only one code. We can measure the average
@@ -199,6 +225,12 @@ of the different codes.
 \subsection{Pattern length}
 
 \subsection{Visualization}
+We can use an algorithm like locally linear embedding \cite{Roweis2000} (LLE) 
+or multidimensional scaling \cite{Kruskal1964} to visualize the data in
+2 dimensions. We use the former\footnote{implementation: 
+\url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}, the
+result can be seen in Figure \ref{fig:lle}.
+
 
 \begin{figure}[htb]
 \begin{center}
