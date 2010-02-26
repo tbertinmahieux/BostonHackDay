@@ -10,7 +10,7 @@ def get_data_maxener_8_true_false_bars2():
     return get_data_maxener(pSize=8,keyInv=True,downBeatInv=False,bars=2)
 
 
-def get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2):
+def get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2,beats=0):
     """
     Util function for something we do all the time
     Remove the empty patterns
@@ -32,7 +32,12 @@ def get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2):
     # create and set iterator
     data_iter = data_iterator.DataIterator()
     data_iter.setMatfiles(allfiles) # set matfiles
-    data_iter.useBars( bars )            # a pattern spans two bars
+    if bars > 0:
+        data_iter.useBars( bars )            # a pattern spans two bars
+    elif beats > 0:
+        data_iter.setFeatsize( beats )       # a pattern spans two bars
+    else:
+        print 'bars or beats should be > 0'
     data_iter.stopAfterOnePass(True)# stop after one full iteration
     # get features
     featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv).flatten() for p in data_iter]
