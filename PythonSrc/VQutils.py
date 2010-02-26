@@ -287,7 +287,7 @@ def get_codes_ordering(best_code_per_p, nCodes):
     return np.flipud(np.argsort(freqs.flatten())), freqs.flatten()
 
 
-def find_best_code_per_pattern(dataset,codebook,scale=True):
+def find_best_code_per_pattern(dataset,codebook,scale=False):
     """
     Find the best code for each pattenr in the dataset.
     Dataset: one code per row (samething for codebook)
@@ -308,7 +308,7 @@ def find_best_code_per_pattern(dataset,codebook,scale=True):
     return best_code_per_p
 
 
-def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=True,repulse=False):
+def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=False,repulse=False):
     """
     Online vector quantization
     INPUT:
