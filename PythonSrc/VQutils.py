@@ -141,6 +141,7 @@ def encode_scale(signal,codebook,thresh,cbIsNormalized=False,maxIter=1e8):
     return weights, signal
 
 
+
 def encode_dataset_scale(data,codebook,thresh,cbIsNormalized=False):
     """
     Iteratively encode a whole dataset, where each row is a signal
@@ -294,8 +295,12 @@ def find_best_code_per_pattern(dataset,codebook,scale=False):
     If scale=True, we assume codebook normalized
     return a vector, length=dataset size, contains the index
     of the closest code for each pattern (or -1 if there was a problem)
+    RETURN:
+       - index of the best code per pattern
+       - distance for pattern to the best code
     """
     best_code_per_p = np.ones([dataset.shape[0],1]) * -1
+    p_dists = np.ones([dataset.shape[0],1]) * -1
     for k in range(dataset.shape[0]):
         pattern = dataset[k,:].reshape(1,dataset.shape[1])
         if scale:
@@ -304,8 +309,9 @@ def find_best_code_per_pattern(dataset,codebook,scale=False):
         else:
             idxs,dists = encode_oneiter(pattern,codebook)
         best_code_per_p[k] = idxs[0]
+        p_dists[k] = dists[0]
     # done
-    return best_code_per_p
+    return best_code_per_p, p_dists
 
 
 def add_image(P,im,x,y,width=.15):
