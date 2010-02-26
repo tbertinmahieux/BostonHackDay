@@ -95,7 +95,7 @@ the method with some specific examples.
 \section{Previous Work}\label{sec:prevwork}
 The idea is closely related to the \textit{Shingles} described by
 Slaney and Casey \cite{Casey2006,Casey2007,Casey2008}. 
-LSH implementation: \cite{E2LSH}.
+LSH: \cite{Datar2004}, LSH implementation: \cite{E2LSH}.
 Barrington et al. recently studied music texture using a set of ordered
 MFCC vectors \cite{Barrington2009a}. 
 Nearest neighbor for music also includes \cite{Cano2004} and ...
@@ -112,7 +112,32 @@ we restrain ourselves from using generative models to compress our features.
 \section{Data}\label{sec:data}
 
 \subsection{Echo Nest features}
-Echo Nest analyze API: \cite{EchoNest}.
+We use the Echo Nest analyze API \cite{EchoNest} throughout this work.
+The API gives us a chroma vector (length $12$) for every music event, 
+or ``segment'', for any song we upload to their platform. 
+We also get an estimate of where the beats and the bars are. 
+We transform the chroma vectors per segment into per beat vector using a 
+simple average. We can then stack beat vectors for a number of bars (usually 1 or 2). 
+We get a fixed-size patch by resampling the number of chroma vectors. Typically,
+there are $4$ beats per bar. Thus an appropriate patch size for one bar
+is $12$x$4$ or $12$x$8$.
+
+Note that we do not claim that any of these informations (segments, beats, bars)
+are perfectly accurate. Practise showed us that they are reasonable, and the
+size of the data set should make up for the imperfections or noise.
+We also believe that patches sizes based on a number of beats or bars are more
+meaningful than an arbitrary time length. More on this in the experiments
+(Section \ref{sec:experiments}).
+
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.8\columnwidth]{code}
+\end{center}
+\caption{{A typical code from a code book of size $200$. Patterns represented
+$2$ bars and the pattern length was set to $16$.}}
+\label{fig:code}
+\end{figure}
 
 \subsection{Cowbell Dataset}
 We have $3,720,091$ non zero bars, a bar usually contains
@@ -120,12 +145,16 @@ $4$ beats.
 
 
 \subsection{uspop2002}
-uspop: \cite{uspop2002}.
-
+We had acces to a low quality (32kbps) version of the songs in the uspop 2002 data
+set \cite{uspop2002}.
+This well-known data show a great diversity of pop songs, but is not particular
+otherwise. We also tried to use Tzanetakis dataset \cite{Tzanetakis2002a}, but 
+the $30$ seconds segments seemed hard to analyze by the Echo Nest API, most did
+not contain any bar.
 
 \section{Algorithm}\label{sec:algo}
 
-Vector quantization. Online learning.
+Vector quantization \cite{Gersho1991}. Online learning.
 
 \subsection{Codebook Learning}
 We initialize the codebook by choosing $K$ random points from our dataset.
@@ -133,7 +162,7 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 
 \begin{algorithm}
 \caption{Pseudocode of Vector Quantization}
-\label{alg:vq}
+\label{algo:vq}
 \begin{algorithmic}
 \STATE$l$ learning rate
 \STATE$\{P_n\}$ set of patches
@@ -146,7 +175,7 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 \STATE$c \leftarrow c + (p - c) * l$
 \ENDFOR
 \ENDFOR
-\RETURN $u$
+\RETURN $\{C_k\}$
 \end{algorithmic}
 \end{algorithm}
 
@@ -155,8 +184,31 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 
 \section{Experiments}\label{sec:experiments}
 
+\subsection{Setting}
+We take one or two bars, normalize the patches to size 4, 8, or 16.
+We roll the patch to be invariant to the key (on the patch level, not on
+the song level). We learn a codebook of size $K$ over the cowbell dataset 
+using the VQ algorithm (Algorithm \ref{algo:vq}). A typical learning rate 
+is $1e-2$ for $20$ iterations over the whole dataset.
 
+We use the codebook to encode our testing set (see Section \ref{sec:data}).
+Each pattern is encoded with only one code. We can measure the average
+distance between a pattern and its encoding. We can also measure the use
+of the different codes.
 
+\subsection{Pattern length}
+
+\subsection{Visualization}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{codes_lle}
+\end{center}
+\caption{{LLE visualization of the code book.}}
+\label{fig:lle}
+\end{figure}
+
+\subsection{Specific Examples}
 
 
 \section{Conclusion}
