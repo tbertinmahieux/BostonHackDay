@@ -159,7 +159,6 @@ class DataIterator:
                 self.fidx = self.fidx + 1
                 continue
             if self.currfeats.size == 0:
-                print 'currfeats is []'
                 self.fidx = self.fidx + 1
                 continue
             if self.usebars == 0 and self.currfeats.shape[1] < self.featsize :
