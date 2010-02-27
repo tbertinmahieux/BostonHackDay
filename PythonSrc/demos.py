@@ -3,12 +3,26 @@ More of a demo than a useful code
 """
 
 
+def load_and_encode_data(codebook,pSize=16,keyInv=True,
+                         downBeatInv=False,bars=2):
+    """
+    Load a dataset, and encode it with codebook
+    Return best_code_per_p, dists
+    """
+    assert(codebook.shape[1] == pSize)
+    import VQutils
+    # get data
+    featsNorm = get_data_maxener(pSize=pSize,keyInv=keyInv,
+                                 downBeatInv=downBeatInv,bars=bars)
+    # encode
+    return find_best_code_per_pattern(featsNorm,codebook,scale=False)
+
+
 def get_data_maxener_16_true_false_bars2():
     return get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2)
 
 def get_data_maxener_8_true_false_bars2():
     return get_data_maxener(pSize=8,keyInv=True,downBeatInv=False,bars=2)
-
 
 def get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2):
     """
