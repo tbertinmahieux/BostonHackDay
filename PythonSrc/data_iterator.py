@@ -158,7 +158,7 @@ class DataIterator:
             if type(self.barbts) == type(0.0): # weird problem sometimes
                 self.fidx = self.fidx + 1
                 continue
-            if self.currfeats == []:
+            if self.currfeats.size == 0:
                 print 'currfeats is []'
                 self.fidx = self.fidx + 1
                 continue
