@@ -33,9 +33,10 @@ def get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2):
     data_iter = data_iterator.DataIterator()
     data_iter.setMatfiles(allfiles) # set matfiles
     if bars > 0:
-        data_iter.useBars( bars )            # a pattern spans two bars
+        data_iter.useBars( bars )            # a pattern spans 'bars' bars
     else:
-        data_iter.setFeatsize( pSize )       # a pattern spans two bars
+        data_iter.useBars(0)                 # important to set it to zero!
+        data_iter.setFeatsize( pSize )       # a pattern is a num. of beats
     data_iter.stopAfterOnePass(True)# stop after one full iteration
     # get features
     featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv).flatten() for p in data_iter]
