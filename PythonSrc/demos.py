@@ -3,6 +3,10 @@ More of a demo than a useful code
 """
 
 
+# to normalize for size
+# np.average(np.sqrt(np.square(dists16)/(12*16.)))
+
+
 
 def load_and_encode_data(codebook,pSize=16,keyInv=True,
                          downBeatInv=False,bars=2):
