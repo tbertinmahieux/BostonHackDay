@@ -158,7 +158,7 @@ class DataIterator:
             if type(self.barbts) == type(0.0): # weird problem sometimes
                 self.fidx = self.fidx + 1
                 continue
-            if self.currfeats.size == 0:
+            if self.currfeats.size == 0 or len(self.currfeats.shape) < 2:
                 self.fidx = self.fidx + 1
                 continue
             if self.usebars == 0 and self.currfeats.shape[1] < self.featsize :
