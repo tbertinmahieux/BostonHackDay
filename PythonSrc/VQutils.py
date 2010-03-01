@@ -298,9 +298,11 @@ def find_best_code_per_pattern(dataset,codebook,scale=False):
     RETURN:
        - index of the best code per pattern
        - distance for pattern to the best code
+       - average distance for pattern to the best code (per pixel)
     """
     best_code_per_p = np.ones([dataset.shape[0],1]) * -1
     p_dists = np.ones([dataset.shape[0],1]) * -1
+    avg_p_dists = np.ones([dataset.shape[0],1]) * -1
     for k in range(dataset.shape[0]):
         pattern = dataset[k,:].reshape(1,dataset.shape[1])
         if scale:
@@ -310,8 +312,9 @@ def find_best_code_per_pattern(dataset,codebook,scale=False):
             idxs,dists = encode_oneiter(pattern,codebook)
         best_code_per_p[k] = idxs[0]
         p_dists[k] = dists[0]
+        avg_p_dists[k] = np.sum(np.abs(pattern - codebook[idxs[0]]))*1./pattern.size
     # done
-    return best_code_per_p, p_dists
+    return best_code_per_p, p_dists, avg_p_dist
 
 
 def add_image(P,im,x,y,width=.15):
