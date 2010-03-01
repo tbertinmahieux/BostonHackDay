@@ -314,7 +314,7 @@ def find_best_code_per_pattern(dataset,codebook,scale=False):
         p_dists[k] = dists[0]
         avg_p_dists[k] = np.sum(np.abs(pattern - codebook[idxs[0]]))*1./pattern.size
     # done
-    return best_code_per_p, p_dists, avg_p_dist
+    return best_code_per_p, p_dists, avg_p_dists
 
 
 def add_image(P,im,x,y,width=.15):
