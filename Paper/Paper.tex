@@ -48,7 +48,8 @@ made of ordered chroma features, and not of summarization like gaussian
 mixtures coefficients or NMF weights. We explain
 how to operate on such large datasets, we analyze the obained clusters,
 and we discuss there use for retrieval and encoding. All code is made
-available.
+available.\\
+TAKE-HOME MESSAGE: \textit{Shingles} idea can go large-scale?
 \end{abstract}
 %
 \section{Introduction}\label{sec:introduction}
@@ -68,9 +69,10 @@ in millions and millions of music excerpts do not help us organize such
 an amount of media. Some tasks are still important, for instance cover
 recognition, and improvements in $k$nn methods are always welcome.
 But it does not the describe the music space, nor does it necessarily
-make good recommendations. A similar argument in the recommendation
-domain is that precision becomes more important than recall passed a certain
-scale of data for many practical uses.
+make good recommendations. We do not want to look for one neighbor, but
+rather a cloud of potential close patterns. A similar argument in the 
+recommendation domain is that precision becomes more important than recall 
+passed a certain scale of data for many practical uses.
 
 We propose to move the \textit{Shingle} idea into the larger clustering paradigm.
 The goal is to find typical patterns that can be seen as cluster centroids.
@@ -84,6 +86,9 @@ among the song segments. These cluster of similar patterns can have many usages:
 \item eliminating quickly very wrong matches in a query system
 \end{enumerate}
 
+Our contribution is... large-scale clustering method, 
+
+
 We present a practical way to do such large-scale clustering using vector
 quantization. We present clustering results of an online algorithm on a data 
 set of $43$K songs, but the method applies to any data size. We show how to
@@ -95,15 +100,25 @@ the method with some specific examples.
 \section{Previous Work}\label{sec:prevwork}
 The idea is closely related to the \textit{Shingles} described by
 Slaney and Casey \cite{Casey2006,Casey2007,Casey2008}. 
+
 LSH: \cite{Datar2004}, LSH implementation: \cite{E2LSH}.
+The E$^2$LSH packages can efficiently handle about $50$K or $100$K
+vectors of size $200$. Even with a better implementation, the LSH
+model still has some scaling problem. A large portion of the data
+must be known to decide how many projections to use, and what guarantee
+of finding the nearest neighbor it can provides. Also, we could fix the
+number of projections and consider as clusters all the elements that
+fall into the same bin. However, this does not give us a centroid, a
+typical pattern representing that cluster.
 
 Barrington et al. recently studied music texture using a set of ordered
 MFCC vectors \cite{Barrington2009a}. This could be seen as complementary
 to our work. Chromas capture the harmonic information and some of the
 rythm while the MFCC are great timbral features.
 
-Nearest neighbor for music also includes \cite{Cano2004} and
-\cite{Holzapfel2009}.
+Nearest neighbor and clustering methods are common in music similarity 
+research, for instance \cite{Cano2004,Holzapfel2009}. The difference here 
+are the actual patterns that we cluster.
 
 Other large-scale work use summarization of the features. We mention 
 gaussian mixtures \cite{Mandel2005}, aggregate features \cite{Bergstra2006a}
@@ -115,6 +130,9 @@ we restrain ourselves from using generative models to compress our features.
 
 
 \section{Data}\label{sec:data}
+In this section we present our use of the Echo Nest features and the
+datasets we use for training and testing our model.
+
 
 \subsection{Echo Nest features}
 We use the Echo Nest analyze API \cite{EchoNest} throughout this work.
@@ -146,20 +164,21 @@ $2$ bars and the pattern length was set to $16$.}}
 \end{figure}
 
 \subsection{Cowbell Dataset}
-We have $3,720,091$ non zero bars, a bar usually contains
-$4$ beats.
+We have $43,300$ songs, giving  $3,720,091$ non zero bars, a bar usually 
+contains $4$ beats.
 
 
 \subsection{uspop2002}
-We had acces to a low quality (32kbps) version of the songs in the uspop 2002 data
-set \cite{uspop2002}.
+We had acces to a low quality (32kbps) version of the songs in the uspop 2002 
+data set \cite{uspop2002}.
 This well-known data show a great diversity of pop songs, but is not particular
 otherwise. We also tried to use Tzanetakis dataset \cite{Tzanetakis2002a}, but 
 the $30$ seconds segments seemed hard to analyze by the Echo Nest API, most did
 not contain any bar.
 
 uspop2002 serves as testing set to measure how well a code book learned on
-the Cowbell data set can represent new songs.
+the Cowbell data set can represent new songs. We get Echo Nest features
+for $8651$ songs from that dataset.
 
 \section{Algorithm}\label{sec:algo}
 In this section we present the creation of the harmonic patterns from
@@ -224,23 +243,100 @@ distance between a pattern and its encoding. We can also measure the use
 of the different codes.
 
 \subsection{Pattern length}
+See encoding experiments in Table \ref{tab:psize}.
 
+
+% RESULTS
+% 200codes, 2 bars, pSize=16, maxener, True, False, not scaled = 3.788
+%                                             averaged on size = 
+% 200codes, 2 bars, pSize=8, maxener, True, False, not scaled  = 3.135
+%                                             averaged on size = 
+% 200codes, 1 bars, pSize=4, maxener, True, False, not scaled  = 
+%                                             averaged on size = 
+% 200codes, 7 beats, pSize=7, maxener, True, False, not scaled = 2.771
+%                                             averaged on size = 
+% 200codes, 5 beats, pSize=5, maxener, True, False, not scaled = 2.397
+%                                             averaged on size = 
+% 200codes, 3 beats, pSize=3, maxener, True, False, not scaled = 
+%                                             averaged on size = 
 \begin{table}
 \begin{center}
-\begin{tabular}{|l|c|c|c|c|}
+\begin{tabular}{|l|c|}
 \hline
-size & {\bf 1 bar (4)} & {\bf 2 bars (16)} & {\bf 4 beats} & {\bf 7 beats} \\ 
-\hline \hline
-avg. dist & 1 & 2 & 3 & 4 \\ \hline
-something & 5 & 6 & 7 & 8 \\ \hline
+size & avg. dist \\ \hline \hline
+1 bar (4) & \\
+2 bars (8) & $$\\
+2 bars (12) & $$\\
+2 bars (16) & $$ \\ \hline
+3 beats & \\
+5 beats & $$\\
+7 beats & $$\\ \hline
 \end{tabular}
 \end{center}
 \caption{{Encoding score for different pattern sizes. We can select the
 size of the patterns based on bars. In this case, we put the actual size
 of the pattern in parentheses. If the pattern size is based on beats, the
-size is the number of beats.}}
+size is the number of beats. Results are on the uspop dataset, not seen
+during training.}}
 \label{tab:psize}
 \end{table}
+
+
+\subsection{Data Size}
+We are interesting to see how the amount of training data changes
+the quality of our code.
+We experiment with different data sizes for a fixed size of codebook and a 
+fixed code length. The data points are chose randomly from the whole
+data set.
+Code length: 1 bar resized to size 4. Code book size: 100
+We measure the distortion on our test set. We hope for some convergence.
+See results in Table \ref{tab:datasize}.
+
+Our learning can overfit, which explain the bad scores of small datasets.
+The larger the dataset, the smallest the chance to overfit.
+We ar elooking for a size of dataset that guarantees us a good learning
+process, while being unnecessary large.
+
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+$10$K & $100$K & $500$K & $2$M  \\ \hline
+$0$ & $1$ & $2$ & $3$\\ \hline
+\end{tabular}
+\end{center}
+\caption{{Distortion for a code book of size $100$ encoding one bar
+at a time, a bar being represented by $4$ chroma feature vector.
+Therefore, a code or a pattern is of size $12$ x $4$ = $48$.
+Distortion measure on the test data set. Data size tested range
+from $10$ thousands to $2$ millions. Patterns were selected at
+random from the dataset of approximately $3,7$ million patterns.}}
+\label{tab:datasize}
+\end{table}
+% RESULTS:    avg.       mean dist
+% 10K         
+% 100K
+% 500K
+% 2M
+
+
+\subsection{Codebook Size in Function of Pattern Length}
+If the signal was totally random, and we were using 2 code to encode
+every beat, we would need.... 4 codes for 2 beats? and 16 codes for
+4 beats? and 256 codes for 8 beats?
+
+Think about it in binary: two code to encode (0) and (1), but for
+(0,0),(0,1),(1,0),(1,1) we need four codes for the same accuracy.
+
+Reasonable size: 2 - 4 - 16 - 256. If we improve distance, music
+is not random!
+
+Then... 3 beats, 5 beats, 7 beats don't encode as well!
+
+Special: 4 beats versus 1 bar - 4 beats, show the problem of being
+not in sync with bars.
 
 
 \subsection{Visualization}
