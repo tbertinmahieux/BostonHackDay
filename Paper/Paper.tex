@@ -54,6 +54,40 @@ TAKE-HOME MESSAGE: \textit{Shingles} idea can go large-scale?
 %
 \section{Introduction}\label{sec:introduction}
 
+Working with large data amount of audio is a goal and a challenge at the
+same time. One of the most common task is to find the nearest neighbor,
+based on some distance, to a given segment of music. This can be viewed
+as \textit{retrieval} as you are looking for some specific target
+based on some query. $k$-nearest neighbors ($k$nn) algorithms have been
+designed for that purpose, and recent improvements let them scale to
+considerable data set sizes \cite{Datar2004}. The \textit{Shingles}
+were introduced in that framework \cite{Casey2006}. A \textit{Shingle}
+is a pattern of stacked chroma features. Similarity between
+\textit{Shingles} coresspond to comparing harmonic patterns. For this
+reason, they were used for cover or remix recognition \cite{Casey2007}.
+
+That being said, nearest neighbor search is only one aspect of the
+analysis of large-scale music data sets. Finding $k$ neighbors for a
+particular query does not tell you much about the music space.
+Clustering is a larger and more flexible framework where the goal is
+to divide the space in meaningful blocks. The starting point is not
+a query, but all the data set itself. In this work, we bring the
+\textit{Shingle} idea into that framework in order to discover
+meaningful and typical music harmonic patterns. The underlying assumption
+is that the music space is articulated around a certain number of
+frequent patterns.
+
+Note that clustering and neighbor search is not totally unrelated.
+In practise, we would hope that close neighbors live in one or two
+close clusters, thus clustering can be a preprocess step. Also,
+knowing all $k$ neighbors of each sample let you do graph clustering,
+a subset of the clustering algorithms.
+
+
+
+
+
+\iffalse % ignored section
 The original goal of the \textit{Shingles} was retrieval, i.e. find very
 similar song segments based on their harmonic pattern. Part of the
 challenge was to handle tons of overlapping song segments represented
@@ -74,7 +108,10 @@ rather a cloud of potential close patterns. A similar argument in the
 recommendation domain is that precision becomes more important than recall 
 passed a certain scale of data for many practical uses.
 
-We propose to move the \textit{Shingle} idea into the larger clustering paradigm.
+We propose to move the \textit{Shingle} idea into the larger clustering 
+paradigm.
+\fi % end of ignored section
+
 The goal is to find typical patterns that can be seen as cluster centroids.
 Those typical patterns help us understand a music collection from an
 harmonic point of view. Segments of songs can be described in regard to their
@@ -301,10 +338,10 @@ process, while being unnecessary large.
 
 \begin{table}
 \begin{center}
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
-$10$K & $100$K & $500$K & $2$M  \\ \hline
-$0$ & $1$ & $2$ & $3$\\ \hline
+$10$K & $50$K & $100$K & $500$K & $2$M  \\ \hline
+$0.143$ & $$ & $$ & $$ & $$\\ \hline
 \end{tabular}
 \end{center}
 \caption{{Distortion for a code book of size $100$ encoding one bar
@@ -316,7 +353,8 @@ random from the dataset of approximately $3,7$ million patterns.}}
 \label{tab:datasize}
 \end{table}
 % RESULTS:    avg.       mean dist
-% 10K         
+% 10K         2.012      0.143
+% 50K
 % 100K
 % 500K
 % 2M
