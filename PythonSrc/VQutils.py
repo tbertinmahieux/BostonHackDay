@@ -312,7 +312,8 @@ def find_best_code_per_pattern(dataset,codebook,scale=False):
             idxs,dists = encode_oneiter(pattern,codebook)
         best_code_per_p[k] = idxs[0]
         p_dists[k] = dists[0]
-        avg_p_dists[k] = np.sum(np.abs(pattern - codebook[idxs[0]]))*1./pattern.size
+        #avg_p_dists[k] = np.sum(np.abs(pattern - codebook[idxs[0]]))*1./pattern.size
+        avg_p_dists[k] = np.average(np.abs(pattern - codebook[idxs[0]]))
     # done
     return best_code_per_p, p_dists, avg_p_dists
 
