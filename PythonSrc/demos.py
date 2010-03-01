@@ -16,7 +16,7 @@ def load_and_encode_data(codebook,pSize=16,keyInv=True,
     featsNorm = get_data_maxener(pSize=pSize,keyInv=keyInv,
                                  downBeatInv=downBeatInv,bars=bars)
     # encode
-    return find_best_code_per_pattern(featsNorm,codebook,scale=False)
+    return VQutils.find_best_code_per_pattern(featsNorm,codebook,scale=False)
 
 
 def get_data_maxener_16_true_false_bars2():
