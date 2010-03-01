@@ -3,13 +3,14 @@ More of a demo than a useful code
 """
 
 
+
 def load_and_encode_data(codebook,pSize=16,keyInv=True,
                          downBeatInv=False,bars=2):
     """
     Load a dataset, and encode it with codebook
     Return best_code_per_p, dists
     """
-    assert(codebook.shape[1] == pSize)
+    assert(codebook.shape[1] == pSize * 12)
     import VQutils
     # get data
     featsNorm = get_data_maxener(pSize=pSize,keyInv=keyInv,
