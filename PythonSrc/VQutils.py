@@ -412,7 +412,6 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=False,re
     OUTPUT:
       - codebook (one code per row)
       - average distance between a feature and it's encoding
-      - list of which code to use for which data sample
     Inspired by the algorithm here:
     http://en.wikipedia.org/w/index.php?title=Vector_quantization&oldid=343764861
     Codes are normalized, and can be scaled as to better feat a segment
@@ -445,8 +444,8 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=False,re
     # keep the best result
     best_sum_dist = -1
     # know which code goes with each pattern
-    best_code_per_pattern = np.ones([nFeats,1])
-    best_code_per_pattern *= -1
+    #best_code_per_pattern = np.ones([nFeats,1])
+    #best_code_per_pattern *= -1
     # not scaled? artificial weights
     if not scale:
         weights = np.ones(K)
@@ -481,7 +480,8 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=False,re
             if scale:
                 codebook[idx,:] = normalize(codebook[idx,:])
             # remember that code for that pattern
-            best_code_per_pattern[whichPattern] = idx
+            #best_code_per_pattern[whichPattern] = idx
+            # bad idea, codes will change
 
             ######################
             # TEST on repulsiveness
@@ -510,6 +510,6 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=False,re
         prev_sum_dist = sum_distance
         
     # return codebook, average distance
-    return codebook,(sum_distance * 1. / nFeats), best_code_per_pattern
+    return codebook,(sum_distance * 1. / nFeats)#, best_code_per_pattern
 
 
