@@ -54,7 +54,7 @@ TAKE-HOME MESSAGE: \textit{Shingles} idea can go large-scale?
 %
 \section{Introduction}\label{sec:introduction}
 
-Working with large data amount of audio is a goal and a challenge at the
+Working with large amount of audio data is a goal and a challenge at the
 same time. One of the most common task is to find the nearest neighbor,
 based on some distance, to a given segment of music. This can be viewed
 as \textit{retrieval} as you are looking for some specific target
@@ -63,7 +63,7 @@ designed for that purpose, and recent improvements let them scale to
 considerable data set sizes \cite{Datar2004}. The \textit{Shingles}
 were introduced in that framework \cite{Casey2006}. A \textit{Shingle}
 is a pattern of stacked chroma features. Similarity between
-\textit{Shingles} coresspond to comparing harmonic patterns. For this
+\textit{Shingles} coresponds to comparing harmonic patterns. For this
 reason, they were used for cover or remix recognition \cite{Casey2007}.
 
 That being said, nearest neighbor search is only one aspect of the
@@ -71,19 +71,23 @@ analysis of large-scale music data sets. Finding $k$ neighbors for a
 particular query does not tell you much about the music space.
 Clustering is a larger and more flexible framework where the goal is
 to divide the space in meaningful blocks. The starting point is not
-a query, but all the data set itself. In this work, we bring the
+a query, but all the data itself. In this work, we bring the
 \textit{Shingle} idea into that framework in order to discover
 meaningful and typical music harmonic patterns. The underlying assumption
 is that the music space is articulated around a certain number of
 frequent patterns.
 
-Note that clustering and neighbor search is not totally unrelated.
+Note that clustering and neighbor search are not unrelated.
 In practise, we would hope that close neighbors live in one or two
 close clusters, thus clustering can be a preprocess step. Also,
 knowing all $k$ neighbors of each sample let you do graph clustering,
 a subset of the clustering algorithms.
 
-
+A major component of this work is scalability. We experiment with a training
+set of $43$ thousands song, but everything scales linear in time
+relative to the number of samples. We could imagine, as an extension
+of this work, an algorithm ``listening'' to all music it can find online.
+Time would be an issue, but not memory.
 
 
 
@@ -132,6 +136,13 @@ set of $43$K songs, but the method applies to any data size. We show how to
 select different parameters such as the size of the \textit{Shingles} 
 using an encoding scheme on a test set of $4$K songs. Finally, we illustrate
 the method with some specific examples.
+
+
+\subsection{Definitions}
+A pattern, or a patch, is a \textit{Shingle} taken from an actual song.
+A code is similar to a pattern, but is the result of the clustering
+algorithm and most likely does not come from an actual song.
+Distortion is our measure of distance between a pattern and a code.
 
 
 \section{Previous Work}\label{sec:prevwork}
@@ -242,7 +253,7 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 
 
 \begin{algorithm}
-\caption{Pseudocode of Vector Quantization}
+%\caption{Pseudocode of Vector Quantization}
 \label{algo:vq}
 \begin{algorithmic}
 \STATE$l$ learning rate
@@ -257,6 +268,8 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 \ENDFOR
 \ENDFOR
 \RETURN $\{C_k\}$
+\caption{{Pseudocode of Online Vector Quantization. Note that we can replace
+the number of iteration by a threshold on the distortion over some test set.}}
 \end{algorithmic}
 \end{algorithm}
 
@@ -327,21 +340,36 @@ fixed code length. The data points are chose randomly from the whole
 data set.
 Code length: 1 bar resized to size 4. Code book size: 100
 We measure the distortion on our test set. We hope for some convergence.
-See results in Table \ref{tab:datasize}.
+See results in Figure \ref{fig:sizes}.
 
 Our learning can overfit, which explain the bad scores of small datasets.
 The larger the dataset, the smallest the chance to overfit.
-We ar elooking for a size of dataset that guarantees us a good learning
+We are looking for a size of dataset that guarantees us a good learning
 process, while being unnecessary large.
 
+$500$ samples per code in the code book seems a good data size, see
+Figure \ref{fig:sizes} for size $50$K.
 
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{data_sizes}
+\end{center}
+\caption{{Distortion for a code book of size $100$ encoding one bar
+at a time, a bar being represented by $4$ chroma feature vector.
+Therefore, a code or a pattern is of size $12$ x $4$ = $48$.
+Distortion measure on the test data set. Data size tested range
+from $10$ thousands to $2$ millions. Patterns were selected at
+random from the dataset of approximately $3,7$ million patterns.}}
+\label{fig:sizes}
+\end{figure}
 
+\iffalse
 \begin{table}
 \begin{center}
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
-$10$K & $50$K & $100$K & $500$K & $2$M  \\ \hline
-$0.143$ & $$ & $$ & $$ & $$\\ \hline
+size & $5$K & $10$K & $50$K & $100$K & $500$K & $2$M  \\ \hline
+distortion & $$ & $0.143$ & $0.142$ & $0.142$ & $0.142$ & $$\\ \hline
 \end{tabular}
 \end{center}
 \caption{{Distortion for a code book of size $100$ encoding one bar
@@ -352,13 +380,51 @@ from $10$ thousands to $2$ millions. Patterns were selected at
 random from the dataset of approximately $3,7$ million patterns.}}
 \label{tab:datasize}
 \end{table}
-% RESULTS:    avg.       mean dist
-% 10K         2.012      0.143
-% 50K
-% 100K
-% 500K
-% 2M
+\fi
+% RESULTS:    
+% 1bar s4     avg.       mean dist
+% 1K          2.30777    0.150370
+% 5K          1.88822    0.145327
+% 10K         2.00349    0.143567
+% 50K         2.59714    0.142257
+% 100K        1.89185    0.142195
+% 250K        2.07822    0.141796
+% 500K        1.88141    0.142081
+% 1M          1.91990    0.142118
+% 2M          2.01141    0.141596
 
+% 1bar s4 first X samples
+% 1K          2.05621    0.157142
+% 5K          2.01956    0.150045
+% 10K         1.95797    0.148357
+% 50K         1.91257    0.146069
+% 100K        1.98744    0.145765
+% 250K        1.95362    0.145819
+% 500K        2.00899    0.145772
+% 1M          2.09856    0.145924
+% 2M          1.91375    0.146065
+
+% 0bar s4 (and test set same, we could do 1bar s4 in test set...)
+% 1K          2.10588    0.155474
+% 5K          1.92358    0.149619
+% 10K         2.00653    0.148056
+% 50K         1.89443    0.146328
+% 100K        1.92187    0.146004
+% 250K        1.93067    0.146024
+% 500K        1.91913    0.145962
+% 1M          2.24550    0.145873
+% 2M          2.01653    0.145955
+
+% 2bar s8     
+% 1K          3.27198    0.171300
+% 5K          3.56894    0.165960
+% 10K         2.61057    0.165063
+% 50K         3.03945    0.162439
+% 100K        2.89310    0.161588
+% 250K        2.90660    0.161910
+% 500K        2.69134    0.161233
+% 1M          3.05344    0.161057
+% 2M          2.74493    0.161068
 
 \subsection{Codebook Size in Function of Pattern Length}
 If the signal was totally random, and we were using 2 code to encode
@@ -376,6 +442,26 @@ Then... 3 beats, 5 beats, 7 beats don't encode as well!
 Special: 4 beats versus 1 bar - 4 beats, show the problem of being
 not in sync with bars.
 
+See code book size experiments in Table \ref{tab:cbsize}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\# codes & \# samples & avg. dist \\ \hline \hline
+1 & $500$ & \\
+10 & $5$K &\\
+50 & $25$K &\\
+100 & $50$K &\\
+200 & $100$K & \\
+500 & $250$K & \\
+1000 & $500$K & \\
+5000 & $2.5$M & \\ \hline
+\end{tabular}
+\end{center}
+\caption{{Code book size.}}
+\label{tab:cbsize}
+\end{table}
 
 \subsection{Visualization}
 We can use an algorithm like locally linear embedding \cite{Roweis2000} (LLE) 
@@ -448,8 +534,8 @@ could reduce the influence of the noise in the distance measure.
 
 
 \small
-\section{Acknowledgements}
-Thierry is NSERC graduate fellow, or some title like that.
+%\section{Acknowledgements}
+%Thierry is NSERC graduate fellow, or some title like that.
 
 
 %\begin{thebibliography}{citations}
