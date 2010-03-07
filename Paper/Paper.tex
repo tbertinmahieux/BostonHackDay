@@ -352,7 +352,7 @@ Figure \ref{fig:sizes} for size $50$K.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=.9\columnwidth]{data_sizes}
+\includegraphics[width=.99\columnwidth]{data_sizes}
 \end{center}
 \caption{{Distortion for a code book of size $100$ encoding one bar
 at a time, a bar being represented by $4$ chroma feature vector.
@@ -392,7 +392,6 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 500K        1.88141    0.142081
 % 1M          1.91990    0.142118
 % 2M          2.01141    0.141596
-
 % 1bar s4 first X samples
 % 1K          2.05621    0.157142
 % 5K          2.01956    0.150045
@@ -403,7 +402,6 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 500K        2.00899    0.145772
 % 1M          2.09856    0.145924
 % 2M          1.91375    0.146065
-
 % 0bar s4 (and test set same, we could do 1bar s4 in test set...)
 % 1K          2.10588    0.155474
 % 5K          1.92358    0.149619
@@ -414,7 +412,6 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 500K        1.91913    0.145962
 % 1M          2.24550    0.145873
 % 2M          2.01653    0.145955
-
 % 2bar s8     
 % 1K          3.27198    0.171300
 % 5K          3.56894    0.165960
@@ -425,6 +422,36 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 500K        2.69134    0.161233
 % 1M          3.05344    0.161057
 % 2M          2.74493    0.161068
+
+
+\subsection{Codebook Size}
+Results in Table \ref{tab:cbsize}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|c|}
+\hline
+\# codes & \# samples & avg. dist \\ \hline \hline
+1 & $500$ & $0.195939$ \\
+10 & $5$K & $0.161812$ \\
+50 & $25$K & $0.147472$ \\
+100 & $50$K & $0.142194$ \\
+200 & $100$K & $0.137548$ \\
+500 & $250$K & $0.131211$ \\
+1000 & $500$K & \\ \hline
+\end{tabular}
+\end{center}
+\caption{{Code book size.}}
+\label{tab:cbsize}
+\end{table}
+% RESULTS:      dists      avg_dists
+% code 1        1.70206    0.195939
+% code 10       1.87844    0.161812
+% code 50       2.05667    0.147472
+% code 100      1.89754    0.142194
+% code 200      2.18534    0.137548
+% code 500      2.02942    0.131211
+
 
 \subsection{Codebook Size in Function of Pattern Length}
 If the signal was totally random, and we were using 2 code to encode
@@ -446,22 +473,34 @@ See code book size experiments in Table \ref{tab:cbsize}.
 
 \begin{table}
 \begin{center}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|l|c|c|}
 \hline
-\# codes & \# samples & avg. dist \\ \hline \hline
-1 & $500$ & \\
-10 & $5$K &\\
-50 & $25$K &\\
-100 & $50$K &\\
-200 & $100$K & \\
-500 & $250$K & \\
-1000 & $500$K & \\
-5000 & $2.5$M & \\ \hline
+\# codes & \# bars & avg. dist \\ \hline \hline
+2 & $1$ & $0.180750$ \\
+4 & $2$ & $0.183631$ \\
+16 & $4$ & $0.184078$ \\
+256 & $8$ & $0.183464$ \\ \hline
+2 & $2$ beats & $0.166840$ \\
+4 & $1$ & $0.171495$ \\
+16 & $2$ & $0.173767$ \\
+256 & $4$ & $$ \\ \hline
 \end{tabular}
 \end{center}
-\caption{{Code book size.}}
-\label{tab:cbsize}
+\caption{{Code book size in function of the number of bars to encode.
+All experiments done wtih $256 \times 500 = 128$K samples randomly chosen.}}
+\label{tab:size_pattern}
 \end{table}
+% RESULTS:           dists      avg_dists
+%2 codes 1 bar       1.81190    0.180750
+%4 codes 2 bars      2.76642    0.183631
+%16 codes 4 bars     3.68255    0.184078
+%256 codes 8 bars    6.95407    0.183464
+%---------------
+%2 codes 2 beats     1.24613    0.166840
+%4 codes 1 bar       1.70097    0.171495
+%16 codes 2 bars     4.75436    0.173767
+%256 codes 4 bars
+
 
 \subsection{Visualization}
 We can use an algorithm like locally linear embedding \cite{Roweis2000} (LLE) 
