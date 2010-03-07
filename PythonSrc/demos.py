@@ -12,7 +12,7 @@ def load_and_encode_data(codebook,pSize=16,keyInv=True,
                          downBeatInv=False,bars=2):
     """
     Load a dataset, and encode it with codebook
-    Return best_code_per_p, dists
+    Return dists, avg_dists
     """
     assert(codebook.shape[1] == pSize * 12)
     import VQutils
@@ -20,7 +20,8 @@ def load_and_encode_data(codebook,pSize=16,keyInv=True,
     featsNorm = get_data_maxener(pSize=pSize,keyInv=keyInv,
                                  downBeatInv=downBeatInv,bars=bars)
     # encode
-    return VQutils.find_best_code_per_pattern(featsNorm,codebook,scale=False)
+    best_code_per_p, dists, avg_dists = VQutils.find_best_code_per_pattern(featsNorm,codebook,scale=False)
+    return dists, avg_dists
 
 
 def get_data_maxener_16_true_false_bars2():
