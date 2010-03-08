@@ -298,7 +298,8 @@ def find_best_code_per_pattern(dataset,codebook,scale=False):
     RETURN:
        - index of the best code per pattern
        - distance for pattern to the best code
-       - average distance for pattern to the best code (per pixel)
+       - average distance for pattern to the best code
+         (squared distance per pixel)
     """
     best_code_per_p = np.ones([dataset.shape[0],1]) * -1
     p_dists = np.ones([dataset.shape[0],1]) * -1
@@ -491,14 +492,6 @@ def online_vq(feats,K,lrate,nIter=10,thresh=1e-7,maxRise=.05,scale=False):
                 print 'online_vq stops because of thresholding after iter: ' + str(iteration+1)
                 break
         if best_sum_dist * (1. + maxRise) < sum_distance:
-            break
-
-        # check threshold
-        if prev_sum_residual >= 0:
-            if abs((sum_residual - prev_sum_residual) * 1./nFeats) < thresh:
-                print 'online_encode_learn stops because of thresholding after iter: ' + str(iteration+1)
-                break
-        if best_sum_residual * (1. + maxRise) < sum_residual:
             break
 
         prev_sum_dist = sum_distance
