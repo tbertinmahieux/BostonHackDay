@@ -311,9 +311,9 @@ def find_best_code_per_pattern(dataset,codebook,scale=False):
         else:
             idxs,dists = encode_oneiter(pattern,codebook)
         best_code_per_p[k] = idxs[0]
-        p_dists[k] = dists[0]
-        avg_p_dists[k] = np.average(np.square(pattern - codebook[idxs[0]]))
-        assert abs(avg_p_dists[k]*codebook[0].size - p_dists[k] * p_dists[k]) < 1e-10,'distance and average distance do not behave as expected'
+        p_dists[k] = dists[idxs[0]]
+        #avg_p_dists[k] = np.average(np.square(pattern - codebook[idxs[0]]))
+        avg_p_dists[k] = np.square(p_dists[k]) * 1. / codebook[0].size
     # done
     return best_code_per_p, p_dists, avg_p_dists
 
