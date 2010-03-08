@@ -250,7 +250,7 @@ def online_encoding_learn(feats,K,lrate=1.,nIter=10,nEncode=-1,
             # add residual
             sum_residual += euclidean_norm(residual)
 
-        # update best sum reesidual
+        # update best sum residual
         if best_sum_residual < 0 or best_sum_residual > sum_residual:
             best_sum_residual = sum_residual
         # verbose
@@ -312,8 +312,8 @@ def find_best_code_per_pattern(dataset,codebook,scale=False):
             idxs,dists = encode_oneiter(pattern,codebook)
         best_code_per_p[k] = idxs[0]
         p_dists[k] = dists[0]
-        #avg_p_dists[k] = np.sum(np.abs(pattern - codebook[idxs[0]]))*1./pattern.size
-        avg_p_dists[k] = np.average(np.abs(pattern - codebook[idxs[0]]))
+        avg_p_dists[k] = np.average(np.square(pattern - codebook[idxs[0]]))
+        assert abs(avg_p_dists[k]*codebook[0].size - p_dists[k] * p_dists[k]) < 1e-10,'distance and average distance do not behave as expected'
     # done
     return best_code_per_p, p_dists, avg_p_dists
 
@@ -399,7 +399,7 @@ def LLE_my_codebook(codebook,nNeighbors=5):
 
 
 
-def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=False,repulse=False):
+def online_vq(feats,K,lrate,nIter=10,thresh=1e-7,maxRise=.05,scale=False):
     """
     Online vector quantization
     INPUT:
@@ -443,9 +443,6 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=False,re
     nFeats = feats.shape[0]
     # keep the best result
     best_sum_dist = -1
-    # know which code goes with each pattern
-    #best_code_per_pattern = np.ones([nFeats,1])
-    #best_code_per_pattern *= -1
     # not scaled? artificial weights
     if not scale:
         weights = np.ones(K)
@@ -479,19 +476,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=False,re
             codebook[idx,:] += (pattern / weight - codebook[idx,:]) * lrate
             if scale:
                 codebook[idx,:] = normalize(codebook[idx,:])
-            # remember that code for that pattern
-            #best_code_per_pattern[whichPattern] = idx
-            # bad idea, codes will change
 
-            ######################
-            # TEST on repulsiveness
-            if repulse:
-                idx2 = idxs[1]
-                weight2 = weights[1]
-                codebook[idx2,:] -= (pattern / weight2 - codebook[idx2,:]) * lrate * (dists[idx] / dists[idx2])
-                if scale:
-                    codebook[idx2,:] = normalize(codebook[idx2,:])
-            #####################
             
             # add distance to sum
             sum_distance += dist
@@ -502,11 +487,20 @@ def online_vq(feats,K,lrate,nIter=10,thresh=0.0000001,maxRise=.05,scale=False,re
         print 'iter '+str(iteration)+' done, avg. dist = ' + str(sum_distance * 1. / nFeats)+', iteration done in ' + str(time.time()-tstart_iter) + 'seconds.'
         # check threshold
         if prev_sum_dist >= 0:
-            if (sum_distance - prev_sum_dist) * 1./nFeats > thresh:
+            if abs((sum_distance - prev_sum_dist) * 1./nFeats) < thresh:
                 print 'online_vq stops because of thresholding after iter: ' + str(iteration+1)
                 break
         if best_sum_dist * (1. + maxRise) < sum_distance:
             break
+
+        # check threshold
+        if prev_sum_residual >= 0:
+            if abs((sum_residual - prev_sum_residual) * 1./nFeats) < thresh:
+                print 'online_encode_learn stops because of thresholding after iter: ' + str(iteration+1)
+                break
+        if best_sum_residual * (1. + maxRise) < sum_residual:
+            break
+
         prev_sum_dist = sum_distance
         
     # return codebook, average distance
