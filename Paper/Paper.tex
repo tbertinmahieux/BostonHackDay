@@ -476,14 +476,14 @@ See code book size experiments in Table \ref{tab:cbsize}.
 \begin{tabular}{|l|c|c|}
 \hline
 \# codes & \# bars & avg. dist \\ \hline \hline
-2 & $1$ & $0.180750$ \\
-4 & $2$ & $0.183631$ \\
-16 & $4$ & $0.184078$ \\
-256 & $8$ & $0.183464$ \\ \hline
-2 & $2$ beats & $0.166840$ \\
-4 & $1$ & $0.171495$ \\
-16 & $2$ & $0.173767$ \\
-256 & $4$ & $$ \\ \hline
+2 & $1$ & $0.058435$ \\
+4 & $2$ & $0.054792$ \\
+16 & $4$ & $0.055489$ \\
+256 & $8$ & $0.054860$ \\ \hline
+2 & $2$ beats & $0.046955$ \\
+4 & $1$ & $0.$ \\
+16 & $2$ & $0.$ \\
+256 & $4$ & $0.$ \\ \hline
 \end{tabular}
 \end{center}
 \caption{{Code book size in function of the number of bars to encode.
@@ -493,13 +493,13 @@ All experiments done wtih $256 \times 500 = 128$K samples randomly chosen.}}
 % RESULTS:           avg_distsOLD   avg_dist
 %2 codes 1 bar       0.180750       0.058435
 %4 codes 2 bars      0.183631       0.054792
-%16 codes 4 bars     0.184078       0
-%256 codes 8 bars    0.183464       0
+%16 codes 4 bars     0.184078       0.055489
+%256 codes 8 bars    0.183464       0.054860
 %---------------
-%2 codes 2 beats     0.166840
-%4 codes 1 bar       0.171495       
+%2 codes 2 beats     0.166840       0.046955
+%4 codes 1 bar       0.171495       0
 %16 codes 2 bars     0.173767
-%256 codes 4 bars    0.174169
+%256 codes 4 bars    0.174169       0
 
 
 \subsection{Visualization}
@@ -549,6 +549,39 @@ with an harmonic, as seen in the LLE visualization (Figure \ref{fig:lle}).
 \end{figure}
 
 \subsection{Specific Examples}
+
+
+\section{Links with NMF}\label{sec:nmf}
+In this section we discuss links with non-negative matrix factorization
+\cite{Lee2000} (NMF), another method to build a codebook representing some data.
+NMF finds two matrices $H$ and $W$ that approximate some data $D$ (one
+sample per line) by
+\[
+D = W \times H + \epsilon
+\]
+where $\epsilon$ is some noise and $W$ and $H$ only have non-negative 
+elements. If $W$ is $\#samples \times n$, $n$ is the codebook size.
+
+Note that NMF does not solve the same problem. It tries to explain each pattern
+as a combination of codes. Thus it does not perform clustering, though you
+could cluster patterns using their encoding weights.
+
+In all our experiments we use Matlab's implementation of NMF:
+nmflib\footnote{implementation: \url{http://www.ee.columbia.edu/~grindlay/code.html}}.
+
+\subsection{Training on our Codebook}
+NMF provides us with a way of measuring how much information is retained
+in our code book. More specifically, we can train a code book of size $500$
+using our online VQ algorithm, then decompose that code into $10$ basis
+using NMF. We can compare that to $10$ basis from training NMF on the
+whole data.
+
+The idea is simple, if we encode our test set using basis from the
+codebook as well as if we were using basis from the whole data, our codes
+retain much of the information. That being said, the typical NMF implementations
+are not expected to scale to data that does not fit in memory. Online VQ
+could be an interesting preprocessing step. Future work include looking
+at online NMF \cite{Thurau2009}.
 
 
 \section{Conclusion}
