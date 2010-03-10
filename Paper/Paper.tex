@@ -63,7 +63,7 @@ designed for that purpose, and recent improvements let them scale to
 considerable data set sizes \cite{Datar2004}. The \textit{Shingles}
 were introduced in that framework \cite{Casey2006}. A \textit{Shingle}
 is a pattern of stacked chroma features. Similarity between
-\textit{Shingles} coresponds to comparing harmonic patterns. For this
+\textit{Shingles} coresponds to similarity between harmonic patterns. For this
 reason, they were used for cover or remix recognition \cite{Casey2007}.
 
 That being said, nearest neighbor search is only one aspect of the
@@ -83,6 +83,16 @@ close clusters, thus clustering can be a preprocess step. Also,
 knowing all $k$ neighbors of each sample let you do graph clustering,
 a subset of the clustering algorithms.
 
+We investigate a vector quantization \cite{Datar2004} (VQ) method to
+cluster the \textit{Shingles}. We create a codebook of typical patterns
+that have many usages:
+\begin{enumerate}
+\item describing the music space
+\item finding potential similar songs and/or covers
+\item eliminating quickly very wrong matches in a query system
+\end{enumerate}
+
+
 A major component of this work is scalability. We experiment with a training
 set of $43$ thousands song, but everything scales linear in time
 relative to the number of samples. We could imagine, as an extension
@@ -90,59 +100,22 @@ of this work, an algorithm ``listening'' to all music it can find online.
 Time would be an issue, but not memory.
 
 
+In this paper, we present a practical way to do such large-scale 
+clustering using online vector quantization. We present clustering results 
+of an online algorithm on a data set of $43$K songs, but the method applies 
+to any data size. We show how to select different parameters such as the size 
+of the \textit{Shingles} using an encoding scheme on a test set of $8$K songs. 
+Finally, we illustrate the method with some specific examples.
 
-\iffalse % ignored section
-The original goal of the \textit{Shingles} was retrieval, i.e. find very
-similar song segments based on their harmonic pattern. Part of the
-challenge was to handle tons of overlapping song segments represented
-by a rather long feature vector (a serie of chroma features).
-The LSH algorithm proved a great solution for performing a $k$-nearest
-neighbors ($k$nn) search in such a space. However, the paradigm of $k$nn has
-an intrinsec scaling limit.
-
-Finding a closest match is a tangible goal within a personal collection
-of a few thousands songs. It can be used to discover cover songs or
-find the seamless transitions in a playlist. However, the closest match
-in millions and millions of music excerpts do not help us organize such
-an amount of media. Some tasks are still important, for instance cover
-recognition, and improvements in $k$nn methods are always welcome.
-But it does not the describe the music space, nor does it necessarily
-make good recommendations. We do not want to look for one neighbor, but
-rather a cloud of potential close patterns. A similar argument in the 
-recommendation domain is that precision becomes more important than recall 
-passed a certain scale of data for many practical uses.
-
-We propose to move the \textit{Shingle} idea into the larger clustering 
-paradigm.
-\fi % end of ignored section
-
-The goal is to find typical patterns that can be seen as cluster centroids.
-Those typical patterns help us understand a music collection from an
-harmonic point of view. Segments of songs can be described in regard to their
-proximity to the different centroids, thus creating some notion of distance
-among the song segments. These cluster of similar patterns can have many usages:
-\begin{enumerate}
-\item describing the music space
-\item finding potential similar songs and/or covers
-\item eliminating quickly very wrong matches in a query system
-\end{enumerate}
-
-Our contribution is... large-scale clustering method, 
-
-
-We present a practical way to do such large-scale clustering using vector
-quantization. We present clustering results of an online algorithm on a data 
-set of $43$K songs, but the method applies to any data size. We show how to
-select different parameters such as the size of the \textit{Shingles} 
-using an encoding scheme on a test set of $4$K songs. Finally, we illustrate
-the method with some specific examples.
 
 
 \subsection{Definitions}
 A pattern, or a patch, is a \textit{Shingle} taken from an actual song.
 A code is similar to a pattern, but is the result of the clustering
 algorithm and most likely does not come from an actual song.
-Distortion is our measure of distance between a pattern and a code.
+Distortion is our measure of distance between a pattern and a code
+(or between two patterns, see equation \ref{eq:dist} in Section 
+\ref{sec:experiments}).
 
 
 \section{Previous Work}\label{sec:prevwork}
@@ -186,16 +159,18 @@ datasets we use for training and testing our model.
 We use the Echo Nest analyze API \cite{EchoNest} throughout this work.
 The API gives us a chroma vector (length $12$) for every music event, 
 or ``segment'', for any song we upload to their platform. 
-We also get an estimate of where the beats and the bars are. 
-We transform the chroma vectors per segment into per beat vector using a 
-simple average. We can then stack beat vectors for a number of bars (usually 1 or 2). 
+We also get an estimate of where the beats and the bars are. Beats span over
+multiple segments, and bars span over multiple beats. 
+We transform the chroma vectors per segment into per beat vectors using a 
+simple average. We can then stack beat vectors for a number of bars 
+(usually 1 or 2). 
 We get a fixed-size patch by resampling the number of chroma vectors. Typically,
-there are $4$ beats per bar. Thus an appropriate patch size for one bar
+there are $4$ beats per bar. Thus an appropriate pattern size for one bar
 is $12$x$4$ or $12$x$8$.
 
 Note that we do not claim that any of these informations (segments, beats, bars)
-are perfectly accurate (e.g. in \cite{Barrington2009a} authors improve on the
-song segmentation features). Practise showed us that they are reasonable, 
+are perfectly accurate (e.g. in \cite{Barrington2009a} authors obtain a better
+song segmentation than Echonest). Practise showed us that they are reasonable, 
 and the size of the data set should make up for the imperfections or noise.
 We also believe that patches sizes based on a number of beats or bars are more
 meaningful than an arbitrary time length. More on this in the experiments
@@ -213,7 +188,7 @@ $2$ bars and the pattern length was set to $16$.}}
 
 \subsection{Cowbell Dataset}
 We have $43,300$ songs, giving  $3,720,091$ non zero bars, a bar usually 
-contains $4$ beats.
+contains $4$ beats. WHERE DOES THIS DATA COMES FROM? GIFT FROM EN?
 
 
 \subsection{uspop2002}
@@ -236,6 +211,15 @@ used to learn a code book of those patterns.
 \subsection{Pattern Creation}
 Here we should explain key invariance, resizing, etc, and not in the
 experiment section.
+
+We try to normalize the patterns regarding the key. We roll the matrix
+so the row with the more energy is always the lowest one. This can easily be
+seen in Figure \ref{fig:code}. We considered the same technique for rolling
+along the other axis and be invariant regarding the downbeat. However, it
+seems less robust to noise. Note that we roll each pattern independentely.
+Also, we imply that the pitch envelope is important rather than the actual 
+pitches.
+
 
 
 \subsection{Codebook Learning}
@@ -279,6 +263,14 @@ the number of iteration by a threshold on the distortion over some test set.}
 
 
 \section{Experiments}\label{sec:experiments}
+In this section we present general experiments that describe our method.
+We start by giving some details on how we selected our training set and
+how to measure error. Secondly, we experiment with different pattern sizes.
+Thirdly, we look at the effect of the size of the
+data set on the training. Then, we show that the patterns are not random,
+which is expected from music data. Finally, we show examples of patterns,
+code books and clusters.
+
 
 \subsection{Setting}\label{ssec:setting}
 We take one or two bars, normalize the patches to size 4, 8, or 16.
@@ -291,6 +283,15 @@ We use the codebook to encode our testing set (see Section \ref{sec:data}).
 Each pattern is encoded with only one code. We can measure the average
 distance between a pattern and its encoding. We can also measure the use
 of the different codes.
+
+As a distance measure (or distortion measure) between patterns, we use
+the average squared euclidean distance. In details, if a pattern $p1$
+is composed of elements $p1_{i,j}$, and similarly for a pattern $p2$,
+the distance between $p1$ and $p2$ is:
+\begin{eqnarray}
+  dist(p1,p2) = \sum_{i,j} (p1_{i,j} - p2_{i,j})^2 / size(p1)  \label{eq:dist}
+\end{eqnarray}
+We assume $p1$ and $p2$ have the same size.
 
 \subsection{Pattern length}
 See encoding experiments in Table \ref{tab:psize}.
@@ -477,7 +478,7 @@ See code book size experiments in Table \ref{tab:cbsize}.
 2 & $2$ beats* & $0.066416$ \\
 4 & $1$ & $0.050712$ \\
 16 & $2$ & $0.050172$ \\
-256 & $4$ & $0.04989$ \\ \hline
+256 & $4$ & $0.049894$ \\ \hline
 \end{tabular}
 \end{center}
 \caption{{Code book size in function of the number of bars to encode.
@@ -621,7 +622,7 @@ could reduce the influence of the noise in the distance measure.
 \small
 %\section{Acknowledgements}
 %Thierry is NSERC graduate fellow, or some title like that.
-
+% Graham for the NMF stuff, unless is an author.
 
 %\begin{thebibliography}{citations}
 %\bibitem{Someone:04} 
