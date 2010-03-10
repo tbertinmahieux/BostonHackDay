@@ -11,8 +11,8 @@ import demos
 import numpy as np
 
 
-featsDir = 
-testFeatsDir = 
+featsDir = /proj/hog7/cowbell43k/beatFeats
+testFeatsDir = ~/uspop_mat
 
 
 def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
@@ -55,10 +55,12 @@ def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
     
     # report result (average sqaure distance per ... pixel?
     # with print outs to know what we are doing
+    print 'EXPERIMENT REPORT ******************************'
     print 'beats:',beats,', bars:',bars,', nCodes:',nCodes,', nSamples:',nSamples
     if useFirsts:
         print 'we use firsts ', nCodes, ' samples'
     print 'np.average(avg_dists):',np.average(avg_dists)
+    print '************************************************'
 
 
 
@@ -71,9 +73,16 @@ def die_with_usage():
     sys.exit()
 
 
+
+if __name__ == '__main__':
+
+    if len(sys.argv) < 2:
+        die_with_usage()
+
     # EXPERIMENT SET 1: 1 bar 4 beats change data size
     # exp1
     do_experiment(4,1,100,nSamples=1000)
+    sys.exit(0)
     # exp2
     do_experiment(4,1,100,nSamples=5000)
     # exp3
@@ -110,4 +119,46 @@ def die_with_usage():
     do_experiment(8,2,100,nSamples=1000000)
     # exp9
     do_experiment(8,2,100,nSamples=2000000)
+
+
+    # EXPERIMENT SET 3: 0 bar 4 beats change data size 
+    # exp1
+    do_experiment(4,0,100,nSamples=1000)
+    # exp2
+    do_experiment(4,0,100,nSamples=5000)
+    # exp3
+    do_experiment(4,0,100,nSamples=10000)
+    # exp4
+    do_experiment(4,0,100,nSamples=50000)
+    # exp5
+    do_experiment(4,0,100,nSamples=100000)
+    # exp6
+    do_experiment(4,0,100,nSamples=250000)
+    # exp7
+    do_experiment(4,0,100,nSamples=500000)
+    # exp8
+    do_experiment(4,0,100,nSamples=1000000)
+    # exp9
+    do_experiment(4,0,100,nSamples=2000000)
+
+
+    # EXPERIMENT SET 4: 1 bar 4 beats change data size, use first samples
+    # exp1
+    do_experiment(4,1,100,nSamples=1000,useFirsts=True)
+    # exp2
+    do_experiment(4,1,100,nSamples=5000,useFirsts=True)
+    # exp3
+    do_experiment(4,1,100,nSamples=10000,useFirsts=True)
+    # exp4
+    do_experiment(4,1,100,nSamples=50000,useFirsts=True)
+    # exp5
+    do_experiment(4,1,100,nSamples=100000,useFirsts=True)
+    # exp6
+    do_experiment(4,1,100,nSamples=250000,useFirsts=True)
+    # exp7
+    do_experiment(4,1,100,nSamples=500000,useFirsts=True)
+    # exp8
+    do_experiment(4,1,100,nSamples=1000000,useFirsts=True)
+    # exp9
+    do_experiment(4,1,100,nSamples=2000000,useFirsts=True)
 
