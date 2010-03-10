@@ -181,7 +181,7 @@ meaningful than an arbitrary time length. More on this in the experiments
 \begin{center}
 \includegraphics[width=.8\columnwidth]{code}
 \end{center}
-\caption{{A typical code from a code book of size $200$. Patterns represented
+\caption{{A typical code from a codebook of size $200$. Patterns represented
 $2$ bars and the pattern length was set to $16$.}}
 \label{fig:code}
 \end{figure}
@@ -199,14 +199,14 @@ otherwise. We also tried to use Tzanetakis dataset \cite{Tzanetakis2002a}, but
 the $30$ seconds segments seemed hard to analyze by the Echo Nest API, most did
 not contain any bar.
 
-uspop2002 serves as testing set to measure how well a code book learned on
+uspop2002 serves as testing set to measure how well a codebook learned on
 the Cowbell data set can represent new songs. We get Echo Nest features
 for $8651$ songs from that dataset.
 
 \section{Algorithm}\label{sec:algo}
 In this section we present the creation of the harmonic patterns from
 the Echo Nest data. Then, we explain the online vector quantization algorithm
-used to learn a code book of those patterns.
+used to learn a codebook of those patterns.
 
 \subsection{Pattern Creation}
 Here we should explain key invariance, resizing, etc, and not in the
@@ -267,9 +267,10 @@ In this section we present general experiments that describe our method.
 We start by giving some details on how we selected our training set and
 how to measure error. Secondly, we experiment with different pattern sizes.
 Thirdly, we look at the effect of the size of the
-data set on the training. Then, we show that the patterns are not random,
+data set on the training. The next experiment look at the size of the
+codebook. Then, we show that the patterns are not random,
 which is expected from music data. Finally, we show examples of patterns,
-code books and clusters.
+codebooks and clusters.
 
 
 \subsection{Setting}\label{ssec:setting}
@@ -333,7 +334,7 @@ the quality of our code.
 We experiment with different data sizes for a fixed size of codebook and a 
 fixed code length. The data points are chose randomly from the whole
 data set.
-Code length: 1 bar resized to size 4. Code book size: 100
+Code length: 1 bar resized to size 4. Codebook size: 100
 We measure the distortion on our test set. We hope for some convergence.
 See results in Figure \ref{fig:sizes}.
 
@@ -342,14 +343,14 @@ The larger the dataset, the smallest the chance to overfit.
 We are looking for a size of dataset that guarantees us a good learning
 process, while being unnecessary large.
 
-$500$ samples per code in the code book seems a good data size, see
+$500$ samples per code in the codebook seems a good data size, see
 Figure \ref{fig:sizes} for size $50$K.
 
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=.99\columnwidth]{data_sizes}
 \end{center}
-\caption{{Distortion for a code book of size $100$ encoding one bar
+\caption{{Distortion for a codebook of size $100$ encoding one bar
 at a time, a bar being represented by $4$ chroma feature vector.
 Therefore, a code or a pattern is of size $12$ x $4$ = $48$.
 Distortion measure on the test data set. Data size tested range
@@ -367,7 +368,7 @@ size & $5$K & $10$K & $50$K & $100$K & $500$K & $2$M  \\ \hline
 distortion & $$ & $0.143$ & $0.142$ & $0.142$ & $0.142$ & $$\\ \hline
 \end{tabular}
 \end{center}
-\caption{{Distortion for a code book of size $100$ encoding one bar
+\caption{{Distortion for a codebook of size $100$ encoding one bar
 at a time, a bar being represented by $4$ chroma feature vector.
 Therefore, a code or a pattern is of size $12$ x $4$ = $48$.
 Distortion measure on the test data set. Data size tested range
@@ -420,7 +421,12 @@ random from the dataset of approximately $3,7$ million patterns.}}
 
 
 \subsection{Codebook Size}
-Results in Table \ref{tab:cbsize}.
+We experiment with the size of the codebook and its affect on the
+performance of the encoding. Results are shown in Table \ref{tab:cbsize}.
+Note that we trained on a number of samples depending on the codebook
+size, i.e. we used $500$ samples per code to learn. This is consistent
+with our findings in Figure \ref{fig:sizes}.
+
 
 \begin{table}
 \begin{center}
@@ -436,7 +442,7 @@ Results in Table \ref{tab:cbsize}.
 1000 & $500$K & \\ \hline
 \end{tabular}
 \end{center}
-\caption{{Code book size.}}
+\caption{{Codebook size.}}
 \label{tab:cbsize}
 \end{table}
 % RESULTS:      avg_distsOLD    avg_dist
@@ -464,7 +470,7 @@ Then... 3 beats, 5 beats, 7 beats don't encode as well!
 Special: 4 beats versus 1 bar - 4 beats, show the problem of being
 not in sync with bars.
 
-See code book size experiments in Table \ref{tab:cbsize}.
+See codebook size experiments in Table \ref{tab:cbsize}.
 
 \begin{table}
 \begin{center}
@@ -481,7 +487,7 @@ See code book size experiments in Table \ref{tab:cbsize}.
 256 & $4$ & $0.049894$ \\ \hline
 \end{tabular}
 \end{center}
-\caption{{Code book size in function of the number of bars to encode.
+\caption{{Codebook size in function of the number of bars to encode.
 All experiments done wtih $256 \times 500 = 128$K samples randomly chosen.
 * For the $2$ beats experiment, we take the first half of every beats.
 It is different from ignoring bars and taking every $2$ beats. It is more
@@ -524,7 +530,7 @@ result can be seen in Figure \ref{fig:lle}.
 \begin{center}
 \includegraphics[width=.9\columnwidth]{codes_lle}
 \end{center}
-\caption{{LLE visualization of the code book.}}
+\caption{{LLE visualization of the codebook.}}
 \label{fig:lle}
 \end{figure}
 
@@ -532,9 +538,9 @@ Another way is simply to present the codes in order of cluster size.
 We encode the training or testing set as explained in Subsection 
 \ref{ssec:setting} and we count how many patterns were closer to a particular
 code than any other code. In Figure \ref{fig:firstcodes}, we show the $25$
-most used codes out of a code book of size $200$.
+most used codes out of a codebook of size $200$.
 Code from Figure \ref{fig:code} is the 37th most used code in that
-code book. In Figure \ref{fig:closep}, we show a sample of patterns that
+codebook. In Figure \ref{fig:closep}, we show a sample of patterns that
 fall into its cluster.
 
 
@@ -582,7 +588,7 @@ nmflib\footnote{implementation: \url{http://www.ee.columbia.edu/~grindlay/code.h
 
 \subsection{Training on our Codebook}
 NMF provides us with a way of measuring how much information is retained
-in our code book. More specifically, we can train a code book of size $500$
+in our codebook. More specifically, we can train a codebook of size $500$
 using our online VQ algorithm, then decompose that code into $10$ basis
 using NMF. We can compare that to $10$ basis from training NMF on the
 whole data.
