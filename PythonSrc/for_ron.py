@@ -33,9 +33,10 @@ def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
         nSamples = featsNorm.shape[0]
     if useFirsts:
         featsNorm = featsNorm[:nSamples]
-        r = range(featsNorm.shape[0]) # still randomize
-        np.random.shuffle(r)
-        featsNorm = featsNorm[r[:]]
+        #r = range(featsNorm.shape[0]) # still randomize
+        #np.random.shuffle(r)
+        #featsNorm = featsNorm[r[:]]
+        np.random.shuffle(featsNorm)
     else:
         r = range(featsNorm.shape[0])
         np.random.shuffle(r)
