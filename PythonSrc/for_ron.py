@@ -42,7 +42,7 @@ def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
         featsNorm = featsNorm[r[:nSamples]]
 
     # train a codebook of size 100
-    codebook,dists = VQutils.online_vq(featsNorm,100,lrate=1e-2,nIter=200)
+    codebook,dists = VQutils.online_vq(featsNorm,nCodes,lrate=1e-2,nIter=200)
         
     # TESTING
     # go to the folder of test features (per beat)
