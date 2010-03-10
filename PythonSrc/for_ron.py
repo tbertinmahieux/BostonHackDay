@@ -12,7 +12,7 @@ import numpy as np
 
 
 featsDir = '/proj/hog7/cowbell43k/beatFeats'
-testFeatsDir = '~/uspop_mat'
+testFeatsDir = '/home/empire6/thierry/uspop_mat'
 
 
 def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
