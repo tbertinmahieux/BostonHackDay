@@ -11,8 +11,8 @@ import demos
 import numpy as np
 
 
-featsDir = /proj/hog7/cowbell43k/beatFeats
-testFeatsDir = ~/uspop_mat
+featsDir = '/proj/hog7/cowbell43k/beatFeats'
+testFeatsDir = '~/uspop_mat'
 
 
 def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
