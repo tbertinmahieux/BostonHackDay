@@ -18,7 +18,7 @@ featsDir = os.path.expanduser('~/projects/ismir10-patterns/beatFeats')
 testFeatsDir = os.path.expanduser('~/projects/ismir10-patterns/uspop_mat')
 outputDir = os.path.expanduser('~/projects/ismir10-patterns/experiments')
 
-def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False):
+def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,seed=0):
     """
     Performs an independant experiment!!!!
     """
@@ -27,8 +27,10 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False):
     except OSError:
         pass
 
+    np.random.seed(seed)
+
     args = dict(experiment_dir=experiment_dir, beats=beats, bars=bars,
-                nCodes=nCodes, nSamples=nSamples, useFirsts=useFirsts)
+                nCodes=nCodes, nSamples=nSamples, useFirsts=useFirsts,seed=seed)
     sp.io.savemat(os.path.join(experiment_dir, 'args.mat'), args)
 
 
