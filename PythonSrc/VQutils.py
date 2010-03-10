@@ -473,6 +473,7 @@ def online_vq(feats,K,lrate,nIter=10,thresh=1e-7,maxRise=.05,scale=False):
             idx = idxs[0]
             weight = weights[idx]
             dist = dists[idx]
+            dist = dist * dist # squared distance, closer to what we measure
             # get that code closer by some learning rate
             codebook[idx,:] += (pattern / weight - codebook[idx,:]) * lrate
             if scale:
@@ -497,6 +498,6 @@ def online_vq(feats,K,lrate,nIter=10,thresh=1e-7,maxRise=.05,scale=False):
         prev_sum_dist = sum_distance
         
     # return codebook, average distance
-    return codebook,(sum_distance * 1. / nFeats)#, best_code_per_pattern
+    return codebook,(sum_distance * 1. / nFeats)
 
 
