@@ -120,6 +120,6 @@ if __name__ == '__main__':
         die_with_usage()
 
     nprocesses = int(sys.argv[2])
-    pool = multiprocessing.Pool(processes=nprocesses)s
+    pool = multiprocessing.Pool(processes=nprocesses)
     pool.map(do_experiment_wrapper, experiment_args)
 
