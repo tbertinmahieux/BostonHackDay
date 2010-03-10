@@ -3,22 +3,34 @@ Simple code to run a typical experiment
 MUST change the two lines starting with cd
 """
 
-
 import os
+import multiprocessing
 import sys
+
+import numpy as np
+import scipy as sp
+import scipy.io
+
 import VQutils
 import demos
-import numpy as np
 
+featsDir = os.path.expanduser('~/projects/ismir10-patterns/beatFeats')
+testFeatsDir = os.path.expanduser('~/projects/ismir10-patterns/uspop_mat')
+outputDir = os.path.expanduser('~/projects/ismir10-patterns/experiments')
 
-featsDir = '/proj/hog7/cowbell43k/beatFeats'
-testFeatsDir = '/home/empire6/thierry/uspop_mat'
-
-
-def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
+def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False):
     """
     Performs an independant experiment!!!!
     """
+    try:
+        os.makedirs(experiment_dir)
+    except OSError:
+        pass
+
+    args = dict(experiment_dir=experiment_dir, beats=beats, bars=bars,
+                nCodes=nCodes, nSamples=nSamples, useFirsts=useFirsts)
+    sp.io.savemat(os.path.join(experiment_dir, 'args.mat'), args)
+
 
     # TRAINING
     # go to the folder of features (per beat)
@@ -44,7 +56,9 @@ def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
 
     # train a codebook of size 100
     codebook,dists = VQutils.online_vq(featsNorm,nCodes,lrate=1e-2,nIter=200)
-        
+    sp.io.savemat(os.path.join(experiment_dir, 'codebook.mat'),
+                  dict(codebook=codebook, dists=dists))
+            
     # TESTING
     # go to the folder of test features (per beat)
     os.chdir(testFeatsDir)
@@ -53,16 +67,23 @@ def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
     dists,avg_dists = demos.load_and_encode_data(codebook,pSize=beats,
                                                  keyInv=True,
                                                  downBeatInv=False,bars=bars)
+    sp.io.savemat(os.path.join(experiment_dir, 'test.mat'),
+                  dict(dists=dists, avg_dists=avg_dists))
     
     # report result (average sqaure distance per ... pixel?
     # with print outs to know what we are doing
-    print 'EXPERIMENT REPORT ******************************'
-    print 'beats:',beats,', bars:',bars,', nCodes:',nCodes,', nSamples:',nSamples
+    report = ['EXPERIMENT REPORT ******************************',
+              'beats: %s , bars: %s , nCodes: %s , nSamples: %s'
+              % (beats, bars, nCodes, nSamples)]
     if useFirsts:
-        print 'we use firsts ', nCodes, ' samples'
-    print 'np.average(avg_dists):',np.average(avg_dists)
-    print '************************************************'
-
+        report.append(['we use firsts %s samples' % nCodes])
+    report.extend(['np.average(avg_dists): %s' % np.average(avg_dists),
+                   '************************************************'])
+    reportstr = '\n'.join(reportstr)
+    print reportstr
+    f = open(os.path.join(experiment_dir, 'report.txt'))
+    f.write(reportstr)
+    f.close()
 
 
 
@@ -70,96 +91,35 @@ def die_with_usage():
     print 'launch all experiments set in main'
     print 'DONT FORGET TO HARDCODE PATHS'
     print 'usage:'
-    print '   python for_ron -go'
+    print '   python for_ron -go nprocesses'
     sys.exit()
 
 
+data_sizes = [1000, 5000, 10000, 50000, 100000, 250000, 500000, 1000000,
+              2000000]
+experiment_args = []
+# EXPERIMENT SET 1: 1 bar 4 beats change data size
+experiment_args.extend([(os.path.join(outputDir, 'set1exp%d' % n), 4,1,100,x)
+                        for n,x in enumerate(data_sizes)])
+# EXPERIMENT SET 2: 2 bar 8 beats change data size
+experiment_args.extend([(os.path.join(outputDir, 'set2exp%d' % n), 8,2,100,x)
+                        for n,x in enumerate(data_sizes)])
+# EXPERIMENT SET 3: 0 bar 4 beats change data size 
+experiment_args.extend([(os.path.join(outputDir, 'set3exp%d' % n), 4,0,100,x)
+                        for n,x in enumerate(data_sizes)])
+# EXPERIMENT SET 4: 1 bar 4 beats change data size, use first samples
+experiment_args.extend([(os.path.join(outputDir, 'set4exp%d' % n), 4,1,100,x,True)
+                        for n,x in enumerate(data_sizes)])
+
+def do_experiment_wrapper(args):
+    return do_experiment(*args)
 
 if __name__ == '__main__':
 
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         die_with_usage()
 
-    # EXPERIMENT SET 1: 1 bar 4 beats change data size
-    # exp1
-    do_experiment(4,1,100,nSamples=1000)
-    sys.exit(0)
-    # exp2
-    do_experiment(4,1,100,nSamples=5000)
-    # exp3
-    do_experiment(4,1,100,nSamples=10000)
-    # exp4
-    do_experiment(4,1,100,nSamples=50000)
-    # exp5
-    do_experiment(4,1,100,nSamples=100000)
-    # exp6
-    do_experiment(4,1,100,nSamples=250000)
-    # exp7
-    do_experiment(4,1,100,nSamples=500000)
-    # exp8
-    do_experiment(4,1,100,nSamples=1000000)
-    # exp9
-    do_experiment(4,1,100,nSamples=2000000)
-
-    # EXPERIMENT SET 2: 2 bar 8 beats change data size 
-    # exp1
-    do_experiment(8,2,100,nSamples=1000)
-    # exp2
-    do_experiment(8,2,100,nSamples=5000)
-    # exp3
-    do_experiment(8,2,100,nSamples=10000)
-    # exp4
-    do_experiment(8,2,100,nSamples=50000)
-    # exp5
-    do_experiment(8,2,100,nSamples=100000)
-    # exp6
-    do_experiment(8,2,100,nSamples=250000)
-    # exp7
-    do_experiment(8,2,100,nSamples=500000)
-    # exp8
-    do_experiment(8,2,100,nSamples=1000000)
-    # exp9
-    do_experiment(8,2,100,nSamples=2000000)
-
-
-    # EXPERIMENT SET 3: 0 bar 4 beats change data size 
-    # exp1
-    do_experiment(4,0,100,nSamples=1000)
-    # exp2
-    do_experiment(4,0,100,nSamples=5000)
-    # exp3
-    do_experiment(4,0,100,nSamples=10000)
-    # exp4
-    do_experiment(4,0,100,nSamples=50000)
-    # exp5
-    do_experiment(4,0,100,nSamples=100000)
-    # exp6
-    do_experiment(4,0,100,nSamples=250000)
-    # exp7
-    do_experiment(4,0,100,nSamples=500000)
-    # exp8
-    do_experiment(4,0,100,nSamples=1000000)
-    # exp9
-    do_experiment(4,0,100,nSamples=2000000)
-
-
-    # EXPERIMENT SET 4: 1 bar 4 beats change data size, use first samples
-    # exp1
-    do_experiment(4,1,100,nSamples=1000,useFirsts=True)
-    # exp2
-    do_experiment(4,1,100,nSamples=5000,useFirsts=True)
-    # exp3
-    do_experiment(4,1,100,nSamples=10000,useFirsts=True)
-    # exp4
-    do_experiment(4,1,100,nSamples=50000,useFirsts=True)
-    # exp5
-    do_experiment(4,1,100,nSamples=100000,useFirsts=True)
-    # exp6
-    do_experiment(4,1,100,nSamples=250000,useFirsts=True)
-    # exp7
-    do_experiment(4,1,100,nSamples=500000,useFirsts=True)
-    # exp8
-    do_experiment(4,1,100,nSamples=1000000,useFirsts=True)
-    # exp9
-    do_experiment(4,1,100,nSamples=2000000,useFirsts=True)
+    nprocesses = int(sys.argv[2])
+    pool = multiprocessing.Pool(processes=nprocesses)s
+    pool.map(do_experiment_wrapper, experiment_args)
 
