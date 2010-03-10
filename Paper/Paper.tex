@@ -254,7 +254,6 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 
 \begin{algorithm}
 %\caption{Pseudocode of Vector Quantization}
-\label{algo:vq}
 \begin{algorithmic}
 \STATE$l$ learning rate
 \STATE$\{P_n\}$ set of patches
@@ -269,7 +268,8 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 \ENDFOR
 \RETURN $\{C_k\}$
 \caption{{Pseudocode of Online Vector Quantization. Note that we can replace
-the number of iteration by a threshold on the distortion over some test set.}}
+the number of iteration by a threshold on the distortion over some test set.}
+\label{algo:vq}}
 \end{algorithmic}
 \end{algorithm}
 
@@ -445,12 +445,12 @@ Results in Table \ref{tab:cbsize}.
 \label{tab:cbsize}
 \end{table}
 % RESULTS:      avg_distsOLD    avg_dist
-% code 1        0.195939
-% code 10       0.161812
-% code 50       0.147472
-% code 100      0.142194
-% code 200      0.137548
-% code 500      0.131211
+% code 1        0.195939        0.066079
+% code 10       0.161812        0.045690
+% code 50       0.147472        0.038456
+% code 100      0.142194        0.036725
+% code 200      0.137548        0.
+% code 500      0.131211        0.
 
 
 \subsection{Codebook Size in Function of Pattern Length}
@@ -480,14 +480,17 @@ See code book size experiments in Table \ref{tab:cbsize}.
 4 & $2$ & $0.054792$ \\
 16 & $4$ & $0.055489$ \\
 256 & $8$ & $0.054860$ \\ \hline
-2 & $2$ beats & $0.046955$ \\
-4 & $1$ & $0.$ \\
-16 & $2$ & $0.$ \\
-256 & $4$ & $0.$ \\ \hline
+2 & $2$ beats* & $0.066416$ \\
+4 & $1$ & $0.050712$ \\
+16 & $2$ & $0.050172$ \\
+256 & $4$ & $0.04989$ \\ \hline
 \end{tabular}
 \end{center}
 \caption{{Code book size in function of the number of bars to encode.
-All experiments done wtih $256 \times 500 = 128$K samples randomly chosen.}}
+All experiments done wtih $256 \times 500 = 128$K samples randomly chosen.
+* For the $2$ beats experiment, we take the first half of every beats.
+It is different from ignoring bars and taking every $2$ beats. It is more
+coherent with the other settings ($1-2-4-8$ bars).}}
 \label{tab:size_pattern}
 \end{table}
 % RESULTS:           avg_distsOLD   avg_dist
@@ -497,9 +500,11 @@ All experiments done wtih $256 \times 500 = 128$K samples randomly chosen.}}
 %256 codes 8 bars    0.183464       0.054860
 %---------------
 %2 codes 2 beats     0.166840       0.046955
-%4 codes 1 bar       0.171495       0
-%16 codes 2 bars     0.173767
-%256 codes 4 bars    0.174169       0
+%2 codes 2 beats                    0.066416
+% based on bars
+%4 codes 1 bar       0.171495       0.050712
+%16 codes 2 bars     0.173767       0.050172
+%256 codes 4 bars    0.174169       0.049894
 
 
 \subsection{Visualization}
@@ -564,7 +569,8 @@ elements. If $W$ is $\#samples \times n$, $n$ is the codebook size.
 
 Note that NMF does not solve the same problem. It tries to explain each pattern
 as a combination of codes. Thus it does not perform clustering, though you
-could cluster patterns using their encoding weights.
+could cluster patterns using their encoding weights. Also, we do not fully
+compare our methods with NMF, it would be a paper on its own.
 
 In all our experiments we use Matlab's implementation of NMF:
 nmflib\footnote{implementation: \url{http://www.ee.columbia.edu/~grindlay/code.html}}.
@@ -582,6 +588,9 @@ retain much of the information. That being said, the typical NMF implementations
 are not expected to scale to data that does not fit in memory. Online VQ
 could be an interesting preprocessing step. Future work include looking
 at online NMF \cite{Thurau2009}.
+
+\subsection{Experiment}
+Put figure, compare basis, yeah!
 
 
 \section{Conclusion}
