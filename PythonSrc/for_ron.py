@@ -22,7 +22,7 @@ def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
 
     # TRAINING
     # go to the folder of features (per beat)
-    cd featsDir
+    os.chdir(featsDir)
 
     # load everything, unit: 1 bar, resized to 4 beats
     # key invariant, not downbeatinvariant
@@ -46,7 +46,7 @@ def do_experiment(beats,bars,nCodes,nSamples=0,useFirsts=False):
         
     # TESTING
     # go to the folder of test features (per beat)
-    cd testFeatsDir
+    os.chdir(testFeatsDir)
     
     # load and test
     dists,avg_dists = demos.load_and_encode_data(codebook,pSize=beats,
