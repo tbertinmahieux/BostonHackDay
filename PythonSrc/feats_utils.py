@@ -21,8 +21,11 @@ import scipy.signal
 #import matplotlib.pyplot as P 
 import numpy as N
 import glob
-import tables
 
+try:
+    import tables
+except ImportError:
+    print 'Cannot import pytables'
 
 try:
     from pyechonest import config
