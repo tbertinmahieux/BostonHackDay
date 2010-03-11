@@ -95,7 +95,7 @@ def die_with_usage():
     print 'launch all experiments set in main'
     print 'DONT FORGET TO HARDCODE PATHS'
     print 'usage:'
-    print '   python for_ron -go nprocesses experiment_set_number[1-4]'
+    print '   python for_ron -go nprocesses experiment_set_number(1-5)'
     sys.exit()
 
 
@@ -117,7 +117,16 @@ experiment_args = [
      for n,x in enumerate(data_sizes)],
     # EXPERIMENT SET 4: 1 bar 4 beats change data size, use first samples
     [(os.path.join(outputDir, 'set4exp%d' % n), 4,1,100,x,True)
-     for n,x in enumerate(data_sizes)]]
+     for n,x in enumerate(data_sizes)],
+    # EXPERIMENT SET 5: table 1 in the paper 
+    [(os.path.join(outputDir, 'set5exp0'), 3, 0, 100, 50000),
+     (os.path.join(outputDir, 'set5exp1'), 5, 0, 100, 50000),
+     (os.path.join(outputDir, 'set5exp2'), 7, 0, 100, 50000),
+     (os.path.join(outputDir, 'set5exp3'), 4, 1, 100, 50000),
+     (os.path.join(outputDir, 'set5exp4'), 8, 2, 100, 50000),
+     (os.path.join(outputDir, 'set5exp5'), 12, 2, 100, 50000),
+     (os.path.join(outputDir, 'set5exp6'), 16, 2, 100, 50000)],
+    ]
     
 if __name__ == '__main__':
     if len(sys.argv) < 4:
