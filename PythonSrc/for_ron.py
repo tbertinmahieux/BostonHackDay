@@ -60,6 +60,8 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
     codebook,dists = VQutils.online_vq(featsNorm,nCodes,lrate=1e-2,nIter=200)
     sp.io.savemat(os.path.join(experiment_dir, 'codebook.mat'),
                   dict(codebook=codebook, dists=dists))
+
+    del featsNorm
             
     # TESTING
     # go to the folder of test features (per beat)
@@ -80,10 +82,10 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
     if useFirsts:
         report.append(['we use firsts %s samples' % nCodes])
     report.extend(['np.average(avg_dists): %s' % np.average(avg_dists),
-                   '************************************************'])
-    reportstr = '\n'.join(reportstr)
+                   '************************************************', ''])
+    reportstr = '\n'.join(report)
     print reportstr
-    f = open(os.path.join(experiment_dir, 'report.txt'))
+    f = open(os.path.join(experiment_dir, 'report.txt'), 'w')
     f.write(reportstr)
     f.close()
 
@@ -93,35 +95,38 @@ def die_with_usage():
     print 'launch all experiments set in main'
     print 'DONT FORGET TO HARDCODE PATHS'
     print 'usage:'
-    print '   python for_ron -go nprocesses'
+    print '   python for_ron -go nprocesses experiment_set_number[1-4]'
     sys.exit()
 
-
-data_sizes = [1000, 5000, 10000, 50000, 100000, 250000, 500000, 1000000,
-              2000000]
-experiment_args = []
-# EXPERIMENT SET 1: 1 bar 4 beats change data size
-experiment_args.extend([(os.path.join(outputDir, 'set1exp%d' % n), 4,1,100,x)
-                        for n,x in enumerate(data_sizes)])
-# EXPERIMENT SET 2: 2 bar 8 beats change data size
-experiment_args.extend([(os.path.join(outputDir, 'set2exp%d' % n), 8,2,100,x)
-                        for n,x in enumerate(data_sizes)])
-# EXPERIMENT SET 3: 0 bar 4 beats change data size 
-experiment_args.extend([(os.path.join(outputDir, 'set3exp%d' % n), 4,0,100,x)
-                        for n,x in enumerate(data_sizes)])
-# EXPERIMENT SET 4: 1 bar 4 beats change data size, use first samples
-experiment_args.extend([(os.path.join(outputDir, 'set4exp%d' % n), 4,1,100,x,True)
-                        for n,x in enumerate(data_sizes)])
 
 def do_experiment_wrapper(args):
     return do_experiment(*args)
 
-if __name__ == '__main__':
 
-    if len(sys.argv) < 3:
+data_sizes = [1000, 5000, 10000, 50000, 100000, 250000, 500000, 1000000,
+              2000000]
+experiment_args = [
+    # EXPERIMENT SET 1: 1 bar 4 beats change data size
+    [(os.path.join(outputDir, 'set1exp%d' % n), 4,1,100,x)
+     for n,x in enumerate(data_sizes)],
+    # EXPERIMENT SET 2: 2 bar 8 beats change data size
+    [(os.path.join(outputDir, 'set2exp%d' % n), 8,2,100,x)
+     for n,x in enumerate(data_sizes)],
+    # EXPERIMENT SET 3: 0 bar 4 beats change data size 
+    [(os.path.join(outputDir, 'set3exp%d' % n), 4,0,100,x)
+     for n,x in enumerate(data_sizes)],
+    # EXPERIMENT SET 4: 1 bar 4 beats change data size, use first samples
+    [(os.path.join(outputDir, 'set4exp%d' % n), 4,1,100,x,True)
+     for n,x in enumerate(data_sizes)]]
+    
+if __name__ == '__main__':
+    if len(sys.argv) < 4:
         die_with_usage()
 
     nprocesses = int(sys.argv[2])
     pool = multiprocessing.Pool(processes=nprocesses)
-    pool.map(do_experiment_wrapper, experiment_args)
+
+    # Python indexes from 0, the argument indexes from 1.
+    experiment_set_number = int(sys.argv[3]) - 1
+    pool.map(do_experiment_wrapper, experiment_args[experiment_set_number])
 
