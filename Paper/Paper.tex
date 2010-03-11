@@ -147,7 +147,7 @@ gaussian mixtures \cite{Mandel2005}, aggregate features \cite{Bergstra2006a}
 and linear dynamical systems \cite{Barrington2009a}. The chroma representation
 is close from an harmonic point of view to the actual music, in particular
 we can ``listen'' to the patches (see Section \ref{sec:experiments}).
-This is an advantage for analyzing a large data set, and in accordance with our goal
+This is an advantage for analyzing a large data set, thus
 we restrain ourselves from using generative models to compress our features.
 
 
@@ -213,22 +213,22 @@ used to learn a codebook of those patterns.
 Here we should explain key invariance, resizing, etc, and not in the
 experiment section.
 
-We try to normalize the patterns regarding the key. We roll the matrix
+We try to normalize the patterns in respect to the key. We roll the matrix
 so the row with the more energy is always the lowest one. This can easily be
 seen in Figure \ref{fig:code}. We considered the same technique for rolling
 along the other axis and be invariant regarding the downbeat. However, it
 seems less robust to noise. Note that we roll each pattern independentely.
-Also, we imply that the pitch envelope is important rather than the actual 
+Also, this implies that the pitch envelope is important rather than the actual 
 pitches.
 
 
 
 \subsection{Codebook Learning}
 We use an online version of the vector quantization algorithm 
-\cite{Gersho1991}. This can also be seen as an online Kmeans.
+\cite{Gersho1991}. This can also be seen as an online K-means.
 The idea is as follow: take a sample from your data, find the closest
 code in the codebook, bring that code closer to the sample by some amount.
-The details are explained as Algorithm \ref{algo:vq}. note that this
+The details are explained in Algorithm \ref{algo:vq}. Note that this
 algorithm, though not optimal, is $O(n)$ with $n$ number of songs seen.
 Thus it scales linearly to any size of data set. The setting of the learning
 rate might become trickier, but this is not fundamentally a problem.
@@ -284,7 +284,7 @@ is $0.01$ for $20$ iterations over the whole dataset.
 We use the codebook to encode our testing set (see Section \ref{sec:data}).
 Each pattern is encoded with only one code. We can measure the average
 distance between a pattern and its encoding. We can also measure the use
-of the different codes.
+of the different codes, i.e. the size of the cluster around a code.
 
 As a distance measure (or distortion measure) between patterns, we use
 the average squared euclidean distance. In details, if a pattern $p1$
@@ -337,7 +337,7 @@ fixed code length. The data points are chose randomly from the whole
 data set.
 In the experiment a pattern size correspond to $1$ bar resized to $4$
 beats, thus a pattern size of $12$x$4$. The codebook size is $100$.
-We measure the distortion on our test set. We hope for some convergence.
+We measure the distortion on our test set. 
 See results in Figure \ref{fig:sizes}.
 
 Our learning can overfit, which explain the bad scores of small datasets.
@@ -427,7 +427,7 @@ We experiment with the size of the codebook and its affect on the
 performance of the encoding. Results are shown in Table \ref{tab:cbsize}.
 Note that we trained on a number of samples depending on the codebook
 size, i.e. we used $500$ samples per code to learn. This is consistent
-with our findings in Figure \ref{fig:sizes}.
+with our findings from Figure \ref{fig:sizes}.
 
 
 \begin{table}
@@ -534,7 +534,7 @@ coherent with the other settings ($1-2-4-8$ bars).}}
 Interpreting a codebook of size larger than $100$ is not obvious.
 We can use an algorithm like locally linear embedding \cite{Roweis2000} (LLE) 
 or multidimensional scaling \cite{Kruskal1964} to visualize the data in
-2 dimensions. We use the former\footnote{implementation: 
+2 dimensions. Here we use the former\footnote{implementation: 
 \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}, the
 result can be seen in Figure \ref{fig:lle}.
 
@@ -585,11 +585,11 @@ In this section we discuss links with non-negative matrix factorization
 \cite{Lee2000} (NMF), another method to build a codebook representing some data.
 NMF finds two matrices $H$ and $W$ that approximate some data $D$ (one
 sample per line) by
-\[
-D = W \times H + \epsilon
-\]
+\begin{eqnarray}
+D \approx W^{m \times k} H^{k \times n}
+\end{eqnarray}
 where $\epsilon$ is some noise and $W$ and $H$ only have non-negative 
-elements. If $W$ is $\#samples \times n$, $n$ is the codebook size.
+elements. If $W$ is $\#samples \times k$, $k$ is the codebook size.
 
 Note that NMF does not solve the same problem. It tries to explain each pattern
 as a combination of codes. Thus it does not perform clustering, though you
