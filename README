@@ -1,4 +1,3 @@
-
 README
 
 project at the Boston Music Hack Day (11/21/2009)
@@ -14,10 +13,10 @@ MAIN IDEA:
 
 - grap EchoNest features on a lot of songs
 
-- do clustering using LSH
+- do clustering using.... something?
 
 - see if we find patterns
 
-
+This is a work in progress, and the code makes nonsense without comments. Please write us if you're interested in something similar, we'd be happy to explain, collaborate, give feedback, etc
 
 Cheers!
