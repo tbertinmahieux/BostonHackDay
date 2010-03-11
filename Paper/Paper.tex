@@ -33,7 +33,7 @@
   {First author} {Affiliation1 \\ {\tt author1@ismir.edu}}
   {Second author} {\bf Retain these fake authors in\\\bf submission to preserve the formatting}
   {Third author} {Affiliation3 \\ {\tt author3@ismir.edu}}
-% what order do we use? Thierry, Ron, Dan? is Juan on?
+% what order do we use? Thierry, Ron, Dan? is Juan on? is Graham on?
 
 
 \begin{document}
@@ -42,13 +42,14 @@
 %
 \begin{abstract}
 We present a method for discovering typical patterns in music.
-Similar to the \textit{shingle} idea, but done on a larger scale through
-Echo Nest API, we cluster harmonic patterns from 43K songs. Patterns are
-made of ordered chroma features, and not of summarization like gaussian
-mixtures coefficients or NMF weights. We explain
-how to operate on such large datasets, we analyze the obained clusters,
-and we discuss there use for retrieval and encoding. All code is made
-available.\\
+Following up on the \textit{Shingle} idea, we bring these harmonic patterns
+into the clustering framework. We use EchoNest API and a training set
+of $43$K songs to assert our method. We restrain ourselves to an online
+algorithm, thus it can scale to arbitrary data sizes.
+We assess the basic good behaviours of our algorithm on this harmonic
+data. We explain how to interpret the centroids of the clusters through
+visualization and further encoding. We discuss ways to move to even larger
+scales and we provide our code for reproducing the results.
 TAKE-HOME MESSAGE: \textit{Shingles} idea can go large-scale?
 \end{abstract}
 %
@@ -97,7 +98,7 @@ A major component of this work is scalability. We experiment with a training
 set of $43$ thousands song, but everything scales linear in time
 relative to the number of samples. We could imagine, as an extension
 of this work, an algorithm ``listening'' to all music it can find online.
-Time would be an issue, but not memory.
+Training time would be an issue, but not memory.
 
 
 In this paper, we present a practical way to do such large-scale 
