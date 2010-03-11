@@ -300,7 +300,7 @@ See encoding experiments in Table \ref{tab:psize}.
 
 % RESULTS
 % 200codes, 2 bars, pSize=16, maxener, True, False, not scaled = 
-% 200codes, 2 bars, pSize=8, maxener, True, False, not scaled  = 0.
+% 200codes, 2 bars, pSize=8, maxener, True, False, not scaled  = 0.042432
 % 200codes, 1 bars, pSize=4, maxener, True, False, not scaled  = 
 % 200codes, 7 beats, pSize=7, maxener, True, False, not scaled = 
 % 200codes, 5 beats, pSize=5, maxener, True, False, not scaled = 
@@ -330,11 +330,12 @@ during training.}}
 
 \subsection{Data Size}
 We are interesting to see how the amount of training data changes
-the quality of our code.
+the quality of our codebook.
 We experiment with different data sizes for a fixed size of codebook and a 
 fixed code length. The data points are chose randomly from the whole
 data set.
-Code length: 1 bar resized to size 4. Codebook size: 100
+In the experiment a pattern size correspond to $1$ bar resized to $4$
+beats, thus a pattern size of $12$x$4$. The codebook size is $100$.
 We measure the distortion on our test set. We hope for some convergence.
 See results in Figure \ref{fig:sizes}.
 
@@ -379,17 +380,17 @@ random from the dataset of approximately $3,7$ million patterns.}}
 \fi
 % RESULTS:    
 % 1bar s4     avg_distOLD    avg_dist
-% 1K          0.150370
-% 5K          0.145327
-% 10K         0.143567
-% 50K         0.142257
-% 100K        0.142195
+% 1K          0.150370       0.041941
+% 5K          0.145327       0.038449
+% 10K         0.143567       0.036892
+% 50K         0.142257       0.036722
+% 100K        0.142195       
 % 250K        0.141796
 % 500K        0.142081
 % 1M          0.142118
 % 2M          0.141596
 % 1bar s4 first X samples
-% 1K          0.157142
+% 1K          0.157142       
 % 5K          0.150045
 % 10K         0.148357
 % 50K         0.146069
@@ -397,9 +398,9 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 250K        0.145819
 % 500K        0.145772
 % 1M          0.145924
-% 2M          0.146065
+% 2M          0.146065       
 % 0bar s4 (and test set same, we could do 1bar s4 in test set...)
-% 1K          0.155474
+% 1K          0.155474       0.042596
 % 5K          0.149619
 % 10K         0.148056
 % 50K         0.146328
@@ -409,9 +410,9 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 1M          0.145873
 % 2M          0.145955
 % 2bar s8     
-% 1K          0.171300
-% 5K          0.165960
-% 10K         0.165063
+% 1K          0.171300       0.049282
+% 5K          0.165960       0.046441
+% 10K         0.165063       0.045507
 % 50K         0.162439
 % 100K        0.161588
 % 250K        0.161910
@@ -442,7 +443,10 @@ with our findings in Figure \ref{fig:sizes}.
 1000 & $500$K & \\ \hline
 \end{tabular}
 \end{center}
-\caption{{Codebook size.}}
+\caption{{Experiment with the codebook size. We train on patterns
+corresponding to $1$ bar resized to $4$ beats. The number of training
+samples is set to $500$ times the number of codes, which is sufficient
+according to Figure \ref{fig:sizes}.}}
 \label{tab:cbsize}
 \end{table}
 % RESULTS:      avg_distsOLD    avg_dist
@@ -455,17 +459,24 @@ with our findings in Figure \ref{fig:sizes}.
 
 
 \subsection{Codebook Size in Function of Pattern Length}
-If the signal was totally random, and we were using 2 code to encode
-every beat, we would need.... 4 codes for 2 beats? and 16 codes for
-4 beats? and 256 codes for 8 beats?
+We experiment on the randomness of the \textit{Shingles}, assuming
+that there is some correlation between beats and bars.
+The intuition is as follow: if the signal was totally random, every
+time the signal size double, the codebook size must be squared.
+To illustrate this, imagine a binary array of size $1$. We need two
+codes to encode perfectly: $(0)$ and $(1)$. If the binary is now of
+size $2$, we need four codes: $(0,0)$, $(0,1)$, $(1,1)$ and $(1,0)$.
 
-Think about it in binary: two code to encode (0) and (1), but for
-(0,0),(0,1),(1,0),(1,1) we need four codes for the same accuracy.
+In Table \ref{tab:size_pattern}, we test that hypothesis. As expected,
+the distortion improves with larger pattern sizes. The details
+are difficult to analyze. The error jump from two beats to one bar
+can probably be explained by the obvious case of sustained notes.
+We also believe that smaller codebooks are more affected by their
+initialization. Fortunately, we can conclude that music is not random,
+which is always a good sanity check!
 
-Reasonable size: 2 - 4 - 16 - 256. If we improve distance, music
-is not random!
 
-Then... 3 beats, 5 beats, 7 beats don't encode as well!
+Then... 3 beats, 5 beats, 7 beats don't encode as well?
 
 Special: 4 beats versus 1 bar - 4 beats, show the problem of being
 not in sync with bars.
