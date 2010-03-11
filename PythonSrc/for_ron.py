@@ -60,6 +60,8 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
     codebook,dists = VQutils.online_vq(featsNorm,nCodes,lrate=1e-2,nIter=200)
     sp.io.savemat(os.path.join(experiment_dir, 'codebook.mat'),
                   dict(codebook=codebook, dists=dists))
+
+    del featsNorm
             
     # TESTING
     # go to the folder of test features (per beat)
@@ -83,7 +85,7 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
                    '************************************************'])
     reportstr = '\n'.join(report)
     print reportstr
-    f = open(os.path.join(experiment_dir, 'report.txt'))
+    f = open(os.path.join(experiment_dir, 'report.txt'), 'w')
     f.write(reportstr)
     f.close()
 
