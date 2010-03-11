@@ -81,7 +81,7 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
         report.append(['we use firsts %s samples' % nCodes])
     report.extend(['np.average(avg_dists): %s' % np.average(avg_dists),
                    '************************************************'])
-    reportstr = '\n'.join(reportstr)
+    reportstr = '\n'.join(report)
     print reportstr
     f = open(os.path.join(experiment_dir, 'report.txt'))
     f.write(reportstr)
