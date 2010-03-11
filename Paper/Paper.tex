@@ -120,11 +120,14 @@ Distortion is our measure of distance between a pattern and a code
 
 
 \section{Previous Work}\label{sec:prevwork}
-The idea is closely related to the \textit{Shingles} described by
-Slaney and Casey \cite{Casey2006,Casey2007,Casey2008}. 
+Our work can be seen as an extension of the \textit{Shingles} idea
+described by Casey and Slaney \cite{Casey2006,Casey2007,Casey2008}.
+The two main differences are the clustering framework and the use of
+beats and bars to select the position of the \textit{Shingles}.
 
-LSH: \cite{Datar2004}, LSH implementation: \cite{E2LSH}.
-The E$^2$LSH packages can efficiently handle about $50$K or $100$K
+Casey and Slaney \cite{Casey2006} use LSH \cite{Datar2004} to perform
+fast approximate nearest neighbor search. Their implementation is E$^2$LSH
+\cite{E2LSH}. This package can efficiently handle about $50$K or $100$K
 vectors of size $200$. Even with a better implementation, the LSH
 model still has some scaling problem. A large portion of the data
 must be known to decide how many projections to use, and what guarantee
@@ -133,6 +136,7 @@ number of projections and consider as clusters all the elements that
 fall into the same bin. However, this does not give us a centroid, a
 typical pattern representing that cluster.
 
+Regarding similar representations of music,
 Barrington et al. recently studied music texture using a set of ordered
 MFCC vectors \cite{Barrington2009a}. This could be seen as complementary
 to our work. Chromas capture the harmonic information and some of the
