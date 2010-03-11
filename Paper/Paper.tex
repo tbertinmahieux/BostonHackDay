@@ -463,9 +463,9 @@ We experiment on the randomness of the \textit{Shingles}, assuming
 that there is some correlation between beats and bars.
 The intuition is as follow: if the signal was totally random, every
 time the signal size double, the codebook size must be squared.
-To illustrate this, imagine a binary array of size $1$. We need two
-codes to encode perfectly: $(0)$ and $(1)$. If the binary is now of
-size $2$, we need four codes: $(0,0)$, $(0,1)$, $(1,1)$ and $(1,0)$.
+To illustrate this, imagine a binary array of length $1$. We need two
+codes to encode perfectly: $(0)$ and $(1)$. If the binary array is now of
+length $2$, we need four codes: $(0,0)$, $(0,1)$, $(1,1)$ and $(1,0)$.
 
 In Table \ref{tab:size_pattern}, we test that hypothesis. As expected,
 the distortion improves with larger pattern sizes. The details
@@ -530,6 +530,7 @@ coherent with the other settings ($1-2-4-8$ bars).}}
 
 
 \subsection{Visualization}
+Interpreting a codebook of size larger than $100$ is not obvious.
 We can use an algorithm like locally linear embedding \cite{Roweis2000} (LLE) 
 or multidimensional scaling \cite{Kruskal1964} to visualize the data in
 2 dimensions. We use the former\footnote{implementation: 
@@ -594,10 +595,10 @@ as a combination of codes. Thus it does not perform clustering, though you
 could cluster patterns using their encoding weights. Also, we do not fully
 compare our methods with NMF, it would be a paper on its own.
 
-In all our experiments we use Matlab's implementation of NMF:
-nmflib\footnote{implementation: \url{http://www.ee.columbia.edu/~grindlay/code.html}}.
+In all our experiments we use the following NMF
+implementation\footnote{implementation: \url{http://www.ee.columbia.edu/~grindlay/code.html}}.
 
-\subsection{Training on our Codebook}
+\subsection{Training NMF on our Codebook}
 NMF provides us with a way of measuring how much information is retained
 in our codebook. More specifically, we can train a codebook of size $500$
 using our online VQ algorithm, then decompose that code into $10$ basis
@@ -616,16 +617,13 @@ Put figure, compare basis, yeah!
 
 
 \section{Conclusion}
-We are awesome. Here's how:
-\begin{itemize}
-\item large-scale
-\item smarter shingles, based on beats and bars
-\item clusters good for encoding
-\item clusters good for something else?
-\item free online API, code available\footnote{code not released yet to preserve 
-submission's anonymity}
-\item we have lab t-shirts
-\end{itemize}
+We presented a practical method to perform large-scale clustering of
+harmonic patterns. We assessed the basic properties of the method through
+experiments on a large collection of music. We suggested many ways
+to interpret the data through visualization (LLE) and further encoding
+(NMF). We discussed the possibility to move to even larger scales
+and we provided our source code\footnote{Code not yet released to preserve
+submission's anonymity}.
 
 As for enhancements, we specifically did not compress our features using
 gaussian mixtures or other generative model. That being said, these methods
