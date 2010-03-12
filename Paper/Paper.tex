@@ -33,7 +33,7 @@
   {First author} {Affiliation1 \\ {\tt author1@ismir.edu}}
   {Second author} {\bf Retain these fake authors in\\\bf submission to preserve the formatting}
   {Third author} {Affiliation3 \\ {\tt author3@ismir.edu}}
-% what order do we use? Thierry, Ron, Dan? is Juan on?
+% what order do we use? Thierry, Ron, Dan? is Graham on?
 
 
 \begin{document}
@@ -42,13 +42,14 @@
 %
 \begin{abstract}
 We present a method for discovering typical patterns in music.
-Similar to the \textit{shingle} idea, but done on a larger scale through
-Echo Nest API, we cluster harmonic patterns from 43K songs. Patterns are
-made of ordered chroma features, and not of summarization like gaussian
-mixtures coefficients or NMF weights. We explain
-how to operate on such large datasets, we analyze the obained clusters,
-and we discuss there use for retrieval and encoding. All code is made
-available.\\
+Following up on the \textit{Shingle} idea, we bring these harmonic patterns
+into the clustering framework. We use EchoNest API and a training set
+of $43$K songs to assert our method. We restrain ourselves to an online
+algorithm, thus it can scale to arbitrary data sizes.
+We assess the basic good behaviours of our algorithm on this harmonic
+data. We explain how to interpret the centroids of the clusters through
+visualization and further encoding. We discuss ways to move to even larger
+scales and we provide our code for reproducing the results.
 TAKE-HOME MESSAGE: \textit{Shingles} idea can go large-scale?
 \end{abstract}
 %
@@ -97,7 +98,7 @@ A major component of this work is scalability. We experiment with a training
 set of $43$ thousands song, but everything scales linear in time
 relative to the number of samples. We could imagine, as an extension
 of this work, an algorithm ``listening'' to all music it can find online.
-Time would be an issue, but not memory.
+Training time would be an issue, but not memory.
 
 
 In this paper, we present a practical way to do such large-scale 
@@ -119,11 +120,14 @@ Distortion is our measure of distance between a pattern and a code
 
 
 \section{Previous Work}\label{sec:prevwork}
-The idea is closely related to the \textit{Shingles} described by
-Slaney and Casey \cite{Casey2006,Casey2007,Casey2008}. 
+Our work can be seen as an extension of the \textit{Shingles} idea
+described by Casey and Slaney \cite{Casey2006,Casey2007,Casey2008}.
+The two main differences are the clustering framework and the use of
+beats and bars to select the position of the \textit{Shingles}.
 
-LSH: \cite{Datar2004}, LSH implementation: \cite{E2LSH}.
-The E$^2$LSH packages can efficiently handle about $50$K or $100$K
+Casey and Slaney \cite{Casey2006} use LSH \cite{Datar2004} to perform
+fast approximate nearest neighbor search. Their implementation is E$^2$LSH
+\cite{E2LSH}. This package can efficiently handle about $50$K or $100$K
 vectors of size $200$. Even with a better implementation, the LSH
 model still has some scaling problem. A large portion of the data
 must be known to decide how many projections to use, and what guarantee
@@ -132,21 +136,25 @@ number of projections and consider as clusters all the elements that
 fall into the same bin. However, this does not give us a centroid, a
 typical pattern representing that cluster.
 
+Nearest neighbor and clustering methods are common in music similarity 
+research, for instance \cite{Cano2004,Holzapfel2009}. The difference here 
+are the actual patterns that we cluster.
+
+Regarding similar representations of music,
 Barrington et al. recently studied music texture using a set of ordered
 MFCC vectors \cite{Barrington2009a}. This could be seen as complementary
 to our work. Chromas capture the harmonic information and some of the
 rythm while the MFCC are great timbral features.
 
-Nearest neighbor and clustering methods are common in music similarity 
-research, for instance \cite{Cano2004,Holzapfel2009}. The difference here 
-are the actual patterns that we cluster.
-
 Other large-scale work use summarization of the features. We mention 
-gaussian mixtures \cite{Mandel2005}, aggregate features \cite{Bergstra2006a}
-and linear dynamical systems \cite{Barrington2009a}. The chroma representation
-is close from an harmonic point of view to the actual music, in particular
+gaussian mixtures \cite{Mandel2005}, 
+aggregate features \cite{Bertin-Mahieux2008}
+and linear dynamical systems \cite{Barrington2009a}. 
+The advantage of \textit{Shingles} representation (stacked chroma vectors)
+is that it is close from an harmonic point of view to the actual music, 
+in particular
 we can ``listen'' to the patches (see Section \ref{sec:experiments}).
-This is an advantage for analyzing a large data set, and in accordance with our goal
+This is an advantage for analyzing a large data set, thus
 we restrain ourselves from using generative models to compress our features.
 
 
@@ -212,22 +220,22 @@ used to learn a codebook of those patterns.
 Here we should explain key invariance, resizing, etc, and not in the
 experiment section.
 
-We try to normalize the patterns regarding the key. We roll the matrix
+We try to normalize the patterns in respect to the key. We roll the matrix
 so the row with the more energy is always the lowest one. This can easily be
 seen in Figure \ref{fig:code}. We considered the same technique for rolling
 along the other axis and be invariant regarding the downbeat. However, it
 seems less robust to noise. Note that we roll each pattern independentely.
-Also, we imply that the pitch envelope is important rather than the actual 
+Also, this implies that the pitch envelope is important rather than the actual 
 pitches.
 
 
 
 \subsection{Codebook Learning}
 We use an online version of the vector quantization algorithm 
-\cite{Gersho1991}. This can also be seen as an online Kmeans.
+\cite{Gersho1991}. This can also be seen as an online K-means.
 The idea is as follow: take a sample from your data, find the closest
 code in the codebook, bring that code closer to the sample by some amount.
-The details are explained as Algorithm \ref{algo:vq}. note that this
+The details are explained in Algorithm \ref{algo:vq}. Note that this
 algorithm, though not optimal, is $O(n)$ with $n$ number of songs seen.
 Thus it scales linearly to any size of data set. The setting of the learning
 rate might become trickier, but this is not fundamentally a problem.
@@ -283,7 +291,7 @@ is $0.01$ for $20$ iterations over the whole dataset.
 We use the codebook to encode our testing set (see Section \ref{sec:data}).
 Each pattern is encoded with only one code. We can measure the average
 distance between a pattern and its encoding. We can also measure the use
-of the different codes.
+of the different codes, i.e. the size of the cluster around a code.
 
 As a distance measure (or distortion measure) between patterns, we use
 the average squared euclidean distance. In details, if a pattern $p1$
@@ -336,7 +344,7 @@ fixed code length. The data points are chose randomly from the whole
 data set.
 In the experiment a pattern size correspond to $1$ bar resized to $4$
 beats, thus a pattern size of $12$x$4$. The codebook size is $100$.
-We measure the distortion on our test set. We hope for some convergence.
+We measure the distortion on our test set. 
 See results in Figure \ref{fig:sizes}.
 
 Our learning can overfit, which explain the bad scores of small datasets.
@@ -426,7 +434,7 @@ We experiment with the size of the codebook and its affect on the
 performance of the encoding. Results are shown in Table \ref{tab:cbsize}.
 Note that we trained on a number of samples depending on the codebook
 size, i.e. we used $500$ samples per code to learn. This is consistent
-with our findings in Figure \ref{fig:sizes}.
+with our findings from Figure \ref{fig:sizes}.
 
 
 \begin{table}
@@ -439,7 +447,7 @@ with our findings in Figure \ref{fig:sizes}.
 50 & $25$K & $0.038456$ \\
 100 & $50$K & $0.036725$ \\
 200 & $100$K & $0.033923$ \\
-500 & $250$K & $$ \\
+500 & $250$K & $0.030973$ \\
 1000 & $500$K & \\ \hline
 \end{tabular}
 \end{center}
@@ -455,7 +463,7 @@ according to Figure \ref{fig:sizes}.}}
 % code 50       0.147472        0.038456
 % code 100      0.142194        0.036725
 % code 200      0.137548        0.033923
-% code 500      0.131211        0.
+% code 500      0.131211        0.030973
 
 
 \subsection{Codebook Size in Function of Pattern Length}
@@ -463,9 +471,9 @@ We experiment on the randomness of the \textit{Shingles}, assuming
 that there is some correlation between beats and bars.
 The intuition is as follow: if the signal was totally random, every
 time the signal size double, the codebook size must be squared.
-To illustrate this, imagine a binary array of size $1$. We need two
-codes to encode perfectly: $(0)$ and $(1)$. If the binary is now of
-size $2$, we need four codes: $(0,0)$, $(0,1)$, $(1,1)$ and $(1,0)$.
+To illustrate this, imagine a binary array of length $1$. We need two
+codes to encode perfectly: $(0)$ and $(1)$. If the binary array is now of
+length $2$, we need four codes: $(0,0)$, $(0,1)$, $(1,1)$ and $(1,0)$.
 
 In Table \ref{tab:size_pattern}, we test that hypothesis. As expected,
 the distortion improves with larger pattern sizes. The details
@@ -530,9 +538,10 @@ coherent with the other settings ($1-2-4-8$ bars).}}
 
 
 \subsection{Visualization}
+Interpreting a codebook of size larger than $100$ is not obvious.
 We can use an algorithm like locally linear embedding \cite{Roweis2000} (LLE) 
 or multidimensional scaling \cite{Kruskal1964} to visualize the data in
-2 dimensions. We use the former\footnote{implementation: 
+2 dimensions. Here we use the former\footnote{implementation: 
 \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}, the
 result can be seen in Figure \ref{fig:lle}.
 
@@ -583,21 +592,21 @@ In this section we discuss links with non-negative matrix factorization
 \cite{Lee2000} (NMF), another method to build a codebook representing some data.
 NMF finds two matrices $H$ and $W$ that approximate some data $D$ (one
 sample per line) by
-\[
-D = W \times H + \epsilon
-\]
+\begin{eqnarray}
+D \approx W^{m \times k} H^{k \times n}
+\end{eqnarray}
 where $\epsilon$ is some noise and $W$ and $H$ only have non-negative 
-elements. If $W$ is $\#samples \times n$, $n$ is the codebook size.
+elements. If $W$ is $\#samples \times k$, $k$ is the codebook size.
 
 Note that NMF does not solve the same problem. It tries to explain each pattern
 as a combination of codes. Thus it does not perform clustering, though you
 could cluster patterns using their encoding weights. Also, we do not fully
 compare our methods with NMF, it would be a paper on its own.
 
-In all our experiments we use Matlab's implementation of NMF:
-nmflib\footnote{implementation: \url{http://www.ee.columbia.edu/~grindlay/code.html}}.
+In all our experiments we use the following NMF
+implementation\footnote{implementation: \url{http://www.ee.columbia.edu/~grindlay/code.html}}.
 
-\subsection{Training on our Codebook}
+\subsection{Training NMF on our Codebook}
 NMF provides us with a way of measuring how much information is retained
 in our codebook. More specifically, we can train a codebook of size $500$
 using our online VQ algorithm, then decompose that code into $10$ basis
@@ -614,18 +623,35 @@ at online NMF \cite{Thurau2009}.
 \subsection{Experiment}
 Put figure, compare basis, yeah!
 
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|c|c||c|}
+\hline
+\# codes & \# bars & full data & codebook & test set \\ \hline \hline
+10 & 1 & $$ & $$ & \\ \hline
+20 & 1 & $$ & $$ & \\ \hline
+10 & 2 & $\bf{1774788}$ & $$ & $1782164$\\ \hline
+20 & 2 & $$ & $$ & \\ \hline
+\end{tabular}
+\end{center}
+\caption{{Encoding error of the test data set using NMF basis learned
+on the whole data and on the codebook. We also encode the test set
+directly to give us an upper bound.}}
+\label{tab:nmf}
+\end{table}
+% RESULTS:         whole data             codebook     test set
+%10 codes 2 bars   1774788.2566 (200 it)               1739639.7304 (1000 it)
+%10 codes 1 bar
+
 
 \section{Conclusion}
-We are awesome. Here's how:
-\begin{itemize}
-\item large-scale
-\item smarter shingles, based on beats and bars
-\item clusters good for encoding
-\item clusters good for something else?
-\item free online API, code available\footnote{code not released yet to preserve 
-submission's anonymity}
-\item we have lab t-shirts
-\end{itemize}
+We presented a practical method to perform large-scale clustering of
+harmonic patterns. We assessed the basic properties of the method through
+experiments on a large collection of music. We suggested many ways
+to interpret the data through visualization (LLE) and further encoding
+(NMF). We discussed the possibility to move to even larger scales
+and we provided our source code\footnote{Code not yet released to preserve
+submission's anonymity}.
 
 As for enhancements, we specifically did not compress our features using
 gaussian mixtures or other generative model. That being said, these methods
@@ -634,6 +660,10 @@ The use of the euclidean distance is arbitrary. Summarizing patches
 with gaussians, and then comparing the distance between those gaussians,
 could reduce the influence of the noise in the distance measure.
 
+Moving on to larger scales, we could imagine merging codes together and
+splitting some on two if the clusters become too small or too large.We could
+also cluster the codebook itself, in a similar fashion as hierarchical
+gaussian mixtures \cite{Vasconcelos2001}.
 
 
 \small
