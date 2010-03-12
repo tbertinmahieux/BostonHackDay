@@ -73,6 +73,43 @@ def get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2):
     return featsNorm
 
 
+
+def encode_one_song(filename,codebook,pSize=8,keyInv=True,
+                    downBeatInv=False,bars=2):
+    """
+    returns: song, encoding, song as MAT, encoding as MAT
+    """
+    import feats_utils as FU
+    import numpy as np
+    import data_iterator
+    import VQutils
+
+    # create data iterator
+    data_iter = data_iterator.DataIterator()
+    data_iter.setMatfiles([filename]) # set matfiles
+    if bars > 0:
+        data_iter.useBars( bars )            # a pattern spans 'bars' bars
+    else:
+        data_iter.useBars(0)                 # important to set it to zero!
+        data_iter.setFeatsize( pSize )       # a pattern is a num. of beats
+    data_iter.stopAfterOnePass(True)
+    # load data
+    featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv).flatten() for p in data_iter]
+    featsNorm = np.array(featsNorm)
+    res = [np.sum(r) > 0 for r in featsNorm]
+    res2 = np.where(res)
+    featsNorm = featsNorm[res2]
+    # find code per pattern
+    best_code_per_p, dists, avg_dists = VQutils.find_best_code_per_pattern(featsNorm,codebook)
+    tmp = [int(p) for p in best_code_per_p]
+    encoding = codebook[tmp]
+    # transform into 2 matrices
+    featsNormMAT = np.concatenate([x.reshape(12,pSize) for x in featsNorm],axis=1)
+    encodingMAT = np.concatenate([x.reshape(12,pSize) for x in encoding],axis=1)
+    # return
+    featsNorm,encoding,featsNormMAT,encodingMAT
+
+
 def get_all_barfeats():
     """
     Returns all barfeats, we assume we're at the top of beatFeats dir
