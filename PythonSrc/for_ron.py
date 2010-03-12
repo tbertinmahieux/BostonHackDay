@@ -126,6 +126,10 @@ experiment_args = [
      (os.path.join(outputDir, 'set5exp4'), 8, 2, 100, 50000),
      (os.path.join(outputDir, 'set5exp5'), 12, 2, 100, 50000),
      (os.path.join(outputDir, 'set5exp6'), 16, 2, 100, 50000)],
+    # EXPERIMENT SET 6: table 2 in paper (codebook size vs distortion with
+    #  constant numbre of training samples)
+    [(os.path.join(outputDir, 'set6exp%d' % n), 4, 1, x, 500000)
+     for n,x in enumerate([1, 10, 50, 100, 200, 500, 1000])],
     ]
     
 if __name__ == '__main__':
