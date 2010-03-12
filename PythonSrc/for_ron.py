@@ -130,6 +130,15 @@ experiment_args = [
     #  constant numbre of training samples)
     [(os.path.join(outputDir, 'set6exp%d' % n), 4, 1, x, 500000)
      for n,x in enumerate([1, 10, 50, 100, 200, 500, 1000])],
+    # EXPERIMENT SET 7: exp 5 (table 1) extended: bar alignment vs taking every n-beats
+    [(os.path.join(outputDir, 'set7exp0'), 2, 0, 100, 50000),
+     (os.path.join(outputDir, 'set7exp1'), 4, 0, 100, 50000),
+     (os.path.join(outputDir, 'set7exp2'), 6, 0, 100, 50000),
+     (os.path.join(outputDir, 'set7exp3'), 8, 0, 100, 50000),
+     (os.path.join(outputDir, 'set7exp4'), 9, 0, 100, 50000),
+     (os.path.join(outputDir, 'set7exp5'), 10, 0, 100, 50000),
+     (os.path.join(outputDir, 'set7exp6'), 11, 0, 100, 50000),   
+     (os.path.join(outputDir, 'set7exp7'), 12, 0, 100, 50000)],   
     ]
     
 if __name__ == '__main__':
