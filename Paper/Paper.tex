@@ -33,7 +33,7 @@
   {First author} {Affiliation1 \\ {\tt author1@ismir.edu}}
   {Second author} {\bf Retain these fake authors in\\\bf submission to preserve the formatting}
   {Third author} {Affiliation3 \\ {\tt author3@ismir.edu}}
-% what order do we use? Thierry, Ron, Dan? is Juan on? is Graham on?
+% what order do we use? Thierry, Ron, Dan? is Graham on?
 
 
 \begin{document}
@@ -136,20 +136,23 @@ number of projections and consider as clusters all the elements that
 fall into the same bin. However, this does not give us a centroid, a
 typical pattern representing that cluster.
 
+Nearest neighbor and clustering methods are common in music similarity 
+research, for instance \cite{Cano2004,Holzapfel2009}. The difference here 
+are the actual patterns that we cluster.
+
 Regarding similar representations of music,
 Barrington et al. recently studied music texture using a set of ordered
 MFCC vectors \cite{Barrington2009a}. This could be seen as complementary
 to our work. Chromas capture the harmonic information and some of the
 rythm while the MFCC are great timbral features.
 
-Nearest neighbor and clustering methods are common in music similarity 
-research, for instance \cite{Cano2004,Holzapfel2009}. The difference here 
-are the actual patterns that we cluster.
-
 Other large-scale work use summarization of the features. We mention 
-gaussian mixtures \cite{Mandel2005}, aggregate features \cite{Bergstra2006a}
-and linear dynamical systems \cite{Barrington2009a}. The chroma representation
-is close from an harmonic point of view to the actual music, in particular
+gaussian mixtures \cite{Mandel2005}, 
+aggregate features \cite{Bertin-Mahieux2008}
+and linear dynamical systems \cite{Barrington2009a}. 
+The advantage of \textit{Shingles} representation (stacked chroma vectors)
+is that it is close from an harmonic point of view to the actual music, 
+in particular
 we can ``listen'' to the patches (see Section \ref{sec:experiments}).
 This is an advantage for analyzing a large data set, thus
 we restrain ourselves from using generative models to compress our features.
@@ -444,7 +447,7 @@ with our findings from Figure \ref{fig:sizes}.
 50 & $25$K & $0.038456$ \\
 100 & $50$K & $0.036725$ \\
 200 & $100$K & $0.033923$ \\
-500 & $250$K & $$ \\
+500 & $250$K & $0.030973$ \\
 1000 & $500$K & \\ \hline
 \end{tabular}
 \end{center}
@@ -460,7 +463,7 @@ according to Figure \ref{fig:sizes}.}}
 % code 50       0.147472        0.038456
 % code 100      0.142194        0.036725
 % code 200      0.137548        0.033923
-% code 500      0.131211        0.
+% code 500      0.131211        0.030973
 
 
 \subsection{Codebook Size in Function of Pattern Length}
@@ -619,6 +622,26 @@ at online NMF \cite{Thurau2009}.
 
 \subsection{Experiment}
 Put figure, compare basis, yeah!
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|c|c||c|}
+\hline
+\# codes & \# bars & full data & codebook & test set \\ \hline \hline
+10 & 1 & $$ & $$ & \\ \hline
+20 & 1 & $$ & $$ & \\ \hline
+10 & 2 & $\bf{1774788}$ & $$ & $1782164$\\ \hline
+20 & 2 & $$ & $$ & \\ \hline
+\end{tabular}
+\end{center}
+\caption{{Encoding error of the test data set using NMF basis learned
+on the whole data and on the codebook. We also encode the test set
+directly to give us an upper bound.}}
+\label{tab:nmf}
+\end{table}
+% RESULTS:         whole data             codebook     test set
+%10 codes 2 bars   1774788.2566 (200 it)               1739639.7304 (1000 it)
+%10 codes 1 bar
 
 
 \section{Conclusion}
