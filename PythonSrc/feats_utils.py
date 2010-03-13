@@ -133,51 +133,76 @@ def matfile_to_enid(matfile):
 
 
 
-def keyinvariance_maxenergy(pattern):
+def keyinvariance_maxenergy(pattern,retRoll=False):
     """
     A different way to try to be key invariant from the FFT.
     Important feature: the relative pitch of the events must be
     unchanged.
     We compute the row with the max energy, and we rotate so it
     row 0.
+    If retRoll == True, we also return the roll. To get back
+    the original pattern, apply -roll on axis=0
     """
     # find max row
     max_r = N.argmax(N.sum(pattern,axis=1))
     # roll
-    return N.roll(pattern,pattern.shape[0]-max_r,axis=0)
+    if not retRoll:
+        return N.roll(pattern,pattern.shape[0]-max_r,axis=0)
+    roll = pattern.shape[0]-max_r
+    return N.roll(pattern,roll,axis=0),roll
 
 
-def downbeatinvariance_maxenergy(pattern):
+def downbeatinvariance_maxenergy(pattern,retRoll=False):
     """
     A different way to try to be key invariant from the FFT.
     Important feature: notes played at the same time remain
     together.
     We compute the column with the max energy, and we rotate
     so it is column 0.
+    If retRoll == True, we also return the roll. To get back
+    the original pattern, apply -roll on axis=0
     """
     # find max row
     max_c = N.argmax(N.sum(pattern,axis=0))
     # roll
-    return N.roll(pattern,pattern.shape[1]-max_c,axis=1)
-    
+    if not retRoll:
+        return N.roll(pattern,pattern.shape[1]-max_c,axis=1)
+    roll = pattern.shape[1]-max_c
+    return N.roll(pattern,roll,axis=1),roll
 
 def normalize_pattern_maxenergy(pattern, newsize=16, keyinvariant=False,
-                                downbeatinvariant=False):
+                                downbeatinvariant=False,retRoll=False):
     """Take a pattern, a matrix 12xN, resize it to the right length
     and applies the invariant.
     Can be applied to the output of a DataIterator
     Uses energy to make the pattern invariant.
-    """
-    if (not keyinvariant) and (not downbeatinvariant):
-        return resample(pattern,newsize)
-    if keyinvariant and (not downbeatinvariant):
-        return keyinvariance_maxenergy(resample(pattern,newsize))
-    if (not keyinvariant) and downbeatinvariant:
-        return downbeatinvariance_maxenergy(resample(pattern,newsize))
-    else:
-        return downbeatinvariance_maxenergy(
-            keyinvariance_maxenergy(resample(pattern,newsize)))
 
+    If retRool true, returns three things: pattern, key invariance,
+    downbeat invariance. Those last two are zero if nothing happens.
+    """
+    if not retRoll:
+        if (not keyinvariant) and (not downbeatinvariant):
+            return resample(pattern,newsize)
+        if keyinvariant and (not downbeatinvariant):
+            return keyinvariance_maxenergy(resample(pattern,newsize))
+        if (not keyinvariant) and downbeatinvariant:
+            return downbeatinvariance_maxenergy(resample(pattern,newsize))
+        else:
+            return downbeatinvariance_maxenergy(
+                keyinvariance_maxenergy(resample(pattern,newsize)))
+    # case where we return roll too
+    if (not keyinvariant) and (not downbeatinvariant):
+        return resample(pattern,newsize),0,0
+    if keyinvariant and (not downbeatinvariant):
+        return keyinvariance_maxenergy(resample(pattern,newsize),retRoll=True),0
+    if (not keyinvariant) and downbeatinvariant:
+        p,roll = downbeatinvariance_maxenergy(resample(pattern,newsize),retRoll=True)
+        return p,0,roll
+    else:
+        p,keyroll = keyinvariance_maxenergy(resample(pattern,newsize),retRoll=True)
+        p,dbroll = downbeatinvariance_maxenergy(p,retRoll=True)
+        return p,keyroll,dbroll
+    
 
 def normalize_pattern(pattern, newsize=16, keyinvariant=False,
                       downbeatinvariant=False):
