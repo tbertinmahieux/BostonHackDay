@@ -107,13 +107,20 @@ def encode_one_song(filename,codebook,pSize=8,keyInv=True,
     featsNorm = featsNorm[res2]
     # find code per pattern
     best_code_per_p, dists, avg_dists = VQutils.find_best_code_per_pattern(featsNorm,codebook)
-    tmp = [int(p) for p in best_code_per_p]
-    encoding = codebook[tmp]
+    best_code_per_p = np.asarray([int(x) for x in best_code_per_p])
+    encoding = codebook[best_code_per_p]
     # transform into 2 matrices
     featsNormMAT = np.concatenate([x.reshape(12,pSize) for x in featsNorm],axis=1)
     encodingMAT = np.concatenate([x.reshape(12,pSize) for x in encoding],axis=1)
     # return
-    featsNorm,encoding,featsNormMAT,encodingMAT
+    return best_code_per_p,featsNorm,encoding,featsNormMAT,encodingMAT
+
+
+def get_codeword_histogram(codewords, ncodewords):
+    hist = np.zeros(ncodewords)
+    for cw in codewords:
+        hist[cw] += 1
+    return hist
 
 
 def get_all_barfeats():
