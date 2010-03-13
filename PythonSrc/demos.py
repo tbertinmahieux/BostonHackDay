@@ -101,10 +101,10 @@ def encode_one_song(filename,codebook,pSize=8,keyInv=True,
         data_iter.setFeatsize( pSize )       # a pattern is a num. of beats
     data_iter.stopAfterOnePass(True)
     # load data
-    featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv,retRoll=True).flatten() for p in data_iter]
+    featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv,retRoll=True) for p in data_iter]
     keyroll = np.array([x[1] for x in featsNorm])
     dbroll = np.array([x[2] for x in featsNorm])
-    featsNorm = [x[0] for x in featsNorm]
+    featsNorm = [x[0].flatten() for x in featsNorm]
     featsNorm = np.array(featsNorm)
     res = [np.sum(r) > 0 for r in featsNorm]
     res2 = np.where(res)
@@ -117,7 +117,7 @@ def encode_one_song(filename,codebook,pSize=8,keyInv=True,
     best_code_per_p, dists, avg_dists = VQutils.find_best_code_per_pattern(featsNorm,codebook)
     best_code_per_p = np.asarray([int(x) for x in best_code_per_p])
     encoding = codebook[best_code_per_p]
-    # transform into 2 matrices
+    # transform into 2 matrices, with derolling!!!!!!!!!
     assert(featsNorm.shape[0] == encoding.shape[0])
     #featsNormMAT = np.concatenate([x.reshape(12,pSize) for x in featsNorm],axis=1)
     featsNormMAT = np.concatenate([np.roll(np.roll(featsNorm[x].reshape(12,pSize),-keyroll[x],axis=0),-dbroll[x],axis=1) for x in range(featsNorm.shape[0])],axis=1)
