@@ -10,7 +10,7 @@ tb2332@columbia.edu
 import os
 import sys
 import numpy as np
-import pylab as P
+#import pylab as P
 import scipy as sp
 import scipy
 import scipy.io
