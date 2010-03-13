@@ -8,8 +8,8 @@ More of a demo than a useful code
 
 
 
-def load_and_encode_data(codebook,pSize=16,keyInv=True,
-                         downBeatInv=False,bars=2):
+def load_and_encode_data(codebook,pSize=8,keyInv=True,
+                         downBeatInv=False,bars=1,partialbar=1,offset=0):
     """
     Load a dataset, and encode it with codebook
     Return dists, avg_dists
@@ -18,7 +18,8 @@ def load_and_encode_data(codebook,pSize=16,keyInv=True,
     import VQutils
     # get data
     featsNorm = get_data_maxener(pSize=pSize,keyInv=keyInv,
-                                 downBeatInv=downBeatInv,bars=bars)
+                                 downBeatInv=downBeatInv,bars=bars,
+                                 partialbar=partialbar,offset=offset)
     # encode
     best_code_per_p, dists, avg_dists = VQutils.find_best_code_per_pattern(featsNorm,codebook,scale=False)
     return dists, avg_dists
@@ -30,7 +31,7 @@ def get_data_maxener_16_true_false_bars2():
 def get_data_maxener_8_true_false_bars2():
     return get_data_maxener(pSize=8,keyInv=True,downBeatInv=False,bars=2)
 
-def get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2):
+def get_data_maxener(pSize=4,keyInv=True,downBeatInv=False,bars=1,partialbar=1,offset=0):
     """
     Util function for something we do all the time
     Remove the empty patterns
@@ -54,9 +55,14 @@ def get_data_maxener(pSize=16,keyInv=True,downBeatInv=False,bars=2):
     data_iter.setMatfiles(allfiles) # set matfiles
     if bars > 0:
         data_iter.useBars( bars )            # a pattern spans 'bars' bars
+        if partialbar < 1:
+            assert(bars==1)
+            data_iter.usePartialBar( partialbar )
     else:
         data_iter.useBars(0)                 # important to set it to zero!
         data_iter.setFeatsize( pSize )       # a pattern is a num. of beats
+    if offset > 0:
+        data_iter.setOffset(offset)
     data_iter.stopAfterOnePass(True)# stop after one full iteration
     # get features
     featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv).flatten() for p in data_iter]
