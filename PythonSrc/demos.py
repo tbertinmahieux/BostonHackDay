@@ -84,6 +84,7 @@ def encode_one_song(filename,codebook,pSize=8,keyInv=True,
                     downBeatInv=False,bars=2):
     """
     returns: song, encoding, song as MAT, encoding as MAT
+    matrices are 'derolled'
     """
     import feats_utils as FU
     import numpy as np
@@ -100,18 +101,28 @@ def encode_one_song(filename,codebook,pSize=8,keyInv=True,
         data_iter.setFeatsize( pSize )       # a pattern is a num. of beats
     data_iter.stopAfterOnePass(True)
     # load data
-    featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv).flatten() for p in data_iter]
+    featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv,retRoll=True).flatten() for p in data_iter]
+    keyroll = np.array([x[1] for x in featsNorm])
+    dbroll = np.array([x[2] for x in featsNorm])
+    featsNorm = [x[0] for x in featsNorm]
     featsNorm = np.array(featsNorm)
     res = [np.sum(r) > 0 for r in featsNorm]
     res2 = np.where(res)
     featsNorm = featsNorm[res2]
+    keyroll = keyroll[res2]
+    dbroll = dbroll[res2]
+    assert(dbroll.shape[0] == keyroll.shape[0])
+    assert(dbroll.shape[0] == featsNorm.shape[0])
     # find code per pattern
     best_code_per_p, dists, avg_dists = VQutils.find_best_code_per_pattern(featsNorm,codebook)
     best_code_per_p = np.asarray([int(x) for x in best_code_per_p])
     encoding = codebook[best_code_per_p]
     # transform into 2 matrices
-    featsNormMAT = np.concatenate([x.reshape(12,pSize) for x in featsNorm],axis=1)
-    encodingMAT = np.concatenate([x.reshape(12,pSize) for x in encoding],axis=1)
+    assert(featsNorm.shape[0] == encoding.shape[0])
+    #featsNormMAT = np.concatenate([x.reshape(12,pSize) for x in featsNorm],axis=1)
+    featsNormMAT = np.concatenate([np.roll(np.roll(featsNorm[x].reshape(12,pSize),-keyroll[x],axis=0),-dbroll[x],axis=1) for x in range(featsNorm.shape[0])],axis=1)
+    #encodingMAT = np.concatenate([x.reshape(12,pSize) for x in encoding],axis=1)
+    encodingMAT = np.concatenate([np.roll(np.roll(encoding[x].reshape(12,pSize),-keyroll[x],axis=0),-dbroll[x],axis=1) for x in range(featsNorm.shape[0])],axis=1)
     # return
     return best_code_per_p,featsNorm,encoding,featsNormMAT,encodingMAT
 
