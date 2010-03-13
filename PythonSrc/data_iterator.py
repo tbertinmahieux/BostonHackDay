@@ -35,6 +35,7 @@ class DataIterator:
         self.passSize = -1 # number of element in one pass, unknown to start with
         self.barbts = [] # index of first beats of bars
         self.offset = 0 # percentage of a bar to offset
+        self.partialbar = 1
 
     def setMatfiles(self,mfiles):
         """
@@ -58,11 +59,23 @@ class DataIterator:
         The length of the pattern
         is therefore variable. Default: true.
         """
+        if n > 1:
+            assert(self.partialbar == 1)
         self.usebars = n
 
     def getBars(self):
         """ Returns the number of bars we use, or 0 """
         return self.usebars
+
+    def usePartialBar(self,val):
+        """
+        Returns a percentage of the bar, does nothing if 1. Value between
+        0 and 1. self.useBars() must be set to 1.
+        """
+        assert(val>0)
+        assert(val<=1)
+        assert(self.usebars == 1)
+        self.partialbar = val
 
     def setFeatsize(self,n):
         """
@@ -129,7 +142,7 @@ class DataIterator:
                     self.fidx = self.fidx + 1
                     self.pidx = 0
                     self.barbts = []
-                else :
+                else : # we use bars
                     x1 = self.pidx
                     idx1 = np.where(self.barbts == self.pidx)[0][0]
                     if self.offset > 0 and idx1 + self.usebars + 1 >= len(self.barbts):
@@ -145,6 +158,10 @@ class DataIterator:
                         if self.offset > 0:
                             curroffset = np.round((x2-x1)*self.offset/self.usebars)
                         self.nPatternSeen = self.nPatternSeen + 1
+                        if self.partialbar < 1:
+                            x2 = x1 + np.round((x2-x1)*self.partialbar)
+                            if x2 == x1:
+                                x2 = x1+1
                         return self.currfeats[:,x1+curroffset:x2+curroffset]
                     else :
                         # end of the song case, no offset
@@ -152,6 +169,10 @@ class DataIterator:
                         x2 = self.currfeats.shape[1]
                         self.pidx = x2
                         self.nPatternSeen = self.nPatternSeen + 1
+                        if self.partialbar < 1:
+                            x2 = x1 + np.round((x2-x1)*self.partialbar)
+                            if x2 == x1:
+                                x2 = x1+1
                         return self.currfeats[:,x1:x2]
         # NEW FILE
         # in case song does not contain features long enough
@@ -212,7 +233,12 @@ class DataIterator:
                         startidx = np.round(self.barbts[self.usebars] * self.offset / self.usebars)
                     self.pidx = self.barbts[self.usebars]
                     self.nPatternSeen = self.nPatternSeen + 1
-                    return self.currfeats[:,startidx:self.pidx+startidx]
+                    x2 = self.pidx+startidx
+                    if self.partialbar < 1:
+                        x2 = startidx + np.round((x2-startidx)*self.partialbar)
+                        if x2 == startidx:
+                            x2 = startidx+1
+                    return self.currfeats[:,startidx:x2]
             
 
     def __iter__(self):
