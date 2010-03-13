@@ -20,21 +20,21 @@ import feats_utils as FU
 
 class DataIterator:
 
-    stopAfterOnePass = 1
-    matfiles = []
-    featsize = 4
-    usebars = 1
-    fidx = 0 # which file are we at
-    pidx = 0 # which pattern are we at
-    currfeats = []  # current features
-    nPatternSeen = 0 # for stats
-    passSize = -1 # number of element in one pass, unknown to start with
-    barbts = [] # index of first beats of bars
-
     def __init__(self):
         """ Constructor """
-        print 'creating an instance of DataIterator'
+        #print 'creating an instance of DataIterator'
         self.idx = 0
+        self._stopAfterOnePass = 1
+        self.matfiles = []
+        self.featsize = 4
+        self.usebars = 1
+        self.fidx = 0 # which file are we at
+        self.pidx = 0 # which pattern are we at
+        self.currfeats = []  # current features
+        self.nPatternSeen = 0 # for stats
+        self.passSize = -1 # number of element in one pass, unknown to start with
+        self.barbts = [] # index of first beats of bars
+        self.offset = 0 # percentage of a bar to offset
 
     def setMatfiles(self,mfiles):
         """
@@ -43,6 +43,14 @@ class DataIterator:
         """
         self.matfiles = mfiles
         np.random.shuffle(self.matfiles)
+
+    def setOffset(self,val):
+        """
+        Set the offset, value between 0 and 1
+        """
+        assert(val>=0)
+        assert(val<1)
+        self.offset = val;
 
     def useBars(self,n):
         """
@@ -79,9 +87,9 @@ class DataIterator:
     def stopAfterOnePass(self,boolean):
         """ Whether we stop after one pass, or never stop, default: True """
         if boolean:
-            self.stopAfterOnePass = 1
+            self._stopAfterOnePass = 1
         else:
-            self.stopAfterOnepass = 0
+            self._stopAfterOnepass = 0
 
     def passSize(self):
         """
@@ -124,13 +132,27 @@ class DataIterator:
                 else :
                     x1 = self.pidx
                     idx1 = np.where(self.barbts == self.pidx)[0][0]
-                    if idx1 + self.usebars < len(self.barbts):
+                    if self.offset > 0 and idx1 + self.usebars + 1 >= len(self.barbts):
+                        # we're at the end, we have an offset, cant make it
+                        self.fidx = self.fidx + 1
+                        self.pidx = 0
+                        self.barbts = []
+                    elif idx1 + self.usebars < len(self.barbts):
+                        # simple case
                         x2 = self.barbts[idx1+self.usebars]
+                        self.pidx = x2
+                        curroffset = 0
+                        if self.offset > 0:
+                            curroffset = np.round((x2-x1)*self.offset/self.usebars)
+                        self.nPatternSeen = self.nPatternSeen + 1
+                        return self.currfeats[:,x1+curroffset:x2+curroffset]
                     else :
+                        # end of the song case, no offset
+                        assert(self.offset == 0)
                         x2 = self.currfeats.shape[1]
-                    self.pidx = x2
-                    self.nPatternSeen = self.nPatternSeen + 1
-                    return self.currfeats[:,x1:x2]
+                        self.pidx = x2
+                        self.nPatternSeen = self.nPatternSeen + 1
+                        return self.currfeats[:,x1:x2]
         # NEW FILE
         # in case song does not contain features long enough
         while True:
@@ -138,7 +160,7 @@ class DataIterator:
             if self.fidx >= len(self.matfiles):
                 if self.passSize < 0:
                     self.passSize = self.nPatternSeen
-                if self.stopAfterOnePass == 1:
+                if self._stopAfterOnePass == 1:
                     self.fidx = 0
                     self.pidx = 0
                     raise StopIteration
@@ -167,18 +189,30 @@ class DataIterator:
             if self.usebars >= 1 and np.array(self.barbts).size < self.usebars :
                 self.fidx = self.fidx + 1
                 continue
+            if self.usebars >= 1 and self.offset > 0 and np.array(self.barbts).size + 1 < self.usebars :
+                self.fidx = self.fidx + 1
+                continue
             # get first feature
             if self.usebars == 0:
                 self.pidx = self.featsize
                 self.nPatternSeen = self.nPatternSeen + 1
                 return self.currfeats[:,0:self.pidx]
             else :
-                if np.array(self.barbts).size <= self.usebars :
+                if np.array(self.barbts).size == self.usebars and self.offset==0:
                     self.pidx = self.currfeats.shape[1]
+                    self.nPatternSeen = self.nPatternSeen + 1
+                    return self.currfeats[:,0:self.pidx]
+                elif np.array(self.barbts).size == self.usebars:
+                    # just enough bar, but we need offset... too bad
+                    self.fidx = self.fidx + 1
+                    continue
                 else:
+                    startidx = 0
+                    if self.offset > 0 :
+                        startidx = np.round(self.barbts[self.usebars] * self.offset / self.usebars)
                     self.pidx = self.barbts[self.usebars]
-                self.nPatternSeen = self.nPatternSeen + 1
-                return self.currfeats[:,0:self.pidx]
+                    self.nPatternSeen = self.nPatternSeen + 1
+                    return self.currfeats[:,startidx:self.pidx+startidx]
             
 
     def __iter__(self):
