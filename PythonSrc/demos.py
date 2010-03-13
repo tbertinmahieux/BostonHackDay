@@ -8,7 +8,7 @@ More of a demo than a useful code
 
 
 
-def load_and_encode_data(codebook,pSize=8,keyInv=True,
+def load_and_encode_data(codebook,pSize=4,keyInv=True,
                          downBeatInv=False,bars=1,partialbar=1,offset=0):
     """
     Load a dataset, and encode it with codebook
