@@ -194,7 +194,8 @@ def normalize_pattern_maxenergy(pattern, newsize=16, keyinvariant=False,
     if (not keyinvariant) and (not downbeatinvariant):
         return resample(pattern,newsize),0,0
     if keyinvariant and (not downbeatinvariant):
-        return keyinvariance_maxenergy(resample(pattern,newsize),retRoll=True),0
+        p,roll =  keyinvariance_maxenergy(resample(pattern,newsize),retRoll=True)
+        return p,roll,0
     if (not keyinvariant) and downbeatinvariant:
         p,roll = downbeatinvariance_maxenergy(resample(pattern,newsize),retRoll=True)
         return p,0,roll
