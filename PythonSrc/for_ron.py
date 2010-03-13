@@ -18,7 +18,7 @@ featsDir = os.path.expanduser('~/projects/ismir10-patterns/beatFeats')
 testFeatsDir = os.path.expanduser('~/projects/ismir10-patterns/uspop_mat')
 outputDir = os.path.expanduser('~/projects/ismir10-patterns/experiments')
 
-def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,seed=0):
+def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,seed=0,offset=0,partialbar=1):
     """
     Performs an independant experiment!!!!
     """
@@ -30,7 +30,8 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
     np.random.seed(seed)
 
     args = dict(experiment_dir=experiment_dir, beats=beats, bars=bars,
-                nCodes=nCodes, nSamples=nSamples, useFirsts=useFirsts,seed=seed)
+                nCodes=nCodes, nSamples=nSamples, useFirsts=useFirsts,seed=seed,
+                offset=offset,partialbar=partialbar)
     sp.io.savemat(os.path.join(experiment_dir, 'args.mat'), args)
 
 
@@ -40,9 +41,9 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
 
     # load everything, unit: 1 bar, resized to 4 beats
     # key invariant, not downbeatinvariant
-    featsNorm = demos.get_data_maxener(pSize=beats,keyInv=True,downBeatInv=False,bars=bars)
+    featsNorm = demos.get_data_maxener(pSize=beats,keyInv=True,downBeatInv=False,bars=bars,offset=offset,partialbar=partialbar)
 
-    # select 50K random samples out of it
+    # select nSamples random samples out of it
     if nSamples == 0:
         nSamples = featsNorm.shape[0]
     if useFirsts:
