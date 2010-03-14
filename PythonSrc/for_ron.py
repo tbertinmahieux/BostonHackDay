@@ -139,7 +139,18 @@ experiment_args = [
      (os.path.join(outputDir, 'set7exp4'), 9, 0, 100, 50000),
      (os.path.join(outputDir, 'set7exp5'), 10, 0, 100, 50000),
      (os.path.join(outputDir, 'set7exp6'), 11, 0, 100, 50000),   
-     (os.path.join(outputDir, 'set7exp7'), 12, 0, 100, 50000)],   
+     (os.path.join(outputDir, 'set7exp7'), 12, 0, 100, 50000)],
+    # EXPERIMENT SET 8: testing offsets
+    [(os.path.join(outputDir, 'set8exp0'),4,1,100,50000,False,0,0,1),
+     (os.path.join(outputDir, 'set8exp1'),4,1,100,50000,False,0,0.25,1),
+     (os.path.join(outputDir, 'set8exp2'),4,1,100,50000,False,0,0.50,1),
+     (os.path.join(outputDir, 'set8exp3'),4,1,100,50000,False,0,0.75,1),
+     (os.path.join(outputDir, 'set8exp4'),4,1,100,50000,False,0,0,.25),
+     (os.path.join(outputDir, 'set8exp5'),4,1,100,50000,False,0,0.25,.25),
+     (os.path.join(outputDir, 'set8exp6'),4,1,100,50000,False,0,0.50,.25),
+     (os.path.join(outputDir, 'set8exp7'),4,1,100,50000,False,0,0.75,.25),
+     (os.path.join(outputDir, 'set8exp8'),4,1,100,50000,False,0,0,.50),
+     (os.path.join(outputDir, 'set8exp9'),4,1,100,50000,False,0,0.50,.25)],
     ]
     
 if __name__ == '__main__':
