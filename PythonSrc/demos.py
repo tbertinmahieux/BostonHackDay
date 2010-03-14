@@ -84,6 +84,7 @@ def encode_one_song(filename,codebook,pSize=8,keyInv=True,
                     downBeatInv=False,bars=2):
     """
     returns: song, encoding, song as MAT, encoding as MAT
+    matrices are 'derolled'
     """
     import feats_utils as FU
     import numpy as np
@@ -100,28 +101,92 @@ def encode_one_song(filename,codebook,pSize=8,keyInv=True,
         data_iter.setFeatsize( pSize )       # a pattern is a num. of beats
     data_iter.stopAfterOnePass(True)
     # load data
-    featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv).flatten() for p in data_iter]
+    featsNorm = [FU.normalize_pattern_maxenergy(p,pSize,keyInv,downBeatInv,retRoll=True) for p in data_iter]
+    keyroll = np.array([x[1] for x in featsNorm])
+    dbroll = np.array([x[2] for x in featsNorm])
+    featsNorm = [x[0].flatten() for x in featsNorm]
     featsNorm = np.array(featsNorm)
     res = [np.sum(r) > 0 for r in featsNorm]
     res2 = np.where(res)
     featsNorm = featsNorm[res2]
+    keyroll = keyroll[res2]
+    dbroll = dbroll[res2]
+    assert(dbroll.shape[0] == keyroll.shape[0])
+    assert(dbroll.shape[0] == featsNorm.shape[0])
     # find code per pattern
     best_code_per_p, dists, avg_dists = VQutils.find_best_code_per_pattern(featsNorm,codebook)
     best_code_per_p = np.asarray([int(x) for x in best_code_per_p])
     encoding = codebook[best_code_per_p]
-    # transform into 2 matrices
-    featsNormMAT = np.concatenate([x.reshape(12,pSize) for x in featsNorm],axis=1)
-    encodingMAT = np.concatenate([x.reshape(12,pSize) for x in encoding],axis=1)
+    # transform into 2 matrices, with derolling!!!!!!!!!
+    assert(featsNorm.shape[0] == encoding.shape[0])
+    #featsNormMAT = np.concatenate([x.reshape(12,pSize) for x in featsNorm],axis=1)
+    featsNormMAT = np.concatenate([np.roll(np.roll(featsNorm[x].reshape(12,pSize),-keyroll[x],axis=0),-dbroll[x],axis=1) for x in range(featsNorm.shape[0])],axis=1)
+    #encodingMAT = np.concatenate([x.reshape(12,pSize) for x in encoding],axis=1)
+    encodingMAT = np.concatenate([np.roll(np.roll(encoding[x].reshape(12,pSize),-keyroll[x],axis=0),-dbroll[x],axis=1) for x in range(featsNorm.shape[0])],axis=1)
     # return
     return best_code_per_p,featsNorm,encoding,featsNormMAT,encodingMAT
 
 
 def get_codeword_histogram(codewords, ncodewords):
+    """
+    Needs documentation, what is codeworks? best_code_per_pattern....
+    """
     hist = np.zeros(ncodewords)
     for cw in codewords:
         hist[cw] += 1
     return hist
 
+
+
+def merge_codebook(codebook,nGoal,freqs = []):
+    """
+    merge the codebook in an iterative and greedy way.
+    Algo:
+      - finds closest pair of codes
+      - merge them, using freqs if available
+      - repeat until desired number of codes (nGoal)
+    Returns smaller codebook, #codes=nGoal
+    Also returns frequencies of the new codebook
+    Code not optimized!!!!!! close to n^3 operations
+    """
+    import numpy as np
+    import VQutils as VQU
+    import copy
+    # set freqs, sanity checks
+    if freqs == []:
+        freqs = np.ones(codebook.shape[0])
+    freqs = np.array(freqs)
+    assert(freqs.size == codebook.shape[0])
+    assert(nGoal < codebook.shape[0])
+    assert(nGoal > 0)
+    # let's go!
+    cb = copy.deepcopy(codebook)
+    for k in range(codebook.shape[0] - nGoal):
+        # compute dists for all pairs
+        dists = np.zeros([cb.shape[0],cb.shape[0]])
+        for l in range(dists.shape[0]):
+            dists[l,l] = np.inf
+            for c in range(l+1,dists.shape[1]):
+                dists[l,c] = VQU.euclidean_dist(cb[l],cb[c])
+                dists[c,l] = np.inf
+        # find closest pair
+        pos = np.where(dists==dists.min())
+        code1 = pos[0][0]
+        code2 = pos[1][0]
+        print 'iter',k,' min distance=',dists.min(),' codes=',code1,',',code2
+        assert(code1 < code2)#code1 should be smaller from how we filled dists
+        # merge
+        #cb[code1,:] = np.mean([cb[code1,:]*freqs[code1],cb[code2,:]*freqs[code2]],axis=0) * 1. / (freqs[code1] + freqs[code2])
+        cb[code1,:] = np.mean([cb[code1,:],cb[code2,:]],axis=0)
+        freqs[code1] += freqs[code2]
+        # remove
+        if code2 + 1 < cb.shape[0]:
+            cb[code2,:] = cb[-1,:]
+            freqs[code2] = freqs[-1]
+        cb = cb[:-1]
+        freqs = freqs[:-1]
+    # done
+    return cb, freqs
 
 def get_all_barfeats():
     """
