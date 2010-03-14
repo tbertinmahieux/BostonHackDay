@@ -228,3 +228,85 @@ def get_all_barfeats():
     tstart = time.time()
     codebook, distortion = SCVQ.kmeans2(featsNorm,10,20,minit='points')
     print 'kmeans performed in ' + str(time.time()-tstart) + 'seconds'
+
+
+
+
+def add_image(P,im,x,y,width=.15):
+    """
+    Used by LLE_my_codebook to add a specific image to a given plot
+    I should start my plotting library... or still Ron's...
+
+    Image is a matrix, (x,y) is in data coord, image is centered
+
+    INPUT:
+      - P      pylab object (P in LLE_my_codebook)
+      - im     matrix representing the image
+      - x      x position in data coord
+      - y      y position in data coord
+      - width  width in fig size, height automatically found
+    """
+    # current axes
+    curr_axes = P.gca()
+    # current axis in data coord
+    (minX,maxX,minY,maxY) = P.axis()
+    # get placement of mainx axes in figure
+    bbox = curr_axes.bbox._bbox
+    fX = bbox.x0
+    fY = bbox.y0
+    fWidth = bbox.x1 - bbox.x0
+    fHeight = bbox.y1 - bbox.y0
+    # find pos relative to main axes
+    relX = (x - minX) * 1. / (maxX-minX)
+    relY = (y - minY) * 1. / (maxY-minY)
+    # find pos relative to main figure
+    relX = (relX * fWidth) + fX
+    relY = (relY * fHeight) + fY
+    # height relative to width
+    height = im.shape[0] * 1. / im.shape[1] * width
+    # create new axis
+    a = P.axes([relX-width/2.,relY-height/2.,width,height])
+    # set to x and y ticks
+    P.setp(a, xticks=[], yticks=[])
+    # plot image, new axes is the current default
+    P.imshow(im,interpolation='nearest',origin='lower')
+    # set back axes
+    P.axes(curr_axes)
+
+
+
+def LLE_my_codebook(codebook,nNeighbors=5):
+    """
+    Performs LLE on the codebook
+    Display the result
+    LLE code not mine, see code for reference.
+    """
+    import pylab as P
+    import LLE
+    # compute LLE, goal is 2D
+    LLEres = LLE.LLE(codebook.T,nNeighbors,2)
+    # plot that result
+    P.plot(LLEres[0,:],LLEres[1,:],'.')
+    P.hold(True)
+    # prepare to plot
+    patch_size = codebook[0,:].size / 12
+    #tx = P.gca().get_xaxis_transform()
+    #ty = P.gca().get_yaxis_transform()
+    # plot extreme left codebook
+    idx = np.argmin(LLEres[0,:])
+    add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx])
+    # plot extrem right codebook
+    idx = np.argmax(LLEres[0,:])
+    add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx])
+    # plot extreme up codebook
+    idx = np.argmax(LLEres[1,:])
+    add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx])
+    # plot extreme down codebook
+    idx = np.argmin(LLEres[1,:])
+    add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx])
+    # plot middle codebook
+    idx = np.argmin([euclidean_dist(r,np.zeros(2)) for r in LLEres.T])
+    add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx])
+    # done, release, show
+    P.hold(False)
+    P.show()
