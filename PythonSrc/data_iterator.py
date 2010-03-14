@@ -162,6 +162,7 @@ class DataIterator:
                             x2 = x1 + np.round((x2-x1)*self.partialbar)
                             if x2 == x1:
                                 x2 = x1+1
+                            x2 = min(x2,self.currfeats.shape[1])
                         return self.currfeats[:,x1+curroffset:x2+curroffset]
                     else :
                         # end of the song case, no offset
@@ -238,6 +239,7 @@ class DataIterator:
                         x2 = startidx + np.round((x2-startidx)*self.partialbar)
                         if x2 == startidx:
                             x2 = startidx+1
+                        x2 = min(x2,self.currfeats.shape[1])
                     return self.currfeats[:,startidx:x2]
             
 
