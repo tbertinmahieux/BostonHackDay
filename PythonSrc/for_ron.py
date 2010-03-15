@@ -153,9 +153,9 @@ experiment_args = [
      (os.path.join(outputDir, 'set8exp9'),4,1,100,50000,False,0,0.50,.25)],
     # EXPERIMENT SET 9: for visualization
     [(os.path.join(outputDir, 'set9exp0'),4,1,500,50000),
-     (os.path.join(outputDir, 'set9exp1'),4,2,500,50000),
-     (os.path.join(outputDir, 'set9exp2'),4,4,500,50000),
-     (os.path.join(outputDir, 'set9exp3'),4,8,500,50000)],
+     (os.path.join(outputDir, 'set9exp1'),8,2,500,50000),
+     (os.path.join(outputDir, 'set9exp2'),16,4,500,50000),
+     (os.path.join(outputDir, 'set9exp3'),32,8,500,50000)],
     ]
     
 if __name__ == '__main__':
