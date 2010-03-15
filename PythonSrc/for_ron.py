@@ -81,7 +81,7 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
               'beats: %s , bars: %s , nCodes: %s , nSamples: %s , offset: %s , partialbar: %s'
               % (beats, bars, nCodes, nSamples, offset, partialbar)]
     if useFirsts:
-        report.append(['we use firsts %s samples' % nCodes])
+        report.append('we use firsts %s samples' % nCodes)
     report.extend(['np.average(avg_dists): %s' % np.average(avg_dists),
                    '************************************************', ''])
     reportstr = '\n'.join(report)
@@ -151,6 +151,11 @@ experiment_args = [
      (os.path.join(outputDir, 'set8exp7'),4,1,100,50000,False,0,0.75,.25),
      (os.path.join(outputDir, 'set8exp8'),4,1,100,50000,False,0,0,.50),
      (os.path.join(outputDir, 'set8exp9'),4,1,100,50000,False,0,0.50,.25)],
+    # EXPERIMENT SET 9: for visualization
+    [(os.path.join(outputDir, 'set9exp0'),4,1,500,50000),
+     (os.path.join(outputDir, 'set9exp1'),4,2,500,50000),
+     (os.path.join(outputDir, 'set9exp2'),4,4,500,50000),
+     (os.path.join(outputDir, 'set9exp3'),4,8,500,50000)],
     ]
     
 if __name__ == '__main__':
