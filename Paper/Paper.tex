@@ -318,13 +318,13 @@ See encoding experiments in Table \ref{tab:psize}.
 \begin{tabular}{|l|c|}
 \hline
 size & avg. dist \\ \hline \hline
-1 bar (4) & \\
-2 bars (8) & $$\\
-2 bars (12) & $$\\
-2 bars (16) & $$ \\ \hline
-3 beats & \\
-5 beats & $$\\
-7 beats & $$\\ \hline
+1 bar (4) & $0.036722$\\
+2 bars (8) & $0.044301$\\
+2 bars (12) & $0.043583$\\
+2 bars (16) & $0.044086$ \\ \hline
+3 beats & $0.032688$\\
+5 beats & $0.040858$\\
+7 beats & $0.045515$\\ \hline
 \end{tabular}
 \end{center}
 \caption{{Encoding score for different pattern sizes. We can select the
@@ -392,9 +392,9 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 5K          0.145327       0.038449
 % 10K         0.143567       0.036892
 % 50K         0.142257       0.036722
-% 100K        0.142195       
-% 250K        0.141796
-% 500K        0.142081
+% 100K        0.142195       0.035973
+% 250K        0.141796       0.035910
+% 500K        0.142081       0.035904
 % 1M          0.142118
 % 2M          0.141596
 % 1bar s4 first X samples
@@ -409,22 +409,22 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 2M          0.146065       
 % 0bar s4 (and test set same, we could do 1bar s4 in test set...)
 % 1K          0.155474       0.042596
-% 5K          0.149619
-% 10K         0.148056
-% 50K         0.146328
-% 100K        0.146004
-% 250K        0.146024
-% 500K        0.145962
+% 5K          0.149619       0.038971
+% 10K         0.148056       0.038114
+% 50K         0.146328       0.037181
+% 100K        0.146004       0.037055
+% 250K        0.146024       0.037014
+% 500K        0.145962       0.037004
 % 1M          0.145873
 % 2M          0.145955
 % 2bar s8     
 % 1K          0.171300       0.049282
 % 5K          0.165960       0.046441
 % 10K         0.165063       0.045507
-% 50K         0.162439
-% 100K        0.161588
-% 250K        0.161910
-% 500K        0.161233
+% 50K         0.162439       0.044301
+% 100K        0.161588       0.044183
+% 250K        0.161910       0.043896
+% 500K        0.161233       0.043906
 % 1M          0.161057
 % 2M          0.161068
 
@@ -464,6 +464,13 @@ according to Figure \ref{fig:sizes}.}}
 % code 100      0.142194        0.036725
 % code 200      0.137548        0.033923
 % code 500      0.131211        0.030973
+% REDONE WITH FIX NUMBER OF FEATURES - 500K (new correct dist)
+% code 1        
+% code 10       0.045579
+% code 50       0.038302
+% code 100      
+% code 200      
+% code 500      
 
 
 \subsection{Codebook Size in Function of Pattern Length}
