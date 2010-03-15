@@ -167,5 +167,11 @@ if __name__ == '__main__':
 
     # Python indexes from 0, the argument indexes from 1.
     experiment_set_number = int(sys.argv[3]) - 1
-    pool.map(do_experiment_wrapper, experiment_args[experiment_set_number])
+    args = experiment_args[experiment_set_number]
+    try:
+        args = [args[int(sys.argv[4]) - 1]]
+    except IndexError:
+        pass
+    
+    pool.map(do_experiment_wrapper, args)
 
