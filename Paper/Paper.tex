@@ -544,6 +544,39 @@ coherent with the other settings ($1-2-4-8$ bars).}}
 \end{figure}
 
 
+\subsection{Bar offset}
+We study how great are patterns based on bars by playing with an offset.
+The offset can be $0$ (normal case) or a quarter of bar, half a bar, and
+three quarters of a bar.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+offset & avg. dist \\ \hline \hline
+$0$ & $$ \\
+$.25$ & $$ \\
+$.50$ & $$ \\
+$.75$ & $$ \\
+\end{tabular}
+\end{center}
+\caption{{Results with different offset. Always $100$ codes.
+\label{tab:offset}}}
+\end{table}
+% RESULTS             avg_results
+% 0 offset
+% .25 ofset           0.037130
+% .50 ofset           0.037241
+% .75 ofset           0.037337
+% RESULTS FOR PARTIALBAR TOO
+% 0 off .25 part      0.046304
+% .25 off .25 part    0.044950
+% .50 off .25 part    0.044395
+% .75 off .25 part    0.044473
+
+
+
+
 \subsection{Visualization}
 Interpreting a codebook of size larger than $100$ is not obvious.
 We can use an algorithm like locally linear embedding \cite{Roweis2000} (LLE) 
