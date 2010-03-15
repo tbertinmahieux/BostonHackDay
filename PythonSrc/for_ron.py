@@ -78,8 +78,8 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
     # report result (average sqaure distance per ... pixel?
     # with print outs to know what we are doing
     report = ['EXPERIMENT REPORT ******************************',
-              'beats: %s , bars: %s , nCodes: %s , nSamples: %s'
-              % (beats, bars, nCodes, nSamples)]
+              'beats: %s , bars: %s , nCodes: %s , nSamples: %s , offset: %s , partialbar: %s'
+              % (beats, bars, nCodes, nSamples, offset, partialbar)]
     if useFirsts:
         report.append(['we use firsts %s samples' % nCodes])
     report.extend(['np.average(avg_dists): %s' % np.average(avg_dists),
