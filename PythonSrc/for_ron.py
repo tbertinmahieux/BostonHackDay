@@ -156,8 +156,33 @@ experiment_args = [
      (os.path.join(outputDir, 'set9exp1'),8,2,500,50000),
      (os.path.join(outputDir, 'set9exp2'),16,4,500,50000),
      (os.path.join(outputDir, 'set9exp3'),32,8,500,50000)],
+    # EXPERIMENT SET 10: more on offset with partial bars
+    [(os.path.join(outputDir, 'set10exp0'),4,1,100,50000,False,0,0.00,.50),
+     (os.path.join(outputDir, 'set10exp1'),4,1,100,50000,False,0,0.25,.50),
+     (os.path.join(outputDir, 'set10exp2'),4,1,100,50000,False,0,0.50,.50),
+     (os.path.join(outputDir, 'set10exp3'),4,1,100,50000,False,0,0.75,.50),
+     (os.path.join(outputDir, 'set10exp4'),4,1,100,50000,False,0,0.00,.75),
+     (os.path.join(outputDir, 'set10exp5'),4,1,100,50000,False,0,0.25,.75),
+     (os.path.join(outputDir, 'set10exp6'),4,1,100,50000,False,0,0.50,.75),
+     (os.path.join(outputDir, 'set10exp7'),4,1,100,50000,False,0,0.75,.75)],
+    # EXPERIMENT SET 11: redoing pattern doubles => nCodes squares
+    [(os.path.join(outputDir, 'set11exp0'),1,1,2,128000,False,0,0.00,.25),
+     (os.path.join(outputDir, 'set11exp1'),1,1,2,128000,False,0,0.25,.25),
+     (os.path.join(outputDir, 'set11exp2'),1,1,2,128000,False,0,0.50,.25),
+     (os.path.join(outputDir, 'set11exp3'),1,1,2,128000,False,0,0.75,.25),
+     (os.path.join(outputDir, 'set11exp4'),2,1,4,128000,False,0,0.00,.50),
+     (os.path.join(outputDir, 'set11exp5'),2,1,4,128000,False,0,0.25,.50),
+     (os.path.join(outputDir, 'set11exp6'),2,1,4,128000,False,0,0.50,.50),
+     (os.path.join(outputDir, 'set11exp7'),2,1,4,128000,False,0,0.75,.50),
+     (os.path.join(outputDir, 'set11exp7'),4,1,16,128000,False,0),
+     (os.path.join(outputDir, 'set11exp7'),8,2,256,128000,False,0),
+     (os.path.join(outputDir, 'set11exp4'),2,1,2,128000,False,0,0.00,.50),
+     (os.path.join(outputDir, 'set11exp5'),2,1,2,128000,False,0,0.25,.50),
+     (os.path.join(outputDir, 'set11exp6'),2,1,2,128000,False,0,0.50,.50),
+     (os.path.join(outputDir, 'set11exp7'),2,1,2,128000,False,0,0.75,.50)],
     ]
-    
+
+        
 if __name__ == '__main__':
     if len(sys.argv) < 4:
         die_with_usage()
