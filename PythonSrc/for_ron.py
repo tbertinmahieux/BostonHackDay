@@ -184,6 +184,16 @@ experiment_args = [
      (os.path.join(outputDir, 'set11exp9'),1,1,2,128000,False,0,0.25,.25),
      (os.path.join(outputDir, 'set11exp10'),1,1,2,128000,False,0,0.50,.25),
      (os.path.join(outputDir, 'set11exp11'),1,1,2,128000,False,0,0.75,.25)],
+    # EXPERIMENT SET 12: for visualization
+    [(os.path.join(outputDir, 'set12exp0'),4,1,500,500000),
+     (os.path.join(outputDir, 'set12exp1'),8,2,500,500000),
+     (os.path.join(outputDir, 'set12exp2'),16,4,500,500000),
+     (os.path.join(outputDir, 'set12exp3'),32,8,500,500000)],
+    # EXPERIMENT SET 13: for visualization
+    [(os.path.join(outputDir, 'set13exp0'),4,1,200,200000),
+     (os.path.join(outputDir, 'set13exp1'),8,2,200,200000),
+     (os.path.join(outputDir, 'set13exp2'),16,4,200,200000),
+     (os.path.join(outputDir, 'set13exp3'),32,8,200,200000)],
     ]
 
         
