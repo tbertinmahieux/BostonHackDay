@@ -125,7 +125,12 @@ def read_features_from_h5(h5filename):
 
 def resample(data, newsize):
     """ resample the data, columnwise """
-    return SP.signal.resample(data, newsize, axis=1)
+    if newsize > 1:
+        return SP.signal.resample(data, newsize, axis=1)
+    # special case, newsize == 1
+    if newsize == 1 and data.shape[1] == 1:
+        return data
+    return N.mean(data,axis=1).reshape(data.shape[0],1)
 
 def matfile_to_enid(matfile):
     """Convert matfilename to an echo nest track id."""
