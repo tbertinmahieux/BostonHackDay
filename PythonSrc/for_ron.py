@@ -179,7 +179,11 @@ experiment_args = [
      (os.path.join(outputDir, 'set11exp4'),2,1,2,128000,False,0,0.00,.50),
      (os.path.join(outputDir, 'set11exp5'),2,1,2,128000,False,0,0.25,.50),
      (os.path.join(outputDir, 'set11exp6'),2,1,2,128000,False,0,0.50,.50),
-     (os.path.join(outputDir, 'set11exp7'),2,1,2,128000,False,0,0.75,.50)],
+     (os.path.join(outputDir, 'set11exp7'),2,1,2,128000,False,0,0.75,.50),
+     (os.path.join(outputDir, 'set11exp8'),1,1,2,128000,False,0,0.00,.25),
+     (os.path.join(outputDir, 'set11exp9'),1,1,2,128000,False,0,0.25,.25),
+     (os.path.join(outputDir, 'set11exp10'),1,1,2,128000,False,0,0.50,.25),
+     (os.path.join(outputDir, 'set11exp11'),1,1,2,128000,False,0,0.75,.25)],
     ]
 
         
