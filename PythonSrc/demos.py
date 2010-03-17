@@ -445,9 +445,19 @@ def freqs_for_my_artists(filenames,codebook,pSize=8,keyInv=True,
         
 
 
+
+def l0_dist(a,b):
+    """
+    Compute the number of common non nul elems
+    """
+    import numpy as np
+    non_nul_a = np.where(a.flatten()>0)[0]
+    return np.where(b.flatten()[non_nul_a]>0)[0].shape[0]
+
+
 def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
                               downBeatInv=False,bars=2,normalize=True,
-                              confMatrix=True):
+                              confMatrix=True,use_l0_dist=False):
     """
     Performs a leave-one-out experiments where we try to guess the artist
     from it's nearest neighbors in frequencies
@@ -493,7 +503,10 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
                 dists[l,c] = np.inf
                 dists[c,l] = np.inf
                 continue
-            dists[l,c] = VQU.euclidean_dist(freqs[l],freqs[c])
+            if use_l0_dist:
+                dists[l,c] = l0_dist(freqs[l],freqs[c])
+            else:
+                dists[l,c] = VQU.euclidean_dist(freqs[l],freqs[c])
             dists[c,l] = dists[l,c]
     for l in range(nFiles): # fill diag with inf
         dists[l,l] = np.inf
