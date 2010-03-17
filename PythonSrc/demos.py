@@ -232,7 +232,7 @@ def get_all_barfeats():
 
 
 
-def add_image(P,im,x,y,width=.15):
+def add_image(P,im,x,y,width=.15,height=0,gray=True):
     """
     Used by LLE_my_codebook to add a specific image to a given plot
     I should start my plotting library... or still Ron's...
@@ -244,7 +244,8 @@ def add_image(P,im,x,y,width=.15):
       - im     matrix representing the image
       - x      x position in data coord
       - y      y position in data coord
-      - width  width in fig size, height automatically found
+      - width  width in fig size, height automatically if height=0
+      - height height in fig size, if 0 based on width
     """
     # current axes
     curr_axes = P.gca()
@@ -263,26 +264,33 @@ def add_image(P,im,x,y,width=.15):
     relX = (relX * fWidth) + fX
     relY = (relY * fHeight) + fY
     # height relative to width
-    height = im.shape[0] * 1. / im.shape[1] * width
+    if height == 0:
+        height = im.shape[0] * 1. / im.shape[1] * width
     # create new axis
     a = P.axes([relX-width/2.,relY-height/2.,width,height])
     # set to x and y ticks
     P.setp(a, xticks=[], yticks=[])
     # plot image, new axes is the current default
-    P.imshow(im,interpolation='nearest',origin='lower')
+    if gray:
+        P.imshow(im,interpolation='nearest',origin='lower',cmap=P.cm.gray_r)
+    else:
+        P.imshow(im,interpolation='nearest',origin='lower')
     # set back axes
     P.axes(curr_axes)
 
 
 
-def LLE_my_codebook(codebook,nNeighbors=5):
+def LLE_my_codebook(codebook,nNeighbors=5,nRand=5):
     """
     Performs LLE on the codebook
     Display the result
     LLE code not mine, see code for reference.
+    nRand=number of random images added
     """
     import pylab as P
     import LLE
+    import numpy as np
+    import VQutils as VQU
     # compute LLE, goal is 2D
     LLEres = LLE.LLE(codebook.T,nNeighbors,2)
     # plot that result
@@ -290,12 +298,14 @@ def LLE_my_codebook(codebook,nNeighbors=5):
     P.hold(True)
     # prepare to plot
     patch_size = codebook[0,:].size / 12
-    #tx = P.gca().get_xaxis_transform()
-    #ty = P.gca().get_yaxis_transform()
+    # add random
+    for k in range(nRand):
+        idx = np.random.randint(LLEres.shape[1])
+        add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx],.08)
     # plot extreme left codebook
     idx = np.argmin(LLEres[0,:])
     add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx])
-    # plot extrem right codebook
+    # plot extreme right codebook
     idx = np.argmax(LLEres[0,:])
     add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx])
     # plot extreme up codebook
@@ -305,8 +315,100 @@ def LLE_my_codebook(codebook,nNeighbors=5):
     idx = np.argmin(LLEres[1,:])
     add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx])
     # plot middle codebook
-    idx = np.argmin([euclidean_dist(r,np.zeros(2)) for r in LLEres.T])
+    idx = np.argmin([VQU.euclidean_dist(r,np.zeros(2)) for r in LLEres.T])
     add_image(P,codebook[idx,:].reshape(12,patch_size),LLEres[0,idx],LLEres[1,idx])
     # done, release, show
     P.hold(False)
     P.show()
+
+
+
+
+def LLE_my_codebook2(codebook,nLines=5,nCols=15,nNeighbors=5):
+    """
+    Cut the 2d space in squares (nLines and nCols) and plot one random
+    patter inside each, if there are any
+    """
+    import pylab as P
+    import LLE
+    import numpy as np
+    import VQutils as VQU
+    # compute LLE, goal is 2D
+    LLEres = LLE.LLE(codebook.T,nNeighbors,2)
+    # plot that result
+    P.subplot(2,1,1)
+    P.plot(LLEres[0,:],LLEres[1,:],'.')
+    P.subplot(2,1,2)
+    P.plot(LLEres[0,:],LLEres[1,:],'.') # should get covered up
+    P.hold(True)
+    # needed later to plot
+    patch_size = codebook[0,:].size / 12
+    # cut the space
+    minx = LLEres[0,:].min()
+    maxx = LLEres[0,:].max()+1e-14
+    miny = LLEres[1,:].min()
+    maxy = LLEres[1,:].max()+1e-14
+    # iterate over lines
+    for l in range(nLines):
+        # find all points that could fit in that 'line'
+        s1 = set(np.where(LLEres[1,:]>=miny+(maxy-miny)*l*1./nLines)[0])
+        s2 = set(np.where(LLEres[1,:]<miny+(maxy-miny)*(l+1.)/nLines)[0])
+        pts_in_line = s1.intersection(s2)
+        if len(pts_in_line) == 0:
+            continue
+        # iterate over cols
+        for c in range(nCols):
+            # find pts in pts_in_line that could fit that col
+            pts_in_square = set()
+            for k in pts_in_line:
+                if LLEres[0,k]>= minx+(maxx-minx)*c*1./nCols:
+                    if LLEres[0,k]< minx+(maxx-minx)*(c+1.)/nCols:
+                        pts_in_square.add(k)
+            # choose random one
+            if len(pts_in_square) == 0:
+                continue
+            pts_in_square = list(pts_in_square)
+            idx = pts_in_square[np.random.randint(len(pts_in_square))]
+            # plot it
+            posx = minx+(maxx-minx)*(c+.5)/nCols
+            posy = miny+(maxy-miny)*(l+.5)/nLines
+            add_image(P,codebook[idx,:].reshape(12,patch_size),posx,posy,width=(maxx-minx)*1./nCols,height=(maxy-miny)*1./nLines)
+
+    # done, release, show
+    P.hold(False)
+    P.show()
+
+            
+
+def freqs_for_my_artists(filenames,codebook,pSize=8,keyInv=True,
+                         downBeatInv=False,bars=2):
+    """
+    Creates a dictionnary artist -> frequency
+    Therefore, we know which codes were mostly used.
+    Dictionnary not normalized
+
+    filenames are expected to be: */artist/album/*.mat
+    """
+    import numpy as np
+    import os
+
+    res = {}
+    nCodes = codebook.shape[0]
+    # iterate over songs
+    for f in filenames:
+        # get artist ( sure there's a better split, like ...split(f)[-3] )
+        tmp, song = os.path.split(f)
+        tmp,album = os.path.split(tmp)
+        tmp,artist = os.path.split(tmp)
+        # encode song
+        a,b,c,d,e = encode_one_song(f,codebook,pSize=pSize,keyInv=keyInv,
+                                    downBeatInv=downBeatInv,bars=bars)
+        best_code_per_p,featsNorm,encoding,featsNormMAT,encodingMAT = a,b,c,d,e
+        # add it to freq
+        if not res.has_key(artist):
+            res[artist] = np.zeros([1,nCodes])
+        for code in best_code_per_p:
+            res[artist][int(code)] += 1
+    # done, return dictionary
+    return res
+        
