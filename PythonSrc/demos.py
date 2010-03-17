@@ -564,6 +564,8 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         # artist
         artist = artists[songid]
         nMatches = orderedMatches.shape[0]
+        if use_artists:
+            assert nMatches == nArtists
         # get stats
         nExps += 1
         if not use_artists:
