@@ -477,6 +477,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     import os
     import VQutils as VQU
     import time
+    import copy
 
     nCodes = codebook.shape[0]
     # get frequencies for all songs
@@ -484,7 +485,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     freqs = freqs_my_songs(filenames,codebook,pSize=pSize,keyInv=keyInv,
                            downBeatInv=downBeatInv,bars=bars,
                            normalize=normalize)
-    print 'all frequencies computed in',(time.time()-tstart),' seconds.'
+    print 'all frequencies computed in',(time.time()-tstart),'seconds.'
     # get artists for all songs
     artists = []
     for f in filenames:
@@ -519,29 +520,35 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     else:
         # create a matrix songs * nArtists
         dists = np.zeros([nFiles,nArtists])
+        # precompute cntArtists and artistFreqs, not normalized
+        cntArtists = {}
+        artistFreqs = {}
+        for k in artist_names:
+            cntArtists[k] = 0
+            artistFreqs[k] = np.zeros([1,nCodes])
+        for k in range(artists.shape[0]):
+            if k == l: # skip current file/song
+                continue
+            art = artists[k]
+            cntArtists[art] += 1
+            artistFreqs[art] += freqs[k]
+        # iterate over files
         for l in range(nFiles):
-            # compute artist freqs but skipping this current file
-            cntArtists = {}
-            artistFreqs = {}
-            for k in artist_names:
-                cntArtists[k] = 0
-                artistFreqs[k] = np.zeros([1,nCodes])
-            for k in range(artists.shape[0]):
-                if k == l: # skip current file/song
-                    continue
-                art = artists[k]
-                cntArtists[art] += 1
-                artistFreqs[art] += freqs[k]
-            for k in artistFreqs.keys(): # normalize
-                artistFreqs[k] *= 1. / cntArtists[k]
+            currArtist = artists[l]
+            currCntArtist = copy.deepcopy(cntArtist)
+            currCntArtist[currArtist] -= 1
+            currArtistFreqs = copy.deepcopy(artistFreqs)
+            currArtistFreqs[currArist] -= freqs[l]
+            for k in currArtistFreqs.keys(): # normalize
+                currArtistFreqs[k] *= 1. / currCntArtists[k]
             # fill in the line in dists
-            for c in range(dists.shape[1]):
+            for c in range(nArtists):
                 art = artist_names[c]
                 if use_l0_dist:
-                    dists[l,c] = l0_dist(freqs[l],artistFreqs[art])
+                    dists[l,c] = l0_dist(freqs[l],currArtistFreqs[art])
                 else:
-                    dists[l,c] = VQU.euclidean_dist(freqs[l],artistFreqs[art])
-    print 'distances computed in',(time.time()-tstart),' seconds.'
+                    dists[l,c] = VQU.euclidean_dist(freqs[l],currArtistFreqs[art])
+    print 'distances computed in',(time.time()-tstart),'seconds.'
     # confusion matrix
     confMat = np.zeros([nArtists,nArtists])
     # performs leave-one-out KNN
@@ -557,12 +564,12 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         # artist
         artist = artists[songid]
         nMatches = orderedMatches.shape[0]
-        nGoodMatches = np.where(artists[orderedMatches]==artist)[0].shape[0]
-        if nGoodMatches == 0:
-            continue
         # get stats
         nExps += 1
         if not use_artists:
+            nGoodMatches = np.where(artists[orderedMatches]==artist)[0].shape[0]
+            if nGoodMatches == 0:
+                continue
             randScore += nGoodMatches * 1. / nMatches
             pred_artist = artists[orderedMatches[0]]
         else:
@@ -573,6 +580,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         # fill confusion matrix
         real_artist_id =np.where(artist_names==artist)[0][0]
         pred_artist_id =np.where(artist_names==pred_artist)[0][0]
+        print songid,') real artist:',artist,'id=',real_artist_id,', pred artist:',pred_artist,'id=',pred_artist_id
         confMat[real_artist_id,pred_artist_id] += 1
     # done, print out
     print 'nExps:',nExps
