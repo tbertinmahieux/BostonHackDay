@@ -486,7 +486,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
                 dists[l,c] = np.inf
                 dists[c,l] = np.inf
                 continue
-            dists[l,c] = VQU.eculidean_distance(freqs[l],freqs[c])
+            dists[l,c] = VQU.euclidean_distance(freqs[l],freqs[c])
             dists[c,l] = dists[l,c]
     for l in range(nFiles): # fill diag with inf
         dists[l,l] = np.inf
