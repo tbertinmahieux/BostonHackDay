@@ -527,8 +527,6 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
             cntArtists[k] = 0
             artistFreqs[k] = np.zeros([1,nCodes])
         for k in range(artists.shape[0]):
-            if k == l: # skip current file/song
-                continue
             art = artists[k]
             cntArtists[art] += 1
             artistFreqs[art] += freqs[k]
