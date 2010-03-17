@@ -408,7 +408,7 @@ def freqs_for_my_artists(filenames,codebook,pSize=8,keyInv=True,
         if not res.has_key(artist):
             res[artist] = np.zeros([1,nCodes])
         for code in best_code_per_p:
-            res[artist][int(code)] += 1
+            res[artist][0,int(code)] += 1
     # done, return dictionary
     return res
         
