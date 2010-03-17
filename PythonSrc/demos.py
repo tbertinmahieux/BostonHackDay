@@ -449,6 +449,7 @@ def freqs_for_my_artists(filenames,codebook,pSize=8,keyInv=True,
 def l0_dist(a,b):
     """
     Compute the number of common non nul elems
+    returns (size - nCommon elems) so it is a distance (smaller=closer)
     """
     import numpy as np
     non_nul_a = np.where(a.flatten()>0)[0]
@@ -457,7 +458,7 @@ def l0_dist(a,b):
 
 def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
                               downBeatInv=False,bars=2,normalize=True,
-                              confMatrix=True,use_l0_dist=False):
+                              confMatrix=True,use_l0_dist=False,use_artists=False):
     """
     Performs a leave-one-out experiments where we try to guess the artist
     from it's nearest neighbors in frequencies
@@ -465,6 +466,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
 
     filenames are expected to be: */artist/album/*.mat
     if confMatrix=True, plot it.
+    if use_artists, song are matched to artist, not other songs
 
     RETURNS:
     - confusion matrix
@@ -475,6 +477,8 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     import os
     import VQutils as VQU
     import time
+
+    nCodes = codebook.shape[0]
     # get frequencies for all songs
     tstart = time.time()
     freqs = freqs_my_songs(filenames,codebook,pSize=pSize,keyInv=keyInv,
@@ -496,21 +500,47 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     assert(len(filenames)==len(artists))
     # compute distance between all songs
     nFiles = len(filenames)
-    dists = np.zeros([nFiles,nFiles])
-    for l in range(nFiles):
-        for c in range(l+1,nFiles):
-            if len(freqs[l])==0 or len(freqs[c])==0:
-                dists[l,c] = np.inf
-                dists[c,l] = np.inf
-                continue
-            if use_l0_dist:
-                dists[l,c] = l0_dist(freqs[l],freqs[c])
-            else:
-                dists[l,c] = VQU.euclidean_dist(freqs[l],freqs[c])
-            dists[c,l] = dists[l,c]
-    for l in range(nFiles): # fill diag with inf
-        dists[l,l] = np.inf
-    print 'distances computed between frequency vectors'
+    if not use_artists:
+        dists = np.zeros([nFiles,nFiles])
+        for l in range(nFiles):
+            for c in range(l+1,nFiles):
+                if len(freqs[l])==0 or len(freqs[c])==0:
+                    dists[l,c] = np.inf
+                    dists[c,l] = np.inf
+                    continue
+                if use_l0_dist:
+                    dists[l,c] = l0_dist(freqs[l],freqs[c])
+                else:
+                    dists[l,c] = VQU.euclidean_dist(freqs[l],freqs[c])
+                    dists[c,l] = dists[l,c]
+        for l in range(nFiles): # fill diag with inf
+            dists[l,l] = np.inf
+        print 'distances computed between frequency vectors'
+    else:
+        # create a matrix songs * nArtists
+        dists = np.zeros([nFiles,nArtists])
+        for l in range(nFiles):
+            # compute artist freqs but skipping this current file
+            cntArtists = {}
+            artistFreqs = {}
+            for k in artist_names:
+                cntArtists[k] = 0
+                artistFreqs = np.zeros([1,nCodes])
+            for k in range(artists.shape[0]):
+                if k == l:
+                    continue
+                art = artists[k]
+                cntArtists[art] += 1
+                artistFreqs[art] += freqs[k]
+            for k in artistFreqs.keys(): # normalize
+                artistFreqs[k] *= 1. / cntArtists[k]
+            # fill in the line in dists
+            for c in range(dists.shape[1]):
+                art = artist_names[c]
+                if use_l0_dist:
+                    dists[l,c] = l0_dist(freqs[l],artistFreqs[art])
+                else:
+                    dists[l,c] = VQU.euclidean_dist(freqs[l],artistFreqs[art])
     # confusion matrix
     confMat = np.zeros([nArtists,nArtists])
     # performs leave-one-out KNN
@@ -531,8 +561,12 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
             continue
         # get stats
         nExps += 1
-        randScore += nGoodMatches * 1. / nMatches
-        pred_artist = artists[orderedMatches[0]]
+        if not use_artists:
+            randScore += nGoodMatches * 1. / nMatches
+            pred_artist = artists[orderedMatches[0]]
+        else:
+            randScore += 1. / nArtists
+            pred_artist = artist_names[orderedMatches[0]]
         if pred_artist == artist:
             nGood += 1
         # fill confusion matrix
