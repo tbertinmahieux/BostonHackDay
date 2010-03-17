@@ -381,7 +381,31 @@ def LLE_my_codebook2(codebook,nLines=5,nCols=15,nNeighbors=5):
     P.hold(False)
     P.show()
 
-            
+
+
+def freqs_my_songs(filenames,codebook,pSize=8,keyInv=True,
+                   downBeatInv=False,bars=2):
+    """
+    Returns a list of numpy.array containing frequency for each
+    code in the codebook for each file in filenames
+    """
+    import numpy as np
+    res = []
+    for f in filenames:
+        # encode song
+        a,b,c,d,e = encode_one_song(f,codebook,pSize=pSize,keyInv=keyInv,
+                                    downBeatInv=downBeatInv,bars=bars)
+        best_code_per_p,featsNorm,encoding,featsNormMAT,encodingMAT = a,b,c,d,e
+        # get freqs
+        freqs = np.zeros([1,nCodes])
+        for code in best_code_per_p:
+            freqs[0,int(code)] += 1
+        res.append(freqs)
+    # done, return res
+    return res
+
+
+
 
 def freqs_for_my_artists(filenames,codebook,pSize=8,keyInv=True,
                          downBeatInv=False,bars=2):
@@ -415,3 +439,80 @@ def freqs_for_my_artists(filenames,codebook,pSize=8,keyInv=True,
     # done, return dictionary
     return res
         
+
+
+def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
+                              downBeatInv=False,bars=2):
+    """
+    Performs a leave-one-out experiments where we try to guess the artist
+    from it's nearest neighbors in frequencies
+    We use squared euclidean distance.
+
+    filenames are expected to be: */artist/album/*.mat
+    """
+    import numpy as np
+    import os
+    import VQutils as VQU
+    # get frequencies for all songs
+    freqs = freqs_my_songs(filenames,codebook,pSize=pSize,keyInv=keyInv,
+                           downBeatInv=downBeatInv,bars=bars)
+    print 'all frequencies computed'
+    # get artists for all songs
+    artists = []
+    for f in filenames:
+        tmp, song = os.path.split(f)
+        tmp,album = os.path.split(tmp)
+        tmp,artist = os.path.split(tmp)
+        artists.append(artist)
+    artists = np.array(artists)
+
+    # compute how many songs per artist
+    #nSongs = {}
+    #for artist in artists:
+    #    if nSongs.has_key(artist):
+    #        nSongs[artist] += 1
+    #    else:
+    #        nSongs[artist] = 1
+
+    # sanity check
+    assert(len(filenames)==len(artists))
+    # compute distance between all songs
+    nFiles = len(filenames)
+    dists = np.zeros([nFiles,nFiles])
+    for l in range(nFiles):
+        for c in range(l+1,nFiles):
+            if len(freqs[l])==0 or len(freqs[c])==0:
+                dists[l,c] = np.inf
+                dists[c,l] = np.inf
+                continue
+            dists[l,c] = VQU.eculidean_distance(freqs[l],freqs[c])
+            dists[c,l] = dists[l,c]
+    for l in range(nFiles): # fill diag with inf
+        dists[l,l] = np.inf
+    print 'distances computed between frequency vectors'
+
+    # performs leave-one-out KNN
+    nExps = 0
+    nGood = 0
+    randScore = 0 # sums prob of having it right by luck, must divide by nExps
+    for songid in range(nFiles):
+        if len(freqs[songid]) == 0:
+            continue
+        # get close matches ordered, remove inf
+        orderedMatches = np.argsort(dists[songid,:])
+        orderedMatches[np.where(dists[1,orderedMatches] != np.inf)]
+        # artist
+        artist = artists[songid]
+        nMatches = orderedMatches.shape[0]
+        nGoodMatches = np.where(artists[orderedMatches]==artist)[0].shape[0]
+        if nGoodMatches == 0:
+            continue
+        # get stats
+        nExps += 1
+        randScore += nGoodMatches * 1. / nMatches
+        if artists[orderedMatches[0]] == artist:
+            nGood += 1
+    # done, print out
+    print 'nExps:',nExps
+    print 'rand accuracy:',(randScore*1./nExps)
+    print 'accuracy:',(nGood*1./nExps)
