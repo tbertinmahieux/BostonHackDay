@@ -391,6 +391,7 @@ def freqs_my_songs(filenames,codebook,pSize=8,keyInv=True,
     """
     import numpy as np
     res = []
+    nCodes = codebook.shape[0]
     for f in filenames:
         # encode song
         a,b,c,d,e = encode_one_song(f,codebook,pSize=pSize,keyInv=keyInv,
