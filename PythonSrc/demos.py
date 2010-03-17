@@ -533,10 +533,10 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         # iterate over files
         for l in range(nFiles):
             currArtist = artists[l]
-            currCntArtist = copy.deepcopy(cntArtist)
-            currCntArtist[currArtist] -= 1
+            currCntArtists = copy.deepcopy(cntArtists)
+            currCntArtists[currArtist] -= 1
             currArtistFreqs = copy.deepcopy(artistFreqs)
-            currArtistFreqs[currArist] -= freqs[l]
+            currArtistFreqs[currArtist] -= freqs[l]
             for k in currArtistFreqs.keys(): # normalize
                 currArtistFreqs[k] *= 1. / currCntArtists[k]
             # fill in the line in dists
