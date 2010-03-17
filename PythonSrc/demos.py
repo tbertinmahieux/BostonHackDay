@@ -384,12 +384,13 @@ def LLE_my_codebook2(codebook,nLines=5,nCols=15,nNeighbors=5):
 
 
 def freqs_my_songs(filenames,codebook,pSize=8,keyInv=True,
-                   downBeatInv=False,bars=2):
+                   downBeatInv=False,bars=2,normalize=False):
     """
     Returns a list of numpy.array containing frequency for each
     code in the codebook for each file in filenames
     """
     import numpy as np
+    import VQutils as VQU
     res = []
     nCodes = codebook.shape[0]
     for f in filenames:
@@ -401,6 +402,8 @@ def freqs_my_songs(filenames,codebook,pSize=8,keyInv=True,
         freqs = np.zeros([1,nCodes])
         for code in best_code_per_p:
             freqs[0,int(code)] += 1
+        if normalize and best_code_per_p.shape[0] > 0:
+            freqs *= 1./ VQU.euclidean_norm(freqs)
         res.append(freqs)
     # done, return res
     return res
@@ -443,7 +446,7 @@ def freqs_for_my_artists(filenames,codebook,pSize=8,keyInv=True,
 
 
 def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
-                              downBeatInv=False,bars=2):
+                              downBeatInv=False,bars=2,normalize=True):
     """
     Performs a leave-one-out experiments where we try to guess the artist
     from it's nearest neighbors in frequencies
@@ -456,7 +459,8 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     import VQutils as VQU
     # get frequencies for all songs
     freqs = freqs_my_songs(filenames,codebook,pSize=pSize,keyInv=keyInv,
-                           downBeatInv=downBeatInv,bars=bars)
+                           downBeatInv=downBeatInv,bars=bars,
+                           normalize=normalize)
     print 'all frequencies computed'
     # get artists for all songs
     artists = []
@@ -466,15 +470,6 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         tmp,artist = os.path.split(tmp)
         artists.append(artist)
     artists = np.array(artists)
-
-    # compute how many songs per artist
-    #nSongs = {}
-    #for artist in artists:
-    #    if nSongs.has_key(artist):
-    #        nSongs[artist] += 1
-    #    else:
-    #        nSongs[artist] = 1
-
     # sanity check
     assert(len(filenames)==len(artists))
     # compute distance between all songs
