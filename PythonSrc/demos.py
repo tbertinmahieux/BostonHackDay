@@ -535,6 +535,8 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         P.yticks(P.arange(artist_names.shape[0]),list(artist_names))
         P.xticks(P.arange(artist_names.shape[0]),list(short_names))
         P.title('confusion matrix (real/predicted)')
+        P.ylabel('TRUE')
+        P.xlabel('RECOG')
         P.colorbar()
     # return confusion matrix
     return confMat
