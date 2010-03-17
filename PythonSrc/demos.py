@@ -452,8 +452,8 @@ def l0_dist(a,b):
     """
     import numpy as np
     non_nul_a = np.where(a.flatten()>0)[0]
-    return np.where(b.flatten()[non_nul_a]>0)[0].shape[0]
-
+    nCommon = np.where(b.flatten()[non_nul_a]>0)[0].shape[0]
+    return a.flatten().shape[0] - nCommon
 
 def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
                               downBeatInv=False,bars=2,normalize=True,
