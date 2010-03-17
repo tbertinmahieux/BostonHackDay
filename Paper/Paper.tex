@@ -306,13 +306,6 @@ We assume $p1$ and $p2$ have the same size.
 See encoding experiments in Table \ref{tab:psize}.
 
 
-% RESULTS
-% 200codes, 2 bars, pSize=16, maxener, True, False, not scaled = 
-% 200codes, 2 bars, pSize=8, maxener, True, False, not scaled  = 0.042432
-% 200codes, 1 bars, pSize=4, maxener, True, False, not scaled  = 
-% 200codes, 7 beats, pSize=7, maxener, True, False, not scaled = 
-% 200codes, 5 beats, pSize=5, maxener, True, False, not scaled = 
-% 200codes, 3 beats, pSize=3, maxener, True, False, not scaled = 
 \begin{table}
 \begin{center}
 \begin{tabular}{|l|c|}
@@ -334,6 +327,22 @@ size is the number of beats. Results are on the uspop dataset, not seen
 during training.}}
 \label{tab:psize}
 \end{table}
+% RESULTS
+% 200codes, 2 bars, pSize=16, maxener, True, False, not scaled = 
+% 200codes, 2 bars, pSize=8, maxener, True, False, not scaled  = 0.042432
+% 200codes, 1 bars, pSize=4, maxener, True, False, not scaled  = 
+% 200codes, 7 beats, pSize=7, maxener, True, False, not scaled = 
+% 200codes, 5 beats, pSize=5, maxener, True, False, not scaled = 
+% 200codes, 3 beats, pSize=3, maxener, True, False, not scaled = 
+% NEW STUFF - experiment set 7, 100 codes! 
+% 2 beats 0 bars       0.025346
+% 4 beats 0 bars       0.037181
+% 6 beats 0 bars       0.043237
+% 8 beats 0 bars       0.046832
+% 9 beats 0 bars       0.048579
+% 10 beats 0 bars      0.049530
+% 11 beats 0 bars      0.050717
+% 12 beats 0 bars      0.052020
 
 
 \subsection{Data Size}
@@ -388,6 +397,7 @@ random from the dataset of approximately $3,7$ million patterns.}}
 \fi
 % RESULTS:    
 % 1bar s4     avg_distOLD    avg_dist
+% 0                          0.052247
 % 1K          0.150370       0.041941
 % 5K          0.145327       0.038449
 % 10K         0.143567       0.036892
@@ -398,16 +408,18 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 1M          0.142118
 % 2M          0.141596
 % 1bar s4 first X samples
-% 1K          0.157142       
-% 5K          0.150045
-% 10K         0.148357
-% 50K         0.146069
-% 100K        0.145765
-% 250K        0.145819
-% 500K        0.145772
-% 1M          0.145924
+% 0
+% 1K          0.157142       0.049282
+% 5K          0.150045       0.046441
+% 10K         0.148357       0.045507
+% 50K         0.146069       0.044301
+% 100K        0.145765       0.044183
+% 250K        0.145819       0.043896
+% 500K        0.145772       0.043906
+% 1M          0.145924       
 % 2M          0.146065       
 % 0bar s4 (and test set same, we could do 1bar s4 in test set...)
+% 0
 % 1K          0.155474       0.042596
 % 5K          0.149619       0.038971
 % 10K         0.148056       0.038114
@@ -417,7 +429,8 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 500K        0.145962       0.037004
 % 1M          0.145873
 % 2M          0.145955
-% 2bar s8     
+% 2bar s8
+% 0                          0.066864179424
 % 1K          0.171300       0.049282
 % 5K          0.165960       0.046441
 % 10K         0.165063       0.045507
@@ -468,7 +481,7 @@ according to Figure \ref{fig:sizes}.}}
 % code 1        
 % code 10       0.045579
 % code 50       0.038302
-% code 100      
+% code 100      0.035904
 % code 200      
 % code 500      
 
@@ -555,16 +568,16 @@ three quarters of a bar.
 \hline
 offset & avg. dist \\ \hline \hline
 $0$ & $$ \\
-$.25$ & $$ \\
-$.50$ & $$ \\
-$.75$ & $$ \\
+$.25$ & $0.037130$ \\
+$.50$ & $0.037241$ \\
+$.75$ & $0.037337$ \\ \hline
 \end{tabular}
 \end{center}
 \caption{{Results with different offset. Always $100$ codes.
 \label{tab:offset}}}
 \end{table}
 % RESULTS             avg_results
-% 0 offset
+% 0 offset            0.036722 (to be confirmed by set8exp0)
 % .25 ofset           0.037130
 % .50 ofset           0.037241
 % .75 ofset           0.037337
@@ -627,7 +640,7 @@ with an harmonic, as seen in the LLE visualization (Figure \ref{fig:lle}).
 \subsection{Specific Examples}
 
 
-\section{Links with NMF}\label{sec:nmf}
+\section{Links with NMF TO BE REMOVED}\label{sec:nmf}
 In this section we discuss links with non-negative matrix factorization
 \cite{Lee2000} (NMF), another method to build a codebook representing some data.
 NMF finds two matrices $H$ and $W$ that approximate some data $D$ (one
