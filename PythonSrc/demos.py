@@ -460,11 +460,13 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     import numpy as np
     import os
     import VQutils as VQU
+    import time
     # get frequencies for all songs
+    tstart = time.time()
     freqs = freqs_my_songs(filenames,codebook,pSize=pSize,keyInv=keyInv,
                            downBeatInv=downBeatInv,bars=bars,
                            normalize=normalize)
-    print 'all frequencies computed'
+    print 'all frequencies computed in',(time.time()-tstart),' seconds.'
     # get artists for all songs
     artists = []
     for f in filenames:
@@ -519,7 +521,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         # fill confusion matrix
         real_artist_id =np.where(artist_names==artist)[0][0]
         pred_artist_id =np.where(artist_names==pred_artist)[0][0]
-        confMat[real_artist,pred_artist] += 1
+        confMat[real_artist_id,pred_artist_id] += 1
     # done, print out
     print 'nExps:',nExps
     print 'rand accuracy:',(randScore*1./nExps)
