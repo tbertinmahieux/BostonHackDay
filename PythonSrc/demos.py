@@ -525,7 +525,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
             artistFreqs = {}
             for k in artist_names:
                 cntArtists[k] = 0
-                artistFreqs = np.zeros([1,nCodes])
+                artistFreqs[k] = np.zeros([1,nCodes])
             for k in range(artists.shape[0]):
                 if k == l:
                     continue
