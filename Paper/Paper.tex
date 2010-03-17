@@ -640,62 +640,6 @@ with an harmonic, as seen in the LLE visualization (Figure \ref{fig:lle}).
 \subsection{Specific Examples}
 
 
-\section{Links with NMF TO BE REMOVED}\label{sec:nmf}
-In this section we discuss links with non-negative matrix factorization
-\cite{Lee2000} (NMF), another method to build a codebook representing some data.
-NMF finds two matrices $H$ and $W$ that approximate some data $D$ (one
-sample per line) by
-\begin{eqnarray}
-D \approx W^{m \times k} H^{k \times n}
-\end{eqnarray}
-where $\epsilon$ is some noise and $W$ and $H$ only have non-negative 
-elements. If $W$ is $\#samples \times k$, $k$ is the codebook size.
-
-Note that NMF does not solve the same problem. It tries to explain each pattern
-as a combination of codes. Thus it does not perform clustering, though you
-could cluster patterns using their encoding weights. Also, we do not fully
-compare our methods with NMF, it would be a paper on its own.
-
-In all our experiments we use the following NMF
-implementation\footnote{implementation: \url{http://www.ee.columbia.edu/~grindlay/code.html}}.
-
-\subsection{Training NMF on our Codebook}
-NMF provides us with a way of measuring how much information is retained
-in our codebook. More specifically, we can train a codebook of size $500$
-using our online VQ algorithm, then decompose that code into $10$ basis
-using NMF. We can compare that to $10$ basis from training NMF on the
-whole data.
-
-The idea is simple, if we encode our test set using basis from the
-codebook as well as if we were using basis from the whole data, our codes
-retain much of the information. That being said, the typical NMF implementations
-are not expected to scale to data that does not fit in memory. Online VQ
-could be an interesting preprocessing step. Future work include looking
-at online NMF \cite{Thurau2009}.
-
-\subsection{Experiment}
-Put figure, compare basis, yeah!
-
-\begin{table}
-\begin{center}
-\begin{tabular}{|l|l|c|c||c|}
-\hline
-\# codes & \# bars & full data & codebook & test set \\ \hline \hline
-10 & 1 & $$ & $$ & \\ \hline
-20 & 1 & $$ & $$ & \\ \hline
-10 & 2 & $\bf{1774788}$ & $$ & $1782164$\\ \hline
-20 & 2 & $$ & $$ & \\ \hline
-\end{tabular}
-\end{center}
-\caption{{Encoding error of the test data set using NMF basis learned
-on the whole data and on the codebook. We also encode the test set
-directly to give us an upper bound.}}
-\label{tab:nmf}
-\end{table}
-% RESULTS:         whole data             codebook     test set
-%10 codes 2 bars   1774788.2566 (200 it)               1739639.7304 (1000 it)
-%10 codes 1 bar
-
 
 \section{Conclusion}
 We presented a practical method to perform large-scale clustering of
