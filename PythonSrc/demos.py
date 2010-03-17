@@ -500,6 +500,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     assert(len(filenames)==len(artists))
     # compute distance between all songs
     nFiles = len(filenames)
+    tstart = time.time()
     if not use_artists:
         dists = np.zeros([nFiles,nFiles])
         for l in range(nFiles):
@@ -515,7 +516,6 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
                     dists[c,l] = dists[l,c]
         for l in range(nFiles): # fill diag with inf
             dists[l,l] = np.inf
-        print 'distances computed between frequency vectors'
     else:
         # create a matrix songs * nArtists
         dists = np.zeros([nFiles,nArtists])
@@ -527,7 +527,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
                 cntArtists[k] = 0
                 artistFreqs[k] = np.zeros([1,nCodes])
             for k in range(artists.shape[0]):
-                if k == l:
+                if k == l: # skip current file/song
                     continue
                 art = artists[k]
                 cntArtists[art] += 1
@@ -541,6 +541,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
                     dists[l,c] = l0_dist(freqs[l],artistFreqs[art])
                 else:
                     dists[l,c] = VQU.euclidean_dist(freqs[l],artistFreqs[art])
+    print 'distances computed in',(time.time()-tstart),' seconds.'
     # confusion matrix
     confMat = np.zeros([nArtists,nArtists])
     # performs leave-one-out KNN
