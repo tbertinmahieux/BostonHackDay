@@ -459,6 +459,7 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     RETURNS:
     - confusion matrix
     - freqs per file
+    - artist per file
     """
     import numpy as np
     import os
@@ -542,4 +543,4 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         P.xlabel('RECOG')
         P.colorbar()
     # return confusion matrix
-    return confMat,freqs
+    return confMat,freqs,artists
