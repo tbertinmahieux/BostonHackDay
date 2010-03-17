@@ -446,13 +446,16 @@ def freqs_for_my_artists(filenames,codebook,pSize=8,keyInv=True,
 
 
 def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
-                              downBeatInv=False,bars=2,normalize=True):
+                              downBeatInv=False,bars=2,normalize=True,
+                              confMatrix=True):
     """
     Performs a leave-one-out experiments where we try to guess the artist
     from it's nearest neighbors in frequencies
     We use squared euclidean distance.
 
     filenames are expected to be: */artist/album/*.mat
+    if confMatrix=True, plot it.
+    Always returns confusion matrix
     """
     import numpy as np
     import os
@@ -470,6 +473,9 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         tmp,artist = os.path.split(tmp)
         artists.append(artist)
     artists = np.array(artists)
+    # names of artists
+    artist_names = np.unique(np.sort(artists))
+    nArtists = artist_names.shape[0]
     # sanity check
     assert(len(filenames)==len(artists))
     # compute distance between all songs
@@ -486,7 +492,8 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
     for l in range(nFiles): # fill diag with inf
         dists[l,l] = np.inf
     print 'distances computed between frequency vectors'
-
+    # confusion matrix
+    confMat = np.zeros([nArtists,nArtists])
     # performs leave-one-out KNN
     nExps = 0
     nGood = 0
@@ -506,9 +513,25 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         # get stats
         nExps += 1
         randScore += nGoodMatches * 1. / nMatches
-        if artists[orderedMatches[0]] == artist:
+        pred_artist = artists[orderedMatches[0]]
+        if pred_artist == artist:
             nGood += 1
+        # fill confusion matrix
+        real_artist_id =np.where(artist_names==artist)[0][0]
+        pred_artist_id =np.where(artist_names==pred_artist)[0][0]
+        confMat[real_artist,pred_artist] += 1
     # done, print out
     print 'nExps:',nExps
     print 'rand accuracy:',(randScore*1./nExps)
     print 'accuracy:',(nGood*1./nExps)
+    # plot confusion matrix
+    if confMatrix:
+        short_names = np.array([x[:2] for x in artist_names])
+        import pylab as P
+        P.imshow(confMat,interpolation='nearest',cmap=P.cm.gray_r,
+                 origin='lower')
+        P.xticks(P.arange(artist_names.shape[0]),list(artist_names))
+        P.yticks(P.arange(artist_names.shape[0]),list(short_names))
+        P.title('confusion matrix (real/predicted)')
+    # return confusion matrix
+    return confMat
