@@ -402,7 +402,7 @@ def freqs_my_songs(filenames,codebook,pSize=8,keyInv=True,
         freqs = np.zeros([1,nCodes])
         for code in best_code_per_p:
             freqs[0,int(code)] += 1
-        if normalize and best_code_per_p.shape[0] > 0:
+        if normalize and len(best_code_per_p) > 0:
             freqs *= 1./ VQU.euclidean_norm(freqs)
         res.append(freqs)
     # done, return res
