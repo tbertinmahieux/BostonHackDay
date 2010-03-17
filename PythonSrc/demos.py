@@ -455,7 +455,10 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
 
     filenames are expected to be: */artist/album/*.mat
     if confMatrix=True, plot it.
-    Always returns confusion matrix
+
+    RETURNS:
+    - confusion matrix
+    - freqs per file
     """
     import numpy as np
     import os
@@ -539,4 +542,4 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         P.xlabel('RECOG')
         P.colorbar()
     # return confusion matrix
-    return confMat
+    return confMat,freqs
