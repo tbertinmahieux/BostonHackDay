@@ -116,6 +116,7 @@ def encode_one_song(filename,codebook,pSize=8,keyInv=True,
     # find code per pattern
     best_code_per_p, dists, avg_dists = VQutils.find_best_code_per_pattern(featsNorm,codebook)
     best_code_per_p = np.asarray([int(x) for x in best_code_per_p])
+    assert best_code_per_p.shape[0] > 0, "empty song, we should catch that"
     encoding = codebook[best_code_per_p]
     # transform into 2 matrices, with derolling!!!!!!!!!
     assert(featsNorm.shape[0] == encoding.shape[0])
