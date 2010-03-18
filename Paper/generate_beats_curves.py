@@ -26,17 +26,21 @@ def create_fig():
     P.figure()
     P.hold(True)
     # axis
-    xmin = 0
+    xmin = 1
     xmax = len(labels)
     ymin = 0.013
     ymax = 0.053
     P.axis([xmin,xmax,ymin,ymax])
 
     # plot data
-    P.plot(data)
+    P.plot(labels,data,'-o')
+
+    # plot 4 - 8
+    P.axvline(linewidth=1,color='r',x=4,ymin=0,ymax=1)
+    P.axvline(linewidth=1,color='r',x=8,ymin=0,ymax=1)
 
     # labels
-    P.xticks(P.arange(len(labels)),list(labels))
+    #P.xticks(P.arange(len(labels)),list(labels))
 
     # x titles and y titles
     P.xlabel('number of beats')
