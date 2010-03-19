@@ -684,7 +684,6 @@ def test_align_one_song(filename,codebook):
             return -1 # can not complete
     except IndexError:
         print 'index error'
-        print 'mat keys=',mat.keys()
         return -1 # can not complete
     except AttributeError:
         return -1 # can not complete
