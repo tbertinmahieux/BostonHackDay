@@ -678,7 +678,9 @@ def test_align_one_song(filename,codebook):
     btstart = mat['btstart']
     barstart = mat['barstart']
     try:
-        if btstart.shape[1] < 3 or barstart.shape[1] < 3:
+        btstart = btstart.flatten()
+        barstart = barstart.flatten()
+        if btstart.shape[0] < 3 or barstart.shape[0] < 3:
             return -1 # can not complete
     except IndexError:
         print 'index error'
@@ -687,8 +689,8 @@ def test_align_one_song(filename,codebook):
     except AttributeError:
         return -1 # can not complete
     # find bar start based on beat index
-    barstart_idx = [np.where(btstart==x)[1][0] for x in barstart.flatten()]
-    barstart_idx.append(btstart.shape[1])
+    barstart_idx = [np.where(btstart==x)[0][0] for x in barstart]
+    barstart_idx.append(btstart.shape[0])
     # find bar lengths
     barlengths = np.diff(barstart_idx)
     # find not4 elems
@@ -710,7 +712,7 @@ def test_align_one_song(filename,codebook):
     # position in beats
     beat_pos_1 = barstart_idx[pos1]
     beat_pos_2 = beat_pos_1 + 4 * longest_seq_length
-    assert beat_pos_2 == btstart.shape[1] or np.where(barstart_idx==beat_pos_2)[0].shape[0]>0
+    assert beat_pos_2 == btstart.shape[0] or np.where(barstart_idx==beat_pos_2)[0].shape[0]>0
     # load actual beat features
     btchroma = mat['btchroma']
     # try everything: offset 0 to 3
@@ -727,7 +729,7 @@ def test_align_one_song(filename,codebook):
             # measure with codebook
             tmp,dists = VQU.encode_oneiter(featsNorm.flatten(),codebook)
             avg_dist += (dists[0] * dists[0]) * 1. / featsNorm.size
-        print 'avg_dist=',avg_dist,'for offset',offset
+        #print 'avg_dist=',avg_dist,'for offset',offset
         if best_avg_dist > avg_dist:
             best_avg_dist = avg_dist
             best_offset = offset
