@@ -600,3 +600,77 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
         P.colorbar()
     # return confusion matrix
     return confMat,freqs,artists
+
+
+
+
+
+def test_align_one_song(filename,codebook):
+    """
+    Experiment on how good can we find the alignment of a song
+    Designed for a codebook of pSize=4, bars=1
+    If song has non 4 beats patterns, problem
+
+    Return is complex:
+      - -1      if could not perform test
+      - 0       if test succesful
+      - 1-2-3   by how many beats we missed
+    """
+
+    import scipy
+    import scipy.io
+    import numpy as np
+    import feats_utils as FU
+    import VQutils as VQU
+
+    mat = mat = scipy.io.loadmat(filename)
+    btstart = mat['btstart']
+    barstart = mat['barstart']
+    if btstart.shape[1] < 3 or barstart.shape[1] < 3:
+        return -1 # can not complete
+
+    # find bar start based on beat index
+    barstart_idx = [np.where(btstart==x)[1][0] for x in barstart.flatten()]
+    barstart_idx.append(btstart.shape[1])
+    # find bar lengths
+    barlengths = np.diff(barstart_idx)
+    # find not4 elems
+    not4 = np.where(barlengths!=4)[0]
+    # find longest sequence of bars of length 4 beats
+    seqs_of_4 = np.diff(not4)
+    longest_seq_length = np.max(seqs_of_4) -1
+    if longest_seq_length < 10: # why 10? bof....
+        return -1 # can not complete
+    # find best seq pos
+    pos1 = not4[np.argmax(seqs_of_4)]+1
+    pos2 = not4[np.argmax(seqs_of_4)+1]
+    # longest sequence should be in range(pos1,pos2)
+    # sanity checks
+    assert pos2 - pos1 == longest_seq_length
+    for k in range(pos1,pos2):
+        assert barlengths[k] == 4
+    # position in beats
+    beat_pos_1 = barstart_idx[pos1]
+    beat_pos_2 = beat_pos_1 + 4 * longest_seq_length
+    assert beat_pos_2 == btstart.shape[1] or np.where(barstart_idx==beat_pos_2)[0].shape[0]>0
+    # load actual beat features
+    btchroma = mat['btchroma']
+    # try everything: offset 0 to 3
+    best_offset = -1
+    best_avg_dist = np.inf
+    for offset in range(4):
+        avg_dist = 0
+        for baridx in range(longest_seq_length-1):
+            pos = beat_pos_1 + offset + baridx * 4
+            feats = btchroma[:,pos:pos+4]
+            featsNorm = FU.normalize_pattern_maxenergy(feats,newsize=4,
+                                                       keyinvariant=True,
+                                                       downbeatinvariant=False)
+            # measure with codebook
+            tmp,dists = VQU.encode_oneiter(featsNorm.flatten(),codebook)
+            avg_dist += (dists[0] * dists[0]) * 1. / featsNorm.size
+        if best_avg_dist > avg_dist:
+            best_avg_dist = avg_dist
+            best_offset = offset
+    # done, return offset, which is 0 if fine
+    return best_offset
