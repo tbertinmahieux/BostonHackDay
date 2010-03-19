@@ -738,3 +738,55 @@ def test_align_one_song(filename,codebook):
             best_offset = offset
     # done, return offset, which is 0 if fine
     return best_offset
+
+
+
+def codebook_variance(codebook,do_plot=True,thresh=0.0015):
+    """
+    Measure the average variance in time of the codebook
+    Returns the array of average variance
+    """
+    import numpy as np
+    # test each codebook
+    codelength = codebook[0].size / 12
+    avg_vars = [np.average(np.var(x.reshape(12,codelength),axis=1)) for x in codebook]
+
+    order = np.argsort(np.array(avg_vars))
+    avg_vars_sorted = np.array(avg_vars)[order]
+    thresh_x = np.where(avg_vars_sorted>thresh)[0][0]
+    print 'threshold=',thresh,',',thresh_x,'codes below,',codebook.shape[0]-thresh_x,'codes above'
+
+    # plot
+    if do_plot:
+        import pylab as P
+        P.plot(avg_vars_sorted)
+        xmin = 0
+        xmax = len(avg_vars)
+        ymin = 0.0
+        ymax = 0.1
+        P.axis([xmin,xmax,ymin,ymax])
+        thresh_x = np.where(avg_vars_sorted>thresh)[0][0]
+        P.axvline(x=thresh_x,color='r')
+        # plot example
+        low_code = order[int(codebook.shape[0]*.15)]
+        low_code2 = order[int(codebook.shape[0]*.30)]
+        mid_code = order[int(codebook.shape[0]*.50)]
+        mid_code2 = order[int(codebook.shape[0]*.70)]
+        high_code = order[int(codebook.shape[0]*.85)]
+        add_image(P,codebook[low_code,:].reshape(12,codelength),
+                  int(codebook.shape[0]*.15),0.08)
+        add_image(P,codebook[low_code2,:].reshape(12,codelength),
+                  int(codebook.shape[0]*.30),0.045)
+        add_image(P,codebook[mid_code,:].reshape(12,codelength),
+                  int(codebook.shape[0]*.50),0.08)
+        add_image(P,codebook[mid_code2,:].reshape(12,codelength),
+                  int(codebook.shape[0]*.70),0.045)
+        add_image(P,codebook[high_code,:].reshape(12,codelength),
+                  int(codebook.shape[0]*.85),0.08)
+        P.ylabel('average variance')
+        P.xlabel('codes')
+        P.title('average variance of the codes in the codebook')
+
+    # done return
+    return avg_vars
+        
