@@ -683,6 +683,8 @@ def test_align_one_song(filename,codebook):
     except IndexError:
         return -1 # can not complete
     except AttributeError:
+        print 'attribute error'
+        print 'barstart=',barstart
         return -1 # can not complete
     # find bar start based on beat index
     barstart_idx = [np.where(btstart==x)[1][0] for x in barstart.flatten()]
