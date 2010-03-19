@@ -681,10 +681,10 @@ def test_align_one_song(filename,codebook):
         if btstart.shape[1] < 3 or barstart.shape[1] < 3:
             return -1 # can not complete
     except IndexError:
+        print 'index error'
+        print 'mat keys=',mat.keys()
         return -1 # can not complete
     except AttributeError:
-        print 'attribute error'
-        print 'barstart=',barstart
         return -1 # can not complete
     # find bar start based on beat index
     barstart_idx = [np.where(btstart==x)[1][0] for x in barstart.flatten()]
@@ -727,6 +727,7 @@ def test_align_one_song(filename,codebook):
             # measure with codebook
             tmp,dists = VQU.encode_oneiter(featsNorm.flatten(),codebook)
             avg_dist += (dists[0] * dists[0]) * 1. / featsNorm.size
+        print 'avg_dist=',avg_dist,'for offset',offset
         if best_avg_dist > avg_dist:
             best_avg_dist = avg_dist
             best_offset = offset
