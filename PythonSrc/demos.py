@@ -695,11 +695,15 @@ def test_align_one_song(filename,codebook):
     barlengths = np.diff(barstart_idx)
     # find not4 elems
     not4 = np.where(barlengths!=4)[0]
+    not4 = np.concatenate([[0],not4,[len(barlengths)]])
     # find longest sequence of bars of length 4 beats
     seqs_of_4 = np.diff(not4)
-    longest_seq_length = np.max(seqs_of_4) -1
-    if longest_seq_length < 5: # why 10? bof....
-        print 'return because longest seq has length:',longest_seq_length
+    if len(not4)>1:
+        longest_seq_length = np.max(seqs_of_4) -1
+    else:
+        longest_seq_length = not4[0]
+    if longest_seq_length < 10: # why 10? bof....
+        #print 'return because longest seq has length:',longest_seq_length
         return -1 # can not complete
     # find best seq pos
     pos1 = not4[np.argmax(seqs_of_4)]+1
