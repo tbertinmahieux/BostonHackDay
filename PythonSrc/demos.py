@@ -631,7 +631,6 @@ def test_align(filenames,codebook):
         # done printing
                    
         res = test_align_one_song(f,codebook)
-        print counter,'), res=',res,', file=',f
         if res < 0:
             continue
         n_exp_done += 1
@@ -695,7 +694,8 @@ def test_align_one_song(filename,codebook):
     # find longest sequence of bars of length 4 beats
     seqs_of_4 = np.diff(not4)
     longest_seq_length = np.max(seqs_of_4) -1
-    if longest_seq_length < 10: # why 10? bof....
+    if longest_seq_length < 5: # why 10? bof....
+        print 'return because longest seq has length:',longest_seq_length
         return -1 # can not complete
     # find best seq pos
     pos1 = not4[np.argmax(seqs_of_4)]+1
