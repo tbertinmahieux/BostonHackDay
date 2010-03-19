@@ -622,7 +622,7 @@ def test_align(filenames,codebook):
     for f in filenames:
         counter += 1
         # print for 10, 50 and 75 %
-        if np.round(filenames==len(filenames)*.1) == counter:
+        if np.int(np.round(filenames==len(filenames)*.1)) == counter:
             print '10% of the files done in',time.time()-tstart,'seconds.'
         if np.round(filenames==len(filenames)*.5) == counter:
             print '50% of the files done in',time.time()-tstart,'seconds.'
