@@ -202,6 +202,20 @@ experiment_args = [
      (os.path.join(outputDir, 'set13exp1'),8,2,200,200000),
      (os.path.join(outputDir, 'set13exp2'),16,4,200,200000),
      (os.path.join(outputDir, 'set13exp3'),32,8,200,200000)],
+    # EXPERIMENT SET 14: getting error with offset to be the same by adding
+    # more codes, to get the result for a bar aligned code
+    [(os.path.join(outputDir, 'set14exp0'),4,1,115,50000,False,0,0.25,1),
+     (os.path.join(outputDir, 'set14exp1'),4,1,130,50000,False,0,0.25,1),
+     (os.path.join(outputDir, 'set14exp2'),4,1,145,50000,False,0,0.25,1),
+     (os.path.join(outputDir, 'set14exp3'),4,1,160,50000,False,0,0.25,1),
+     (os.path.join(outputDir, 'set14exp4'),4,1,115,50000,False,0,0.50,1),
+     (os.path.join(outputDir, 'set14exp5'),4,1,130,50000,False,0,0.50,1),
+     (os.path.join(outputDir, 'set14exp6'),4,1,145,50000,False,0,0.50,1),
+     (os.path.join(outputDir, 'set14exp7'),4,1,160,50000,False,0,0.50,1),
+     (os.path.join(outputDir, 'set14exp8'),4,1,115,50000,False,0,0.75,1),
+     (os.path.join(outputDir, 'set14exp9'),4,1,130,50000,False,0,0.75,1),
+     (os.path.join(outputDir, 'set14exp10'),4,1,145,50000,False,0,0.75,1),
+     (os.path.join(outputDir, 'set14exp11'),4,1,160,50000,False,0,0.75,1)],
     ]
 
         
