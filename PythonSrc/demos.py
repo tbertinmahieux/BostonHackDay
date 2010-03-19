@@ -620,6 +620,7 @@ def test_align(filenames,codebook):
     tstart = time.time()
     # iter on files
     for f in filenames:
+        print counter,'), file=',f
         counter += 1
         # print for 10, 50 and 75 %
         if np.int(np.round(filenames==len(filenames)*.1)) == counter:
