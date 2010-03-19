@@ -660,9 +660,11 @@ def test_align_one_song(filename,codebook):
     mat = mat = scipy.io.loadmat(filename)
     btstart = mat['btstart']
     barstart = mat['barstart']
-    if len(btstart.shape<2) or btstart.shape[1] < 3 or barstart.shape[1] < 3:
+    try:
+        if btstart.shape[1] < 3 or barstart.shape[1] < 3:
+            return -1 # can not complete
+    except IndexError:
         return -1 # can not complete
-
     # find bar start based on beat index
     barstart_idx = [np.where(btstart==x)[1][0] for x in barstart.flatten()]
     barstart_idx.append(btstart.shape[1])
