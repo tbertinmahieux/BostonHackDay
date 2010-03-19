@@ -632,6 +632,7 @@ def test_align(filenames,codebook):
 
                    
         res = test_align_one_song(f,codebook)
+        print counter,'), res=',res,', file=',f
         if res < 0:
             continue
         n_exp_done += 1
