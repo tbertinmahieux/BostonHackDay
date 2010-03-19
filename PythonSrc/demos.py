@@ -607,12 +607,30 @@ def test_align(filenames,codebook):
     """
     see test align one song
     """
+    import numpy as np
+    import time
+    # results
     n_exp_done = 0
     n_0 = 0
     n_1 = 0
     n_2 = 0
     n_3 = 0
+    # verbose
+    counter = 0
+    tstart = time.time()
+    # iter on files
     for f in filenames:
+        counter += 1
+        # print for 10, 50 and 75 %
+        if np.round(filenames==len(filenames)*.1) == counter:
+            print '10% of the files done in',time.time()-tstart,'seconds.'
+        if np.round(filenames==len(filenames)*.5) == counter:
+            print '50% of the files done in',time.time()-tstart,'seconds.'
+        if np.round(filenames==len(filenames)*.75) == counter:
+            print '75% of the files done in',time.time()-tstart,'seconds.'
+        # done printing
+
+                   
         res = test_align_one_song(f,codebook)
         if res < 0:
             continue
@@ -664,6 +682,8 @@ def test_align_one_song(filename,codebook):
         if btstart.shape[1] < 3 or barstart.shape[1] < 3:
             return -1 # can not complete
     except IndexError:
+        return -1 # can not complete
+    except AttributeError:
         return -1 # can not complete
     # find bar start based on beat index
     barstart_idx = [np.where(btstart==x)[1][0] for x in barstart.flatten()]
