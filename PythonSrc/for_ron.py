@@ -34,36 +34,40 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
                 offset=offset,partialbar=partialbar)
     sp.io.savemat(os.path.join(experiment_dir, 'args.mat'), args)
 
-
     # TRAINING
     # go to the folder of features (per beat)
     os.chdir(featsDir)
 
-    # load everything, unit: 1 bar, resized to 4 beats
-    # key invariant, not downbeatinvariant
-    featsNorm = demos.get_data_maxener(pSize=beats,keyInv=True,downBeatInv=False,bars=bars,offset=offset,partialbar=partialbar)
+    if not os.path.exists(os.path.join(experiment_dir, 'codebook.mat')):
+        # load everything, unit: 1 bar, resized to 4 beats
+        # key invariant, not downbeatinvariant
+        featsNorm = demos.get_data_maxener(pSize=beats,keyInv=True,downBeatInv=False,bars=bars,offset=offset,partialbar=partialbar)
+        
+        # select nSamples random samples out of it
+        if nSamples == 0:
+            nSamples = featsNorm.shape[0]
+        if useFirsts:
+            featsNorm = featsNorm[:nSamples]
+            #r = range(featsNorm.shape[0]) # still randomize
+            #np.random.shuffle(r)
+            #featsNorm = featsNorm[r[:]]
+            np.random.shuffle(featsNorm)
+        else:
+            r = range(featsNorm.shape[0])
+            np.random.shuffle(r)
+            featsNorm = featsNorm[r[:nSamples]]
 
-    # select nSamples random samples out of it
-    if nSamples == 0:
-        nSamples = featsNorm.shape[0]
-    if useFirsts:
-        featsNorm = featsNorm[:nSamples]
-        #r = range(featsNorm.shape[0]) # still randomize
-        #np.random.shuffle(r)
-        #featsNorm = featsNorm[r[:]]
-        np.random.shuffle(featsNorm)
+        # train a codebook of size 100
+        codebook,dists = VQutils.online_vq(featsNorm,nCodes,lrate=1e-2,nIter=200)
+        sp.io.savemat(os.path.join(experiment_dir, 'codebook.mat'),
+                      dict(codebook=codebook, dists=dists))
+
+        del featsNorm
     else:
-        r = range(featsNorm.shape[0])
-        np.random.shuffle(r)
-        featsNorm = featsNorm[r[:nSamples]]
-
-    # train a codebook of size 100
-    codebook,dists = VQutils.online_vq(featsNorm,nCodes,lrate=1e-2,nIter=200)
-    sp.io.savemat(os.path.join(experiment_dir, 'codebook.mat'),
-                  dict(codebook=codebook, dists=dists))
-
-    del featsNorm
-            
+        mat = sp.io.loadmat(os.path.join(experiment_dir, 'codebook.mat'))
+        codebook = mat['codebook']
+        dists = codebook['dists']
+        
     # TESTING
     # go to the folder of test features (per beat)
     os.chdir(testFeatsDir)
@@ -217,4 +221,3 @@ if __name__ == '__main__':
         pass
     
     pool.map(do_experiment_wrapper, args)
-
