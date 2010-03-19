@@ -603,7 +603,41 @@ def knn_from_freqs_on_artists(filenames,codebook,pSize=8,keyInv=True,
 
 
 
-
+def test_align(filenames,codebook):
+    """
+    see test align one song
+    """
+    n_exp_done = 0
+    n_0 = 0
+    n_1 = 0
+    n_2 = 0
+    n_3 = 0
+    for f in filenames:
+        res = test_align_one_song(f,codebook)
+        if res < 0:
+            continue
+        n_exp_done += 1
+        if res == 0:
+            n_0 += 1
+        elif res == 1:
+            n_1 += 1
+        elif res == 2:
+            n_2 += 1
+        elif res == 3:
+            n_3 += 1
+        else:
+            print 'weird result:',res
+    # print results
+    print 'number exp done:', n_exp_done
+    if n_exp_done == 0:
+        return
+    print 'accuracy:',(n_0 * 1./n_exp_done),'%'
+    print 'details:'
+    print 'n_0:',(n_0 * 1./n_exp_done),'%'
+    print 'n_1:',(n_1 * 1./n_exp_done),'%'
+    print 'n_2:',(n_2 * 1./n_exp_done),'%'
+    print 'n_3:',(n_3 * 1./n_exp_done),'%'
+    
 
 def test_align_one_song(filename,codebook):
     """
