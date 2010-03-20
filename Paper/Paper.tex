@@ -120,11 +120,24 @@ BLACK AND WHITE VERSION COMING.
 \label{fig:code}
 \end{figure}
 
-\subsection{USPOP}
+\subsection{Cowbell Dataset}
+We have $43,300$ songs, giving  $3,720,091$ non zero bars, a bar usually 
+contains $4$ beats. WHERE DOES THIS DATA COMES FROM? GIFT FROM EN?
 
+\subsection{USPOP}
+We had acces to a low quality (32kbps) version of the songs in the uspop 2002 
+data set \cite{uspop2002}.
+This well-known data show a great diversity of pop songs, but is not particular
+otherwise. We also tried to use Tzanetakis dataset \cite{Tzanetakis2002a}, but 
+the $30$ seconds segments seemed hard to analyze by the Echo Nest API, most did
+not contain any bar.
+
+uspop2002 serves as testing set to measure how well a codebook learned on
+the Cowbell data set can represent new songs. We get Echo Nest features
+for $8651$ songs from that dataset.
 
 \subsection{Artist Set}
-
+A set of songs from $20$ artists.
 
 
 \section{Algorithm}
@@ -337,6 +350,9 @@ Let us be clear, the clustering method proposed in this work is not
 intended to perform well at artist recognition. An obvious fact is that
 we lose all timbral information which would be usefull. However, we can
 imagine that some artist use more often some patterns than others.
+Best accuracy reported is around $54.5\%$. Our result is $23.4\%$. Random
+is around $5\%$.
+
 See Figure \ref{fig:conf_mat}.
 
 \begin{figure}[htb]
