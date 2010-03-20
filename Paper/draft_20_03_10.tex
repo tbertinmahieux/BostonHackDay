@@ -33,7 +33,7 @@
   {First author} {Affiliation1 \\ {\tt author1@ismir.edu}}
   {Second author} {\bf Retain these fake authors in\\\bf submission to preserve the formatting}
   {Third author} {Affiliation3 \\ {\tt author3@ismir.edu}}
-% what order do we use? Thierry, Ron, Dan? is Graham on?
+% what order do we use? Thierry, Ron, Dan?
 
 
 \begin{document}
@@ -302,6 +302,7 @@ the distance between $p1$ and $p2$ is:
 \end{eqnarray}
 We assume $p1$ and $p2$ have the same size.
 
+
 \subsection{Pattern length}
 See encoding experiments in Table \ref{tab:psize}.
 
@@ -335,9 +336,13 @@ during training.}}
 % 200codes, 5 beats, pSize=5, maxener, True, False, not scaled = 
 % 200codes, 3 beats, pSize=3, maxener, True, False, not scaled = 
 % NEW STUFF - experiment set 7, 100 codes! 
+% 1 beat 0 bars        0.013725
 % 2 beats 0 bars       0.025346
+% 3 beats 0 bars       0.032688
 % 4 beats 0 bars       0.037181
+% 5 beats 0 bars       0.040858
 % 6 beats 0 bars       0.043237
+% 7 beats 0 bars       0.045515
 % 8 beats 0 bars       0.046832
 % 9 beats 0 bars       0.048579
 % 10 beats 0 bars      0.049530
@@ -408,7 +413,7 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 1M          0.142118
 % 2M          0.141596
 % 1bar s4 first X samples
-% 0
+% 0                          0.052247
 % 1K          0.157142       0.049282
 % 5K          0.150045       0.046441
 % 10K         0.148357       0.045507
@@ -419,7 +424,7 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 1M          0.145924       
 % 2M          0.146065       
 % 0bar s4 (and test set same, we could do 1bar s4 in test set...)
-% 0
+% 0                          0.054299
 % 1K          0.155474       0.042596
 % 5K          0.149619       0.038971
 % 10K         0.148056       0.038114
@@ -430,7 +435,7 @@ random from the dataset of approximately $3,7$ million patterns.}}
 % 1M          0.145873
 % 2M          0.145955
 % 2bar s8
-% 0                          0.066864179424
+% 0                          0.066548
 % 1K          0.171300       0.049282
 % 5K          0.165960       0.046441
 % 10K         0.165063       0.045507
@@ -545,6 +550,20 @@ coherent with the other settings ($1-2-4-8$ bars).}}
 %4 codes 1 bar       0.171495       0.050712
 %16 codes 2 bars     0.173767       0.050172
 %256 codes 4 bars    0.174169       0.049894
+% MORE RESULT WITH OFFSET (see set 15) (1 beat = 1/4 bar, 2 beats=.5 bar)
+%2 codes 1 beat offset 0            0.027272
+%2 codes 1 beat offset 1            0.027483
+%2 codes 1 beat offset 2            0.027068
+%2 codes 1 beat offset 3            0.027119
+
+%2 codes 2 beat offset 0            0.032784
+%2 codes 2 beat offset 1            0.032790
+%2 codes 2 beat offset 2            0.032697
+%2 codes 2 beat offset 3            0.041904
+%
+%
+
+
 
 
 % see generate_expo_codes_curves.py to generate the following figure:
@@ -577,7 +596,7 @@ $.75$ & $0.037337$ \\ \hline
 \label{tab:offset}}}
 \end{table}
 % RESULTS             avg_results
-% 0 offset            0.036722 (to be confirmed by set8exp0)
+% 0 offset            0.036722
 % .25 ofset           0.037130
 % .50 ofset           0.037241
 % .75 ofset           0.037337
@@ -639,6 +658,55 @@ with an harmonic, as seen in the LLE visualization (Figure \ref{fig:lle}).
 
 \subsection{Specific Examples}
 
+
+
+\section{Artist Recognition}
+
+% some results
+
+% MAX of RATIO freq artist / total freq
+% dave_matthews_band        0.18249
+% beatles                   0.07558
+% creedance_clearwater_...  0.02586
+% radiohead                 0.15061
+% depeche_mode              0.07798
+% led_zeppelin              0.07561
+% steely_dan                0.13325
+% tori_amos                 0.15772
+% prince                    0.07759
+% queen                     0.08498
+% aerosmith                 0.07515
+% cure                      0.10309
+% green_day                 0.09284
+% madonna                   0.13436
+% suzanne_vega              0.10925
+% garth_brooks              0.09924
+% fleetwood_mac             0.06224
+% u2                        0.06946
+% metallica                 0.15109
+% roxette                   0.08884
+
+% SUM of RATIO freq artist / total freq
+% dave_matthews_band        11.33405
+% beatles                   10.74590
+% creedance_clearwater_...   6.19190
+% radiohead                  9.68530
+% depeche_mode               9.33563
+% led_zeppelin               7.30907
+% steely_dan                 8.55873
+% tori_amos                 12.85851
+% prince                    10.41991
+% queen                     11.33416
+% aerosmith                  7.55686
+% cure                      10.18128
+% green_day                 10.31394
+% madonna                   10.58627
+% suzanne_vega               9.01302
+% garth_brooks               9.31133
+% fleetwood_mac              9.30001
+% u2                         8.31740
+% metallica                  9.67884
+% roxette                   11.96791
 
 
 \section{Conclusion}
