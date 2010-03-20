@@ -216,6 +216,21 @@ experiment_args = [
      (os.path.join(outputDir, 'set14exp9'),4,1,130,50000,False,0,0.75,1),
      (os.path.join(outputDir, 'set14exp10'),4,1,145,50000,False,0,0.75,1),
      (os.path.join(outputDir, 'set14exp11'),4,1,160,50000,False,0,0.75,1)],
+    # EXPERIMENT SET 15: redoing set 11 with good names...!
+    [(os.path.join(outputDir, 'set15exp0'),1,1,2,128000,False,0,0.00,.25),
+     (os.path.join(outputDir, 'set15exp1'),1,1,2,128000,False,0,0.25,.25),
+     (os.path.join(outputDir, 'set15exp2'),1,1,2,128000,False,0,0.50,.25),
+     (os.path.join(outputDir, 'set15exp3'),1,1,2,128000,False,0,0.75,.25),
+     (os.path.join(outputDir, 'set15exp4'),2,1,4,128000,False,0,0.00,.50),
+     (os.path.join(outputDir, 'set15exp5'),2,1,4,128000,False,0,0.25,.50),
+     (os.path.join(outputDir, 'set15exp6'),2,1,4,128000,False,0,0.50,.50),
+     (os.path.join(outputDir, 'set15exp7'),2,1,4,128000,False,0,0.75,.50),
+     (os.path.join(outputDir, 'set15exp8'),4,1,16,128000,False,0),
+     (os.path.join(outputDir, 'set15exp9'),8,2,256,128000,False,0),
+     (os.path.join(outputDir, 'set15exp10 '),2,1,2,128000,False,0,0.00,.50),
+     (os.path.join(outputDir, 'set15exp11'),2,1,2,128000,False,0,0.25,.50),
+     (os.path.join(outputDir, 'set15exp12'),2,1,2,128000,False,0,0.50,.50),
+     (os.path.join(outputDir, 'set15exp13'),2,1,2,128000,False,0,0.75,.50)],
     ]
 
         
