@@ -269,9 +269,8 @@ random from the dataset of approximately $3,7$ million patterns.}}
 \end{center}
 \caption{\small{Experiment with the codebook size. We train on patterns
 corresponding to $1$ bar resized to $4$ beats. The number of training
-samples is set to $500$ times the number of codes, which is sufficient
-according to Figure \ref{fig:sizes}. NEW RESULTS COMING SOON WITH FIXED 
-SIZED DATASET }}
+samples is set to $500$ times the number of codes. 
+NEW RESULTS COMING SOON WITH FIXED SIZED DATASET }}
 \label{tab:cbsize}
 \end{table}
 
@@ -298,8 +297,16 @@ length $2$, we now need four codes: $(0,0)$, $(0,1)$, $(1,1)$ and $(1,0)$.
 
 Since music is not random, we expect that squaring the codebook when the
 pattern size doubles will rather give improved results than constant ones.
-See Figure \ref{it's comng...}.
+See Figure \ref{fig:size_pattern}.
 
+% see generate_expo_codes_curves.py to generate the following figure:
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.99\columnwidth]{codesize_patternsize}
+\end{center}
+\caption{\small{NEW RESULTS COMING IN}}
+\label{fig:size_pattern}
+\end{figure}
 
 \section{Visualization} \label{sec:visu}
 The goal here is to give an intuition to the reader of what kind of
