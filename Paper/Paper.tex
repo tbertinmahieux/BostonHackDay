@@ -102,25 +102,71 @@ the number of iteration by a threshold on the distortion over some test set.}
 
 
 \section{Experiments - Fundamentals}\label{sec:experiments}
-Note that we will present more experiments in Section \ref{sec:exps2}.
+Note that we will present two additional experiments in 
+Section \ref{sec:exps2}.
 
 \subsection{Basic Properties}
 This section present some fundamental results of the clustering algorithm.
 These are important, but do not change the larger picture. Thus we will not
 spend too much time describing them. In short: more training samples is
 better, more codes is better, larger patterns are more difficult.
-
-First, a larger dataset gives a better encoding codebook. See Figure
-\ref{fig unknown}.
-
-Secondly, a larger codebook better encodes new song. See Figure \ref{ejdue}.
-
-Finally, larger patterns are more difficult to encode, thus require
-larger codebooks. See Figure \ref{mouahahah}.
+\begin{itemize}
+\item First, a larger dataset gives a better encoding codebook. See Figure
+\ref{fig:data_sizes}.
+\item Secondly, a larger codebook better encodes new song. See 
+Table \ref{tab:cbsize}.
+\item Finally, larger patterns are more difficult to encode, thus require
+larger codebooks. See Figure \ref{fig:perbeat}.
+\end{itemize}
 
 These properties are important to verify and measure, but they are not
 surprising for a clustering algorithm. We move on to more interestng facts.
 
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.99\columnwidth]{data_sizes}
+\end{center}
+\caption{\small{Distortion for a codebook of size $100$ encoding one bar
+at a time, a bar being represented by $4$ chroma feature vector.
+Therefore, a code or a pattern is of size $12$ x $4$ = $48$.
+Distortion measure on the test data set. Data size tested range
+from $10$ thousands to $2$ millions. Patterns were selected at
+random from the dataset of approximately $3,7$ million patterns.}}
+\label{fig:data_sizes}
+\end{figure}
+
+% NEW RESULTS COMING SOON WITH FIXED SIZED DATASET
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|c|}
+\hline
+\# codes & \# samples & avg. dist \\ \hline \hline
+1 & $500$ & $0.066079$ \\
+10 & $5$K & $0.045690$ \\
+50 & $25$K & $0.038456$ \\
+100 & $50$K & $0.036725$ \\
+200 & $100$K & $0.033923$ \\
+500 & $250$K & $0.030973$ \\
+1000 & $500$K & \\ \hline
+\end{tabular}
+\end{center}
+\caption{\small{Experiment with the codebook size. We train on patterns
+corresponding to $1$ bar resized to $4$ beats. The number of training
+samples is set to $500$ times the number of codes, which is sufficient
+according to Figure \ref{fig:sizes}. NEW RESULTS COMING SOON WITH FIXED 
+SIZED DATASET }}
+\label{tab:cbsize}
+\end{table}
+
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{encoding_per_beat}
+\end{center}
+\caption{\small{Encoding larger and larger patterns with a fixed size
+codebook.}}
+\label{fig:perbeat}
+\end{figure}
 
 \subsection{Music Randomness}
 It will not surprise any reader, music is not random. This fact should
@@ -150,18 +196,35 @@ Please keep in mind the limited space.
 \subsection{Encoding of a Song}
 Here we present a song with its two encodings. First, the harmonic patterns
 given by the EchoNest. Secondly, each pattern is encoded by its closest
-code in the codebook. See Figure \ref{youppie}.
+code in the codebook. See Figure \ref{fig:encodesong}.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{song_encoded}
+\end{center}
+\caption{\small{Original song and its encoding. Must get a better one for
+the paper!!!!!!}}
+\label{fig:encodesong}
+\end{figure}
 
 \subsection{Codebook}
-We can present the most typical patterns (Figure \ref{1}). 
-Then, LLE? (Figure \ref{2}). 
+We can present the most typical patterns (Figure \ref{fig:codes1}). 
+Then, LLE? (Figure \ref{fig:lle}). 
 Then, the graph on variance. (Figure \ref{fig:code_var}).
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{codes1}
+\end{center}
+\caption{\small{Most used codes in the codebook.}}
+\label{fig:codes1}
+\end{figure}
 
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=.9\columnwidth]{codes_lle}
 \end{center}
-\caption{Locally linear embedding (LLE) visualization of the codebook.}
+\caption{\small{Locally linear embedding (LLE) visualization of the codebook.}}
 \label{fig:lle}
 \end{figure}
 
@@ -169,14 +232,22 @@ Then, the graph on variance. (Figure \ref{fig:code_var}).
 \begin{center}
 \includegraphics[width=.9\columnwidth]{code_variance}
 \end{center}
-\caption{Average variance in time of a codebook.}
+\caption{\small{Average variance in time of a codebook.}}
 \label{fig:code_var}
 \end{figure}
 
 \subsection{Cluster}
 Here we present real patterns that are closer to the code presented in ...
 than any other code. The goal is to feel how much variance is present in
-a cluster.
+a cluster. See Figure \ref{fig:cluster}.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{close_patterns1}
+\end{center}
+\caption{\small{Cluster around some pattern... TO BE REDONE}}
+\label{fig:cluster}
+\end{figure}
 
 \section{Further Experiments}\label{sec:exps2}
 
@@ -188,7 +259,24 @@ of new songs from our codebook. It would helps us assert that codes
 encodes something related to bars, for instance a strong beat at the
 beginning.
 
+See Table \ref{tab:offset}.
 
+\begin{table}
+\begin{center}
+\begin{tabular}{c|c}
+%\hline
+offset & \% of times chosen \\ \hline
+0 & $\mathbf{62.6}$\\
+1 & $16.5$\\
+2 & $09.4$\\
+3 & $11.5$\\
+\end{tabular}
+\end{center}
+\caption{\small{
+Best offset according to our codebook. The real one is $0$.
+}}
+\label{tab:offset}
+\end{table}
 
 \subsection{Artist Recognition}
 Let us be clear, the clustering method proposed in this work is not
@@ -201,8 +289,30 @@ See Figure \ref{fig:conf_mat}.
 \begin{center}
 \includegraphics[width=.9\columnwidth]{conf_mat_per_artist}
 \end{center}
-\caption{Confusion matrix for artist recognition task.}
+\caption{\small{Confusion matrix for artist recognition task.}}
 \label{fig:conf_mat}
+\end{figure}
+
+Looking at the most typical patterns per artist can be insightful.
+To find these patters, we compare its use by one artist and divide
+by its use by all artists. In Figure \ref{fig:metallica} we see 
+Metallica's pattern and in Figure \ref{fig:amosvega}, Tori Amos and
+Suzanne Vega's pattern. These three artists were easily identified.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.4\columnwidth]{metallica_pattern}
+\end{center}
+\caption{\small{Most typical pattern for Metallica.}}
+\label{fig:metallica}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.4\columnwidth]{toriamos_suzannevega_pattern}
+\end{center}
+\caption{\small{Most typical pattern for Tori Amos and Suzanne Vega.}}
+\label{fig:amosvega}
 \end{figure}
 
 
