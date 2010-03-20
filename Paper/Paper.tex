@@ -33,7 +33,7 @@
   {First author} {Affiliation1 \\ {\tt author1@ismir.edu}}
   {Second author} {\bf Retain these fake authors in\\\bf submission to preserve the formatting}
   {Third author} {Affiliation3 \\ {\tt author3@ismir.edu}}
-% what order do we use? Thierry, Ron, Dan?
+% what order do we use? Thierry, Ron, Dan?  Dan, Thierry, Ron?
 
 
 \begin{document}
@@ -41,13 +41,173 @@
 \maketitle
 %
 \begin{abstract}
-
+The goal is to analyze very large collections of music. We describe
+a clustering scheme of harmonic patterns that scales linearly in time
+with the number of songs analyzed. These harmonic patterns are related
+to the \textit{Shingles} idea, but we scale to larger sets and we do not
+perform $k$-nn with them. We create a codebook and assert
+its properties. In particular, we show that clustering with notions of
+bars and song segments helps, and that we get codes associated more
+with some artists than others.
 \end{abstract}
 %
 \section{Introduction}\label{sec:introduction}
 
 
+Large-scale \cite{Bertin-Mahieux2008}
 
+
+\section{Previous Work}\label{sec:prevwork}
+Casey and Slaney \cite{Casey2006,Casey2007,Casey2008}
+
+\section{Data}\label{sec:data}
+In this section we present our use of the Echo Nest features and the
+datasets we use for training and testing our model.
+
+\subsection{EchoNest API}
+
+
+\subsection{USPOP}
+
+
+\subsection{Artist Set}
+
+
+
+\section{Algorithm}
+Wth the scaling factor as our main concern, we present an online
+vector quantization algorithm to cluster the harmonic patterns.
+
+\begin{algorithm}
+%\caption{Pseudocode of Vector Quantization}
+\begin{algorithmic}
+\STATE$l$ learning rate
+\STATE$\{P_n\}$ set of patches
+\STATE$\{C_k\}$ codebook of $K$ codes
+%\STATE $m \leftarrow b$
+\REQUIRE $0 < l \leq 1$
+\FOR{$nIters$}
+\FOR{$p \in \{P_n\}$}
+\STATE$c \leftarrow min_{c \in C_k} dist(p,c)$
+\STATE$c \leftarrow c + (p - c) * l$
+\ENDFOR
+\ENDFOR
+\RETURN $\{C_k\}$
+\caption{{Pseudocode of Online Vector Quantization. Note that we can replace
+the number of iteration by a threshold on the distortion over some test set.}
+\label{algo:vq}}
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\section{Experiments}\label{sec:experiments}
+
+
+\subsection{Basic Properties}
+This section present some fundamental results of the clustering algorithm.
+These are important, but do not change the larger picture. Thus we will not
+spend too much time describing them. In short: more training samples is
+better, more codes is better, larger patterns are more difficult.
+
+First, a larger dataset gives a better encoding codebook. See Figure
+\ref{fig unknown}.
+
+Secondly, a larger codebook better encodes new song. See Figure \ref{ejdue}.
+
+Finally, larger patterns are more difficult to encode, thus require
+larger codebooks. See Figure \ref{mouahahah}.
+
+These properties are important to verify and measure, but they are not
+surprising for a clustering algorithm. We move on to more interestng facts.
+
+
+\subsection{Music Randomness}
+It will not surprise any reader, music is not random. This fact should
+become apparent in our experiments in the following way. Information
+theory tells us that if the signal to encode doubles, we need to square
+the size of the codebook to encode it with the same distortion.
+
+To help the intuition, here is an example. Imagine a binary array of 
+length $1$. We need two
+codes to encode perfectly: $(0)$ and $(1)$. If the binary array is now of
+length $2$, we now need four codes: $(0,0)$, $(0,1)$, $(1,1)$ and $(1,0)$.
+
+Since music is not random, we expect that squaring the codebook when the
+pattern size doubles will rather give improved results than constant ones.
+See Figure \ref{it's comng...}.
+
+
+\section{Visualization}
+The goal here is to give an intuition to the reader of what kind of
+typical patterns do we get. We also want to have a feel for what the
+clusters look like, how many boring sustaned notes are encoded in the
+codebook, can the codebook describes the complexity of the music space, etc.
+
+Below we present some figures to help the reader with those questions.
+Please keep in mind the limited space.
+
+\subsection{Encoding of a Song}
+Here we present a song with its two encodings. First, the harmonic patterns
+given by the EchoNest. Secondly, each pattern is encoded by its closest
+code in the codebook. See Figure \ref{youppie}.
+
+\subsection{Codebook}
+We can present the most typical patterns (Figure \ref{1}). 
+Then, LLE? (Figure \ref{2}). 
+Then, the graph on variance. (Figure \ref{fig:code_var}).
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{codes_lle}
+\end{center}
+\caption{Locally linear embedding (LLE) visualization of the codebook.}
+\label{fig:lle}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{code_variance}
+\end{center}
+\caption{Average variance in time of a codebook.}
+\label{fig:code_var}
+\end{figure}
+
+\subsection{Cluster}
+Here we present real patterns that are closer to the code presented in ...
+than any other code. The goal is to feel how much variance is present in
+a cluster.
+
+\section{Further Experiments}
+
+\subsection{Song Segmentation}
+We explained that we used bars as defined by the EchoNest algorithm to
+train our patterns. Let's assume once again that those bars are
+reasonable. We investigate whether we could recover the bar segmentation
+of new songs from our codebook. It would helps us assert that codes
+encodes something related to bars, for instance a strong beat at the
+beginning.
+
+
+
+\subsection{Artist Recognition}
+Let us be clear, the clustering method proposed in this work is not
+intended to perform well at artist recognition. An obvious fact is that
+we lose all timbral information which would be usefull. However, we can
+imagine that some artist use more often some patterns than others.
+See Figure \ref{fig:conf_mat}.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{conf_mat_per_artist}
+\end{center}
+\caption{Confusion matrix for artist recognition task.}
+\label{fig:conf_mat}
+\end{figure}
+
+
+
+\section{Conclusion and Future Work}
 
 
 \small
