@@ -230,7 +230,12 @@ experiment_args = [
      (os.path.join(outputDir, 'set15exp10 '),2,1,2,128000,False,0,0.00,.50),
      (os.path.join(outputDir, 'set15exp11'),2,1,2,128000,False,0,0.25,.50),
      (os.path.join(outputDir, 'set15exp12'),2,1,2,128000,False,0,0.50,.50),
-     (os.path.join(outputDir, 'set15exp13'),2,1,2,128000,False,0,0.75,.50)],
+     (os.path.join(outputDir, 'set15exp13'),2,1,2,128000,False,0,0.75,.50),
+     (os.path.join(outputDir, 'set15exp14'),4,1,4,128000,False,0),
+     (os.path.join(outputDir, 'set15exp15'),8,2,16,128000,False,0),
+     (os.path.join(outputDir, 'set15exp16'),16,4,256,128000,False,0),
+     (os.path.join(outputDir, 'set15exp17'),4,1,16,128000,False,0),
+     (os.path.join(outputDir, 'set15exp18'),8,2,256,128000,False,0)],
     ]
 
         
