@@ -140,9 +140,36 @@ for $8651$ songs from that dataset.
 A set of songs from $20$ artists.
 
 
-\section{Algorithm}
-Wth the scaling factor as our main concern, we present an online
-vector quantization algorithm to cluster the harmonic patterns.
+\section{Algorithm}\label{sec:algo}
+In this section we present the creation of the harmonic patterns from
+the Echo Nest data. Then, we explain the online vector quantization algorithm
+used to learn a codebook of those patterns.
+
+\subsection{Pattern Creation}
+Here we should explain key invariance, resizing, etc, and not in the
+experiment section.
+
+We try to normalize the patterns in respect to the key. We roll the matrix
+so the row with the more energy is always the lowest one. This can easily be
+seen in Figure \ref{fig:code}. We considered the same technique for rolling
+along the other axis and be invariant regarding the downbeat. However, it
+seems less robust to noise. Note that we roll each pattern independentely.
+Also, this implies that the pitch envelope is important rather than the actual 
+pitches.
+
+
+\subsection{Codebook Learning}
+We use an online version of the vector quantization algorithm 
+\cite{Gersho1991}. This can also be seen as an online K-means.
+The idea is as follow: take a sample from your data, find the closest
+code in the codebook, bring that code closer to the sample by some amount.
+The details are explained in Algorithm \ref{algo:vq}. Note that this
+algorithm, though not optimal, is $O(n)$ with $n$ number of songs seen.
+Thus it scales linearly to any size of data set. The setting of the learning
+rate might become trickier, but this is not fundamentally a problem.
+
+We initialize the codebook by choosing $K$ random points from our dataset.
+
 
 \begin{algorithm}
 %\caption{Pseudocode of Vector Quantization}
@@ -171,6 +198,29 @@ test set.}
 \section{Experiments - Fundamentals}\label{sec:experiments}
 Note that we will present two additional experiments in 
 Section \ref{sec:exps2}.
+
+
+\subsection{Setting}\label{ssec:setting}
+We take one or two bars, normalize the patches to size 4, 8, or 16.
+We roll the patch to be invariant to the key (on the patch level, not on
+the song level). We learn a codebook of size $K$ over the cowbell dataset 
+using the VQ algorithm (Algorithm \ref{algo:vq}). A typical learning rate 
+is $0.01$ for $200$ iterations over the whole dataset.
+
+We use the codebook to encode our testing set (see Section \ref{sec:data}).
+Each pattern is encoded with only one code. We can measure the average
+distance between a pattern and its encoding. We can also measure the use
+of the different codes, i.e. the size of the cluster around a code.
+
+As a distance measure (or distortion measure) between patterns, we use
+the average squared euclidean distance. In details, if a pattern $p1$
+is composed of elements $p1_{i,j}$, and similarly for a pattern $p2$,
+the distance between $p1$ and $p2$ is:
+\begin{eqnarray}
+  dist(p1,p2) = \sum_{i,j} (p1_{i,j} - p2_{i,j})^2 / size(p1)  \label{eq:dist}
+\end{eqnarray}
+We assume $p1$ and $p2$ have the same size.
+
 
 \subsection{Basic Properties}
 This section present some fundamental results of the clustering algorithm.
