@@ -56,16 +56,69 @@ with some artists than others.
 
 Large-scale \cite{Bertin-Mahieux2008}
 
+\subsection{Definitions}
+A pattern, or a patch, is a \textit{Shingle} taken from an actual song.
+A code is similar to a pattern, but is the result of the clustering
+algorithm and most likely does not come from an actual song.
+Distortion is our measure of distance between a pattern and a code
+(or between two patterns, see equation \ref{eq:dist} in Section 
+\ref{sec:experiments}).
+
 
 \section{Previous Work}\label{sec:prevwork}
-Casey and Slaney \cite{Casey2006,Casey2007,Casey2008}
+Our work can be seen as an extension of the \textit{Shingles} idea
+described by Casey and Slaney \cite{Casey2006,Casey2007,Casey2008}.
+The two main differences are the clustering framework and the use of
+beats and bars to select the position of the \textit{Shingles}.
+
+Casey and Slaney \cite{Casey2006} use LSH \cite{Datar2004} to perform
+fast approximate nearest neighbor search. Their implementation is E$^2$LSH
+\cite{E2LSH}. This package can efficiently handle about $50$K or $100$K
+vectors of size $200$. Even with a better implementation, the LSH
+model still has some scaling problem. A large portion of the data
+must be known to decide how many projections to use, and what guarantee
+of finding the nearest neighbor it can provides. Also, we could fix the
+number of projections and consider as clusters all the elements that
+fall into the same bin. However, this does not give us a centroid, a
+typical pattern representing that cluster.
+
 
 \section{Data}\label{sec:data}
 In this section we present our use of the Echo Nest features and the
 datasets we use for training and testing our model.
 
 \subsection{EchoNest API}
+We use the Echo Nest analyze API \cite{EchoNest} throughout this work.
+The API gives us a chroma vector (length $12$) for every music event, 
+or ``segment'', for any song we upload to their platform. 
+We also get an estimate of where the beats and the bars are. Beats span over
+multiple segments, and bars span over multiple beats. 
+We transform the chroma vectors per segment into per beat vectors using a 
+simple average. We can then stack beat vectors for a number of bars 
+(usually 1 or 2). 
+We get a fixed-size patch by resampling the number of chroma vectors. Typically,
+there are $4$ beats per bar. Thus an appropriate pattern size for one bar
+is $12$x$4$ or $12$x$8$.
 
+Note that we do not claim that any of these informations (segments, beats, bars)
+are perfectly accurate (e.g. in \cite{Barrington2009a} authors obtain a better
+song segmentation than Echonest). Practise showed us that they are reasonable, 
+and the size of the data set should make up for the imperfections or noise.
+We also believe that patches sizes based on a number of beats or bars are more
+meaningful than an arbitrary time length. More on this in the experiments
+(Section \ref{sec:experiments}).
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.8\columnwidth]{code}
+\end{center}
+\caption{\small{A typical code from a codebook of size $200$. 
+Patterns represented
+$2$ bars and the pattern length was set to $16$.
+BLACK AND WHITE VERSION COMING.
+}}
+\label{fig:code}
+\end{figure}
 
 \subsection{USPOP}
 
@@ -93,8 +146,9 @@ vector quantization algorithm to cluster the harmonic patterns.
 \ENDFOR
 \ENDFOR
 \RETURN $\{C_k\}$
-\caption{{Pseudocode of Online Vector Quantization. Note that we can replace
-the number of iteration by a threshold on the distortion over some test set.}
+\caption{\small{Pseudocode of Online Vector Quantization. Note that we can 
+replace the number of iteration by a threshold on the distortion over some 
+test set.}
 \label{algo:vq}}
 \end{algorithmic}
 \end{algorithm}
@@ -318,6 +372,25 @@ Suzanne Vega's pattern. These three artists were easily identified.
 
 
 \section{Conclusion and Future Work}
+We presented a practical method to perform large-scale clustering of
+harmonic patterns. We assessed the basic properties of the method through
+experiments on a large collection of music. We suggested many ways
+to interpret the data through visualization (LLE) and further encoding
+(NMF). We discussed the possibility to move to even larger scales
+and we provided our source code\footnote{Code not yet released to preserve
+submission's anonymity}.
+
+As for enhancements, we specifically did not compress our features using
+gaussian mixtures or other generative model. That being said, these methods
+could be use to develop better distance measures between \textit{Shingles}.
+The use of the euclidean distance is arbitrary. Summarizing patches
+with gaussians, and then comparing the distance between those gaussians,
+could reduce the influence of the noise in the distance measure.
+
+Moving on to larger scales, we could imagine merging codes together and
+splitting some on two if the clusters become too small or too large.We could
+also cluster the codebook itself, in a similar fashion as hierarchical
+gaussian mixtures \cite{Vasconcelos2001}.
 
 
 \small
