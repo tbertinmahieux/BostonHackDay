@@ -69,6 +69,9 @@ Some work have tackled that problem. For instance, Bertin-Mahieux et al.
 songs. Casey and Slaney \cite{Casey2006} introduced their \textit{Shingles}
 representation and perform $k$-nn over thousands of examples.
 
+We approach the clustering problem keeping in mind the scaling
+requirement. We use a representation similar to the \textit{Shingles}.
+We train on $43$K songs and test on more than $7$K ones.
 
 
 \subsection{Definitions}
@@ -151,7 +154,7 @@ We have $43,300$ songs, giving  $3,720,091$ non zero bars, a bar usually
 contains $4$ beats. WHERE DOES THIS DATA COMES FROM? GIFT FROM EN?
 
 \subsection{USPOP}
-We had acces to a low quality (32kbps) version of the songs in the uspop 2002 
+We had access to a low quality (32kbps) version of the songs in the uspop 2002 
 data set \cite{uspop2002}.
 This well-known data show a great diversity of pop songs, but is not particular
 otherwise. We also tried to use Tzanetakis dataset \cite{Tzanetakis2002a}, but 
@@ -163,7 +166,7 @@ the Cowbell data set can represent new songs. We get Echo Nest features
 for $8651$ songs from that dataset.
 
 \subsection{Artist Set}
-This set ecompass $1402$ songs $20$ artists, mostly rock and pop of different 
+This set encompass $1402$ songs $20$ artists, mostly rock and pop of different 
 subgenres. Some results were available regarding the artist recognition
 task. Few details given to preserve anonymity.
 
@@ -174,14 +177,19 @@ the Echo Nest data. Then, we explain the online vector quantization algorithm
 used to learn a codebook of those patterns.
 
 \subsection{Pattern Creation}
-Here we should explain key invariance, resizing, etc, and not in the
-experiment section.
+Patterns are defined as a number of beats or bars. In the case of beats,
+we simply cut the set of chromas per beat every $N$ beats. In the case
+of bars, we gather all beats corresponding to the $N$ bars requested.
+The number of chroma vectors we get can vary. We resize the features in the
+time axis to a fixed length. Resizing can be argued over, but it should
+preserve the main bar characteristics (such as a strong beat at the beginning
+or a note change in the middle).
 
 We try to normalize the patterns in respect to the key. We roll the matrix
 so the row with the more energy is always the lowest one. This can easily be
 seen in Figure \ref{fig:code}. We considered the same technique for rolling
 along the other axis and be invariant regarding the downbeat. However, it
-seems less robust to noise. Note that we roll each pattern independentely.
+seems less robust to noise. Note that we roll each pattern independently.
 Also, this implies that the pitch envelope is important rather than the actual 
 pitches.
 
@@ -272,7 +280,7 @@ larger codebooks. See Figure \ref{fig:perbeat}.
 \end{itemize}
 
 These properties are important to verify and measure, but they are not
-surprising for a clustering algorithm. We move on to more interestng facts.
+surprising for a clustering algorithm. We move on to more interesting facts.
 
 \begin{figure}[htb]
 \begin{center}
@@ -462,7 +470,7 @@ Best offset according to our codebook. The real one is $0$.
 \subsection{Artist Recognition}
 Let us be clear, the clustering method proposed in this work is not
 intended to perform well at artist recognition. An obvious fact is that
-we lose all timbral information which would be usefull. However, we can
+we lose all timbral information which would be useful. However, we can
 imagine that some artist use more often some patterns than others.
 Best accuracy reported\footnote{few details given to preserve anonymity} 
 is around $54.5\%$. Our result is $23.4\%$. Random
