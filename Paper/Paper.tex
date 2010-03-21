@@ -97,8 +97,19 @@ We transform the chroma vectors per segment into per beat vectors using a
 simple average. We can then stack beat vectors for a number of bars 
 (usually 1 or 2). 
 We get a fixed-size patch by resampling the number of chroma vectors. Typically,
-there are $4$ beats per bar. Thus an appropriate pattern size for one bar
+there are $4$ beats per bar (Figure \ref{fig:barsize}. 
+Thus an appropriate pattern size for one bar
 is $12$x$4$ or $12$x$8$.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{bar_size_freq}
+\end{center}
+\caption{\small{
+Frequency of the different bar size in the training data.
+}}
+\label{fig:barsize}
+\end{figure}
 
 Note that we do not claim that any of these informations (segments, beats, bars)
 are perfectly accurate (e.g. in \cite{Barrington2009a} authors obtain a better
@@ -318,11 +329,11 @@ See Figure \ref{fig:size_pattern}.
 \section{Visualization} \label{sec:visu}
 The goal here is to give an intuition to the reader of what kind of
 typical patterns do we get. We also want to have a feel for what the
-clusters look like, how many boring sustaned notes are encoded in the
+clusters look like, how many boring sustained notes are encoded in the
 codebook, can the codebook describes the complexity of the music space, etc.
 
 Below we present some figures to help the reader with those questions.
-Please keep in mind the limited space.
+Please bear in mind the limited space.
 
 \subsection{Encoding of a Song}
 Here we present a song with its two encodings. First, the harmonic patterns
