@@ -143,8 +143,7 @@ meaningful than an arbitrary time length. More on this in the experiments
 \end{center}
 \caption{\small{A typical code from a codebook of size $200$. 
 Patterns represented
-$2$ bars and the pattern length was set to $16$.
-BLACK AND WHITE VERSION COMING.
+$2$ bars and the pattern length was set to $8$.
 }}
 \label{fig:code}
 \end{figure}
@@ -427,7 +426,10 @@ See Figure \ref{fig:cluster} and \ref{fig:cluster_diff}.
 \begin{center}
 \includegraphics[width=.9\columnwidth]{close_patterns1}
 \end{center}
-\caption{\small{Cluster around some pattern... TO BE REDONE}}
+\caption{\small{Cluster around centroid presented in
+Figure \ref{fig:code}. Taken from the artist20 dataset, the cluster
+size is actually $639$. Shown samples were randomly selected.
+}}
 \label{fig:cluster}
 \end{figure}
 
@@ -435,7 +437,10 @@ See Figure \ref{fig:cluster} and \ref{fig:cluster_diff}.
 \begin{center}
 \includegraphics[width=.9\columnwidth]{close_patterns_diff}
 \end{center}
-\caption{\small{Cluster around the pattern and the difference of both.}}
+\caption{\small{First three patterns of figure \ref{fig:cluster}
+($2$nd line) presented with the centroid from Figure \ref{fig:code}
+($1$st line) and the difference between both ($3$rd line).
+}}
 \label{fig:cluster_diff}
 \end{figure}
 
@@ -465,6 +470,13 @@ in terms of beats according to the EchoNest API. We then encode this
 sequence using an offset of $0$, $1$, $2$ or $3$ beats. The best offset
 is the one that gives the encoding with the lowest distortion. The
 good answer is an offset of $0$.
+
+The result presented here suggest a dynamic programming setting where
+we could find the optimal bar segmentation according to our codebook. 
+We could try
+all possible bar length (in terms of beats) and not restrict ourselves
+to $4$ beats bars and offsets between $0$ and $3$. This is part of
+our future work.
 
 \begin{table}
 \begin{center}
