@@ -94,8 +94,8 @@ datasets we use for training and testing our model.
 
 \subsection{EchoNest API}
 We use the Echo Nest analyze API \cite{EchoNest} throughout this work.
-The API gives us a chroma vector (length $12$) for every music event, 
-or ``segment'', for any song we upload to their platform. 
+The API gives us a chroma vector (length $12$) for every music event (called 
+``segment'') for any song we upload to their platform. 
 We also get an estimate of where the beats and the bars are. Beats span over
 multiple segments, and bars span over multiple beats. 
 We transform the chroma vectors per segment into per beat vectors using a 
@@ -358,7 +358,7 @@ the paper!!!!!!}}
 
 \subsection{Codebook}
 We can present the most typical patterns (Figure \ref{fig:codes1}). 
-Then, LLE? (Figure \ref{fig:lle}). 
+Then, LLE \cite{Roweis2000}? (Figure \ref{fig:lle}). 
 Then, the graph on variance. (Figure \ref{fig:code_var}).
 
 \begin{figure}[htb]
@@ -534,7 +534,8 @@ gaussian mixtures \cite{Vasconcelos2001}.
 \small
 %\section{Acknowledgements}
 %Thierry is NSERC graduate fellow, or some title like that.
-% Graham for the NMF stuff, unless is an author.
+%Ron has a grant too.
+% Graham for the NMF stuff and numerous discussions.
 
 %\begin{thebibliography}{citations}
 %\bibitem{Someone:04} 
