@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{algorithm,algorithmic}
-
+\usepackage{subfloat,subfig}
 
 % Title.
 % ------
@@ -97,7 +97,7 @@ We transform the chroma vectors per segment into per beat vectors using a
 simple average. We can then stack beat vectors for a number of bars 
 (usually 1 or 2). 
 We get a fixed-size patch by resampling the number of chroma vectors. Typically,
-there are $4$ beats per bar (Figure \ref{fig:barsize}. 
+there are $4$ beats per bar (Figure \ref{fig:barsize}). 
 Thus an appropriate pattern size for one bar
 is $12$x$4$ or $12$x$8$.
 
@@ -266,7 +266,9 @@ at a time, a bar being represented by $4$ chroma feature vector.
 Therefore, a code or a pattern is of size $12$ x $4$ = $48$.
 Distortion measure on the test data set. Data size tested range
 from $10$ thousands to $2$ millions. Patterns were selected at
-random from the dataset of approximately $3,7$ million patterns.}}
+random from the dataset of approximately $3,7$ million patterns.
+OLD GRAPH WITH OLD NUMBERS
+}}
 \label{fig:data_sizes}
 \end{figure}
 
@@ -462,10 +464,12 @@ the histogram of each artist using euclidean distance.
 
 Looking at the most typical patterns per artist can be insightful.
 To find these patters, we compare its use by one artist and divide
-by its use by all artists. In Figure \ref{fig:metallica} we see 
-Metallica's pattern and in Figure \ref{fig:amosvega}, Tori Amos and
+by its use by all artists. In Figure \ref{fig:typicalpat} we see 
+Metallica's pattern, then Tori Amos and
 Suzanne Vega's pattern. These three artists were easily identified.
 
+% ignoring the two following figures
+\iffalse
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=.4\columnwidth]{metallica_pattern}
@@ -482,6 +486,16 @@ COULD BE MIXED WITH TORI AMOS FIGURE.
 \end{center}
 \caption{\small{Most typical pattern for Tori Amos and Suzanne Vega.}}
 \label{fig:amosvega}
+\end{figure}
+\fi
+
+
+\begin{figure}[htb]
+  \centering
+  \subfloat[][\small{Metallica}]{\label{fig:metallica2}\includegraphics[width=0.4\columnwidth]{metallica_pattern}}                
+  \subfloat[][\small{Tori Amos / Suzanne Vega}]{\label{fig:amosvega2}\includegraphics[width=0.4\columnwidth]{toriamos_suzannevega_pattern}}
+  \caption{\small{Typical patterns for different artists.}}
+  \label{fig:typicalpat}
 \end{figure}
 
 
