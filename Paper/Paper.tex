@@ -11,7 +11,7 @@
 
 % added by tbm
 \usepackage{subfloat,subfig}
-\setlength{\abovecaptionskip}{-5pt}
+\setlength{\abovecaptionskip}{-3pt}
 \setlength{\belowcaptionskip}{10pt} 
 
 
@@ -214,7 +214,7 @@ test set.}
 \section{Experiments - Fundamentals}\label{sec:experiments}
 In this section we assert the basic properties of our encoding scheme.
 The first subsection gives the details to reproduce the experiments,
-such as the distance measure and learning rate. In second subsection, we
+such as the distance measure and learning rate. In the second subsection, we
 measure properties such as ``how the number of codes affect the distortion''
 and ``how many learning samples should we use''. Though important numbers
 to report, the busy reader could skip to subsection \ref{ssec:random}
@@ -381,7 +381,10 @@ Then, the graph on variance. (Figure \ref{fig:code_var}).
 \begin{center}
 \includegraphics[width=.9\columnwidth]{code_variance}
 \end{center}
-\caption{\small{Average variance in time of a codebook.}}
+\caption{\small{Average variance in time of a codebook. The vertical
+axis cuts at the $63$rd pattern, a rough estimate of the number of 
+sustained note patterns.
+}}
 \label{fig:code_var}
 \end{figure}
 
@@ -447,7 +450,8 @@ Let us be clear, the clustering method proposed in this work is not
 intended to perform well at artist recognition. An obvious fact is that
 we lose all timbral information which would be usefull. However, we can
 imagine that some artist use more often some patterns than others.
-Best accuracy reported is around $54.5\%$. Our result is $23.4\%$. Random
+Best accuracy reported\footnote{few details given to preserve anonymity} 
+is around $54.5\%$. Our result is $23.4\%$. Random
 is around $5\%$. The confusion matrix can be seen in Figure \ref{fig:conf_mat}.
 Details of the experiment follow.
 
