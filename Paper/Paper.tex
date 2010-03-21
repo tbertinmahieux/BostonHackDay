@@ -106,7 +106,7 @@ song segmentation than Echonest). Practise showed us that they are reasonable,
 and the size of the data set should make up for the imperfections or noise.
 We also believe that patches sizes based on a number of beats or bars are more
 meaningful than an arbitrary time length. More on this in the experiments
-(Section \ref{sec:experiments}).
+(Section \ref{sec:experiments} TO BE CHECKED).
 
 \begin{figure}[htb]
 \begin{center}
@@ -196,6 +196,13 @@ test set.}
 
 
 \section{Experiments - Fundamentals}\label{sec:experiments}
+In this section we assert the basic properties of our encoding scheme.
+The first subsection gives the details to reproduce the experiments,
+such as the distance measure and learning rate. In second subsection, we
+measure properties such as ``how the number of codes affect the distortion''
+and ``how many learning samples should we use''. Though important numbers
+to report, the busy reader could skip to subsection \ref{ssec:random}
+and the following sections.
 Note that we will present two additional experiments in 
 Section \ref{sec:exps2}.
 
@@ -284,7 +291,7 @@ codebook.}}
 \label{fig:perbeat}
 \end{figure}
 
-\subsection{Music Randomness}
+\subsection{Music Randomness}\label{ssec:random}
 It will not surprise any reader, music is not random. This fact should
 become apparent in our experiments in the following way. Information
 theory tells us that if the signal to encode doubles, we need to square
