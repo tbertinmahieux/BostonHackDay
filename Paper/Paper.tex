@@ -58,8 +58,18 @@ with some artists than others.
 %
 \section{Introduction}\label{sec:introduction}
 
-Large-scale \cite{Bertin-Mahieux2008}. See previous work for \textit{Shingles}
-papers.
+Working with large collections is a necessity.
+
+Computationally expensive, most of the techniques developed do not scale
+to hundred of thousands songs. Practical question, how to describe a music
+space made of millions of songs?
+
+Some work have tackled that problem. For instance, Bertin-Mahieux et al.
+\cite{Bertin-Mahieux2008} automatically tag a collection larger than $100$K
+songs. Casey and Slaney \cite{Casey2006} introduced their \textit{Shingles}
+representation and perform $k$-nn over thousands of examples.
+
+
 
 \subsection{Definitions}
 A pattern, or a patch, is a \textit{Shingle} taken from an actual song.
@@ -153,7 +163,9 @@ the Cowbell data set can represent new songs. We get Echo Nest features
 for $8651$ songs from that dataset.
 
 \subsection{Artist Set}
-A set of songs from $20$ artists.
+This set ecompass $1402$ songs $20$ artists, mostly rock and pop of different 
+subgenres. Some results were available regarding the artist recognition
+task. Few details given to preserve anonymity.
 
 
 \section{Algorithm}\label{sec:algo}
@@ -358,7 +370,9 @@ the paper!!!!!!}}
 
 \subsection{Codebook}
 We can present the most typical patterns (Figure \ref{fig:codes1}). 
-Then, LLE \cite{Roweis2000}? (Figure \ref{fig:lle}). 
+Then, LLE\footnote{implementation: 
+\url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}} 
+\cite{Roweis2000}? (Figure \ref{fig:lle}). 
 Then, the graph on variance. (Figure \ref{fig:code_var}).
 
 \begin{figure}[htb]
