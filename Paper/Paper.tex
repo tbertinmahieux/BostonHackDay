@@ -480,7 +480,8 @@ Details of the experiment follow.
 All songs in the artist dataset are encoded as an histogram of the codes
 used in that song. The frequency values are normalized by the number
 of patterns in the song. We test each song in a leave-one-out setting.
-Leaving aside the test song, we represent the $20$ artists by the average of
+Leaving aside the test song, we represent each of the $20$ artists by the 
+average of
 the song histograms of that artist. The test song is compared to
 the histogram of each artist using euclidean distance.
 
@@ -494,7 +495,7 @@ the histogram of each artist using euclidean distance.
 \end{figure}
 
 Looking at the most typical patterns per artist can be insightful.
-To find these patters, we compare its use by one artist and divide
+To find these patterns, we compare its use by one artist and divide
 by its use by all artists. In Figure \ref{fig:typicalpat} we see 
 Metallica's pattern, then Tori Amos and
 Suzanne Vega's pattern. These three artists were easily identified.
@@ -535,8 +536,9 @@ COULD BE MIXED WITH TORI AMOS FIGURE.
 We presented a practical method to perform large-scale clustering of
 harmonic patterns. We assessed the basic properties of the method through
 experiments on a large collection of music. We suggested many ways
-to interpret the data through visualization (LLE) and further encoding
-(NMF). We discussed the possibility to move to even larger scales
+to interpret the data (such as LLE) and assert the merit of the codebook
+through further experiments.
+We discussed the possibility to move to even larger scales
 and we provided our source code\footnote{Code not yet released to preserve
 submission's anonymity}.
 
