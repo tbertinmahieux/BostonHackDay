@@ -16,13 +16,17 @@ import pylab as P
 def create_fig():
 
     # DATA
-    labels = ['2','4','16','256']
+    #labels = ['2','4','16','256']
+    labels = ['1/4','1/2','1','2','4','8']
 
+    data1 = [0.027235,0.030586,0.043468]
+    range1 = [0,1,2]
     # 2 beats - 1 bar - 2 bars - 4 bars
-    data1 = [0.066416,0.050712,0.050172,0.049894]
+    data2 = [0.032700,0.054496,0.049674,0.049894]
+    range2 = [1,2,3,4]
     # 1 bar - 2 bars - 4 bars - 8 bars
-    data2 = [0.058435,0.054792,0.055489,0.054860]
-
+    data3 = [0.058189,0.055909,0.055811,0.054860]
+    range3 = [2,3,4,5]
     
     # START DISPLAYING STUFF
     
@@ -31,15 +35,18 @@ def create_fig():
     # axis
     xmin = 0
     xmax = len(labels)
-    ymin = 0.49
-    ymax = 0.67
+    ymin = 0.027
+    ymax = 0.059
     P.axis([xmin,xmax,ymin,ymax])
 
     # plot1
-    P.plot(data1,'o-',label='2 beats, 1 bar, 2 bars, 4 bars')
+    P.plot(range1,data1,'o-',label='1/4, 1/2, 1, 2 bars')
     # plot2
-    P.plot(data2,'x-',label='1 bar, 2 bars, 4 bars, 8 bars')
+    P.plot(range2,data2,'x-',label='1/2, 1, 2, 4 bars')
+    # plot3
+    P.plot(range3,data3,'<-',label='1, 2, 4, 8 bars')
 
+    """
     # ANNOTATION
     gcf = P.gca()
     # data1 pt1
@@ -90,16 +97,17 @@ def create_fig():
                 arrowprops=dict(arrowstyle="->",
                                 connectionstyle="arc3,rad=-.2")
                 )
-    
+    """
+                
     # labels
     P.xticks(P.arange(len(labels)),list(labels))
     
     # x titles and y titles
-    P.xlabel('number of codes')
+    P.xlabel('bars')
     P.ylabel('average error')
 
     # legend
-    P.legend()
+    P.legend(loc='lower right')
 
     # main title
     P.title('Encoding error per code and pattern size')
