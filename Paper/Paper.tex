@@ -305,9 +305,11 @@ surprising for a clustering algorithm. We move on to more interesting facts.
 at a time, a bar being represented by $4$ chroma feature vector.
 Therefore, a code or a pattern is of size $12$ x $4$ = $48$.
 Distortion measure on the test data set. Data size tested range
-from $10$ thousands to $2$ millions. Patterns were selected at
-random from the dataset of approximately $3,7$ million patterns.
-OLD GRAPH WITH OLD NUMBERS
+from $0$ (just initialization) to $500$ thousand. Patterns were selected at
+random from the dataset of approximately $3,7$ million patterns, except
+for the dotted line (non random in the legend). In that case we took the
+first $N$ samples in our dataset. The difference is only visible for small
+training sets ($1$K).
 }}
 \label{fig:data_sizes}
 \end{figure}
@@ -366,7 +368,12 @@ See Figure \ref{fig:size_pattern}.
 \begin{center}
 \includegraphics[width=.99\columnwidth]{codesize_patternsize}
 \end{center}
-\caption{\small{NEW RESULTS COMING IN}}
+\caption{\small{
+Experiment on squaring the codebook size when the pattern size doubles.
+Each line represent $4$ codebook sizes: $2$, $4$, $16$ and $256$.
+The pattern size range from $1$ for $1/4$ of a bar to $32$ for $8$ bars.
+If everything was random, each of these lines should be flat.
+}}
 \label{fig:size_pattern}
 \end{figure}
 
