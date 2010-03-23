@@ -444,6 +444,7 @@ $2$ bars at a time.
 Crazy idea: chord recognition via quantization: transcribe codewords,
 then just encode song to get chords. would this work?
 
+
 \subsection{Codebook}
 Visualizing codewords in a meaningful way is always a challenge, even
 if we have only a one or two hundreds of them.  We present $3$ figures
@@ -462,12 +463,13 @@ correspond to a single note sustained across two bars (codeword 1),
 perfect fifth (codes 2 and 3) and fourth intervals (codes 4 7), and a
 major and minor triads (code 6 and 5).  Many of the remaining
 codewords correspond to transitions from one chord to another, \eg a
-transition from a major triad to a minor triad in code 8.
+transition from one major triad to another (\ie Cmaj to Fmaj assuming
+that chroma 0 is C) in code 8.  Does this transition have a better
+name like ``relative x''?
 
 (It is kind of interesting that sustained minor triad is more common
 than the major triad (codes 4 and 5 in figure 7).  Don't fear the
 reaper is in Amin, could it be related to this?)
-
 
 
 
@@ -554,6 +556,7 @@ size is actually $639$. Shown samples were randomly selected.
 }}
 \label{fig:cluster_diff}
 \end{figure}
+
 
 \section{Applications}\label{sec:exps2}
 We have shown the basic properties of our clustering algorithm in
