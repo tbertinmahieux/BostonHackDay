@@ -19,7 +19,7 @@
 
 % Title.
 % ------
-\title{Clustering Beat-Chroma Patterns in a Large Music Database}
+\title{Clustering Beat-Chroma Patterns\\ in a Large Music Database}
 
 % Single address
 % To use with only one author or several with the same address
@@ -450,12 +450,10 @@ size was fixed to $128$K samples.
 
 \subsection{Codebook}\label{sec:codebook}
 
-How was this codebook trained?
-What do we expect it to capture?
+We train a codebook of size $200$ over patterns of size $12$x$8$ covering
+$2$ bars at a time. Results shown are on a second testing set, see
+Subsection \ref{ssec:artist}.
 
-FIXME: fix the labels in the figure (label pitch class on the y axis,
-and maybe only beats [0 2 4 6] on the ax axis, add codeword numbers to
-title), etc.
 
 The 25 most frequently used codewords in the test set are shown in
 Figure \ref{fig:codes1}.  
@@ -472,15 +470,6 @@ $\rightarrow$ Fmaj assuming that chroma 0 is C) in codes 8 and 10 and
 the reverse transition in code (\ie Fmaj $\rightarrow$ Cmaj) in code
 22.  Does this transition have a better name like ``relative x''?
 
-(It is kind of interesting that sustained minor triad is more common
-than the major triad (codes 4 and 5 in figure 7).  Don't fear the
-reaper is in Amin, could it be related to this?)
-
-
-
-Crazy idea: chord recognition via quantization: transcribe codewords,
-then just encode song to get chords. would this work?
-
 
 Then, we use the LLE\footnote{implementation:
   \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
@@ -493,6 +482,11 @@ the average variance over time, and we get an estimate of $60\%$ of the
 codebook (Figure \ref{fig:code_var}).  25\% of the codebook correspond
 to very simple sustained patterns similar to the top row of Figure
 \ref{fig:codes1}.  How is this different from the next 35\%?
+
+Showing codewords of $2$ bars is practical and consistent with our experiments
+in Section \ref{sec:exps2}. However, longer codewors can also reveal
+interesting structures. A random samples of such codewords is presented
+in Figure \ref{fig:codes8bars}
 
 
 \begin{figure}[htb]
@@ -588,6 +582,18 @@ ronw: does this figure really add all that much?
 }
 \label{fig:cluster_diff}
 \end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.8\columnwidth]{codes_8bars}
+\end{center}
+\caption{\small{Sample of longer codewords spanning over $8$ bars. Codewords
+selected randomly from a codebook of size $200$. As usual, we see sustained
+notes, but also some long-term structures.
+}}
+\label{fig:codes8bars}
+\end{figure}
+
 
 \subsection{Example song encoding}
 
