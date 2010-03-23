@@ -72,7 +72,7 @@ We use online $k$-means clustering to summarize 3.7 million
 By measuring how accurately such a quantized codebook
 can reconstruct the original data, we can quantify the degree
 of diversity (distortion as a function of codebook size) and
-temporal structure (i.e. the advantage gained
+temporal structure (\ie the advantage gained
 by joint quantizing multiple frames) in this music.  The most
 popular codewords themselves reveal the common chords
 used in the music.  Finally, the quantized representation of
@@ -84,13 +84,13 @@ similar in terms of their melodic-harmonic content.
 \section{Introduction}\label{sec:introduction}
 The availability of very large collections of music audio present
 many interesting research opportunities.  Given millions of examples
-from a single, broad class (e.g., contemporary commercial pop music),
+from a single, broad class (\eg, contemporary commercial pop music),
 can we infer anything about the underlying structure and common
 features of this class?  This paper describes our work in this direction.
 
 What are the common features of pop music?  There are conventions
 of subject matter, instrumentation, form, rhythm, harmony, and melody, among
-others.  Our interest here is in the tonal content of the music -- i.e. the
+others.  Our interest here is in the tonal content of the music -- \ie the
 harmony and melody.  As a computationally convenient proxy for a richer
 description of the tonal content of audio, we use the popular Chroma
 representation, which collapses an acoustic spectrum into a 12-dimensional
@@ -185,7 +185,7 @@ Frequency of the different bar size in the training data.
 \end{figure}
 
 Note that we do not claim that any of these informations (segments, beats, bars)
-are perfectly accurate (e.g. in \cite{Barrington2009a} authors obtain a better
+are perfectly accurate (\eg in \cite{Barrington2009a} authors obtain a better
 song segmentation than Echonest). Practise showed us that they are reasonable, 
 and the size of the data set should make up for the imperfections or noise.
 We also believe that patches sizes based on a number of beats or bars are more
@@ -306,7 +306,7 @@ is $0.01$ for $200$ iterations over the whole dataset.
 We use the codebook to encode our testing set (see Section \ref{sec:testdata}).
 Each pattern is encoded with only one code. We can measure the average
 distance between a pattern and its encoding. We can also measure the use
-of the different codes, i.e. the size of the cluster around a code.
+of the different codes, \ie the size of the cluster around a code.
 
 As a distance measure (or distortion measure) between patterns, we use
 the average squared euclidean distance. In details, if a pattern $p1$
@@ -505,7 +505,10 @@ Locally linear embedding (LLE) visualization of the codebook.
 LLE tries to keep near neighbors (here according to euclidean distance)
 in the same $2$D neighborhood. Shown patterns were randomly selected
 in each neighborhood.
-}}
+}
+ronw: I think this figure would be better if it only included the
+bottom subplot.
+}
 \label{fig:lle}
 \end{figure}
 
@@ -522,7 +525,7 @@ sustained note patterns.
 
 \subsection{Cluster}
 Once we understand the kind of codebook we create, we naturally want
-to visualize the clusters, i.e. the pattersn from actual song that
+to visualize the clusters, \ie the pattersn from actual song that
 surround a given centroid. Unsurprisingly, real patterns tend to be
 noisier than codes. However, centroids seem to capture important aspects
 of the patterns. We could compare the centroids with the result of
