@@ -17,7 +17,7 @@
 
 % Title.
 % ------
-\title{Large-scale harmonic patterns clustering}
+\title{Clustering Beat-Chroma Patterns in a Large Music Database}
 
 % Single address
 % To use with only one author or several with the same address
@@ -46,14 +46,28 @@
 \maketitle
 %
 \begin{abstract}
-The goal is to analyze very large collections of music. We describe
-a clustering scheme of harmonic patterns that scales linearly in time
-with the number of songs analyzed. These harmonic patterns are related
-to the \textit{Shingles} idea, but we scale to larger sets and we do not
-perform $k$-nn with them. We create a codebook and assert
-its properties. In particular, we show that clustering with notions of
-bars and song segments helps, and that we get codes associated more
-with some artists than others.
+A musical style or genre implies a set of common conventions
+and patterns combined and deployed in different ways to make
+individual musical pieces; for instance, most would agree that
+contemporary pop music is assembled from a relatively small
+palette of harmonic and melodic patterns.  The purpose of this
+paper is to use a database of tens of thousands of songs
+in combination with a compact representation of melodic-harmonic
+content, the beat-synchronous chromagram, and data-mining
+tools (clustering) to attempt to explicitly catalog this palette --
+at least within the limitations of the beat-chroma representation.
+We use online $k$-means clustering to summarize 3.7 million
+4-beat bars in a codebook of a few hundred prototypes.
+By measuring how accurately such a quantized codebook
+can reconstruct the original data, we can quantify the degree
+of diversity (distortion as a function of codebook size) and
+temporal structure (i.e. the advantage gained
+by joint quantizing multiple frames) in this music.  The most
+popular codewords themselves reveal the common chords
+used in the music.  Finally, the quantized representation of
+music can be used for music retrieval tasks such as artist
+and genre classification, and identifying songs that are
+similar in terms of their melodic-harmonic content.
 \end{abstract}
 %
 \section{Introduction}\label{sec:introduction}
