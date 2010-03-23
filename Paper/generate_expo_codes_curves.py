@@ -13,9 +13,10 @@ import pylab as P
 
 
 
-def create_fig():
+def create_fig(penalty=True):
 
     # DATA
+    sizes = [1,2,4,8,16,32]
     #labels = ['2','4','16','256']
     labels = ['1/4','1/2','1','2','4','8']
 
@@ -27,6 +28,24 @@ def create_fig():
     # 1 bar - 2 bars - 4 bars - 8 bars
     data3 = [0.058189,0.055909,0.055811,0.054860]
     range3 = [2,3,4,5]
+
+
+    # PENALTY
+    if penalty:
+        """
+        for k in range(len(data1)):
+            data1[k] = data1[k] / sizes[range1[k]] * np.log2(12)
+        for k in range(len(data2)):
+            data2[k] = data2[k] / sizes[range2[k]] * np.log2(12)
+        for k in range(len(data3)):
+            data3[k] = data3[k] / sizes[range3[k]] * np.log2(12)
+        """
+        for k in range(len(data1)):
+            data1[k] = data1[k] / np.log2(pow(12,range1[k])+1)
+        for k in range(len(data2)):
+            data2[k] = data2[k] / np.log2(pow(12,range2[k])+1)
+        for k in range(len(data3)):
+            data3[k] = data3[k] / np.log2(pow(12,range3[k])+1)
     
     # START DISPLAYING STUFF
     
@@ -35,8 +54,12 @@ def create_fig():
     # axis
     xmin = 0
     xmax = len(labels)
-    ymin = 0.027
-    ymax = 0.059
+    if not penalty:
+        ymin = 0.027
+        ymax = 0.059
+    else:
+        ymin = min(min(data1),min(data2),min(data3))
+        ymax = max(max(data1),max(data2),max(data3))
     P.axis([xmin,xmax,ymin,ymax])
 
     # plot1
@@ -107,13 +130,13 @@ def create_fig():
     P.ylabel('average error')
 
     # legend
-    P.legend(loc='lower right')
-
+    if not penalty:
+        P.legend(loc='lower right')
+    else:
+        P.legend(loc='upper right')
+        
     # main title
     P.title('Encoding error per code and pattern size')
-
-
-
 
     P.show()
 
@@ -123,7 +146,7 @@ def create_fig():
 def die_with_usage():
     """ help menu """
     print 'create figure'
-    print 'usage: python generate_expo_codes_curves.py -go'
+    print 'usage: python generate_expo_codes_curves.py -go (-penalty)'
     sys.exit(0)
 
 
@@ -132,5 +155,9 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         die_with_usage()
 
-    create_fig()
+    penalty = False
+    if len(sys.argv) > 2 and sys.argv[2] == '-penalty':
+        penalty=True
+
+    create_fig(penalty)
 
