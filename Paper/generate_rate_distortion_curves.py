@@ -39,12 +39,16 @@ def create_fig():
 
     # plot1
     P.plot(rates[range1],data1,'o-',label='1/4, 1/2, 1, 2 bars')
+    # plot2
+    P.plot(rates[range2],data2,'o-',label='1/2, 1, 2, 4 bars')
+    # plot3
+    P.plot(rates[range3],data3,'o-',label='1, 2, 4, 8 bars')
 
-
+    # legend
+    P.legend(loc='upper right')
     # main title
     P.title('Encoding error per code and pattern size')
-
-
+    # done, show
     P.show()
 
     
