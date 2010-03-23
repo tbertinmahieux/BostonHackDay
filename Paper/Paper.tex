@@ -99,7 +99,7 @@ Distortion is our measure of distance between a pattern and a code
 \ref{sec:experiments}).
 
 
-\section{Previous Work}\label{sec:prevwork}
+\subsection{Previous Work}\label{sec:prevwork}
 Our work can be seen as an extension of the \textit{Shingles} idea
 described by Casey and Slaney \cite{Casey2006,Casey2007,Casey2008}.
 The two main differences are the clustering framework and the use of
@@ -117,11 +117,11 @@ fall into the same bin. However, this does not give us a centroid, a
 typical pattern representing that cluster.
 
 
-\section{Data}\label{sec:data}
+\section{Approach}\label{sec:approach}
 In this section we present our use of the Echo Nest features and the
 datasets we use for training and testing our model.
 
-\subsection{EchoNest API}
+\subsection{Features}
 We use the Echo Nest analyze API \cite{EchoNest} throughout this work.
 The API gives us a chroma vector (length $12$) for every music event (called 
 ``segment'') for any song we upload to their platform. 
@@ -164,33 +164,8 @@ $2$ bars and the pattern length was set to $8$.
 \label{fig:code}
 \end{figure}
 
-\subsection{Cowbell Dataset}
-We have $43,300$ songs, giving  
-%$\bf{3,720,091}$ 
-$\mathbf{3.7}$\textbf{M} 
-non zero bars, a bar usually 
-contains $4$ beats. WHERE DOES THIS DATA COMES FROM? GIFT FROM EN?
 
-\subsection{USPOP}
-We had access to a low quality (32kbps) version of the songs in the uspop 2002 
-data set \cite{uspop2002}.
-This well-known data show a great diversity of pop songs, but is not particular
-otherwise\footnote{We 
-also tried to use Tzanetakis dataset \cite{Tzanetakis2002a}, but 
-the $30$ seconds segments seemed hard to analyze by the Echo Nest API, most did
-not contain any bar.}.
-uspop2002 serves as testing set to measure how well a codebook learned on
-the Cowbell data set can represent new songs. We get Echo Nest features
-for $8651$ songs of that dataset.
-\footnote{http://www.morecowbell.dj/}
-
-\subsection{Artist Set}
-This set encompass $1402$ songs $20$ artists, mostly rock and pop of different 
-subgenres. Some results were available regarding the artist recognition
-task. Few details given to preserve anonymity.
-
-
-\section{Algorithm}\label{sec:algo}
+%\section{Algorithm}\label{sec:algo}
 In this section we present the creation of the harmonic patterns from
 the Echo Nest data. Then, we explain the online vector quantization algorithm
 used to learn a codebook of those patterns.
@@ -206,7 +181,7 @@ or a note change in the middle).
 
 We try to normalize the patterns in respect to the key. We roll the matrix
 so the row with the more energy is always the lowest one. This can easily be
-seen in Figure \ref{fig:code}. We considered the same technique for rolling
+seen in Figure \ref{fig:code}. We considered the same techniqueh for rolling
 along the other axis and be invariant regarding the downbeat. However, it
 seems less robust to noise. Note that we roll each pattern independently.
 Also, this implies that the pitch envelope is important rather than the actual 
@@ -250,7 +225,7 @@ test set.}
 
 
 
-\section{Experiments - Fundamentals}\label{sec:experiments}
+\section{Experiments}\label{sec:experiments}
 In this section we assert the basic properties of our encoding scheme.
 The first subsection gives the details to reproduce the experiments,
 such as the distance measure and learning rate. In the second subsection, we
@@ -262,6 +237,27 @@ Note that we will present two additional experiments in
 Section \ref{sec:exps2}.
 
 
+\subsection{Training: Cowbell Dataset}\label{sec:traindata}
+We have $43,300$ songs, giving  
+%$\bf{3,720,091}$ 
+$\mathbf{3.7}$\textbf{M} 
+non silent bars, a bar usually 
+contains $4$ beats. WHERE DOES THIS DATA COMES FROM? GIFT FROM EN?
+\footnote{http://www.morecowbell.dj/}
+
+\subsection{Testing: USPOP}\label{sec:testdata}
+We had access to a low quality (32kbps) version of the songs in the uspop 2002 
+data set \cite{uspop2002}.
+This well-known data show a great diversity of pop songs, but is not particular
+otherwise\footnote{We 
+also tried to use Tzanetakis dataset \cite{Tzanetakis2002a}, but 
+the $30$ seconds segments seemed hard to analyze by the Echo Nest API, most did
+not contain any bar.}.
+uspop2002 serves as testing set to measure how well a codebook learned on
+the Cowbell data set can represent new songs. We get Echo Nest features
+for $8651$ songs of that dataset.
+
+
 \subsection{Setting}\label{ssec:setting}
 We take one or two bars, normalize the patches to size 4, 8, or 16.
 We roll the patch to be invariant to the key (on the patch level, not on
@@ -269,7 +265,7 @@ the song level). We learn a codebook of size $K$ over the cowbell dataset
 using the VQ algorithm (Algorithm \ref{algo:vq}). A typical learning rate 
 is $0.01$ for $200$ iterations over the whole dataset.
 
-We use the codebook to encode our testing set (see Section \ref{sec:data}).
+We use the codebook to encode our testing set (see Section \ref{sec:testdata}).
 Each pattern is encoded with only one code. We can measure the average
 distance between a pattern and its encoding. We can also measure the use
 of the different codes, i.e. the size of the cluster around a code.
@@ -393,9 +389,12 @@ code in the codebook. See Figure \ref{fig:encodesong}.
 \includegraphics[width=.9\columnwidth]{song_encoded}
 \end{center}
 \caption{\small{Original song and its encoding. Must get a better one for
-the paper!!!!!!}}
+the paper!!!!!!  What happened to good day sunshine?}}
 \label{fig:encodesong}
 \end{figure}
+
+Crazy idea: chord recognition via quantization: transcribe codewords,
+then just encode song to get chords. would this work?
 
 \subsection{Codebook}
 We can present the most typical patterns (Figure \ref{fig:codes1}). 
@@ -463,7 +462,7 @@ size is actually $639$. Shown samples were randomly selected.
 \label{fig:cluster_diff}
 \end{figure}
 
-\section{Further Experiments}\label{sec:exps2}
+\section{Applications}\label{sec:exps2}
 We have shown the basic properties of our clustering algorithm in
 Section \ref{sec:experiments}. In Section \ref{sec:visu}, we showed
 how to visualize the codebook and the clusters. We know move on to
@@ -515,6 +514,13 @@ Best offset according to our codebook. The real one is $0$.
 \end{table}
 
 \subsection{Artist Recognition}
+
+Data:
+This set encompass $1402$ songs $20$ artists, mostly rock and pop of different 
+subgenres. Some results were available regarding the artist recognition
+task. Few details given to preserve anonymity.
+
+
 Let us be clear, the clustering method proposed in this work is not
 intended to perform well at artist recognition. An obvious fact is that
 we lose all timbral information which would be useful. However, we can
@@ -547,6 +553,10 @@ by its use by all artists. In Figure \ref{fig:typicalpat} we see
 Metallica's pattern, then Tori Amos and
 Suzanne Vega's pattern. These three artists were easily identified.
 
+Artists like metallica are characterized by ``wideband'' patterns -
+featured muddled due to noisy acoustics - lots of transients,
+distortion, etc.  (not by cleaned up by EN's feature analysis)
+
 % ignoring the two following figures
 \iffalse
 \begin{figure}[htb]
@@ -563,7 +573,8 @@ COULD BE MIXED WITH TORI AMOS FIGURE.
 \begin{center}
 \includegraphics[width=.4\columnwidth]{toriamos_suzannevega_pattern}
 \end{center}
-\caption{\small{Most typical pattern for Tori Amos and Suzanne Vega.}}
+\caption{\small{Most typical pattern for Tori Amos and Suzanne Vega.
+    Can we show the top 2 or 4 for each to get a better idea?}}
 \label{fig:amosvega}
 \end{figure}
 \fi
@@ -601,6 +612,7 @@ Moving on to larger scales, we could imagine merging codes together and
 splitting some on two if the clusters become too small or too large.We could
 also cluster the codebook itself, in a similar fashion as hierarchical
 gaussian mixtures \cite{Vasconcelos2001}.
+%  (similar idea used for indexing \cite{Muja2009})
 
 
 \small
