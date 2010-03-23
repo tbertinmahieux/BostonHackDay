@@ -448,7 +448,9 @@ and maybe only beats [0 2 4 6] on the ax axis, add codeword numbers to
 title), etc.
 
 The 25 most frequently used codewords in the test set are shown in
-Figure \ref{fig:codes1}.  The codewords primarily consist of sustained
+Figure \ref{fig:codes1}.  
+The frequency of use of these codewords are shown in Figure \ref{fig:freqs}.
+The codewords primarily consist of sustained
 notes and simple chords.  Since they are designed to be key-invariant,
 specific notes do not appear.  Instead the first 7 codewords
 correspond to a single note sustained across two bars (codeword 1),
@@ -499,6 +501,19 @@ There is $71832$ patterns in total in the dataset.
 }}
 \label{fig:codes1}
 \end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.7\columnwidth]{freqs}
+\end{center}
+\caption{\small{
+Frequency of use of the patterns in Figure \ref{fig:codes1} on the
+artist20 dataset.
+There is $71832$ patterns in total in the dataset.
+}}
+\label{fig:freqs}
+\end{figure}
+
 
 \begin{figure}[htb]
 \begin{center}
