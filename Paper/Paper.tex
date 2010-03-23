@@ -217,7 +217,7 @@ We initialize the codebook by choosing $K$ random points from our dataset.
 \ENDFOR
 \RETURN $\{C_k\}$
 \caption{\small{Pseudocode of Online Vector Quantization. Note that we can 
-replace the number of iteration by a threshold on the distortion over some 
+replace the number of iterations by a threshold on the distortion over some 
 test set.}
 \label{algo:vq}}
 \end{algorithmic}
@@ -226,13 +226,12 @@ test set.}
 
 
 \section{Experiments}\label{sec:experiments}
-In this section we assert the basic properties of our encoding scheme.
-The first subsection gives the details to reproduce the experiments,
-such as the distance measure and learning rate. In the second subsection, we
-measure properties such as ``how the number of codes affect the distortion''
-and ``how many learning samples should we use''. Though important numbers
-to report, the busy reader could skip to subsection \ref{ssec:random}
-and the following sections.
+In this section we present different clustering experiments. We introduce
+our training data and our main testing data. Some detailed settings
+of our algorithm are also provided. Then, we answer some common questions
+about any clustering algorithms, for instance 
+``how the number of codes affect the distortion''
+and ``how many learning samples should we use''.
 Note that we will present two additional experiments in 
 Section \ref{sec:exps2}.
 
