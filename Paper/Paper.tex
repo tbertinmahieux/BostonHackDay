@@ -406,11 +406,21 @@ Crazy idea: chord recognition via quantization: transcribe codewords,
 then just encode song to get chords. would this work?
 
 \subsection{Codebook}
-We can present the most typical patterns (Figure \ref{fig:codes1}). 
-Then, LLE\footnote{implementation: 
+Visualizing codewords in a meaningful way is always a challenge, 
+even if we have only a one or two hundreds of them.
+We present $3$ figures in this section that should help the reader
+foster his intuition. First, we display the most used codewords in
+the testing set (Figure \ref{fig:codes1}). Then, we use the
+ LLE\footnote{implementation: 
 \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}} 
-\cite{Roweis2000}? (Figure \ref{fig:lle}). 
-Then, the graph on variance. (Figure \ref{fig:code_var}).
+algorithm \cite{Roweis2000} to visualize codewords arranged in
+coherent groups (Figure \ref{fig:lle}). 
+
+Finally, more related to our particular data, we try to assess how many
+sustained patterns are represented in the codebook. We look at
+the average variance over time, and we get an estimate of $60\%$ of the
+codebook (Figure \ref{fig:code_var}).
+
 
 \begin{figure}[htb]
 \begin{center}
