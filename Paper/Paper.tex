@@ -207,7 +207,7 @@ song segmentation than Echonest). Practise showed us that they are reasonable,
 and the size of the data set should make up for the imperfections or noise.
 We also believe that patches sizes based on a number of beats or bars are more
 meaningful than an arbitrary time length. More on this in the experiments
-(Section \ref{sec:experiments} TO BE CHECKED).
+(Subsection \ref{ssec:segment}).
 
 \begin{figure}[htb]
 \begin{center}
@@ -231,7 +231,8 @@ Patterns are defined as a number of beats or bars. In the case of beats,
 we simply cut the set of chromas per beat every $N$ beats. In the case
 of bars, we gather all beats corresponding to the $N$ bars requested.
 The number of chroma vectors we get can vary. We resize the features in the
-time axis to a fixed length. Resizing can be argued over, but it should
+time axis to a fixed length. Resizing over clipping can be argued over, 
+but it should
 preserve the main bar characteristics (such as a strong beat at the beginning
 or a note change in the middle).
 
@@ -305,16 +306,17 @@ We had access to a low quality (32kbps) version of the songs in the uspop 2002
 data set \cite{uspop2002}.
 This well-known data show a great diversity of pop songs, but is not particular
 otherwise\footnote{We 
-also tried to use Tzanetakis dataset \cite{Tzanetakis2002a}, but 
-the $30$ seconds segments seemed hard to analyze by the Echo Nest API, most did
-not contain any bar.}.
+also tried to use Tzanetakis dataset, 
+%\cite{Tzanetakis2002a},
+but the $30$ seconds segments seemed hard to analyze by the Echo Nest API, 
+most did not contain any bar.}.
 uspop2002 serves as testing set to measure how well a codebook learned on
 the Cowbell data set can represent new songs. We get Echo Nest features
 for $8651$ songs of that dataset.
 
 
 \subsection{Setting}\label{ssec:setting}
-We take one or two bars, normalize the patches to size 4, 8, or 16.
+We take one or two bars and normalize the patches to size 4 or 8 respectively.
 We roll the patch to be invariant to the key (on the patch level, not on
 the song level). We learn a codebook of size $K$ over the cowbell dataset 
 using the VQ algorithm (Algorithm \ref{algo:vq}). A typical learning rate 
@@ -369,7 +371,6 @@ training sets ($1$K).
 \label{fig:data_sizes}
 \end{figure}
 
-% NEW RESULTS COMING SOON WITH FIXED SIZED DATASET
 \begin{table}
 \begin{center}
 \begin{tabular}{|l|l|c|}
@@ -617,7 +618,7 @@ In the next two subsections, we talk about song segmentation and
 artist recognition. Our algorithm was not devised for any of these tasks,
 but some information contained in the centroids can be naturally used.
 
-\subsection{Song Segmentation}
+\subsection{Song Segmentation} \label{ssec:segment}
 We explained that we used bars as defined by the EchoNest algorithm to
 train our patterns. Let's assume once again that those bars are
 reasonable. We investigate whether we could recover the bar segmentation
