@@ -62,7 +62,20 @@ def create_fig():
     P.plot(rates16,cb16,'o-',label='16 codewords')
     P.plot(rates256,cb256,'o-',label='256 codewords')        
 
-
+    # ANNOTATION
+    gcf = P.gca()
+    # data1 pt1
+    gcf.annotate('1/4 bar', xy=(rates2[0], cb2[0]),  xycoords='data',
+                xytext=(-50, 30), textcoords='offset points',
+                arrowprops=dict(arrowstyle="->",
+                                connectionstyle="arc3,rad=.2")
+                )
+    gcf.annotate('1 bar', xy=(rates2[2], cb2[2]),  xycoords='data',
+                xytext=(50, -30), textcoords='offset points',
+                arrowprops=dict(arrowstyle="->",
+                                connectionstyle="arc3,rad=-.2")
+                )
+    
     # labels
     P.xlabel('rate')
     P.ylabel('distortion')
