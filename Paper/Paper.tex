@@ -401,6 +401,9 @@ the bar information was not taken into account for that experiment.
 \label{fig:perbeat}
 \end{figure}
 
+
+% REMOVING THE FOLLOWING SUBSECTION ON RATE - DISTORTION
+\iffalse
 \subsection{Music Randomness}\label{ssec:random}
 It will not surprise any reader, music is not random. This fact should
 become apparent in our experiments in the following way. Information
@@ -430,6 +433,8 @@ size was fixed to $128$K samples.
 }}
 \label{fig:size_pattern}
 \end{figure}
+\fi
+
 
 \section{Visualization} \label{sec:visu}
 % The goal here is to give an intuition to the reader of what kind of
@@ -551,9 +556,9 @@ to visualize the clusters, \ie the patterns from actual song that
 surround a given centroid. Unsurprisingly, real patterns tend to be
 noisier than codes. However, centroids seem to capture important aspects
 of the patterns. We could compare the centroids with the result of
-a lowpass filtering.
-
-See Figure \ref{fig:cluster} and \ref{fig:cluster_diff}.
+a lowpass filtering. In Figure \ref{fig:cluster} we show elements of the same
+cluster, and in Figure \ref{fig:cluster_diff}, we emphasize the difference
+with the centroid.
 
 \begin{figure}[htb]
 \begin{center}
