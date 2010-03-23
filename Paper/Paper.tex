@@ -339,20 +339,19 @@ We assume $p1$ and $p2$ have the same size.
 
 \subsection{Basic Properties}
 This section present some fundamental results of the clustering algorithm.
-These are important, but do not change the larger picture. Thus we will not
-spend too much time describing them. In short: more training samples is
-better, more codes is better, larger patterns are more difficult.
+These are important, but do not change the larger picture. Due to space
+constraints, we give few details and refer to the figures.
 \begin{itemize}
-\item First, a larger dataset gives a better encoding codebook. See Figure
+\item A larger dataset gives a better encoding codebook. See Figure
 \ref{fig:data_sizes}.
-\item Secondly, a larger codebook better encodes new song. See 
+\item A larger codebook better encodes new songs. See 
 Table \ref{tab:cbsize}.
-\item Finally, larger patterns are more difficult to encode, thus require
+\item Larger patterns are more difficult to encode, thus require
 larger codebooks. See Figure \ref{fig:perbeat}.
 \end{itemize}
 
-These properties are important to verify and measure, but they are not
-surprising for a clustering algorithm. We move on to more interesting facts.
+These properties are important to verify and for reproducing the experiments, 
+but they are not surprising for a clustering algorithm.
 
 \begin{figure}[htb]
 \begin{center}
