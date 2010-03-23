@@ -143,8 +143,9 @@ develop a codebook whose entries are of interest
 in their own right.
 
 \subsection{Definitions}
-A pattern, or a patch, is a \textit{Shingle} taken from an actual song.
-A code is similar to a pattern, but is the result of the clustering
+A pattern, or a patch, is a beat-chroma pattern taken from an actual song.
+A codeword (sometimes just code) is similar to a pattern, but is the result 
+of the clustering
 algorithm and most likely does not come from an actual song.
 Distortion is our measure of distance between a pattern and a code
 (or between two patterns, see equation \ref{eq:dist} in Section 
@@ -213,7 +214,7 @@ meaningful than an arbitrary time length. More on this in the experiments
 \begin{center}
 \includegraphics[width=.6\columnwidth]{code}
 \end{center}
-\caption{\small{A typical code from a codebook of size $200$. 
+\caption{\small{A typical codeword from a codebook of size $200$. 
 Patterns represented
 $2$ bars and the pattern length was set to $8$.
 }}
@@ -249,7 +250,8 @@ pitches.
 We use an online version of the vector quantization algorithm 
 \cite{Gersho1991}. This can also be seen as an online K-means.
 The idea is as follow: take a sample from your data, find the closest
-code in the codebook, bring that code closer to the sample by some amount.
+codeword in the codebook, bring that codeword closer to the 
+sample by some amount.
 The details are explained in Algorithm \ref{algo:vq}. Note that this
 algorithm, though not optimal, is $O(n)$ with $n$ number of songs seen.
 Thus it scales linearly to any size of data set. The setting of the learning
@@ -364,7 +366,7 @@ but they are not surprising for a clustering algorithm.
 \end{center}
 \caption{\small{Distortion for a codebook of size $100$ encoding one bar
 at a time, a bar being represented by $4$ chroma feature vector.
-Therefore, a code or a pattern is of size $12$ x $4$ = $48$.
+Therefore, a codeword or a pattern is of size $12$ x $4$ = $48$.
 Distortion measure on the test data set. Data size tested range
 from $0$ (just initialization) to $500$ thousand. Patterns were selected at
 random from the dataset of approximately $3,7$ million patterns, except
@@ -463,7 +465,7 @@ notes and simple chords.  Since they are designed to be key-invariant,
 specific notes do not appear.  Instead the first 7 codewords
 correspond to a single note sustained across two bars (codeword 1),
 perfect fifth (codes 2 and 3) and fourth intervals (codes 4 7), and a
-major and minor triads (code 6 and 5).  Many of the remaining
+major and minor triads (codeword 6 and 5).  Many of the remaining
 codewords correspond to common transitions from one chord to another,
 \eg a transition from one major triad to another (\ie Cmaj
 $\rightarrow$ Fmaj assuming that chroma 0 is C) in codes 8 and 10 and
