@@ -205,7 +205,8 @@ Patterns are defined as a number of beats or bars. In the case of beats,
 we simply cut the set of chromas per beat every $N$ beats. In the case
 of bars, we gather all beats corresponding to the $N$ bars requested.
 The number of chroma vectors we get can vary. We resize the features in the
-time axis to a fixed length. Resizing can be argued over, but it should
+time axis to a fixed length. Resizing instead of clipping can be argued over, 
+but it should
 preserve the main bar characteristics (such as a strong beat at the beginning
 or a note change in the middle).
 
@@ -520,6 +521,8 @@ size is actually $639$. Shown samples were randomly selected.
 }}
 \label{fig:cluster_diff}
 \end{figure}
+
+
 
 \section{Applications}\label{sec:exps2}
 We have shown the basic properties of our clustering algorithm in
