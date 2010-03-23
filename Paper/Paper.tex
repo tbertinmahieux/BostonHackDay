@@ -515,19 +515,21 @@ Best offset according to our codebook. The real one is $0$.
 
 \subsection{Artist Recognition}
 
-Data:
-This set encompass $1402$ songs $20$ artists, mostly rock and pop of different 
-subgenres. Some results were available regarding the artist recognition
-task. Few details given to preserve anonymity.
+We apply our codebook to the artist recognition task.
+Our data set encompass $1402$ songs from $20$ artists, 
+mostly rock and pop of different subgenres. Results exist in the
+litterature for that set \cite{Ellis2007}. The best accuracy is
+$59\%$, whereas using only chroma as a representation yields an
+accuracy of $33\%$. The latter results is obtained through a
+gaussian mixture model.
 
-
-Let us be clear, the clustering method proposed in this work is not
+Once again, the clustering method proposed in this work is not
 intended to perform well at artist recognition. An obvious fact is that
 we lose all timbral information which would be useful. However, we can
 imagine that some artist use more often some patterns than others.
-Best accuracy reported\footnote{few details given to preserve anonymity} 
-is around $54.5\%$. Our result is $23.4\%$. Random
-is around $5\%$. The confusion matrix can be seen in Figure \ref{fig:conf_mat}.
+Our accuracy result is $23.4\%$ while random
+is around $5\%$. 
+The confusion matrix can be seen in Figure \ref{fig:conf_mat}.
 Details of the experiment follow.
 
 All songs in the artist dataset are encoded as an histogram of the codes
