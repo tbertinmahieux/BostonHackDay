@@ -73,21 +73,50 @@ similar in terms of their melodic-harmonic content.
 \end{abstract}
 %
 \section{Introduction}\label{sec:introduction}
+The availability of very large collections of music audio present
+many interesting research opportunities.  Given millions of examples
+from a single, broad class (e.g., contemporary commercial pop music),
+can we infer anything about the underlying structure and common
+features of this class?  This paper describes our work in this direction.
 
-Working with large collections is a necessity.
+What are the common features of pop music?  There are conventions
+of subject matter, instrumentation, form, rhythm, harmony, and melody, among
+others.  Our interest here is in the tonal content of the music -- i.e. the
+harmony and melody.  As a computationally convenient proxy for a richer
+description of the tonal content of audio, we use the popular Chroma
+representation, which collapses an acoustic spectrum into a 12-dimensional
+description, with one bin for each semitone of the western musical octave.
+In addition, we simplify the time axis of our representation to take advantage
+of the strong beat present in most pop music, and record just one
+chroma vector per beat.  This beat-synchronous chromagram
+representation represents a typical music track
+in a few thousand values, yet when resynthesized back into audio via
+modulation of octave-invariant ``Shepard tones'', the melody and
+chord sequences of the original music typically remain recognizable
+\cite{EllisPoliner-icassp07}.  To the extent, then, that beat-chroma
+representations preserve tonal structure, they
+are an interesting domain in which to search for patterns -- rich enough
+to generate musically-relevant results, but simplified enough to
+abstract away some other aspects of the original audio, such as
+instrumentation and other stylistic details.
 
-Computationally expensive, most of the techniques developed do not scale
-to hundred of thousands songs. Practical question, how to describe a music
-space made of millions of songs?
+Specifically, this paper identifies common patterns in beat-synchronous
+chromagrams by learning codebooks from a large set of examples.
+The individual codewords consist of short beat-chroma patches, typically
+between 1 and 8 beats, which are able to represent the entire dataset
+of millions of patterns with the minimum error given a small codebook of
+a few hundred entries.  Our goal is to identify meaningful information
+about the musical structure represented in the entire database by
+examining individual entries in this codebook.  Since the common
+patterns represent a higher-level description of the musical content,
+we also expect them to be useful in other applications, such as
+music classification and retrieving tonally-related items.
 
-Some work have tackled that problem. For instance, Bertin-Mahieux et al.
-\cite{Bertin-Mahieux2008} automatically tag a collection larger than $100$K
-songs. Casey and Slaney \cite{Casey2006} introduced their \textit{Shingles}
-representation and perform $k$-nn over thousands of examples.
+One major issue in working with small patches concerns temporal
+alignment.  [explain bar alignment]
 
-We approach the clustering problem keeping in mind the scaling
-requirement. We use a representation similar to the \textit{Shingles}.
-We train on $43$K songs and test on more than $7$K ones.
+Prior work using small patches of chroma features includes ...
+[casey \& slaney] [ellis \& poliner] [ellis ismir 07].
 
 
 \subsection{Definitions}
