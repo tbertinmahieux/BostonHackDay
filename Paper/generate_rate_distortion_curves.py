@@ -35,19 +35,41 @@ def create_fig():
     # R = (32/pattern_size * 13) / (pattern size in beats)
     # R = (32 * 13) / (pattern size in beats)^2
     rates = np.ones(len(sizes)) * 32 * 13
-    rates /= np.array(sizes)
+    rates /= (np.array(sizes) * np.array(sizes))
+
+    # data per codebook size
+    # and corresponding rates
+    cb2 = [data1[0],data2[0],data3[0]]
+    rates2 = [rates[k] for k in range(0,3)]
+    cb4 = [data1[1],data2[1],data3[1]]
+    rates4 = [rates[k] for k in range(1,4)]
+    cb16 = [data1[2],data2[2],data3[2]]
+    rates16 = [rates[k] for k in range(2,5)]
+    cb256 = [data1[3],data2[3],data3[3]]
+    rates256 = [rates[k] for k in range(3,6)]
+
 
     # plot1
-    P.plot(rates[range1],data1,'o-',label='1/4, 1/2, 1, 2 bars')
+    #P.plot(rates[range1],data1,'o-',label='1/4, 1/2, 1, 2 bars')
     # plot2
-    P.plot(rates[range2],data2,'o-',label='1/2, 1, 2, 4 bars')
+    #P.plot(rates[range2],data2,'o-',label='1/2, 1, 2, 4 bars')
     # plot3
-    P.plot(rates[range3],data3,'o-',label='1, 2, 4, 8 bars')
+    #P.plot(rates[range3],data3,'o-',label='1, 2, 4, 8 bars')
 
+    # plot1
+    P.plot(rates2,cb2,'o-',label='2 codewords')
+    P.plot(rates4,cb4,'o-',label='4 codewords')
+    P.plot(rates16,cb16,'o-',label='16 codewords')
+    P.plot(rates256,cb256,'o-',label='256 codewords')        
+
+
+    # labels
+    P.xlabel('rate')
+    P.ylabel('distortion')
     # legend
     P.legend(loc='upper right')
     # main title
-    P.title('Encoding error per code and pattern size')
+    P.title('Distortion rate for different codebook sizes')
     # done, show
     P.show()
 
