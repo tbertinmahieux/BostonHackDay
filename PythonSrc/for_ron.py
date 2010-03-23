@@ -18,7 +18,7 @@ featsDir = os.path.expanduser('~/projects/ismir10-patterns/beatFeats')
 testFeatsDir = os.path.expanduser('~/projects/ismir10-patterns/uspop_mat')
 outputDir = os.path.expanduser('~/projects/ismir10-patterns/experiments')
 
-def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,seed=0,offset=0,partialbar=1):
+def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,seed=0,offset=0,partialbar=1,keyinv=True):
     """
     Performs an independant experiment!!!!
     """
@@ -31,7 +31,7 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
 
     args = dict(experiment_dir=experiment_dir, beats=beats, bars=bars,
                 nCodes=nCodes, nSamples=nSamples, useFirsts=useFirsts,seed=seed,
-                offset=offset,partialbar=partialbar)
+                offset=offset,partialbar=partialbar,keyinv=keyinv)
     sp.io.savemat(os.path.join(experiment_dir, 'args.mat'), args)
 
     # TRAINING
@@ -41,7 +41,7 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
     if not os.path.exists(os.path.join(experiment_dir, 'codebook.mat')):
         # load everything, unit: 1 bar, resized to 4 beats
         # key invariant, not downbeatinvariant
-        featsNorm = demos.get_data_maxener(pSize=beats,keyInv=True,downBeatInv=False,bars=bars,offset=offset,partialbar=partialbar)
+        featsNorm = demos.get_data_maxener(pSize=beats,keyInv=keyinv,downBeatInv=False,bars=bars,offset=offset,partialbar=partialbar)
         
         # select nSamples random samples out of it
         if nSamples == 0:
@@ -74,7 +74,7 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
     
     # load and test
     dists,avg_dists = demos.load_and_encode_data(codebook,pSize=beats,
-                                                 keyInv=True,
+                                                 keyInv=keyinv,
                                                  downBeatInv=False,bars=bars)
     sp.io.savemat(os.path.join(experiment_dir, 'test.mat'),
                   dict(dists=dists, avg_dists=avg_dists))
@@ -86,6 +86,8 @@ def do_experiment(experiment_dir,beats,bars,nCodes,nSamples=0,useFirsts=False,se
               % (beats, bars, nCodes, nSamples, offset, partialbar)]
     if useFirsts:
         report.append('we use firsts %s samples' % nCodes)
+    if not keyinv:
+        report.append('not key invariant!')
     report.extend(['np.average(avg_dists): %s' % np.average(avg_dists),
                    '************************************************', ''])
     reportstr = '\n'.join(report)
@@ -240,6 +242,30 @@ experiment_args = [
      (os.path.join(outputDir, 'set15exp20'),8,2,4,128000,False,0),
      (os.path.join(outputDir, 'set15exp21'),16,4,16,128000,False,0),
      (os.path.join(outputDir, 'set15exp22'),32,8,256,128000,False,0)],
+    # EXPERIMENT SET 16: redoing 15 without keyinv
+    [(os.path.join(outputDir, 'set16exp0'),1,1,2,128000,False,0,0.00,.25,False),
+     (os.path.join(outputDir, 'set16exp1'),1,1,2,128000,False,0,0.25,.25,False),
+     (os.path.join(outputDir, 'set16exp2'),1,1,2,128000,False,0,0.50,.25,False),
+     (os.path.join(outputDir, 'set16exp3'),1,1,2,128000,False,0,0.75,.25,False),
+     (os.path.join(outputDir, 'set16exp4'),2,1,4,128000,False,0,0.00,.50,False),
+     (os.path.join(outputDir, 'set16exp5'),2,1,4,128000,False,0,0.25,.50,False),
+     (os.path.join(outputDir, 'set16exp6'),2,1,4,128000,False,0,0.50,.50,False),
+     (os.path.join(outputDir, 'set16exp7'),2,1,4,128000,False,0,0.75,.50,False),
+     (os.path.join(outputDir, 'set16exp8'),4,1,16,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp9'),8,2,256,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp10 '),2,1,2,128000,False,0,0.00,.50,False),
+     (os.path.join(outputDir, 'set16exp11'),2,1,2,128000,False,0,0.25,.50,False),
+     (os.path.join(outputDir, 'set16exp12'),2,1,2,128000,False,0,0.50,.50,False),
+     (os.path.join(outputDir, 'set16exp13'),2,1,2,128000,False,0,0.75,.50,False),
+     (os.path.join(outputDir, 'set16exp14'),4,1,4,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp15'),8,2,16,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp16'),16,4,256,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp17'),4,1,16,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp18'),8,2,256,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp19'),4,1,2,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp20'),8,2,4,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp21'),16,4,16,128000,False,0,0,1,False),
+     (os.path.join(outputDir, 'set16exp22'),32,8,256,128000,False,0,0,1,False)],
     ]
 
         
