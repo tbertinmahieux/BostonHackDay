@@ -124,10 +124,23 @@ music classification and retrieving tonally-related items.
 One major issue in working with small patches concerns temporal
 alignment.  [explain bar alignment]
 
-Prior work using small patches of chroma features includes ...
-\cite{Casey2006,Ellis2007,Ellis2007a}.
-
-
+Prior work using small patches of chroma features includes
+the ``shingles'' of \cite{Casey2007}, which they used to
+identify ``remixes'' i.e. music based on some of the same
+underlying instrument tracks, as well as for matching
+performances of Mazurkas \cite{Casey2008}.  That work,
+however, was not concerned with extracting the deeper
+common patterns underlying different pieces (and did not
+use beat- or bar-synchronous features).  Earlier work in
+beat-synchronous analysis includes \cite{Bartsch2001},
+who looked for repeated patterns within single songs to
+identify the chorus, and \cite{Ellis2007a}, who
+cross-correlated beat-chroma matrices to match cover
+versions of pop music tracks.  None of these works
+examined or interpreted the content of the chroma
+matrices in any detail.  In contrast, here we hope to
+develop a codebook whose entries are of interest
+in their own right.
 
 \subsection{Definitions}
 A pattern, or a patch, is a \textit{Shingle} taken from an actual song.
