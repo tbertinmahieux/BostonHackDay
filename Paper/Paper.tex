@@ -81,7 +81,6 @@ and genre classification, and identifying songs that are
 similar in terms of their melodic-harmonic content.
 \end{abstract}
 %
-
 \section{Introduction}\label{sec:introduction}
 The availability of very large collections of music audio present
 many interesting research opportunities.  Given millions of examples
@@ -215,8 +214,7 @@ Patterns are defined as a number of beats or bars. In the case of beats,
 we simply cut the set of chromas per beat every $N$ beats. In the case
 of bars, we gather all beats corresponding to the $N$ bars requested.
 The number of chroma vectors we get can vary. We resize the features in the
-time axis to a fixed length. Resizing instead of clipping can be argued over, 
-but it should
+time axis to a fixed length. Resizing can be argued over, but it should
 preserve the main bar characteristics (such as a strong beat at the beginning
 or a note change in the middle).
 
@@ -419,61 +417,45 @@ size was fixed to $128$K samples.
 \end{figure}
 
 \section{Visualization} \label{sec:visu}
-The goal here is to give an intuition to the reader of what kind of
-typical patterns do we get. We also want to have a feel for what the
-clusters look like, how many boring sustained notes are encoded in the
-codebook, can the codebook describes the complexity of the music space, etc.
-
-Below we present some figures to help the reader with those questions.
-Please bear in mind the limited space.
-
-\subsection{Encoding of a Song}
-Here we present a song with its two encodings. First, the harmonic patterns
-given by the EchoNest. Secondly, each pattern is encoded by its closest
-code in the codebook. See Figure \ref{fig:encodesong}.
-
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=.9\columnwidth]{song_encoded}
-\end{center}
-\caption{\small{Good Day Sunshine by \textit{The Beatles}.
-Original song and its encoding using a $200$ codes codebook learning
-$2$ bars at a time.
-}}
-\label{fig:encodesong}
-\end{figure}
-
-Crazy idea: chord recognition via quantization: transcribe codewords,
-then just encode song to get chords. would this work?
+% The goal here is to give an intuition to the reader of what kind of
+% typical patterns do we get. We also want to have a feel for what the
+% clusters look like, how many boring sustained notes are encoded in the
+% codebook, can the codebook describes the complexity of the music space, etc.
 
 
-\subsection{Codebook}
-Visualizing codewords in a meaningful way is always a challenge, even
-if we have only a one or two hundreds of them.  We present $3$ figures
-in this section that should help the reader foster his
-intuition.
+\subsection{Codebook}\label{sec:codebook}
+
+How was this codebook trained?
+What do we expect it to capture?
 
 FIXME: fix the labels in the figure (label pitch class on the y axis,
 and maybe only beats [0 2 4 6] on the ax axis, add codeword numbers to
 title), etc.
 
-The 25 most frequently used codewords in the testing set are shown in
+The 25 most frequently used codewords in the test set are shown in
 Figure \ref{fig:codes1}.  The codewords primarily consist of sustained
 notes and simple chords.  Since they are designed to be key-invariant,
 specific notes do not appear.  Instead the first 7 codewords
 correspond to a single note sustained across two bars (codeword 1),
 perfect fifth (codes 2 and 3) and fourth intervals (codes 4 7), and a
 major and minor triads (code 6 and 5).  Many of the remaining
-codewords correspond to transitions from one chord to another, \eg a
-transition from one major triad to another (\ie Cmaj to Fmaj assuming
-that chroma 0 is C) in code 8.  Does this transition have a better
-name like ``relative x''?
+codewords correspond to common transitions from one chord to another,
+\eg a transition from one major triad to another (\ie Cmaj
+$\rightarrow$ Fmaj assuming that chroma 0 is C) in codes 8 and 10 and
+the reverse transition in code (\ie Fmaj $\rightarrow$ Cmaj) in code
+22.  Does this transition have a better name like ``relative x''?
 
 (It is kind of interesting that sustained minor triad is more common
 than the major triad (codes 4 and 5 in figure 7).  Don't fear the
 reaper is in Amin, could it be related to this?)
 
 
+>>>>>>>>>>>>>>>>>>>> File 1
+>>>>>>>>>>>>>>>>>>>> File 2
+Crazy idea: chord recognition via quantization: transcribe codewords,
+then just encode song to get chords. would this work?
+>>>>>>>>>>>>>>>>>>>> File 3
+<<<<<<<<<<<<<<<<<<<<
 
 Then, we use the LLE\footnote{implementation:
   \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
@@ -483,8 +465,9 @@ coherent groups (Figure \ref{fig:lle}).
 Finally, more related to our particular data, we try to assess how many
 sustained patterns are represented in the codebook. We look at
 the average variance over time, and we get an estimate of $60\%$ of the
-codebook (Figure \ref{fig:code_var}).
-
+codebook (Figure \ref{fig:code_var}).  25\% of the codebook correspond
+to very simple sustained patterns similar to the top row of Figure
+\ref{fig:codes1}.  How is this different from the next 35\%?
 
 
 \begin{figure}[htb]
@@ -529,7 +512,7 @@ sustained note patterns.
 
 \subsection{Cluster}
 Once we understand the kind of codebook we create, we naturally want
-to visualize the clusters, \ie the pattersn from actual song that
+to visualize the clusters, \ie the patterns from actual song that
 surround a given centroid. Unsurprisingly, real patterns tend to be
 noisier than codes. However, centroids seem to capture important aspects
 of the patterns. We could compare the centroids with the result of
@@ -555,15 +538,41 @@ size is actually $639$. Shown samples were randomly selected.
 \caption{\small{First three patterns of figure \ref{fig:cluster}
 ($2$nd line) presented with the centroid from Figure \ref{fig:code}
 ($1$st line) and the difference between both ($3$rd line).
-}}
+}
+ronw: does this figure really add all that much?
+}
 \label{fig:cluster_diff}
 \end{figure}
 
+\subsection{Example song encoding}
 
-<<<<<<< HEAD:Paper/Paper.tex
+Figure \ref{fig:encodesong} shows a typical example of encoding a song
+using the codebook described in Section \ref{sec:codebook}.  Both the
+Echo Nest chroma features for an example song and the corresponding
+quantization are displayed.  The quantized representation retains
+dominant harmonic structure of the original features, but is smoothed
+in time due to the use of 2 bar long codewords.
+%
+This is consistent with the codebook described in Section
+\ref{sec:codebook} which primarily consists of sustained chords across
+4 or 8 beats.
 
-=======
->>>>>>> 3ca0ce8a9a8930d1801a45c9d081081a2cb5f638:Paper/Paper.tex
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{song_encoded}
+\end{center}
+\caption{\small{Good Day Sunshine by \textit{The Beatles}.
+Original song and its encoding using a $200$ codes codebook learning
+$2$ bars at a time.
+}}
+\label{fig:encodesong}
+\end{figure}
+
+Crazy idea: chord recognition via quantization: transcribe codewords,
+then just encode song to get chords. would this work?
+
+
+
 \section{Applications}\label{sec:exps2}
 We have shown the basic properties of our clustering algorithm in
 Section \ref{sec:experiments}. In Section \ref{sec:visu}, we showed
