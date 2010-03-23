@@ -470,26 +470,7 @@ $\rightarrow$ Fmaj assuming that chroma 0 is C) in codes 8 and 10 and
 the reverse transition in code (\ie Fmaj $\rightarrow$ Cmaj) in code
 22.  Does this transition have a better name like ``relative x''?
 
-
-Then, we use the LLE\footnote{implementation:
-  \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
-algorithm \cite{Roweis2000} to visualize codewords arranged in
-coherent groups (Figure \ref{fig:lle}).
-
-Finally, more related to our particular data, we try to assess how many
-sustained patterns are represented in the codebook. We look at
-the average variance over time, and we get an estimate of $60\%$ of the
-codebook (Figure \ref{fig:code_var}).  25\% of the codebook correspond
-to very simple sustained patterns similar to the top row of Figure
-\ref{fig:codes1}.  How is this different from the next 35\%?
-
-Showing codewords of $2$ bars is practical and consistent with our experiments
-in Section \ref{sec:exps2}. However, longer codewors can also reveal
-interesting structures. A random samples of such codewords is presented
-in Figure \ref{fig:codes8bars}
-
-
-\begin{figure}[htb]
+\begin{figure}[h]
 \begin{center}
 \includegraphics[width=.9\columnwidth]{codes1}
 \end{center}
@@ -520,6 +501,23 @@ test set.
 }}
 \label{fig:freqs}
 \end{figure}
+
+Another interesting visualization uses LLE\footnote{implementation:
+  \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
+algorithm \cite{Roweis2000} to display codewords arranged in
+coherent groups. See Figure \ref{fig:lle}.
+
+Finally, more related to our particular data, we try to assess how many
+sustained patterns are represented in the codebook. We look at
+the average variance over time, and we get an estimate of $60\%$ of the
+codebook (Figure \ref{fig:code_var}).  25\% of the codebook correspond
+to very simple sustained patterns similar to the top row of Figure
+\ref{fig:codes1}.  How is this different from the next 35\%?
+
+Showing codewords of $2$ bars is practical and consistent with our experiments
+in Section \ref{sec:exps2}. However, longer codewors can also reveal
+interesting structures. A random samples of such codewords is presented
+in Figure \ref{fig:codes8bars}
 
 
 \begin{figure}[htb]
