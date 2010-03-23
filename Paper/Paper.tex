@@ -151,6 +151,9 @@ Distortion is our measure of distance between a pattern and a code
 \ref{sec:experiments}).
 
 
+
+% COMMENTING PREVIOUS WORK
+\iffalse
 \subsection{Previous Work}\label{sec:prevwork}
 Our work can be seen as an extension of the \textit{Shingles} idea
 described by Casey and Slaney \cite{Casey2006,Casey2007,Casey2008}.
@@ -167,6 +170,7 @@ of finding the nearest neighbor it can provides. Also, we could fix the
 number of projections and consider as clusters all the elements that
 fall into the same bin. However, this does not give us a centroid, a
 typical pattern representing that cluster.
+\fi
 
 
 \section{Approach}\label{sec:approach}
@@ -485,9 +489,11 @@ to very simple sustained patterns similar to the top row of Figure
 \end{center}
 \caption{\small{
 Most used codes in the codebook in term of frequency of use in the test
-set. This codebook was of size $200$ and trained on $2$ bars, pattern
+set (artist20, see Subsection \ref{ssec:artist}). 
+This codebook was of size $200$ and trained on $2$ bars, pattern
 size is $12$x$8$. Code in Figure \ref{fig:code} is the $8$th most used
-here (second row, third column).
+here (second row, third column). Over the patterns, we display the number of
+times it was used out of $71832$ total patterns in the dataset.
 }}
 \label{fig:codes1}
 \end{figure}
@@ -633,7 +639,7 @@ Best offset according to our codebook. The real one is $0$.
 \label{tab:offset}
 \end{table}
 
-\subsection{Artist Recognition}
+\subsection{Artist Recognition} \label{ssec:artist}
 
 We apply our codebook to the artist recognition task.
 Our data set encompass $1402$ songs from $20$ artists, 
