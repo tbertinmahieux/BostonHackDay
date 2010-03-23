@@ -417,7 +417,12 @@ Then, the graph on variance. (Figure \ref{fig:code_var}).
 \begin{center}
 \includegraphics[width=.9\columnwidth]{codes1}
 \end{center}
-\caption{\small{Most used codes in the codebook.}}
+\caption{\small{
+Most used codes in the codebook in term of frequency of use in the test
+set. This codebook was of size $200$ and trained on $2$ bars, pattern
+size is $12$x$8$. Code in Figure \ref{fig:code} is the $8$th most used
+here (second row, third column).
+}}
 \label{fig:codes1}
 \end{figure}
 
@@ -425,7 +430,12 @@ Then, the graph on variance. (Figure \ref{fig:code_var}).
 \begin{center}
 \includegraphics[width=.9\columnwidth]{codes_lle}
 \end{center}
-\caption{\small{Locally linear embedding (LLE) visualization of the codebook.}}
+\caption{\small{
+Locally linear embedding (LLE) visualization of the codebook.
+LLE tries to keep near neighbors (here according to euclidean distance)
+in the same $2$D neighborhood. Shown patterns were randomly selected
+in each neighborhood.
+}}
 \label{fig:lle}
 \end{figure}
 
