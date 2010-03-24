@@ -430,10 +430,9 @@ FIXME: Can we kill the ``non-random'' line.  It doesn't really add anything.
 500 & $0.030841$ \\ \hline
 \end{tabular}
 \end{center}
-\caption{\small{Experiment with the codebook size. We train on patterns
-corresponding to $1$ bar resized to $4$ beats. 
-The number of training samples is $50000$.
-}}
+\caption{\small{Varying codebook size using $50,000$ training samples.
+    We train on patterns corresponding to $1$ bar resized to $4$ beats.
+  }}
 \label{tab:cbsize}
 \end{table}
 
@@ -536,14 +535,14 @@ the percentage of use in the test set.
 \begin{center}
 \includegraphics[width=.7\columnwidth]{freqs}
 \end{center}
-\caption{\small{
-Frequency of use of the patterns in Figure \ref{fig:codes1} on the
-artist20 dataset. 
-There is $71832$ patterns in total in the dataset.
-Note that all codes were initialized with a random
-sample from the training set, some might not just be present in this
-test set.
-}}
+\caption{\small{ Usage frequency of the patterns in the codebook from
+    Figure \ref{fig:codes1} on the artist20 dataset.  There are $71,832$
+    patterns in total in the dataset.  Note that all codes were
+    initialized with a random sample from the training set and might
+    not be used in this test set.
+    FIXME: so why not show usage in training data?  I think test.mat
+    should contain this information.
+  }}
 \label{fig:freqs}
 \end{figure}
 
