@@ -571,11 +571,7 @@ Locally linear embedding (LLE) visualization of the codebook.
 LLE tries to keep near neighbors (here according to euclidean distance)
 in the same $2$D neighborhood. Shown patterns were randomly selected
 in each neighborhood.
-}
-FIXME:Can we make this a little bit bigger so the patterns are
-actually visible?  Does the figure add much over Fig \ref{fig:codes1}?
-Maybe it has some more complex patterns? 
-}
+}}
 \label{fig:lle}
 \end{figure}
 
@@ -634,12 +630,10 @@ ronw: does this figure really add all that much?
 \includegraphics[width=.8\columnwidth]{codes_8bars}
 \end{center}
 \caption{\small{Sample of longer codewords spanning over $8$ bars. Codewords
-selected randomly from a codebook of size $200$. As usual, we see sustained
-notes, but also some long-term structure.
-FIXME: I (ronw) like the middle-left pattern, but I'm totally confused
-by those in the top right and bottom row.  Are they ever used?  They
-don't seem to be smoothed out at all, and are probably outliers
-containing only one or two training points.
+selected randomly from the codewords used in the test set. Percentage of
+used display in parentheses.
+Most patterns are sustained notes, but codeword 0 shows a repeted two notes
+pattern.
 }}
 \label{fig:codes8bars}
 \end{figure}
