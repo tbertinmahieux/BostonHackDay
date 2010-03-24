@@ -16,6 +16,8 @@
 \setlength{\abovecaptionskip}{-3pt}
 \setlength{\belowcaptionskip}{10pt} 
 
+\DeclareMathOperator*{\dist}{dist}
+\DeclareMathOperator*{\size}{size}
 
 % Title.
 % ------
@@ -269,7 +271,7 @@ In the context of clustering this avoids \eg obtaining separate
 clusters for every major triad in duple or triple meter.
 % Also, this implies that the pitch envelope is important rather than
 % the actual pitches.
-Something about why we're not interested in specific chords?
+FIXME: Something about why we're not interested in specific chords?
 
 \subsection{Clustering}
 
@@ -279,7 +281,7 @@ previous section.
 % This can also be seen as an online K-means.
 For each sample from the data, the algorithm finds the closest cluster
 in the codebook and updates the cluster centroid (codeword) to be
-closer to the sample based on some learning rate $l$.
+closer to the sample based on some learning rate $\ell$.
 The clusters are updated as each data point is seen, as opposed to
 once per iteration in the standard k-means algorithm.
 The details are explained in Algorithm \ref{algo:vq}.
@@ -296,21 +298,21 @@ while still resulting in an updated codebook. %not that this is important...
 \begin{algorithm}
 %\caption{Pseudocode of Vector Quantization}
 \begin{algorithmic}
-\STATE$l$ learning rate
+\STATE$\ell$ learning rate
 \STATE$\{P_n\}$ set of patches
 \STATE$\{C_k\}$ codebook of $K$ codes
 %\STATE $m \leftarrow b$
-\REQUIRE $0 < l \leq 1$
+\REQUIRE $0 < \ell \leq 1$
 \FOR{$nIters$}
 \FOR{$p \in \{P_n\}$}
-\STATE$c \leftarrow min_{c \in C_k} dist(p,c)$
-\STATE$c \leftarrow c + (p - c) * l$
+\STATE$c \leftarrow min_{c \in C_k} \dist(p,c)$
+\STATE$c \leftarrow c + (p - c) * \ell$
 \ENDFOR
 \ENDFOR
 \RETURN $\{C_k\}$
-\caption{\small{Pseudocode of Online Vector Quantization. Note that we can 
-replace the number of iterations by a threshold on the distortion over some 
-test set.}
+\caption{\small{Pseudocode for the online vector quantization
+    algorithm. Note that we can replace the number of iterations by a
+    threshold on the distortion over some test set.}
 \label{algo:vq}}
 \end{algorithmic}
 \end{algorithm}
@@ -368,13 +370,14 @@ distance between a pattern and its encoding. We can also measure the use
 of the different codes, \ie the size of the cluster around a code.
 
 As a distance measure (or distortion measure) between patterns, we use
-the average squared euclidean distance. In details, if a pattern $p1$
-is composed of elements $p1_{i,j}$, and similarly for a pattern $p2$,
-the distance between $p1$ and $p2$ is:
+the average squared euclidean distance. In details, if a pattern $p_1$
+is composed of elements $p_{1ij}$, and similarly for a pattern $p_2$,
+the distance between $p_1$ and $p_2$ is:
 \begin{eqnarray}
-  dist(p1,p2) = \sum_{i,j} (p1_{i,j} - p2_{i,j})^2 / size(p1)  \label{eq:dist}
+  \dist(p_1,p_2) = \sum_{i,j} \frac{(p_{1ij} - p_{2ij})^2}{\size(p_1)}
+  \label{eq:dist}
 \end{eqnarray}
-We assume $p1$ and $p2$ have the same size.
+We assume $p_1$ and $p_2$ have the same size.
 
 
 \subsection{Basic Properties}
