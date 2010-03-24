@@ -68,7 +68,7 @@ contemporary pop music is assembled from a relatively small
 palette of harmonic and melodic patterns.  The purpose of this
 paper is to use a database of tens of thousands of songs
 in combination with a compact representation of melodic-harmonic
-content, the beat-synchronous chromagram, and data-mining
+content (the beat-synchronous chromagram) and data-mining
 tools (clustering) to attempt to explicitly catalog this palette --
 at least within the limitations of the beat-chroma representation.
 We use online $k$-means clustering to summarize 3.7 million
@@ -95,7 +95,7 @@ features of this class?  This paper describes our work in this direction.
 What are the common features of pop music?  There are conventions
 of subject matter, instrumentation, form, rhythm, harmony, and melody, among
 others.  Our interest here is in the tonal content of the music -- \ie the
-harmony and melody.  As a computationally convenient proxy for a richer
+harmony and melody.  As a computationally-convenient proxy for a richer
 description of the tonal content of audio, we use the popular Chroma
 representation, which collapses an acoustic spectrum into a 12-dimensional
 description, with one bin for each semitone of the western musical octave.
@@ -105,47 +105,48 @@ chroma vector per beat.  This beat-synchronous chromagram
 representation represents a typical music track
 in a few thousand values, yet when resynthesized back into audio via
 modulation of octave-invariant ``Shepard tones'', the melody and
-chord sequences of the original music typically remain recognizable
+chord sequences of the original music usually remain recognizable
 \cite{Ellis2007a}.  To the extent, then, that beat-chroma
-representations preserve tonal structure, they
+representations preserve tonal content, they
 are an interesting domain in which to search for patterns -- rich enough
 to generate musically-relevant results, but simplified enough to
-abstract away some other aspects of the original audio, such as
+abstract away aspects of the original audio such as
 instrumentation and other stylistic details.
 
 Specifically, this paper identifies common patterns in beat-synchronous
 chromagrams by learning codebooks from a large set of examples.
-The individual codewords consist of short beat-chroma patches, typically
+The individual codewords consist of short beat-chroma patches of
 between 1 and 8 beats, which are able to represent the entire dataset
-of millions of patterns with the minimum error given a small codebook of
+of millions of patterns with minimum error given a small codebook of
 a few hundred entries.  Our goal is to identify meaningful information
 about the musical structure represented in the entire database by
 examining individual entries in this codebook.  Since the common
-patterns represent a higher-level description of the musical content,
+patterns represent a higher-level description of the musical content
+than the raw chroma,
 we also expect them to be useful in other applications, such as
 music classification and retrieving tonally-related items.
 
 One major issue in working with small patches concerns temporal
-alignment. Learning the same motifs with different offset
-(of a few seconds, or audio frames) is redundant. We take advantage
+alignment. Learning the same motifs with different offsets 
+(in time or beats) is redundant. We take advantage
 of rhythmic knowledge about the song to align patches with beats.
 We can further group beats into bars to produces patches
 for meaningful music segments.
-The use of the Echo Nest API \cite{EchoNest} for that purpose is 
-explained in Subsection \ref{ssec:beatpatch}. Patches built around
-those temporal landmarks should capture music motifs more easily.
+Our use of the Echo Nest API \cite{EchoNest} for this purpose is 
+explained in Section \ref{ssec:beatpatch}. Patches built around
+these temporal landmarks should capture music motifs more easily.
 
 Prior work using small patches of chroma features includes
-the ``shingles'' of \cite{Casey2007}, which they used to
-identify ``remixes'' i.e. music based on some of the same
-underlying instrument tracks, as well as for matching
+the ``shingles'' of \cite{Casey2007}, which were used to
+identify ``remixes'', i.e., music based on some of the same
+underlying instrument tracks, and also for matching
 performances of Mazurkas \cite{Casey2008}.  That work,
 however, was not concerned with extracting the deeper
 common patterns underlying different pieces (and did not
 use either beat- or bar-synchronous features).  Earlier work in
 beat-synchronous analysis includes \cite{Bartsch2001},
-who looked for repeated patterns within single songs to
-identify the chorus, and \cite{Ellis2007a}, who
+which looked for repeated patterns within single songs to
+identify the chorus, and \cite{Ellis2007a}, which 
 cross-correlated beat-chroma matrices to match cover
 versions of pop music tracks.  None of these works
 examined or interpreted the content of the chroma
@@ -177,12 +178,13 @@ analyze API \cite{EchoNest}.
 %
 For any song uploaded to their platform this analysis returns a chroma
 vector (length $12$) for every music event (called ``segment''), and a
-segmentation of the song into beats and bars. Beats span multiple
-segments, and bars span multiple beats.
+segmentation of the song into beats and bars. Beats may span or 
+subdivide segments; bars span multiple beats.
 %
 Averaging the per-segment chroma over beat times results in a
 beat-synchronous chroma feature representation similar to that used in
-\cite{Ellis2007a}.
+\cite{Ellis2007a}.  Echo Nest chroma vectors are normalized to have the 
+largest value in each column equal to 1.
 
 % \begin{figure}[htb]
 % \begin{center}
@@ -194,14 +196,16 @@ beat-synchronous chroma feature representation similar to that used in
 % \label{fig:barsize}
 % \end{figure}
 
-Note that we do not claim that any of these informations (segments, beats, bars)
-are perfectly accurate (\eg in \cite{Barrington2009a} authors obtain a better
-song segmentation than the Echo Nest). 
-Practice showed us that they are reasonable, 
-and the size of the data set should make up for the imperfections or noise.
-We also believe that patches sizes based on a number of beats or bars are more
-meaningful than an arbitrary time length. More on this in the experiments
-(Subsection \ref{ssec:segment}).
+Note that none of this information (segments, beats, bars)
+can be assumed perfectly accurate.
+%(\eg in \cite{Barrington2009a} authors obtain a better
+%song segmentation than the Echo Nest). 
+In practice, we have found them reasonable, 
+and given the size of the data set, any rare imperfections or noise
+can be diluted to irrelevance by the good examples.  
+We also believe that patch sizes based on a number of beats or bars are more
+meaningful than an arbitrary time length. This is discussed further in 
+Section \ref{ssec:segment}.
 
 
 %\subsection{Harmonic Patterns}
@@ -219,22 +223,23 @@ We use the bar segmentation obtained from the Echo Nest analysis to
 break a song into a collection of beat-chroma ``patches'', typically
 one or two bars in length.
 %
-Because the bar length varies, depending on the meter of a particular
+Because the bar length is not guaranteed to be 4 beats, 
+depending on the meter of a particular
 song, we resample each patch to a fixed length of typically 4 beats
-per bar.  Since the overwhelming majority (82\%) of our training data
-consisted of bars that were 4 beats long, this resampling was not
-often required.  Most of the remaining bars (10\%) were 3 beats in
+per bar.  However, the majority (82\%) of our training data
+consisted of bars that were 4 beats long, so this resampling 
+usually had no effect.  Most of the remaining bars (10\%) were 3 beats in
 length.
 % although the majority of the data contains bars that are 4 beats long
 The resulting patches consist of $12 \times 4$ or $12 \times 8$ matrices.
 
-Finally, we normalize the patches with respect to the key by rotating
+Finally, we normalize the patches with respect to transposition by rotating
 the pattern matrix so that the first row contains the most
-energy. This can easily be seen in Figure \ref{fig:code}.
+energy. This can be seen in the example codeword of Figure \ref{fig:code}.
 % We considered the same technique for rolling along the other axis and
 % be invariant regarding the downbeat. However, it seems less robust to
 % noise.
-Each patch within a song is normalized independently, so exact
+Each patch within a song is normalized independently, so
 reconstruction of the original song requires knowledge of the
 rotation index (key) for each patch.
 
@@ -246,14 +251,16 @@ the specific musical context.
 % In the context of clustering, this enables us to study harmonic
 % pattern usage without maintaining clusters for the specific context a
 % particular patterns occurs in,
-In the context of clustering this avoids \eg obtaining separate
+In the context of clustering this avoids problems such as obtaining separate
 clusters for every major triad in duple or triple meter.
 % Also, this implies that the pitch envelope is important rather than
 % the actual pitches.
 %FIXME: Something about why we're not interested in specific chords?
-Specific chords do not add much information about a music collection.
-A cover song can be performed in a different key, but the motifs it
-contains remain the same.
+%
+%Specific chords do not add much information about a music collection.
+%A cover song can be performed in a different key, but the motifs it
+%contains remain the same.
+%%%% dpwe: I don't agree with this, I'd rather say nothing
 
 \subsection{Clustering}
 
