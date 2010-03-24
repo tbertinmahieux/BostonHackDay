@@ -591,7 +591,7 @@ Maybe it has some more complex patterns?
 \end{center}
 \caption{\small{Average variance in time of a codebook. The vertical
 axis cuts at the $63$rd pattern, a rough estimate of the number of 
-sustained note patterns.
+codewords consisting of sustained chords.
 }}
 \label{fig:code_var}
 \end{figure}
@@ -641,7 +641,11 @@ ronw: does this figure really add all that much?
 \end{center}
 \caption{\small{Sample of longer codewords spanning over $8$ bars. Codewords
 selected randomly from a codebook of size $200$. As usual, we see sustained
-notes, but also some long-term structures.
+notes, but also some long-term structure.
+FIXME: I (ronw) like the middle-left pattern, but I'm totally confused
+by those in the top right and bottom row.  Are they ever used?  They
+don't seem to be smoothed out at all, and are probably outliers
+containing only one or two training points.
 }}
 \label{fig:codes8bars}
 \end{figure}
@@ -673,13 +677,13 @@ $2$ bars at a time.
 
 
 \section{Applications}\label{sec:exps2}
-We have shown the basic properties of our clustering algorithm in
-Section \ref{sec:experiments}. In Section \ref{sec:visu}, we showed
-how to visualize the codebook and the clusters. We know move on to
-show other applications that can take advantage of our clustering.
-In the next two subsections, we talk about song segmentation and
-artist recognition. Our algorithm was not devised for any of these tasks,
-but some information contained in the centroids can be naturally used.
+In this section we describe two other applications of the clustering
+described in this paper: the song segmentation, and artist
+recognition.  This demonstrates the utility of unsupervised clustering
+to FIXME ... 
+% Although our algorithm was not devised for any of these
+% tasks, but some information contained in the centroids can be
+% naturally used.
 
 \subsection{Song Segmentation} \label{ssec:segment}
 We explained that we used bars as defined by the EchoNest algorithm to
