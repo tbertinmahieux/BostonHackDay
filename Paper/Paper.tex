@@ -144,6 +144,9 @@ matrices in any detail.  In contrast, here we hope to
 develop a codebook whose entries are of interest
 in their own right.
 
+
+% COMMENTING PREVIOUS WORK AND DEFINITIONS
+\iffalse
 \subsection{Definitions}
 A pattern, or a patch, is a beat-chroma pattern taken from an actual song.
 A codeword (sometimes just code) is similar to a pattern, but is the result 
@@ -153,10 +156,6 @@ Distortion is our measure of distance between a pattern and a code
 (or between two patterns, see equation \ref{eq:dist} in Section 
 \ref{sec:experiments}).
 
-
-
-% COMMENTING PREVIOUS WORK
-\iffalse
 \subsection{Previous Work}\label{sec:prevwork}
 Our work can be seen as an extension of the \textit{Shingles} idea
 described by Casey and Slaney \cite{Casey2006,Casey2007,Casey2008}.
@@ -177,57 +176,41 @@ typical pattern representing that cluster.
 
 
 \section{Approach}\label{sec:approach}
-In this section we present our use of the Echo Nest features and the
-datasets we use for training and testing our model.
+% In this section we review the creation of the beat-chroma patterns using
+% the Echo Nest data.  Then we explain the online vector quantization algorithm
+% used to learn a codebook of those patterns.
 
 \subsection{Features}
-We use the Echo Nest analyze API \cite{EchoNest} throughout this work.
-The API gives us a chroma vector (length $12$) for every music event (called 
-``segment'') for any song we upload to their platform. 
-We also get an estimate of where the beats and the bars are. Beats span over
-multiple segments, and bars span over multiple beats. 
-We transform the chroma vectors per segment into per beat vectors using a 
-simple average. We can then stack beat vectors for a number of bars 
-(usually 1 or 2). 
-We get a fixed-size patch by resampling the number of chroma vectors. Typically,
-there are $4$ beats per bar (Figure \ref{fig:barsize}). 
-Thus an appropriate pattern size for one bar
-is $12$x$4$ or $12$x$8$.
+The feature analysis used throughout this work is based on Echo Nest
+analyze API \cite{EchoNest}.  
+%
+For any song uploaded to their platform this analysis returns a chroma
+vector (length $12$) for every music event (called ``segment''), and a
+segmentation of the song into beats and bars. Beats span multiple
+segments, and bars span multiple beats.
+%
+Averaging the per-segment chroma over beat times results in a
+beat-synchronous chroma feature representation similar to that used in
+\cite{Ellis2007a}.
 
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=.9\columnwidth]{bar_size_freq}
-\end{center}
-\caption{\small{
-Frequency of the different bar size in the training data.
-}}
-\label{fig:barsize}
-\end{figure}
+% \begin{figure}[htb]
+% \begin{center}
+% \includegraphics[width=.9\columnwidth]{bar_size_freq}
+% \end{center}
+% \caption{\small{
+% Frequency of the different bar size in the training data.
+% }}
+% \label{fig:barsize}
+% \end{figure}
 
 Note that we do not claim that any of these informations (segments, beats, bars)
 are perfectly accurate (\eg in \cite{Barrington2009a} authors obtain a better
-song segmentation than Echonest). Practise showed us that they are reasonable, 
+song segmentation than Echonest). Practice showed us that they are reasonable, 
 and the size of the data set should make up for the imperfections or noise.
 We also believe that patches sizes based on a number of beats or bars are more
 meaningful than an arbitrary time length. More on this in the experiments
 (Subsection \ref{ssec:segment}).
 
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=.6\columnwidth]{code}
-\end{center}
-\caption{\small{A typical codeword from a codebook of size $200$. 
-Patterns represented
-$2$ bars and the pattern length was set to $8$.
-}}
-\label{fig:code}
-\end{figure}
-
-
-%\section{Algorithm}\label{sec:algo}
-In this section we present the creation of the harmonic patterns from
-the Echo Nest data.  Then we explain the online vector quantization algorithm
-used to learn a codebook of those patterns.
 
 %\subsection{Harmonic Patterns}
 \subsection{Beat-Chroma Patches}
@@ -240,14 +223,30 @@ used to learn a codebook of those patterns.
 % preserve the main bar characteristics (such as a strong beat at the beginning
 % or a note change in the middle).
 
-We use the bar segmentation obtained from the analysis described in
-the previous section to break a song into a collection of beat-chroma
-``patches'', typically one or two bars in length. 
+We use the bar segmentation obtained from the Echo Nest analysis to
+break a song into a collection of beat-chroma ``patches'', typically
+one or two bars in length.
 %
 Because the bar length varies, depending on the meter of a particular
-song (see Figure \ref{fig:barsize}), we resample each patch to a fixed
-length of typically 4 to 8 beats.
+song, we resample each patch to a fixed length of typically 4 beats
+per bar.  Since the overwhelming majority (85\%) of our training data
+consisted of bars that were 4 beats long, this resampling was not
+often required.  Most of the remaining bars (14\%) were 3 beats in
+length.  (FIXME: thierry, can you check these numbers, I'm making them
+up based on the deletedfigure)
 % although the majority of the data contains bars that are 4 beats long
+The resulting patches consist of $12 \times 4$ or $12 \times 8$ matrices.
+
+\begin{figure}[thb]
+\begin{center}
+\includegraphics[width=.6\columnwidth]{code}
+\end{center}
+\caption{\small{A typical codeword from a codebook of size $200$. 
+Patterns represented
+$2$ bars and the pattern length was set to $8$.
+}}
+\label{fig:code}
+\end{figure}
 
 Finally, we normalize the patches with respect to the key by rotating
 the pattern matrix so that the first row contains the most
@@ -274,6 +273,8 @@ clusters for every major triad in duple or triple meter.
 FIXME: Something about why we're not interested in specific chords?
 
 \subsection{Clustering}
+
+% We can then stack beat vectors for a number of bars (usually 1 or 2).
 
 We use an online version of the vector quantization algorithm
 \cite{Gersho1991}, to cluster the beat-chroma patches described in the
