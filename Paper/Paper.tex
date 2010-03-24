@@ -667,7 +667,7 @@ $2$ bars at a time.
 
 \section{Applications}\label{sec:exps2}
 In this section we describe two other applications of the clustering
-described in this paper: the song segmentation, and artist
+described in this paper: song segmentation, and artist
 recognition.  This demonstrates the utility of unsupervised clustering
 to FIXME ... 
 % Although our algorithm was not devised for any of these
@@ -675,22 +675,29 @@ to FIXME ...
 % naturally used.
 
 \subsection{Song Segmentation} \label{ssec:segment}
-We explained that we used bars as defined by the EchoNest algorithm to
-train our patterns. Let's assume once again that those bars are
-reasonable. We investigate whether we could recover the bar segmentation
-of new songs from our codebook. It would helps us assert that codes
-encodes something related to bars, for instance a strong beat at the
-beginning. Results are shown \ref{tab:offset}. We find the right segment
-with an accuracy of $62\%$ where random is $25\%$. Details of the
-experiment follow.
+
+Since the clustering described in Section \ref{sec:approach} is based
+on the segmentation of the signal in to bars, it stands to reason that
+the cluster centroids should contain information related to bar
+alignment, such as the presence of a strong beat on the first beat.
+%
+In this section we investigate whether it is possible to recover the
+bar segmentation of new songs using the information contained in the
+cluster centroids.  The results are shown \ref{tab:offset}. We find
+the right segment with an accuracy of $62\%$ where random is
+$25\%$. Details of the experiment follow.
 
 We train a codebook of size $100$ on bars resized to $4$ beats. Then,
-we take the longest sequence of bars of $4$ beats in the test set.
-As we mentioned before, $4$ beats is the most common (by far!) bar size
-in terms of beats according to the EchoNest API. We then encode this
-sequence using an offset of $0$, $1$, $2$ or $3$ beats. The best offset
-is the one that gives the encoding with the lowest distortion. The
-good answer is an offset of $0$.
+we take the longest sequence of bars of $4$ beats in the test set.  As
+we mentioned before, $4$ beats is the most common bar size using the
+Echo Nest segmentation. We then encode this sequence using an offset
+of $0$, $1$, $2$ or $3$ beats. The best offset in terms of distortion
+should correspond to the bar alignment relative to the original
+feature matrix.
+
+FIXME: Actually I'm (ronw) not sure how this was done.  Every 4 beat
+segment was treated separately?  Its not looking for a per-song alignment?
+%The good answer is an offset of $0$.
 
 The result presented here suggest a dynamic programming setting where
 we could find the optimal bar segmentation according to our codebook. 
