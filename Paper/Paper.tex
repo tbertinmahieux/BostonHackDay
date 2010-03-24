@@ -14,7 +14,7 @@
 % added by tbm
 \usepackage{subfloat,subfig}
 \setlength{\abovecaptionskip}{-3pt}
-\setlength{\belowcaptionskip}{10pt} 
+\setlength{\belowcaptionskip}{6pt} 
 
 \usepackage{booktabs}
 
@@ -129,7 +129,8 @@ One major issue in working with small patches concerns temporal
 alignment. Learning the same motifs with different offset
 (of a few seconds, or audio frames) is redundant. We take advantage
 of rhythmic knowledge about the song to align patches with beats.
-We can further group beats into bars, meaningful music segments.
+We can further group beats into bars to produces patches
+for meaningful music segments.
 The use of the Echo Nest API \cite{EchoNest} for that purpose is 
 explained in Subsection \ref{ssec:beatpatch}. Patches built around
 those temporal landmarks should capture music motifs more easily.
@@ -181,6 +182,17 @@ number of projections and consider as clusters all the elements that
 fall into the same bin. However, this does not give us a centroid, a
 typical pattern representing that cluster.
 \fi
+
+\begin{figure}[thb]
+\begin{center}
+\includegraphics[width=.6\columnwidth]{code}
+\end{center}
+\caption{\small{A typical codeword from a codebook of size $200$ (code
+    7 in Figure \ref{fig:codes1}), corresponding to a
+    tonic-subdominant chord progression.  The patch is composed of $2$
+    bars and the pattern length was set to $8$ beats.  }}
+\label{fig:code}
+\end{figure}
 
 
 \section{Approach}\label{sec:approach}
@@ -244,17 +256,6 @@ often required.  Most of the remaining bars (10\%) were 3 beats in
 length.
 % although the majority of the data contains bars that are 4 beats long
 The resulting patches consist of $12 \times 4$ or $12 \times 8$ matrices.
-
-\begin{figure}[thb]
-\begin{center}
-\includegraphics[width=.6\columnwidth]{code}
-\end{center}
-\caption{\small{A typical codeword from a codebook of size $200$ (code
-    7 in Figure \ref{fig:codes1}), corresponding to a
-    tonic-subdominant chord progression.  The patch is composed of $2$
-    bars and the pattern length was set to $8$ beats.  }}
-\label{fig:code}
-\end{figure}
 
 Finally, we normalize the patches with respect to the key by rotating
 the pattern matrix so that the first row contains the most
@@ -391,6 +392,21 @@ We assume $p_1$ and $p_2$ have the same size.  This is enforced by the
 meter normalization procedure described in Section \ref{sec:approach}.
 
 
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.8\columnwidth]{data_sizes}
+\end{center}
+\caption{\small{Distortion for a codebook of size $100$ encoding one bar
+at a time, a bar being represented by $4$ chroma feature vector.
+Therefore, a codeword or a pattern is of size $12$ x $4$ = $48$.
+Distortion measure on the test data set. Data size tested range
+from $0$ (just initialization) to $500$ thousand. Patterns were selected at
+random from the dataset of approximately $3,7$ million patterns.
+}}
+\label{fig:data_sizes}
+\end{figure}
+
+
 \subsection{Basic Properties}
 This section present some fundamental results of the clustering algorithm.
 None of the result appear surprising,  but they are important for 
@@ -409,20 +425,6 @@ larger codebooks. See Figure \ref{fig:perbeat}. The increase is steeper
 until $4$ beats which usually corresponds to one bar.
 \end{itemize}
 
-
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=.99\columnwidth]{data_sizes}
-\end{center}
-\caption{\small{Distortion for a codebook of size $100$ encoding one bar
-at a time, a bar being represented by $4$ chroma feature vector.
-Therefore, a codeword or a pattern is of size $12$ x $4$ = $48$.
-Distortion measure on the test data set. Data size tested range
-from $0$ (just initialization) to $500$ thousand. Patterns were selected at
-random from the dataset of approximately $3,7$ million patterns.
-}}
-\label{fig:data_sizes}
-\end{figure}
 
 \begin{table}
 \begin{center}
@@ -447,7 +449,7 @@ Codebook size & Distortion \\
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=.9\columnwidth]{encoding_per_beat}
+\includegraphics[width=.8\columnwidth]{encoding_per_beat}
 \end{center}
 \caption{\small{Encoding larger and larger patterns with a fixed size
 codebook. The size of the pattern is defined by the number of beats,
@@ -545,7 +547,7 @@ the percentage of use in the test set.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=.7\columnwidth]{freqs}
+\includegraphics[width=.6\columnwidth]{freqs}
 \end{center}
 \caption{\small{ Usage frequency of the patterns in the codebook from
     Figure \ref{fig:codes1} on the artist20 dataset.  There are $71,832$
@@ -603,6 +605,17 @@ codewords consisting of sustained chords.
 \label{fig:code_var}
 \end{figure}
 
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{close_patterns1}
+\end{center}
+\caption{\small{Cluster around centroid presented in
+Figure \ref{fig:code}. Taken from the artist20 dataset, the cluster
+size is actually $639$. Shown samples were randomly selected.
+}}
+\label{fig:cluster}
+\end{figure}
+
 \subsection{Cluster}
 Once we understand the kind of codebook we create, we naturally want
 to visualize the clusters, \ie the patterns from actual song that
@@ -619,16 +632,6 @@ the result seems to fit that assumption.
 %And that's kind of what they look like.  Does Fig
 %\ref{fig:cluster_diff} really add much?
 
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=.9\columnwidth]{close_patterns1}
-\end{center}
-\caption{\small{Cluster around centroid presented in
-Figure \ref{fig:code}. Taken from the artist20 dataset, the cluster
-size is actually $639$. Shown samples were randomly selected.
-}}
-\label{fig:cluster}
-\end{figure}
 
 \begin{figure}[htb]
 \begin{center}
@@ -820,9 +823,9 @@ COULD BE MIXED WITH TORI AMOS FIGURE.
 
 \begin{figure}[htb]
   \centering
-  \subfloat[][\small{Metallica}]{\label{fig:metallica2}\includegraphics[width=0.35\columnwidth]{metallica_pattern}}
+  \subfloat[][\small{Metallica}]{\label{fig:metallica2}\includegraphics[width=0.32\columnwidth]{metallica_pattern}}
   \hspace{5mm}                
-  \subfloat[][\small{Tori Amos / Suzanne Vega}]{\label{fig:amosvega2}\includegraphics[width=0.35\columnwidth]{toriamos_suzannevega_pattern}}
+  \subfloat[][\small{Tori Amos / Suzanne Vega}]{\label{fig:amosvega2}\includegraphics[width=0.32\columnwidth]{toriamos_suzannevega_pattern}}
   \caption{\small{Typical patterns for different artists.}}
   \label{fig:typicalpat}
 \end{figure}
