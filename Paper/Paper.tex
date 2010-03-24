@@ -407,12 +407,7 @@ at a time, a bar being represented by $4$ chroma feature vector.
 Therefore, a codeword or a pattern is of size $12$ x $4$ = $48$.
 Distortion measure on the test data set. Data size tested range
 from $0$ (just initialization) to $500$ thousand. Patterns were selected at
-random from the dataset of approximately $3,7$ million patterns, except
-for the dotted line (non random in the legend). In that case we took the
-first $N$ samples in our dataset. The difference is only visible for small
-training sets ($1$K).
-%
-FIXME: Can we kill the ``non-random'' line.  It doesn't really add anything.
+random from the dataset of approximately $3,7$ million patterns.
 }}
 \label{fig:data_sizes}
 \end{figure}
@@ -502,14 +497,14 @@ The frequency of use of these codewords are shown in Figure \ref{fig:freqs}.
 The codewords primarily consist of sustained
 notes and simple chords.  Since they are designed to be key-invariant,
 specific notes do not appear.  Instead the first 7 codewords
-correspond to a single note sustained across two bars (codeword 1),
-perfect fifth (codewords 2 and 3) and fourth intervals (codewords 4
-and 7), and a
-major and minor triads (codewords 6 and 5, respectively).  Many of the remaining
+correspond to a single note sustained across two bars (codeword 0),
+perfect fifth (codewords 1 and 2) and fourth intervals (codewords 3
+and 6), and a
+major and minor triads (codewords 5 and 4, respectively).  Many of the remaining
 codewords correspond to common transitions from one chord to another,
-\eg a transitions between major triads in codes 8 and 10 ( Cmaj
+\eg a transitions between major triads in codes 7 and 9 ( Cmaj
 $\rightarrow$ Fmaj)% assuming that chroma 0 is C) 
-and the reverse transition in code 22 (\ie Fmaj $\rightarrow$ Cmaj).
+and the reverse transition in code 21 (\ie Fmaj $\rightarrow$ Cmaj).
 FIXME: Does this transition have a better name like ``relative x''?
 
 \begin{figure}[h]
