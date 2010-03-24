@@ -84,7 +84,7 @@ similar in terms of their melodic-harmonic content.
 \section{Introduction}\label{sec:introduction}
 The availability of very large collections of music audio present
 many interesting research opportunities.  Given millions of examples
-from a single, broad class (\eg, contemporary commercial pop music),
+from a single, broad class (\eg contemporary commercial pop music),
 can we infer anything about the underlying structure and common
 features of this class?  This paper describes our work in this direction.
 
@@ -224,41 +224,74 @@ $2$ bars and the pattern length was set to $8$.
 
 %\section{Algorithm}\label{sec:algo}
 In this section we present the creation of the harmonic patterns from
-the Echo Nest data. Then, we explain the online vector quantization algorithm
+the Echo Nest data.  Then we explain the online vector quantization algorithm
 used to learn a codebook of those patterns.
 
-\subsection{Pattern Creation}
-Patterns are defined as a number of beats or bars. In the case of beats,
-we simply cut the set of chromas per beat every $N$ beats. In the case
-of bars, we gather all beats corresponding to the $N$ bars requested.
-The number of chroma vectors we get can vary. We resize the features in the
-time axis to a fixed length. Resizing over clipping can be argued over, 
-but it should
-preserve the main bar characteristics (such as a strong beat at the beginning
-or a note change in the middle).
+%\subsection{Harmonic Patterns}
+\subsection{Beat-Chroma Patches}
+% Patterns are defined as a number of beats or bars. In the case of beats,
+% we simply cut the set of chromas per beat every $N$ beats. In the case
+% of bars, we gather all beats corresponding to the $N$ bars requested.
+% The number of chroma vectors we get can vary. We resize the features in the
+% time axis to a fixed length. Resizing over clipping can be argued over, 
+% but it should
+% preserve the main bar characteristics (such as a strong beat at the beginning
+% or a note change in the middle).
 
-We try to normalize the patterns in respect to the key. We roll the matrix
-so the row with the more energy is always the lowest one. This can easily be
-seen in Figure \ref{fig:code}. We considered the same techniqueh for rolling
-along the other axis and be invariant regarding the downbeat. However, it
-seems less robust to noise. Note that we roll each pattern independently.
-Also, this implies that the pitch envelope is important rather than the actual 
-pitches.
+We use the bar segmentation obtained from the analysis described in
+the previous section to break a song into a collection of beat-chroma
+``patches'', typically one or two bars in length. 
+%
+Because the bar length varies, depending on the meter of a particular
+song (see Figure \ref{fig:barsize}), we resample each patch to a fixed
+length of typically 4 to 8 beats.
+% although the majority of the data contains bars that are 4 beats long
 
+Finally, we normalize the patches with respect to the key by rotating
+the pattern matrix so that the first row contains the most
+energy. This can easily be seen in Figure \ref{fig:code}.
+% We considered the same technique for rolling along the other axis and
+% be invariant regarding the downbeat. However, it seems less robust to
+% noise.
+Each patch within a song is normalized independently, so exact
+reconstruction of the original song requires knowledge of the
+rotation index (key) for each patch.
 
-\subsection{Codebook Learning}
-We use an online version of the vector quantization algorithm 
-\cite{Gersho1991}. This can also be seen as an online K-means.
-The idea is as follow: take a sample from your data, find the closest
-codeword in the codebook, bring that codeword closer to the 
-sample by some amount.
-The details are explained in Algorithm \ref{algo:vq}. Note that this
-algorithm, though not optimal, is $O(n)$ with $n$ number of songs seen.
-Thus it scales linearly to any size of data set. The setting of the learning
-rate might become trickier, but this is not fundamentally a problem.
+The representation resulting from this process is invariant to both
+the key and meter of the original song.  This enables the study of
+broad harmonic patterns found throughout the data, without regard for
+the specific musical context.
+%
+% In the context of clustering, this enables us to study harmonic
+% pattern usage without maintaining clusters for the specific context a
+% particular patterns occurs in,
+In the context of clustering this avoids \eg obtaining separate
+clusters for every major triad in duple or triple meter.
+% Also, this implies that the pitch envelope is important rather than
+% the actual pitches.
+Something about why we're not interested in specific chords?
 
-We initialize the codebook by choosing $K$ random points from our dataset.
+\subsection{Clustering}
 
+We use an online version of the vector quantization algorithm
+\cite{Gersho1991}, to cluster the beat-chroma patches described in the
+previous section.
+% This can also be seen as an online K-means.
+For each sample from the data, the algorithm finds the closest cluster
+in the codebook and updates the cluster centroid (codeword) to be
+closer to the sample based on some learning rate $l$.
+The clusters are updated as each data point is seen, as opposed to
+once per iteration in the standard k-means algorithm.
+The details are explained in Algorithm \ref{algo:vq}.
+%
+As in standard k-means clustering, the codebook is initialized by
+choosing $K$ random points from our dataset.
+%
+Note that this algorithm, although not optimal, scales linearly with
+the number of patches seen and can be interrupted at any time
+while still resulting in an updated codebook. %not that this is important...
+% The setting of the learning rate might become trickier, but this is
+% not fundamentally a problem.
 
 \begin{algorithm}
 %\caption{Pseudocode of Vector Quantization}
