@@ -154,35 +154,6 @@ develop a codebook whose entries are of interest
 in their own right.
 
 
-% COMMENTING PREVIOUS WORK AND DEFINITIONS
-\iffalse
-\subsectionDefinitions}
-A pattern, or a patch, is a beat-chroma pattern taken from an actual song.
-A codeword (sometimes just code) is similar to a pattern, but is the result 
-of the clustering
-algorithm and most likely does not come from an actual song.
-Distortion is our measure of distance between a pattern and a code
-(or between two patterns, see equation \ref{eq:dist} in Section 
-\ref{sec:experiments}).
-
-\subsection{Previous Work}\label{sec:prevwork}
-Our work can be seen as an extension of the \textit{Shingles} idea
-described by Casey and Slaney \cite{Casey2006,Casey2007,Casey2008}.
-The two main differences are the clustering framework and the use of
-beats and bars to select the position of the \textit{Shingles}.
-
-Casey and Slaney \cite{Casey2006} use LSH \cite{Datar2004} to perform
-fast approximate nearest neighbor search. Their implementation is E$^2$LSH
-\cite{E2LSH}. This package can efficiently handle about $50$K or $100$K
-vectors of size $200$. Even with a better implementation, the LSH
-model still has some scaling problem. A large portion of the data
-must be known to decide how many projections to use, and what guarantee
-of finding the nearest neighbor it can provides. Also, we could fix the
-number of projections and consider as clusters all the elements that
-fall into the same bin. However, this does not give us a centroid, a
-typical pattern representing that cluster.
-\fi
-
 \begin{figure}[thb]
 \begin{center}
 \includegraphics[width=.6\columnwidth]{code}
@@ -335,12 +306,8 @@ while still resulting in an updated codebook. %not that this is important...
 \section{Experiments}\label{sec:experiments}
 In this section we present different clustering experiments. We introduce
 our training data and our main testing data. Some detailed settings
-of our algorithm are also provided. Then, we answer some common questions
-about any clustering algorithms, for instance 
-``how the number of codes affect the distortion''
-and ``how many learning samples should we use''.
-% Note that we will present two additional experiments in 
-% Section \ref{sec:exps2}.
+of our algorithm are also provided. As for any clustering algorithm, we
+measure the influence of the number of codewords and the training set size.
 
 
 \subsection{Data}
@@ -457,40 +424,6 @@ the bar information was not taken into account for this experiment.
 }}
 \label{fig:perbeat}
 \end{figure}
-
-
-% REMOVING THE FOLLOWING SUBSECTION ON RATE - DISTORTION
-\iffalse
-\subsection{Music Randomness}\label{ssec:random}
-It will not surprise any reader, music is not random. This fact should
-become apparent in our experiments in the following way. Information
-theory tells us that if the signal to encode doubles, we need to square
-the size of the codebook to encode it with the same distortion.
-
-To help the intuition, here is an example. Imagine a binary array of 
-length $1$. We need two
-codes to encode perfectly: $(0)$ and $(1)$. If the binary array is now of
-length $2$, we now need four codes: $(0,0)$, $(0,1)$, $(1,1)$ and $(1,0)$.
-
-Since music is not random, we expect that squaring the codebook when the
-pattern size doubles will rather give improved results than constant ones.
-See Figure \ref{fig:size_pattern}.
-
-% see generate_expo_codes_curves.py to generate the following figure:
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=.99\columnwidth]{codesize_patternsize}
-\end{center}
-\caption{\small{
-Experiment on squaring the codebook size when the pattern size doubles.
-Each line represent $4$ codebook sizes: $2$, $4$, $16$ and $256$.
-The pattern size range from $1$ for $1/4$ of a bar to $32$ for $8$ bars.
-If everything was random, each of these lines should be flat. The training
-size was fixed to $128$K samples.
-}}
-\label{fig:size_pattern}
-\end{figure}
-\fi
 
 
 \section{Visualization} \label{sec:visu}
