@@ -272,10 +272,10 @@ previous section.
 % This can also be seen as an online K-means.
 For each sample from the data, the algorithm finds the closest cluster
 in the codebook and updates the cluster centroid (codeword) to be
-closer to the sample based on some learning rate $\ell$.
+closer to the sample, using a learning rate parameter $\ell$.
 The clusters are updated as each data point is seen, as opposed to
 once per iteration in the standard k-means algorithm.
-The details are explained in Algorithm \ref{algo:vq}.
+The details can be found in Algorithm \ref{algo:vq}.
 %
 As in standard k-means clustering, the codebook is initialized by
 choosing $K$ random points from our dataset.
@@ -311,10 +311,14 @@ while still resulting in an updated codebook. %not that this is important...
 
 
 \section{Experiments}\label{sec:experiments}
-In this section we present different clustering experiments. We introduce
-our training data and our main testing data. Some detailed settings
-of our algorithm are also provided. As for any clustering algorithm, we
-measure the influence of the number of codewords and the training set size.
+
+% In this section we present different clustering experiments. We introduce
+% our training data and our main testing data. Some detailed settings
+% of our algorithm are also provided. As for any clustering algorithm, we
+% measure the influence of the number of codewords and the training set size.
+In this section we present a set of experiments designed to evaluate
+quantization quality as a function of size of training set, codebook
+size, and patch length.
 
 
 \subsection{Data}
@@ -322,47 +326,46 @@ measure the influence of the number of codewords and the training set size.
 \label{sec:traindata}
 %\subsection{Test data: USPOP}
 \label{sec:testdata}
-Our training data consists of $43,300$ tracks that were uploaded to
+The training data consists of $43,300$ tracks that were uploaded to
 morecowbell.dj,\footnote{http://www.morecowbell.dj/} an online service
-based on the Echo Nest analyze API which remixes uploaded music by
+based on the Echo Nest analyze API which remixes music by
 adding cowbell and other sound effects synchronized in time with the
 music.  The $43.3$K songs contain $\mathbf{3.7}$ million non silent
 bars which we cluster using the approach described in the previous
 section.
 
-For testing, we made use of low quality (32kbps) version of the songs
-from the uspop2002 data set \cite{uspop2002}.  This well-known data
-contains a wide variety of pop songs, but is not particular otherwise.
+For testing, we made use of low quality (32kbps MP3) audio 
+from the uspop2002 data set \cite{uspop2002}.  The collections
+includes a wide variety of popular music from 10 different sub-genres.
 % \footnote{We also tried to use Tzanetakis dataset,
 % %\cite{Tzanetakis2002a},
 % but the $30$ seconds segments seemed hard to analyze by the Echo Nest API, 
 % most did not contain any bar.}.
-uspop2002 serves as test set to measure how well a codebook learned on
-the Cowbell data set can represent new songs.  We obtained Echo Nest features
-for the $8651$ songs contained in the dataset.
-
+We use this data to measure how well a codebook learned on
+the Cowbell data set can represent new songs.  
+We obtained Echo Nest features for the $8651$ songs contained in the data set.
 
 \subsection{Setting}\label{ssec:setting}
-We take one or two bars and normalize the patches to size 4 or 8
-respectively.  We learn a codebook of size $K$ over the Cowbell
-dataset using the VQ algorithm (Algorithm \ref{algo:vq}). We used a
-learning rate of $\ell=0.01$ for $200$ iterations over the whole
-dataset.
+We train codebooks based on beat-chroma patches composed of 4 or 8
+beats (one or two bars).
+Codebooks over the Cowbell
+data set are trained using the VQ algorithm (Algorithm \ref{algo:vq}). We used a
+learning rate of $\ell=0.01$ for $200$ iterations over the data.
 %
-We use the codebook to encode the test set.
-Each pattern is encoded with only one code. We can measure the average
-distance between a pattern and its encoding. We can also measure the use
-of the different codes, \ie the size of the cluster around a code.
+Given these codebooks, we quantize the test set by assigning each
+patch to a single codeword.  We report the average
+distance between patches and their encodings and describe the usage
+frequency of the different codes. %, \ie the size of the cluster around a code.
 
 We use the average squared Euclidean distance as the distortion
 measure between chroma patches.  Given a pattern $p_1$
-composed of elements $p_{1ij}$, and a similar pattern $p_2$, the
+composed of elements $p_{1ij}$, and a second pattern $p_2$, the
 distance between them is:
 \begin{eqnarray}
   \dist(p_1,p_2) = \sum_{i,j} \frac{(p_{1ij} - p_{2ij})^2}{\size(p_1)}
   \label{eq:dist}
 \end{eqnarray}
-We assume $p_1$ and $p_2$ have the same size.  This is enforced by the
+We assume that $p_1$ and $p_2$ have the same size.  This is enforced by the
 meter normalization procedure described in Section \ref{sec:approach}.
 
 
@@ -455,7 +458,7 @@ notes and simple chords.  Since they are designed to be key-invariant,
 specific notes do not appear.  Instead the first 7 codewords
 correspond to a single note sustained across two bars (codeword 0),
 perfect fifth (codewords 1 and 2) and fourth intervals (codewords 3
-and 6), and a
+and 6), and 
 major and minor triads (codewords 5 and 4, respectively).  Many of the remaining
 codewords correspond to common transitions from one chord to another,
 \eg a tonic-subdominant transition in codes 7 and 9
@@ -525,7 +528,7 @@ as they all are sustained patterns.
 \end{center}
 \caption{\small{
 Locally linear embedding (LLE) visualization of the codebook.
-LLE tries to keep near neighbors (here according to euclidean distance)
+LLE tries to keep near neighbors (here according to Euclidean distance)
 in the same $2$D neighborhood. Shown patterns were randomly selected
 in each neighborhood.
 }}
@@ -679,9 +682,9 @@ Offset & \% of times chosen \\
 \end{tabular}
 \end{center}
 \caption{\small{
-Song segmentation experiment:
-best offset according to our codebook. The real one is $0$.
-Random guess gives an accuracy of $25$\%.
+Results from the song segmentation experiment.
+The correct offset is $0$.
+Baseline performance by choosing the offset randomly gives an accuracy of $25$\%.
 }}
 \label{tab:offset}
 \end{table}
@@ -711,7 +714,7 @@ of patterns in the song. We test each song in a leave-one-out setting.
 Leaving aside the test song, we represent each of the $20$ artists by the 
 average of
 the song histograms of that artist. The test song is compared to
-the histogram of each artist using euclidean distance.
+the histogram of each artist using Euclidean distance.
 
 
 \begin{figure}[htb]
@@ -727,8 +730,9 @@ To find these patterns, we compare its use by one artist and divide
 by its use by all artists. In Figure \ref{fig:typicalpat} we see 
 Metallica's pattern, then Tori Amos and
 Suzanne Vega's pattern. These three artists were easily identified.
-Artists like Metallica are characterized by ``wideband'' patterns -
-featured muddled due to noisy acoustics - lots of transients,
+Artists such as Metallica are characterized by ``wideband'' patterns,
+containing features muddled by the noisy acoustics containing many
+transients,
 distortion, etc, which can be seen in Figure \ref{fig:metallica2}.
 %FIXME: ron, what di you mean: (not by cleaned up by EN's feature analysis)
 
@@ -780,12 +784,12 @@ submission's anonymity}
 As for enhancements, we specifically did not compress our features using
 Gaussian mixtures or other generative model. That being said, these methods
 could be use to develop better distance measures between patterns.
-The use of the euclidean distance is arbitrary. Summarizing patches
+The use of the Euclidean distance is arbitrary. Summarizing patches
 with Gaussians, and then comparing the distance between those Gaussians,
 could reduce the influence of the noise in the distance measure.
 
 Moving on to larger scales, we could imagine merging codes together and
-splitting some on two if the clusters become too small or too large.We could
+splitting some on two if the clusters become too small or too large.  We could
 also cluster codebooks themselves, in a similar fashion as hierarchical
 Gaussian mixtures \cite{Vasconcelos2001}.
 %  (similar idea used for indexing \cite{Muja2009})
