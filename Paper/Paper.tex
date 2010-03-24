@@ -502,10 +502,12 @@ perfect fifth (codewords 1 and 2) and fourth intervals (codewords 3
 and 6), and a
 major and minor triads (codewords 5 and 4, respectively).  Many of the remaining
 codewords correspond to common transitions from one chord to another,
-\eg a transitions between major triads in codes 7 and 9 ( Cmaj
+\eg a tonic-subdominant transition in codes 7 and 9
+(Cmaj
 $\rightarrow$ Fmaj or C5 $\rightarrow$ F5 as a guitar power chord)
 % assuming that chroma 0 is C) 
-and the reverse transition in code 21 (\ie Fmaj $\rightarrow$ Cmaj).
+and the reverse tonic-dominant transition in code 21 (\ie Fmaj
+$\rightarrow$ Cmaj).
 %FIXME: Does this transition have a better name like ``relative x''?
 % C5 -> F5 in 'guitar chords', basically a power chord
 
@@ -514,7 +516,7 @@ and the reverse transition in code 21 (\ie Fmaj $\rightarrow$ Cmaj).
 \includegraphics[width=.9\columnwidth]{codes1}
 \end{center}
 \caption{\small{
-Most frequently used codes in the codebook %in term of frequency of use
+25 most frequently used codes in the codebook %in term of frequency of use
 in the artist20 test set. 
 This codebook contains $200$ codes trained on $2$ bar, $12 \times 8$
 patches.
@@ -631,8 +633,8 @@ ronw: does this figure really add all that much?
 \end{center}
 \caption{\small{Sample of longer codewords spanning over $8$ bars. Codewords
 selected randomly from the codewords used in the test set. Percentage of
-used display in parentheses.
-Most patterns are sustained notes, but codeword 0 shows a repeted two notes
+use display in parentheses.
+Most patterns are sustained notes, but code 0 shows a repeating two chord
 pattern.
 }}
 \label{fig:codes8bars}
@@ -657,7 +659,7 @@ This is consistent with the codebook described in Section
 \includegraphics[width=.9\columnwidth]{song_encoded}
 \end{center}
 \caption{\small{Good Day Sunshine by \textit{The Beatles}.
-Original song and its encoding using a $200$ codes codebook learning
+Original song and its encoding using a $200$ entry codebook learning
 $2$ bars at a time.
 }}
 \label{fig:encodesong}
