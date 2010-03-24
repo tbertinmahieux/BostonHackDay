@@ -692,12 +692,12 @@ we take the longest sequence of bars of $4$ beats in the test set.  As
 we mentioned before, $4$ beats is the most common bar size using the
 Echo Nest segmentation. We then encode this sequence using an offset
 of $0$, $1$, $2$ or $3$ beats. The best offset in terms of distortion
-should correspond to the bar alignment relative to the original
-feature matrix.
+should correspond to the bar alignment in the original
+feature matrix.  The correct answer is an offset of $0$.
 
 FIXME: Actually I'm (ronw) not sure how this was done.  Every 4 beat
 segment was treated separately?  Its not looking for a per-song alignment?
-%The good answer is an offset of $0$.
+
 
 The result presented here suggest a dynamic programming setting where
 we could find the optimal bar segmentation according to our codebook. 
