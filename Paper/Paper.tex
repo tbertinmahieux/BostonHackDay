@@ -201,7 +201,7 @@ can be assumed perfectly accurate.
 %(\eg in \cite{Barrington2009a} authors obtain a better
 %song segmentation than the Echo Nest). 
 In practice, we have found them reasonable, 
-and given the size of the data set, any rare imperfections or noise
+and given the size of the dataset, any rare imperfections or noise
 can be diluted to irrelevance by the good examples.  
 We also believe that patch sizes based on a number of beats or bars are more
 meaningful than an arbitrary time length. This is discussed further in 
@@ -335,21 +335,21 @@ bars which we cluster using the approach described in the previous
 section.
 
 For testing, we made use of low quality (32kbps MP3) audio 
-from the uspop2002 data set \cite{uspop2002}.  The collections
+from the uspop2002 dataset \cite{uspop2002}.  The collections
 includes a wide variety of popular music from 10 different sub-genres.
 % \footnote{We also tried to use Tzanetakis dataset,
 % %\cite{Tzanetakis2002a},
 % but the $30$ seconds segments seemed hard to analyze by the Echo Nest API, 
 % most did not contain any bar.}.
 We use this data to measure how well a codebook learned on
-the Cowbell data set can represent new songs.  
-We obtained Echo Nest features for the $8651$ songs contained in the data set.
+the Cowbell dataset can represent new songs.  
+We obtained Echo Nest features for the $8651$ songs contained in the dataset.
 
 \subsection{Setting}\label{ssec:setting}
 We train codebooks based on beat-chroma patches composed of 4 or 8
 beats (one or two bars).
 Codebooks over the Cowbell
-data set are trained using the VQ algorithm (Algorithm \ref{algo:vq}). We used a
+dataset are trained using the VQ algorithm (Algorithm \ref{algo:vq}). We used a
 learning rate of $\ell=0.01$ for $200$ iterations over the data.
 %
 Given these codebooks, we quantize the test set by assigning each
@@ -376,7 +376,7 @@ meter normalization procedure described in Section \ref{sec:approach}.
 \caption{\small{Distortion for a codebook of size $100$ encoding one bar
 at a time, a bar being represented by $4$ chroma feature vector.
 Therefore, a codeword or a pattern is of size $12$ x $4$ = $48$.
-Distortion measure on the test data set. Data size tested range
+Distortion measure on the test dataset. Data size tested range
 from $0$ (just initialization) to $500$ thousand. Patterns were selected at
 random from the dataset of approximately $3,7$ million patterns.
 }}
@@ -692,7 +692,7 @@ Baseline performance by choosing the offset randomly gives an accuracy of $25$\%
 \subsection{Artist Recognition} \label{ssec:artist}
 
 We apply our codebook to the artist recognition task.
-Our data set, ``artist20'', encompass $1402$ songs from $20$ artists, 
+Our dataset, ``artist20'', encompass $1402$ songs from $20$ artists, 
 mostly rock and pop of different subgenres. Results exist in the
 literature for that set \cite{Ellis2007}. The best accuracy is
 $59\%$, whereas using only chroma as a representation yields an
