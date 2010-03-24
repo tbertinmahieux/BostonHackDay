@@ -49,7 +49,7 @@ def create_fig():
     # plot2
     P.plot(bar2beat8,'x-',label='2 bars 8 beats')
     # plot3
-    P.plot(bar1beat4FIRST,'--',label='1 bar 4 beats non random')
+    #P.plot(bar1beat4FIRST,'--',label='1 bar 4 beats non random')
     # plot4
     #P.plot(bar0beat4,'-.',label='0 bars 4 beats')
     
