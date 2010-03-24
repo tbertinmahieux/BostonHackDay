@@ -126,7 +126,13 @@ we also expect them to be useful in other applications, such as
 music classification and retrieving tonally-related items.
 
 One major issue in working with small patches concerns temporal
-alignment.  FIXME: [explain bar alignment]
+alignment. Learning the same motifs with different offset
+(of a few seconds, or audio frames) is redundant. We take advantage
+of rythmic knowledge about the song to align patches with beats.
+We can further group beats into bars, meaningful music segments.
+The use of the Echo Nest API \cite{EchoNest} for that purpose is 
+explained in Subsection \ref{ssec:beatpatch}. Patches built around
+those temporal landmarks should capture music motifs more easily.
 
 Prior work using small patches of chroma features includes
 the ``shingles'' of \cite{Casey2007}, which they used to
@@ -216,7 +222,7 @@ meaningful than an arbitrary time length. More on this in the experiments
 
 
 %\subsection{Harmonic Patterns}
-\subsection{Beat-Chroma Patches}
+\subsection{Beat-Chroma Patches} \label{ssec:beatpatch}
 % Patterns are defined as a number of beats or bars. In the case of beats,
 % we simply cut the set of chromas per beat every $N$ beats. In the case
 % of bars, we gather all beats corresponding to the $N$ bars requested.
@@ -554,7 +560,8 @@ the percentage of use in the test set.
 Another interesting visualization uses LLE\footnote{implementation:
   \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
 algorithm \cite{Roweis2000} to display codewords arranged in
-coherent groups. See Figure \ref{fig:lle}.
+coherent groups. See Figure \ref{fig:lle}. FOr instance, we see
+``wideband'' patterns grouping to the right.
 
 Finally, more related to our particular data, we try to assess how many
 sustained patterns are represented in the codebook. We look at
