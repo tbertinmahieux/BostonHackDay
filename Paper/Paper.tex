@@ -289,7 +289,7 @@ while still resulting in an updated codebook. %not that this is important...
 \REQUIRE $0 < \ell \leq 1$
 \FOR{$nIters$}
 \FOR{$p \in \{P_n\}$}
-\STATE$c \leftarrow min_{c \in C_k} \dist(p,c)$
+\STATE$c \leftarrow \min_{c \in C_k} \dist(p,c)$
 \STATE$c \leftarrow c + (p - c) * \ell$
 \ENDFOR
 \ENDFOR
