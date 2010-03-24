@@ -241,7 +241,8 @@ The resulting patches consist of $12 \times 4$ or $12 \times 8$ matrices.
 \begin{center}
 \includegraphics[width=.6\columnwidth]{code}
 \end{center}
-\caption{\small{A typical codeword from a codebook of size $200$. 
+\caption{\small{A typical codeword from a codebook of size $200$ (code
+    7 in Figure \ref{fig:codes1})
 Patterns represented
 $2$ bars and the pattern length was set to $8$.
 }}
@@ -327,70 +328,71 @@ of our algorithm are also provided. Then, we answer some common questions
 about any clustering algorithms, for instance 
 ``how the number of codes affect the distortion''
 and ``how many learning samples should we use''.
-Note that we will present two additional experiments in 
-Section \ref{sec:exps2}.
+% Note that we will present two additional experiments in 
+% Section \ref{sec:exps2}.
 
 
-\subsection{Training: Cowbell Dataset}\label{sec:traindata}
-We have $43,300$ tracks that were uploaded
-to morecowbell.dj\footnote{http://www.morecowbell.dj/}, 
-an online service that uses the Echo
-Nest to produce a remixed version of
-an uploaded music file that adds cowbell and other sound
-effects in time with the music.
-The $43.3$K songs, giving $\mathbf{3.7}$\textbf{M}
-non silent bars, a bar usually
-contains $4$ beats (Figure \ref{fig:barsize}).
+\subsection{Data}
+%\subsection{Training data: Cowbell Dataset}
+\label{sec:traindata}
+%\subsection{Test data: USPOP}
+\label{sec:testdata}
+Our training data consists of $43,300$ tracks that were uploaded to
+morecowbell.dj,\footnote{http://www.morecowbell.dj/} an online service
+based on the Echo Nest analyze API which remixes uploaded music by
+adding cowbell and other sound effects synchronized in time with the
+music.  The $43.3$K songs contain $\mathbf{3.7}$ million non silent
+bars which we cluster using the approach described in the previous
+section.
 
-
-
-\subsection{Testing: USPOP}\label{sec:testdata}
-We had access to a low quality (32kbps) version of the songs in the uspop 2002 
-data set \cite{uspop2002}.
-This well-known data show a great diversity of pop songs, but is not particular
-otherwise\footnote{We 
-also tried to use Tzanetakis dataset, 
-%\cite{Tzanetakis2002a},
-but the $30$ seconds segments seemed hard to analyze by the Echo Nest API, 
-most did not contain any bar.}.
-uspop2002 serves as testing set to measure how well a codebook learned on
-the Cowbell data set can represent new songs. We get Echo Nest features
-for $8651$ songs of that dataset.
+For testing, we made use of low quality (32kbps) version of the songs
+from the uspop2002 data set \cite{uspop2002}.  This well-known data
+contains a wide variety of pop songs, but is not particular otherwise.
+% \footnote{We also tried to use Tzanetakis dataset,
+% %\cite{Tzanetakis2002a},
+% but the $30$ seconds segments seemed hard to analyze by the Echo Nest API, 
+% most did not contain any bar.}.
+uspop2002 serves as test set to measure how well a codebook learned on
+the Cowbell data set can represent new songs.  We obtained Echo Nest features
+for the $8651$ songs contained in the dataset.
 
 
 \subsection{Setting}\label{ssec:setting}
-We take one or two bars and normalize the patches to size 4 or 8 respectively.
-We roll the patch to be invariant to the key (on the patch level, not on
-the song level). We learn a codebook of size $K$ over the cowbell dataset 
-using the VQ algorithm (Algorithm \ref{algo:vq}). A typical learning rate 
-is $0.01$ for $200$ iterations over the whole dataset.
-
-We use the codebook to encode our testing set (see Section \ref{sec:testdata}).
+We take one or two bars and normalize the patches to size 4 or 8
+respectively.  We learn a codebook of size $K$ over the Cowbell
+dataset using the VQ algorithm (Algorithm \ref{algo:vq}). We used a
+learning rate of $\ell=0.01$ for $200$ iterations over the whole
+dataset.
+%
+We use the codebook to encode the test set.
 Each pattern is encoded with only one code. We can measure the average
 distance between a pattern and its encoding. We can also measure the use
 of the different codes, \ie the size of the cluster around a code.
 
-As a distance measure (or distortion measure) between patterns, we use
-the average squared euclidean distance. In details, if a pattern $p_1$
-is composed of elements $p_{1ij}$, and similarly for a pattern $p_2$,
-the distance between $p_1$ and $p_2$ is:
+We use the average squared Euclidean distance as the distortion
+measure between chroma patches.  Given a pattern $p_1$
+composed of elements $p_{1ij}$, and a similar pattern $p_2$, the
+distance between them is:
 \begin{eqnarray}
   \dist(p_1,p_2) = \sum_{i,j} \frac{(p_{1ij} - p_{2ij})^2}{\size(p_1)}
   \label{eq:dist}
 \end{eqnarray}
-We assume $p_1$ and $p_2$ have the same size.
+We assume $p_1$ and $p_2$ have the same size.  This is enforced by the
+meter normalization procedure described in Section \ref{sec:approach}.
 
 
 \subsection{Basic Properties}
+FIXME: flesh this out a \emph{little} more?
+
 This section present some fundamental results of the clustering algorithm.
 These are important, but do not change the larger picture. Due to space
 constraints, we give few details and refer to the figures.
 \begin{itemize}
-\item A larger dataset gives a better encoding codebook. See Figure
+\item Encoding performance improves with increasing training data. See Figure
 \ref{fig:data_sizes}.
-\item A larger codebook better encodes new songs. See 
+\item Encoding performance improves with increasing codebook size. See 
 Table \ref{tab:cbsize}.
-\item Larger patterns are more difficult to encode, thus require
+\item Larger patterns are more difficult to encode, thus requiring
 larger codebooks. See Figure \ref{fig:perbeat}.
 \end{itemize}
 
@@ -410,6 +412,8 @@ random from the dataset of approximately $3,7$ million patterns, except
 for the dotted line (non random in the legend). In that case we took the
 first $N$ samples in our dataset. The difference is only visible for small
 training sets ($1$K).
+%
+FIXME: Can we kill the ``non-random'' line.  It doesn't really add anything.
 }}
 \label{fig:data_sizes}
 \end{figure}
@@ -440,7 +444,7 @@ The number of training samples is $50000$.
 \end{center}
 \caption{\small{Encoding larger and larger patterns with a fixed size
 codebook. The size of the pattern is defined by the number of beats,
-the bar information was not taken into account for that experiment.
+the bar information was not taken into account for this experiment.
 }}
 \label{fig:perbeat}
 \end{figure}
@@ -490,8 +494,8 @@ size was fixed to $128$K samples.
 \subsection{Codebook}\label{sec:codebook}
 
 We train a codebook of size $200$ over patterns of size $12$x$8$ covering
-$2$ bars at a time. Results shown are on a second testing set, see
-Subsection \ref{ssec:artist}.
+$2$ bars at a time.  The results shown are on the test set from
+Section \ref{ssec:artist}.
 
 
 The 25 most frequently used codewords in the test set are shown in
@@ -501,27 +505,29 @@ The codewords primarily consist of sustained
 notes and simple chords.  Since they are designed to be key-invariant,
 specific notes do not appear.  Instead the first 7 codewords
 correspond to a single note sustained across two bars (codeword 1),
-perfect fifth (codes 2 and 3) and fourth intervals (codes 4 7), and a
-major and minor triads (codeword 6 and 5).  Many of the remaining
+perfect fifth (codewords 2 and 3) and fourth intervals (codewords 4
+and 7), and a
+major and minor triads (codewords 6 and 5, respectively).  Many of the remaining
 codewords correspond to common transitions from one chord to another,
-\eg a transition from one major triad to another (\ie Cmaj
-$\rightarrow$ Fmaj assuming that chroma 0 is C) in codes 8 and 10 and
-the reverse transition in code (\ie Fmaj $\rightarrow$ Cmaj) in code
-22.  Does this transition have a better name like ``relative x''?
+\eg a transitions between major triads in codes 8 and 10 ( Cmaj
+$\rightarrow$ Fmaj)% assuming that chroma 0 is C) 
+and the reverse transition in code 22 (\ie Fmaj $\rightarrow$ Cmaj).
+FIXME: Does this transition have a better name like ``relative x''?
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=.9\columnwidth]{codes1}
 \end{center}
 \caption{\small{
-Most used codes in the codebook in term of frequency of use in the test
-set (artist20, see Subsection \ref{ssec:artist}). 
-This codebook was of size $200$ and trained on $2$ bars, pattern
-size is $12$x$8$. Code in Figure \ref{fig:code} is the $8$th most used
-here (second row, third column). 
-Numbers display are the index (from most used to least) and in parentheses
-the percentage of use in the whole collection times.
-There is $71832$ patterns in total in the dataset.
+Most frequently used codes in the codebook %in term of frequency of use
+in the artist20 test set. 
+This codebook contains $200$ codes trained on $2$ bar, $12 \times 8$
+patches.
+The numbers 
+%above each panel correspond to the display are the index (from most used to least) and
+in parentheses correspond to 
+the percentage of use in the test set.
+%There are $71832$ patterns in total in the dataset.
 }}
 \label{fig:codes1}
 \end{figure}
@@ -551,13 +557,15 @@ sustained patterns are represented in the codebook. We look at
 the average variance over time in Figure \ref{fig:code_var}.
 25\% of the codebook correspond
 to very simple sustained patterns similar to the top row of Figure
-\ref{fig:codes1}. For $2$ bars codewords, it seems that interesting
-patterns appear in only $33$\% of the data.
+\ref{fig:codes1}. For $2$ bars codewords, it seems that patterns
+containing more complex temporal activity account for only $33$\% of
+the data.
 
 Showing codewords of $2$ bars is practical and consistent with our experiments
-in Section \ref{sec:exps2}. However, longer codewors can also reveal
-interesting structures. A random samples of such codewords is presented
-in Figure \ref{fig:codes8bars}
+in Section \ref{sec:exps2}. However, longer codewords can also reveal
+interesting structure. A random sample of such codewords is presented
+in Figure \ref{fig:codes8bars}.  FIXME: why a random sample?  Can we
+show their usage in the test (or train) set as in fig \ref{fig:codes1}?
 
 
 \begin{figure}[htb]
@@ -570,8 +578,9 @@ LLE tries to keep near neighbors (here according to euclidean distance)
 in the same $2$D neighborhood. Shown patterns were randomly selected
 in each neighborhood.
 }
-ronw: I think this figure would be better if it only included the
-bottom subplot.
+FIXME:Can we make this a little bit bigger so the patterns are
+actually visible?  Does the figure add much over Fig \ref{fig:codes1}?
+Maybe it has some more complex patterns? 
 }
 \label{fig:lle}
 \end{figure}
@@ -596,6 +605,11 @@ of the patterns. We could compare the centroids with the result of
 a lowpass filtering. In Figure \ref{fig:cluster} we show elements of the same
 cluster, and in Figure \ref{fig:cluster_diff}, we emphasize the difference
 with the centroid.
+
+FIXME: we want the differences to be close to uniformly random, right
+(hence centroid)?
+And that's kind of what they look like.  Does Fig
+\ref{fig:cluster_diff} really add much?
 
 \begin{figure}[htb]
 \begin{center}
@@ -718,7 +732,7 @@ mostly rock and pop of different subgenres. Results exist in the
 litterature for that set \cite{Ellis2007}. The best accuracy is
 $59\%$, whereas using only chroma as a representation yields an
 accuracy of $33\%$. The latter results is obtained through a
-gaussian mixture model.
+Gaussian mixture model.
 
 Once again, the clustering method proposed in this work is not
 intended to perform well at artist recognition. An obvious fact is that
@@ -801,16 +815,16 @@ and we provided our source code\footnote{Code not yet released to preserve
 submission's anonymity}.
 
 As for enhancements, we specifically did not compress our features using
-gaussian mixtures or other generative model. That being said, these methods
+Gaussian mixtures or other generative model. That being said, these methods
 could be use to develop better distance measures between patterns.
 The use of the euclidean distance is arbitrary. Summarizing patches
-with gaussians, and then comparing the distance between those gaussians,
+with Gaussians, and then comparing the distance between those Gaussians,
 could reduce the influence of the noise in the distance measure.
 
 Moving on to larger scales, we could imagine merging codes together and
 splitting some on two if the clusters become too small or too large.We could
 also cluster the codebook itself, in a similar fashion as hierarchical
-gaussian mixtures \cite{Vasconcelos2001}.
+Gaussian mixtures \cite{Vasconcelos2001}.
 %  (similar idea used for indexing \cite{Muja2009})
 
 
