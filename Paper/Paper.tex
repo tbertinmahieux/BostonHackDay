@@ -617,9 +617,9 @@ size is actually $639$. Shown samples were randomly selected.
 \end{figure}
 
 \subsection{Cluster}
-Once we understand the kind of codebook we create, we naturally want
-to visualize the clusters, \ie the patterns from actual song that
-surround a given centroid. Unsurprisingly, real patterns tend to be
+Visualizing a codebook is half of the story, we also want to understand
+clusters, \ie the patterns from actual song that
+surround a given centroid (codeword). Unsurprisingly, real patterns are
 noisier than codes. However, centroids seem to capture important aspects
 of the patterns. We could compare the centroids with the result of
 a lowpass filtering. In Figure \ref{fig:cluster} we show elements of the same
@@ -848,7 +848,7 @@ could reduce the influence of the noise in the distance measure.
 
 Moving on to larger scales, we could imagine merging codes together and
 splitting some on two if the clusters become too small or too large.We could
-also cluster the codebook itself, in a similar fashion as hierarchical
+also cluster codebooks themselves, in a similar fashion as hierarchical
 Gaussian mixtures \cite{Vasconcelos2001}.
 %  (similar idea used for indexing \cite{Muja2009})
 
