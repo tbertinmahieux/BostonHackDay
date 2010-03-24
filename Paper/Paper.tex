@@ -16,6 +16,8 @@
 \setlength{\abovecaptionskip}{-3pt}
 \setlength{\belowcaptionskip}{10pt} 
 
+\usepackage{booktabs}
+
 \DeclareMathOperator*{\dist}{dist}
 \DeclareMathOperator*{\size}{size}
 
@@ -413,14 +415,16 @@ random from the dataset of approximately $3,7$ million patterns.
 
 \begin{table}
 \begin{center}
-\begin{tabular}{|l|l|c|}
-\hline
-\# codes & distortion \\ \hline \hline
+\begin{tabular}{llc}
+\toprule
+Codebook size & Distortion \\
+\midrule
 1 & $0.066081$ \\
 10 & $0.045579$ \\
 50 & $0.038302$ \\
 100 & $0.035904$ \\
-500 & $0.030841$ \\ \hline
+500 & $0.030841$ \\
+\bottomrule
 \end{tabular}
 \end{center}
 \caption{\small{Varying codebook size using $50,000$ training samples.
@@ -708,13 +712,15 @@ our future work.
 
 \begin{table}
 \begin{center}
-\begin{tabular}{c|c}
-%\hline
-offset & \% of times chosen \\ \hline
+\begin{tabular}{cc}
+\toprule
+Offset & \% of times chosen \\
+\midrule
 0 & $\mathbf{62.6}$\\
 1 & $16.5$\\
 2 & $09.4$\\
 3 & $11.5$\\
+\bottomrule
 \end{tabular}
 \end{center}
 \caption{\small{
