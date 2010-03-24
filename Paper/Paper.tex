@@ -128,7 +128,7 @@ music classification and retrieving tonally-related items.
 One major issue in working with small patches concerns temporal
 alignment. Learning the same motifs with different offset
 (of a few seconds, or audio frames) is redundant. We take advantage
-of rythmic knowledge about the song to align patches with beats.
+of rhythmic knowledge about the song to align patches with beats.
 We can further group beats into bars, meaningful music segments.
 The use of the Echo Nest API \cite{EchoNest} for that purpose is 
 explained in Subsection \ref{ssec:beatpatch}. Patches built around
@@ -141,7 +141,7 @@ underlying instrument tracks, as well as for matching
 performances of Mazurkas \cite{Casey2008}.  That work,
 however, was not concerned with extracting the deeper
 common patterns underlying different pieces (and did not
-use beat- or bar-synchronous features).  Earlier work in
+use either beat- or bar-synchronous features).  Earlier work in
 beat-synchronous analysis includes \cite{Bartsch2001},
 who looked for repeated patterns within single songs to
 identify the chorus, and \cite{Ellis2007a}, who
@@ -397,7 +397,7 @@ None of the result appear surprising,  but they are important for
 reproducing the experiments.
 \begin{itemize}
 \item Encoding performance improves with increasing training data (Figure
-\ref{fig:data_sizes}). Regarding the covergence of the performance,
+\ref{fig:data_sizes}). Regarding the convergence of the performance,
 we can imagine using $500$ or $1$K samples per codeword to learn if the
 training set size is problematic.
 \item Encoding performance improves with increasing codebook size
@@ -561,7 +561,7 @@ the percentage of use in the test set.
 Another interesting visualization uses LLE\footnote{implementation:
   \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
 algorithm \cite{Roweis2000} to display codewords arranged in
-coherent groups. See Figure \ref{fig:lle}. FOr instance, we see
+coherent groups. See Figure \ref{fig:lle}. For instance, we see
 ``wideband'' patterns grouping to the right.
 
 Finally, more related to our particular data, we try to assess how many
@@ -753,7 +753,7 @@ Random guess gives an accuracy of $25$\%.
 We apply our codebook to the artist recognition task.
 Our data set encompass $1402$ songs from $20$ artists, 
 mostly rock and pop of different subgenres. Results exist in the
-litterature for that set \cite{Ellis2007}. The best accuracy is
+literature for that set \cite{Ellis2007}. The best accuracy is
 $59\%$, whereas using only chroma as a representation yields an
 accuracy of $33\%$. The latter results is obtained through a
 Gaussian mixture model.
@@ -792,7 +792,8 @@ Suzanne Vega's pattern. These three artists were easily identified.
 
 Artists like Metallica are characterized by ``wideband'' patterns -
 featured muddled due to noisy acoustics - lots of transients,
-distortion, etc.  (not by cleaned up by EN's feature analysis)
+distortion, etc, which can be seen in Figure \ref{fig:metallica2}.
+%FIXME: ron, what di you mean: (not by cleaned up by EN's feature analysis)
 
 % ignoring the two following figures
 \iffalse
