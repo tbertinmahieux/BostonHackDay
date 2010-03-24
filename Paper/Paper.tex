@@ -392,22 +392,23 @@ meter normalization procedure described in Section \ref{sec:approach}.
 
 
 \subsection{Basic Properties}
-FIXME: flesh this out a \emph{little} more?
-
 This section present some fundamental results of the clustering algorithm.
-These are important, but do not change the larger picture. Due to space
-constraints, we give few details and refer to the figures.
+None of the result appear surprising,  but they are important for 
+reproducing the experiments.
 \begin{itemize}
-\item Encoding performance improves with increasing training data. See Figure
-\ref{fig:data_sizes}.
-\item Encoding performance improves with increasing codebook size. See 
-Table \ref{tab:cbsize}.
+\item Encoding performance improves with increasing training data (Figure
+\ref{fig:data_sizes}). Regarding the covergence of the performance,
+we can imagine using $500$ or $1$K samples per codeword to learn if the
+training set size is problematic.
+\item Encoding performance improves with increasing codebook size
+(Table \ref{tab:cbsize}). The increase seems significant, and
+increasing the size of the codebook in an efficient way
+is definitely part of our future work.
 \item Larger patterns are more difficult to encode, thus requiring
-larger codebooks. See Figure \ref{fig:perbeat}.
+larger codebooks. See Figure \ref{fig:perbeat}. The increase is steeper
+until $4$ beats which usually corresponds to one bar.
 \end{itemize}
 
-These properties are important to verify and for reproducing the experiments, 
-but they are not surprising for a clustering algorithm.
 
 \begin{figure}[htb]
 \begin{center}
