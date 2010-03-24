@@ -503,9 +503,11 @@ and 6), and a
 major and minor triads (codewords 5 and 4, respectively).  Many of the remaining
 codewords correspond to common transitions from one chord to another,
 \eg a transitions between major triads in codes 7 and 9 ( Cmaj
-$\rightarrow$ Fmaj)% assuming that chroma 0 is C) 
+$\rightarrow$ Fmaj or C5 $\rightarrow$ F5 as a guitar power chord)
+% assuming that chroma 0 is C) 
 and the reverse transition in code 21 (\ie Fmaj $\rightarrow$ Cmaj).
-FIXME: Does this transition have a better name like ``relative x''?
+%FIXME: Does this transition have a better name like ``relative x''?
+% C5 -> F5 in 'guitar chords', basically a power chord
 
 \begin{figure}[h]
 \begin{center}
@@ -557,9 +559,8 @@ the data.
 Showing codewords of $2$ bars is practical and consistent with our experiments
 in Section \ref{sec:exps2}. However, longer codewords can also reveal
 interesting structure. A random sample of such codewords is presented
-in Figure \ref{fig:codes8bars}.  FIXME: why a random sample?  Can we
-show their usage in the test (or train) set as in fig \ref{fig:codes1}?
-
+in Figure \ref{fig:codes8bars}. Most used codewords would be less interesting,
+as they all are sustained patterns.
 
 \begin{figure}[htb]
 \begin{center}
