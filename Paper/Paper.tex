@@ -678,7 +678,8 @@ $2$ bars at a time.
 In this section we describe two other applications of the clustering
 described in this paper: song segmentation, and artist
 recognition.  This demonstrates the utility of unsupervised clustering
-to FIXME ... 
+to supervised tasks. The representation created from large collections
+captures meaningful information without being forced to do so.
 % Although our algorithm was not devised for any of these
 % tasks, but some information contained in the centroids can be
 % naturally used.
@@ -697,16 +698,19 @@ the right segment with an accuracy of $62\%$ where random is
 $25\%$. Details of the experiment follow.
 
 We train a codebook of size $100$ on bars resized to $4$ beats. Then,
-we take the longest sequence of bars of $4$ beats in the test set.  As
+we take the longest sequence of bars of $4$ beats for each song
+in the test set.  As
 we mentioned before, $4$ beats is the most common bar size using the
-Echo Nest segmentation. We then encode this sequence using an offset
-of $0$, $1$, $2$ or $3$ beats. The best offset in terms of distortion
+Echo Nest segmentation. We then encode each of these sequences using an offset
+of $0$, $1$, $2$ or $3$ beats. The best offset for a test sequence
+(the one with the lowest distortion)
 should correspond to the bar alignment in the original
 feature matrix.  The correct answer is an offset of $0$.
 
-FIXME: Actually I'm (ronw) not sure how this was done.  Every 4 beat
-segment was treated separately?  Its not looking for a per-song alignment?
-
+%FIXME: Actually I'm (ronw) not sure how this was done.  Every 4 beat
+%segment was treated separately?  Its not looking for a per-song alignment?
+%TBM: yes, I simply summed the divergence from all patterns for a given
+% divergence, the lowest sum is the winner. So it's a per-song alignment.
 
 The result presented here suggest a dynamic programming setting where
 we could find the optimal bar segmentation according to our codebook. 
