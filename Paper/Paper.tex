@@ -555,12 +555,11 @@ size is actually $639$. Shown samples were randomly selected.
 \end{figure}
 
 \subsection{Cluster}
-Visualizing a codebook is half of the story, we also want to understand
-clusters, \ie the patterns from actual song that
-surround a given centroid (codeword). Unsurprisingly, real patterns are
-noisier than codes. However, centroids seem to capture important aspects
-of the patterns. We could compare the centroids with the result of
-a lowpass filtering. In Figure \ref{fig:cluster} we show elements of the same
+Clusters are formed around a centroid (codeword) by all patterns closer
+to that codeword than any other. Since the centroid is somewhat an
+average of those patterns, the latter tend to be noisier. Hence, codewords
+can be seen as the output of a lowpass filtering mecanism.
+In Figure \ref{fig:cluster} we show elements of one given
 cluster, and in Figure \ref{fig:cluster_diff}, we emphasize the difference
 with the centroid. We hope for the difference to look uniformly random,
 the result seems to fit that assumption.
