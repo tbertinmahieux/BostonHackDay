@@ -458,7 +458,7 @@ notes and simple chords.  Since they are designed to be key-invariant,
 specific notes do not appear.  Instead the first 7 codewords
 correspond to a single note sustained across two bars (codeword 0),
 perfect fifth (codewords 1 and 2) and fourth intervals (codewords 3
-and 6), and a
+and 6), and 
 major and minor triads (codewords 5 and 4, respectively).  Many of the remaining
 codewords correspond to common transitions from one chord to another,
 \eg a tonic-subdominant transition in codes 7 and 9
@@ -528,7 +528,7 @@ as they all are sustained patterns.
 \end{center}
 \caption{\small{
 Locally linear embedding (LLE) visualization of the codebook.
-LLE tries to keep near neighbors (here according to euclidean distance)
+LLE tries to keep near neighbors (here according to Euclidean distance)
 in the same $2$D neighborhood. Shown patterns were randomly selected
 in each neighborhood.
 }}
@@ -683,9 +683,9 @@ Offset & \% of times chosen \\
 \end{tabular}
 \end{center}
 \caption{\small{
-Song segmentation experiment:
-best offset according to our codebook. The real one is $0$.
-Random guess gives an accuracy of $25$\%.
+Results from the song segmentation experiment.
+The correct offset is $0$.
+Baseline performance by choosing the offset randomly gives an accuracy of $25$\%.
 }}
 \label{tab:offset}
 \end{table}
@@ -715,7 +715,7 @@ of patterns in the song. We test each song in a leave-one-out setting.
 Leaving aside the test song, we represent each of the $20$ artists by the 
 average of
 the song histograms of that artist. The test song is compared to
-the histogram of each artist using euclidean distance.
+the histogram of each artist using Euclidean distance.
 
 
 \begin{figure}[htb]
@@ -731,8 +731,9 @@ To find these patterns, we compare its use by one artist and divide
 by its use by all artists. In Figure \ref{fig:typicalpat} we see 
 Metallica's pattern, then Tori Amos and
 Suzanne Vega's pattern. These three artists were easily identified.
-Artists like Metallica are characterized by ``wideband'' patterns -
-featured muddled due to noisy acoustics - lots of transients,
+Artists such as Metallica are characterized by ``wideband'' patterns,
+containing features muddled by the noisy acoustics containing many
+transients,
 distortion, etc, which can be seen in Figure \ref{fig:metallica2}.
 %FIXME: ron, what di you mean: (not by cleaned up by EN's feature analysis)
 
@@ -784,12 +785,12 @@ submission's anonymity}
 As for enhancements, we specifically did not compress our features using
 Gaussian mixtures or other generative model. That being said, these methods
 could be use to develop better distance measures between patterns.
-The use of the euclidean distance is arbitrary. Summarizing patches
+The use of the Euclidean distance is arbitrary. Summarizing patches
 with Gaussians, and then comparing the distance between those Gaussians,
 could reduce the influence of the noise in the distance measure.
 
 Moving on to larger scales, we could imagine merging codes together and
-splitting some on two if the clusters become too small or too large.We could
+splitting some on two if the clusters become too small or too large.  We could
 also cluster codebooks themselves, in a similar fashion as hierarchical
 Gaussian mixtures \cite{Vasconcelos2001}.
 %  (similar idea used for indexing \cite{Muja2009})
