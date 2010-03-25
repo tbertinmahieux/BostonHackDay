@@ -554,14 +554,17 @@ codewords consisting of sustained chords.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=.9\columnwidth]{close_patterns1}
+\includegraphics[width=.8\columnwidth]{codes_8bars}
 \end{center}
-\caption{\small{Cluster around centroid presented in
-Figure \ref{fig:code}. Taken from the artist20 dataset, the cluster
-size is actually $639$. Shown samples were randomly selected.
-}}
-\label{fig:cluster}
+\caption{\small{Sample of longer codewords spanning over $8$
+    bars. Codewords selected randomly from the codewords used in the
+    test set. Percentage of use display in parentheses.  Most patterns
+    consist of sustained note or chords, but code 0 shows a repeating
+    two chord pattern and code 4 contains two bars of a
+    1$\rightarrow$1$\rightarrow$1$\rightarrow$2 progression.}}
+\label{fig:codes8bars}
 \end{figure}
+
 
 \subsection{Cluster}
 Clusters are formed around a centroid (codeword) by all patterns closer
@@ -581,6 +584,17 @@ the result seems to fit that assumption.
 
 \begin{figure}[htb]
 \begin{center}
+\includegraphics[width=.9\columnwidth]{close_patterns1}
+\end{center}
+\caption{\small{Cluster around centroid presented in
+Figure \ref{fig:code}. Taken from the artist20 dataset, the cluster
+size is actually $639$. Shown samples were randomly selected.
+}}
+\label{fig:cluster}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
 \includegraphics[width=.8\columnwidth]{close_patterns_diff}
 \end{center}
 \caption{\small{First three patterns of figure \ref{fig:cluster}
@@ -588,19 +602,6 @@ the result seems to fit that assumption.
 ($1$st line) and the absolute difference between both ($3$rd line).
 }}
 \label{fig:cluster_diff}
-\end{figure}
-
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=.8\columnwidth]{codes_8bars}
-\end{center}
-\caption{\small{Sample of longer codewords spanning over $8$
-    bars. Codewords selected randomly from the codewords used in the
-    test set. Percentage of use display in parentheses.  Most patterns
-    consist of sustained note or chords, but code 0 shows a repeating
-    two chord pattern and code 4 contains two bars of a
-    1$\rightarrow$1$\rightarrow$1$\rightarrow$2 progression.}}
-\label{fig:codes8bars}
 \end{figure}
 
 
@@ -630,8 +631,8 @@ $2$ bars at a time.
 
 
 \section{Applications}\label{sec:exps2}
-In this section we apply the result of our method to two task
-not related to clustering. We try to demonstrate that the codewords
+In this section we apply the result of our method to two tasks
+unrelated to clustering. We try to demonstrate that the codewords
 we learned capture musically meaningful patterns, at least to
 contemporary pop music. This also demonstrates the utility of unsupervised 
 clustering to other MIR tasks usually tackled in a supervised
