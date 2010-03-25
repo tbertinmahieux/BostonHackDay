@@ -116,25 +116,23 @@ instrumentation and other stylistic details.
 Specifically, this paper identifies common patterns in beat-synchronous
 chromagrams by learning codebooks from a large set of examples.
 The individual codewords consist of short beat-chroma patches of
-between 1 and 8 beats, which are able to represent the entire dataset
+between 1 and 8 beats, optionally aligned to bar boundaries.
+%
+The additional temporal alignment eliminates redundancy that would be
+created by learning multiple codewords to represent the same motive at
+multiple beat offsets.
+%
+The codewords are able to represent the entire dataset
 of millions of patterns with minimum error given a small codebook of
-a few hundred entries.  Our goal is to identify meaningful information
+a few hundred entries.
+%
+Our goal is to identify meaningful information
 about the musical structure represented in the entire database by
 examining individual entries in this codebook.  Since the common
 patterns represent a higher-level description of the musical content
 than the raw chroma,
 we also expect them to be useful in other applications, such as
 music classification and retrieving tonally-related items.
-
-One major issue in working with small patches concerns temporal
-alignment. Learning the same motifs with different offsets 
-(in time or beats) is redundant. We take advantage
-of rhythmic knowledge about the song to align patches with beats.
-We can further group beats into bars to produces patches
-for meaningful music segments.
-Our use of the Echo Nest API \cite{EchoNest} for this purpose is 
-explained in Section \ref{ssec:beatpatch}. Patches built around
-these temporal landmarks should capture music motifs more easily.
 
 Prior work using small patches of chroma features includes
 the ``shingles'' of \cite{Casey2007_small}, which were used to
@@ -706,10 +704,10 @@ Baseline performance by choosing the offset randomly gives an accuracy of $25$\%
 
 We apply our codebook to the artist recognition task.
 Our dataset, ``artist20'', encompass $1402$ songs from $20$ artists, 
-mostly rock and pop of different subgenres. Results exist in the
-literature for that set \cite{Ellis2007}. The best accuracy is
-$59\%$, whereas using only chroma and a Gaussian mixture model
-yields an accuracy of $33\%$.
+mostly rock and pop of different subgenres.
+The best accuracy on the dataset in the literature is $59\%$, whereas
+using only chroma and a Gaussian mixture model yields an accuracy of
+$33\%$ \cite{Ellis2007}.
 
 The clustering method proposed in this work is not
 intended to perform well at artist recognition. 
