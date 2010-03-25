@@ -44,7 +44,7 @@
   {First author} {Affiliation1 \\ {\tt author1@ismir.edu}}
   {Second author} {\bf Retain these fake authors in\\\bf submission to preserve the formatting}
   {Third author} {Affiliation3 \\ {\tt author3@ismir.edu}}
-% Thierry, Ron, Dan
+% what order do we use? Thierry, Ron, Dan?  Dan, Thierry, Ron?
 
 
 % Q: Why are there long spaces after "e.g." or "i.e."?
@@ -106,7 +106,7 @@ representation represents a typical music track
 in a few thousand values, yet when resynthesized back into audio via
 modulation of octave-invariant ``Shepard tones'', the melody and
 chord sequences of the original music usually remain recognizable
-\cite{Ellis2007a_small}.  To the extent, then, that beat-chroma
+\cite{Ellis2007a}.  To the extent, then, that beat-chroma
 representations preserve tonal content, they
 are an interesting domain in which to search for patterns -- rich enough
 to generate musically-relevant results, but simplified enough to
@@ -116,17 +116,9 @@ instrumentation and other stylistic details.
 Specifically, this paper identifies common patterns in beat-synchronous
 chromagrams by learning codebooks from a large set of examples.
 The individual codewords consist of short beat-chroma patches of
-between 1 and 8 beats, optionally aligned to bar boundaries.
-%
-The additional temporal alignment eliminates redundancy that would be
-created by learning multiple codewords to represent the same motive at
-multiple beat offsets.
-%
-The codewords are able to represent the entire dataset
+between 1 and 8 beats, which are able to represent the entire dataset
 of millions of patterns with minimum error given a small codebook of
-a few hundred entries.
-%
-Our goal is to identify meaningful information
+a few hundred entries.  Our goal is to identify meaningful information
 about the musical structure represented in the entire database by
 examining individual entries in this codebook.  Since the common
 patterns represent a higher-level description of the musical content
@@ -134,17 +126,27 @@ than the raw chroma,
 we also expect them to be useful in other applications, such as
 music classification and retrieving tonally-related items.
 
+One major issue in working with small patches concerns temporal
+alignment. Learning the same motifs with different offsets 
+(in time or beats) is redundant. We take advantage
+of rhythmic knowledge about the song to align patches with beats.
+We can further group beats into bars to produces patches
+for meaningful music segments.
+Our use of the Echo Nest API \cite{EchoNest} for this purpose is 
+explained in Section \ref{ssec:beatpatch}. Patches built around
+these temporal landmarks should capture music motifs more easily.
+
 Prior work using small patches of chroma features includes
-the ``shingles'' of \cite{Casey2007_small}, which were used to
+the ``shingles'' of \cite{Casey2007}, which were used to
 identify ``remixes'', i.e., music based on some of the same
 underlying instrument tracks, and also for matching
 performances of Mazurkas \cite{Casey2008}.  That work,
 however, was not concerned with extracting the deeper
 common patterns underlying different pieces (and did not
 use either beat- or bar-synchronous features).  Earlier work in
-beat-synchronous analysis includes \cite{Bartsch2001_small},
+beat-synchronous analysis includes \cite{Bartsch2001},
 which looked for repeated patterns within single songs to
-identify the chorus, and \cite{Ellis2007a_small}, which 
+identify the chorus, and \cite{Ellis2007a}, which 
 cross-correlated beat-chroma matrices to match cover
 versions of pop music tracks.  None of these works
 examined or interpreted the content of the chroma
@@ -153,9 +155,9 @@ develop a codebook whose entries are of interest
 in their own right.
 
 
-\begin{figure}[t]
+\begin{figure}[thb]
 \begin{center}
-\includegraphics[width=.4\columnwidth]{code}
+\includegraphics[width=.6\columnwidth]{code}
 \end{center}
 \caption{\small{A typical codeword from a codebook of size $200$ (code
     7 in Figure \ref{fig:codes1}), corresponding to a
@@ -181,7 +183,7 @@ subdivide segments; bars span multiple beats.
 %
 Averaging the per-segment chroma over beat times results in a
 beat-synchronous chroma feature representation similar to that used in
-\cite{Ellis2007a_small}.  Echo Nest chroma vectors are normalized to have the 
+\cite{Ellis2007a}.  Echo Nest chroma vectors are normalized to have the 
 largest value in each column equal to 1.
 
 % \begin{figure}[htb]
@@ -199,7 +201,7 @@ can be assumed perfectly accurate.
 %(\eg in \cite{Barrington2009a} authors obtain a better
 %song segmentation than the Echo Nest). 
 In practice, we have found them reasonable, 
-and given the size of the dataset, any rare imperfections or noise
+and given the size of the data set, any rare imperfections or noise
 can be diluted to irrelevance by the good examples.  
 We also believe that patch sizes based on a number of beats or bars are more
 meaningful than an arbitrary time length. This is discussed further in 
@@ -223,8 +225,8 @@ one or two bars in length.
 %
 Because the bar length is not guaranteed to be 4 beats, 
 depending on the meter of a particular
-song, we resample each patch to a fixed length of typically 4 beats
-per bar.  However, the majority (82\%) of our training data
+song, we resample each patch to a fixed length of 4 beats
+per bar (except where noted).  However, the majority (82\%) of our training data
 consisted of bars that were 4 beats long, so this resampling 
 usually had no effect.  Most of the remaining bars (10\%) were 3 beats in
 length.
@@ -250,7 +252,7 @@ the specific musical context.
 % pattern usage without maintaining clusters for the specific context a
 % particular patterns occurs in,
 In the context of clustering this avoids problems such as obtaining separate
-clusters for every major triad in duple or triple meter.
+clusters for every major triad for both duple and triple meters.
 % Also, this implies that the pitch envelope is important rather than
 % the actual pitches.
 %FIXME: Something about why we're not interested in specific chords?
@@ -261,6 +263,7 @@ clusters for every major triad in duple or triple meter.
 %%%% dpwe: I don't agree with this, I'd rather say nothing
 
 \subsection{Clustering}
+
 % We can then stack beat vectors for a number of bars (usually 1 or 2).
 
 We use an online version of the vector quantization algorithm
@@ -276,9 +279,6 @@ The details are explained in Algorithm \ref{algo:vq}.
 %
 As in standard $k$-means clustering, the codebook is initialized by
 choosing $K$ random points from our dataset.
-% ADDED BY TBM AFTER DAN
-Initialization had no significant effect on the distortion
-in our experiments.
 %
 Note that this algorithm, although not optimal, scales linearly with
 the number of patches seen and can be interrupted at any time
@@ -342,7 +342,7 @@ the Cowbell data set can represent new songs.  We obtained Echo Nest features
 for the $8651$ songs contained in the dataset.
 
 
-\subsection{Setting}\label{ssec:setting}
+\subsection{Settings}\label{ssec:setting}
 We take one or two bars and resample the patches to 4 or 8 columns 
 respectively.  We learn a codebook of size $K$ over the Cowbell
 dataset using the online VQ algorithm (Algorithm \ref{algo:vq}). We use a
@@ -361,11 +361,12 @@ measure between chroma patches.  Given a pattern $p_1$
 composed of elements $p_1(i,j)$, and a similar pattern $p_2$, the
 distance between them is:
 \begin{eqnarray}
-  \dist(p_1,p_2) = \sum_{i,j} \frac{\left(p_1(i,j) - p_2(i,j)\right)^2}{\size(p_1)}
+  \dist(p_1,p_2) = \sum_{i,j} \frac{(p_1(i,j) - p_2(i,j))^2}{\size(p_1)}
   \label{eq:dist}
 \end{eqnarray}
 We assume $p_1$ and $p_2$ have the same size.  This is enforced by the
 resampling procedure described in Section \ref{sec:approach}.
+
 
 \begin{figure}[t]
 \begin{center}
@@ -374,14 +375,12 @@ resampling procedure described in Section \ref{sec:approach}.
 \caption{\small{Distortion for a codebook of size $100$ encoding one bar
 at a time with by $4$ columns.
 Therefore, each codeword has $12 \times 4 = 48$ elements.
-Distortion is measured on the test set.  Training data sizes range
+Distortion is measurde on the test set.  Training data sizes range
 from $0$ (just initialization) to $500,000$. Patterns were selected at
 random from the dataset of approximately $3.7$ million patterns.
 }}
 \label{fig:data_sizes}
 \end{figure}
-
-
 
 
 \subsection{Codebook properties}
@@ -425,7 +424,7 @@ of $50,000$ samples.  Codebook consists of $1$ bar ($4$ beat) patterns.
 \end{table}
 
 
-\begin{figure}[t]
+\begin{figure}[b]
 \begin{center}
 \includegraphics[width=.8\columnwidth]{encoding_per_beat}
 \end{center}
@@ -451,6 +450,35 @@ $2$ bars at a time.  The results shown are on the {\it artist20} test set descri
 Section \ref{ssec:artist}.
 
 
+\begin{figure}[t]
+\begin{center}
+\includegraphics[width=\columnwidth]{codes1}
+\end{center}
+\caption{\small{
+The 25 codes that are 
+most commonly used for the {\it artist20} test set. 
+Codes are from the $200$-entry codebook trained on $2$ bar, $12 \times 8$
+patches.  The proportion of patches accounted for by each pattern is shown 
+in parentheses.
+%There are $71832$ patterns in total in the dataset.
+}}
+\label{fig:codes1}
+\end{figure}
+
+\begin{figure}[bt]
+\begin{center}
+\includegraphics[width=.99\columnwidth]{freqs}
+\end{center}
+\caption{\small{Usage proportions for all 200 codewords 
+on the {\it artist20} test set (which comprises $71,832$
+patterns).  Also shown are the usage proportions for the training set (``cowbell''), 
+which are similar.
+Note that even though all codewords are initialized from samples, some
+are used only once in the training set, or not at all for test set.
+}}
+\label{fig:freqs}
+\end{figure}
+
 The 25 most frequently used codewords in the test set are shown in
 Figure \ref{fig:codes1}.  
 The frequency of use of these codewords is shown in Figure \ref{fig:freqs}.
@@ -465,7 +493,7 @@ major triads transposed to the root and fifth (codewords 5 and 4, respectively).
 codewords correspond to common transitions from one chord to another,
 \eg a V-I transition in codes 7 and 9
 (e.g., Gmaj
-$\rightarrow$ Cmaj or G5 $\rightarrow$ C5 as a guitar power chord)
+$\rightarrow$ Cmaj, or G5 $\rightarrow$ C5 as a guitar power chord)
 % assuming that chroma 0 is C) 
 and the reverse I-V transition in code 21 (e.g., Cmaj
 $\rightarrow$ Gmaj).
@@ -474,106 +502,112 @@ $\rightarrow$ Gmaj).
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width=.9\columnwidth]{codes1}
-\end{center}
-\caption{\small{
-The 25 codes that are 
-most commonly used for the {\it artist20} test set. 
-Codes are from the $200$-entry codebook trained on $2$ bar, $12 \times 8$
-patches.  The proportion of patches accounted for by each pattern is shown 
-in parentheses.
-%There are $71832$ patterns in total in the dataset.
-}}
-\label{fig:codes1}
-\end{figure}
-
-\begin{figure}[t]
-\begin{center}
-\includegraphics[width=.99\columnwidth]{freqs}
-\end{center}
-\caption{\small{Usage proportions for all 200 codewords 
-on the {\it artist20} test set (which comprises $71,832$
-patterns).  Also shown are the usage proportions for the training set (``cowbell''), 
-which are similar.
-Note that even though all codewords are initialized from samples, some
-are used only once in the training set, or not at all for test set.
-}}
-\label{fig:freqs}
-\end{figure}
-
-An alternate visualization of the codebook is shown in Figure
-\ref{fig:lle}.  We use locally linear embedding \cite{Roweis2000} to
-group near neighbors on a 2 dimensional plane\footnote{We used the
-  implementation from:
-  \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}.
-This visualization highlights different groups of codewords: sustained
-chords on the top left, chord changes on the bottom left, and more
-complex sustained chords and ``wideband'' noisy patterns grouping to
-the right of the figure.
-
-Given the prevalence of simple codewords in Figures \ref{fig:codes1}
-and \ref{fig:lle}, we assess the proportion of the codebook devoted to
-representing sustained chord patterns.  The average variance over time
-within each codeword is plotted in Figure \ref{fig:code_var}.  From
-this figure it is clear that 25\% of the codebook corresponds to very
-simple sustained patterns similar to the top row of Figure
-\ref{fig:codes1}. For $2$ bar codewords, it seems that patterns
-containing more complex temporal activity account for only $33$\% of
-the data.
-
-Showing codewords of $2$ bars is practical and consistent with our experiments
-in Section \ref{sec:exps2}. However, longer codewords can also reveal
-interesting structure. A random sample of such codewords is presented
-in Figure \ref{fig:codes8bars}. Most used codewords would be less interesting,
-as they all are sustained patterns.
-
-\begin{figure}[t]
-\begin{center}
 \includegraphics[width=.9\columnwidth]{codes_lle}
 \end{center}
-\caption{\small{ Locally linear embedding (LLE) visualization of the
-    codebook described in Section \ref{sec:visu}.  Each codeword is
-    represented by a point on the scatter plot.  Randomly selected
-    codewords from the embedded space are displayed over the plot.
-    %FIXME: does this figure really provide any new insight?
-  }}
+\caption{\small{
+LLE visualization of the codebook.
+%LLE tries to keep near neighbors (here according to euclidean distance)
+%in the same $2$D neighborhood. 
+Shown patterns are randomly selected
+from each neighborhood.
+}}
 \label{fig:lle}
 \end{figure}
+
+In an effort to visualize the span of the entire codebook, we used 
+Locally linear embedding (LLE) \cite{Roweis2000}\footnote{implementation:
+  \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
+to arrange the codewords on a 2D plane while keeping similar 
+patterns as neighbors.  Figure \ref{fig:lle} shows the resulting 
+distribution along with a sampling of patterns; notice trends such as the 
+more ``wideband'' patterns to the right.
+
+%Another interesting visualization uses LLE\footnote{implementation:
+%  \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
+%algorithm \cite{Roweis2000} to display codewords arranged in
+%coherent groups. See Figure \ref{fig:lle}. For instance, we see
+%``wideband'' patterns grouping to the right.
 
 \begin{figure}[t]
 \begin{center}
 \includegraphics[width=.9\columnwidth]{code_variance}
 \end{center}
-\caption{\small{Average variance in time of a codebook. The vertical
-axis cuts at the $63$rd pattern, a rough estimate of the number of 
-codewords consisting of sustained chords.
+\caption{\small{Average variance of codewords along the time dimension. The vertical
+axis cuts at the $53$rd pattern, roughly the number of 
+codewords consisting entirely of sustained chords.  Representative patterns are shown 
+in each range.
 }}
 \label{fig:code_var}
 \end{figure}
 
-\begin{figure}[t]
+Noting that many of the codewords reflect sustained patterns with 
+little temporal variation, Figure \ref{fig:code_var} plots the average 
+variance along time of all 200 patterns.  
+Some 26\% of the codewords have very low variance, corresponding 
+to stationary patterns similar to the top row of Figure
+\ref{fig:codes1}. 
+%For $2$ bars codewords, it seems that patterns
+%containing more complex temporal activity account for only $33$\% of
+%the data.
+%%%% dpwe: I can't tell what this means, so drop it.
+
+\begin{figure}[htb]
 \begin{center}
 \includegraphics[width=.8\columnwidth]{codes_8bars}
 \end{center}
-\caption{\small{Sample of longer codewords spanning over $8$
-    bars. Codewords selected randomly from the codewords used in the
-    test set. Percentage of use display in parentheses.  Most patterns
-    consist of sustained note or chords, but code 0 shows a repeating
-    two chord pattern and code 4 contains two bars of a
+\caption{\small{Sample of longer codewords spanning $8$
+    bars. Codewords were randomly selected from a 100-entry 
+    codebook. Percentages of use are shown in parentheses.  Most patterns
+    consist of sustained notes or chords, but code 0 shows one-bar 
+    alternations between two chords, and code 4 contains two cycles of a
     1$\rightarrow$1$\rightarrow$1$\rightarrow$2 progression.}}
 \label{fig:codes8bars}
 \end{figure}
 
+We made some preliminary experiments with codebooks based on 
+longer patches.  Figure \ref{fig:codes8bars} presents a codewords 
+from an 8 bar (32 beat) codebook.  We show a random selection 
+since all the most-common codewords were less interesting, sustained 
+patterns.
 
-\subsection{Cluster}
-Clusters are formed around a centroid (codeword) by all patterns closer
-to that codeword than any other. Since the centroid is somewhat an
-average of those patterns, the latter tend to be noisier. Hence, codewords
-can be seen as the output of a lowpass filtering mechanism.
-In Figure \ref{fig:cluster} we show elements of one given
-cluster, and in Figure \ref{fig:cluster_diff}, we emphasize the difference
-with the centroid. We hope for the difference to look uniformly random,
-the result seems to fit that assumption.
+%Showing codewords of $2$ bars is practical and consistent with our experiments
+%in Section \ref{sec:exps2}. However, longer codewords can also reveal
+%interesting structure. A random sample of such codewords is presented
+%in Figure \ref{fig:codes8bars}. Most used codewords would be less interesting,
+%as they all are sustained patterns.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=.9\columnwidth]{close_patterns1}
+\end{center}
+\caption{\small{Cluster around centroid presented in
+Figure \ref{fig:code}. Taken from the {\it artist20} dataset, the cluster
+size is actually $639$. Shown samples were randomly selected.
+}}
+\label{fig:cluster}
+\end{figure}
+
+\subsection{Within-cluster behavior}
+In addition to inspecting the codewords, it is important to understand 
+the nature of the cluster of patterns represented by each codeword, i.e., 
+how well the centroid describes them, and the kind of detail that has 
+been left out of the codebook.  Figure \ref{fig:cluster} shows a random 
+selection of the $639$ patterns from the {\it artist20} test set that 
+were quantized to codeword 7 from Figure \ref{fig:codes1}, the V-I cadence. 
+Figure \ref{fig:cluster_diff} illustrates the difference between the actual 
+patterns and the quantized codeword for the first three patterns; although 
+there are substantial differences, they are largely unstructured, indicating 
+that the codebook has captured the important underlying trend.
+
+%Visualizing a codebook is half of the story, we also want to understand
+%clusters, \ie the patterns from actual song that
+%surround a given centroid (codeword). Unsurprisingly, real patterns are
+%noisier than codes. However, centroids seem to capture important aspects
+%of the patterns. We could compare the centroids with the result of
+%a lowpass filtering. In Figure \ref{fig:cluster} we show elements of the same
+%cluster, and in Figure \ref{fig:cluster_diff}, we emphasize the difference
+%with the centroid. We hope for the difference to look uniformly random,
+%the result seems to fit that assumption.
 
 %FIXME: we want the differences to be close to uniformly random, right
 %(hence centroid)?
@@ -581,18 +615,7 @@ the result seems to fit that assumption.
 %\ref{fig:cluster_diff} really add much?
 
 
-\begin{figure}[t]
-\begin{center}
-\includegraphics[width=.9\columnwidth]{close_patterns1}
-\end{center}
-\caption{\small{Cluster around centroid presented in
-Figure \ref{fig:code}. Taken from the artist20 dataset, the cluster
-size is actually $639$. Shown samples were randomly selected.
-}}
-\label{fig:cluster}
-\end{figure}
-
-\begin{figure}[t]
+\begin{figure}[htb]
 \begin{center}
 \includegraphics[width=.8\columnwidth]{close_patterns_diff}
 \end{center}
@@ -606,41 +629,39 @@ size is actually $639$. Shown samples were randomly selected.
 
 \subsection{Example song encoding}
 
-Figure \ref{fig:encodesong} shows an example of a song encoded
-using the codebook described in Section \ref{sec:codebook}.  Both the
-Echo Nest chroma features for the example song and the corresponding
-quantization are displayed.  The quantized representation retains
-dominant harmonic structure of the original features, but is smoothed
-in time due to the use of 2 bar long codewords.
+Figure \ref{fig:encodesong} gives an example of encoding a song
+using the codebook, showing both the full, original data, and the 
+reconstruction using only the quantized codewords (at the correct transpositions).  
+The quantized representation retains
+the essential harmonic structure of the original features, but has smoothed
+away much of the detail below the level of the 2 bar codewords.
 %
-This is consistent with the codebook described in Section
-\ref{sec:codebook} which primarily consists of sustained chords across
-4 or 8 beats.
+%This is consistent with the codebook described in Section
+%\ref{sec:codebook} which primarily consists of sustained chords across
+%4 or 8 beats.
 
-\begin{figure}[t]
+\begin{figure}[htb]
 \begin{center}
 \includegraphics[width=.9\columnwidth]{song_encoded}
 \end{center}
 \caption{\small{Good Day Sunshine by \textit{The Beatles}.
-Original song and its encoding using a $200$ entry codebook learning
-$2$ bars at a time.
+Original song and encoding with a $200$ entry codebook of 
+$2$ bar patterns.
 }}
 \label{fig:encodesong}
 \end{figure}
 
 
 \section{Applications}\label{sec:exps2}
-In this section we investigate the application of beat-chroma
-codebooks to two tasks unrelated to clustering.
+We present two applications of the beat-chroma codebooks
+to illustrate how the ``natural'' structure identified via 
+unsupervised clustering can provide useful 
+features for subsequent supervised tasks.  We will discuss how 
+the codewords can be used in song segmentation, and for artist
+recognition.  
+%The representation created from large collections
+%captures meaningful information without being forced to do so.
 %
-In the first experiment, we show that the codebooks retrain
-information related to bar alignment and can therefore be used to
-discover the bar boundaries for new songs.  The second experiment
-shows that we can discriminate artists based on the encoding of their
-songs, implying that some artists have a tendency to use different
-beat-chroma patterns than others.
-
-
 % Although our algorithm was not devised for any of these
 % tasks, but some information contained in the centroids can be
 % naturally used.
@@ -648,38 +669,49 @@ beat-chroma patterns than others.
 \subsection{Song Segmentation} \label{ssec:segment}
 
 Since the clustering described in Section \ref{sec:approach} is based
-on the segmentation of the signal into bars, it stands to reason that
-the cluster centroids should contain information related to bar
+on the segmentation of the signal in to bars, 
+the codewords should contain information related to bar
 alignment, such as the presence of a strong beat on the first beat.
 %
-We investigate whether it is possible to recover the
-bar segmentation of new songs using the information contained in the
-cluster centroids.  The results are shown in Table \ref{tab:offset}. We find
-the right segment with an accuracy of $62\%$ where random is
-$25\%$. Details of the experiment follow.
-
-We train a codebook of size $100$ on bars resized to $4$ beats. Then,
+In this section we investigate using the codebook to identify the
+bar segmentation of new songs.  
+% using the information contained in the cluster centroids.  
+We train a codebook of size $100$ on bars resampled to $4$ beats. Then,
 we take the longest sequence of bars of $4$ beats for each song
-in the test set.  As
-we mentioned before, $4$ beats is the most common bar size using the
-Echo Nest segmentation. We then encode each of these sequences using an offset
-of $0$, $1$, $2$ or $3$ beats. The offset on a test sequence
-with the lowest distortion is our predicted alignment.
-The correct answer is an offset of $0$.
+in the test set (to avoid the alignment skew that results from spanning 
+irregularly-sized bars).  
+%As we mentioned before, $4$ beats is the most common bar size using the
+%Echo Nest segmentation. 
+We then encode each of these sequences using an offset
+of $0$, $1$, $2$ or $3$ beats, and record for each song 
+the offset giving the lowest distortion.  
+%The best offset for a test sequence
+%(the one with the lowest distortion)
+%should correspond to the bar alignment in the original
+%feature matrix.  
+%The correct answer is an offset of $0$.
+%
+The results in Table \ref{tab:offset}
+show that the ``true'' offset of $0$ beats is chosen in $62\%$ of cases (where a random 
+guess would yield $25\%$).  Thus, the codebook is useful for identifying bar (downbeat) 
+alignments.  A more flexible implementation of this idea would use dynamic 
+programming to align bar-length patterns to the entire piece, including the 
+possibility of 3- or 5-beat bars (as are sometimes needed to accommodate 
+beat tracking errors) with an appropriate associated penalty.  
 
 %FIXME: Actually I'm (ronw) not sure how this was done.  Every 4 beat
 %segment was treated separately?  Its not looking for a per-song alignment?
 %TBM: yes, I simply summed the divergence from all patterns for a given
 % divergence, the lowest sum is the winner. So it's a per-song alignment.
 
-The result presented here suggest a dynamic programming setting where
-we could find the optimal bar segmentation according to our codebook. 
-We could try
-all possible bar length (in terms of beats) and not restrict ourselves
-to bars of $4$ beats and offsets between $0$ and $3$. This is part of
-our future work.
+%The result presented here suggest a dynamic programming setting where
+%we could find the optimal bar segmentation according to our codebook. 
+%We could try
+%all possible bar length (in terms of beats) and not restrict ourselves
+%to $4$ beats bars and offsets between $0$ and $3$. This is part of
+%our future work.
 
-\begin{table}[t]
+\begin{table}
 \begin{center}
 \begin{tabular}{cc}
 \toprule
@@ -687,69 +719,69 @@ Offset & \% of times chosen \\
 \midrule
 0 & $\mathbf{62.6}$\\
 1 & $16.5$\\
-2 & $09.4$\\
+2 & $\text{ }9.4$\\
 3 & $11.5$\\
 \bottomrule
 \end{tabular}
 \end{center}
 \caption{\small{
-Results from the song segmentation experiment.
-The correct offset is $0$.
-Baseline performance by choosing the offset randomly gives an accuracy of $25$\%.
+Song segmentation experiment:
+offsets relative to ground-truth 4-beat bar boundaries 
+that gave minimum distortion encodings from the bar-aligned codebook.
+%The real one is $0$.
+%Random guess gives an accuracy of $25$\%.
 }}
 \label{tab:offset}
 \end{table}
 
 \subsection{Artist Recognition} \label{ssec:artist}
 
-We apply our codebook to the artist recognition task.
-Our dataset, ``artist20'', encompass $1402$ songs from $20$ artists, 
-mostly rock and pop of different subgenres.
-The best accuracy on the dataset in the literature is $59\%$, whereas
-using only chroma and a Gaussian mixture model yields an accuracy of
-$33\%$ \cite{Ellis2007}.
+We apply our codebook to a simple artist recognition task.
+We use the {\it artist20} data set, composed of $1402$ songs from $20$ artists, 
+mostly rock and pop of different subgenres.  
+Previously published results using GMMs on MFCC features achieve an 
+accuracy of $59\%$, whereas using only chroma as a representation yields an
+accuracy of $33\%$  \cite{Ellis2007}. 
 
-The clustering method proposed in this work is not
-intended to perform well at artist recognition. 
-In particular,
-we lose all timbral information which would be useful. 
-However, we can
-imagine that some artist use more often some patterns than others.
-Our accuracy result is $23.4\%$ while random
+Although beat-chroma quantization naturally discards information 
+that could be useful in artist classification, it is interesting to 
+investigate whether some artist use certain patterns more often than others.
+
+The dataset is encoded as histograms of the codewords 
+used for each song, with frequency values normalized by the number
+of patterns in the song. We test each song in a leave-one-out setting, 
+and represent each of the $20$ artists by the average of their (remaining) 
+song-histograms.  The test song is matched to an artist based on 
+minimum Euclidean distance to these per-artist averages.
+This gives an accuracy of $23.4\%$, where the random baseline 
 is around $5\%$. 
-The confusion matrix can be seen in Figure \ref{fig:conf_mat}.
-Details of the experiment follow.
-
-All songs in the artist dataset are encoded as an histogram of the codes
-used in that song. The frequency values are normalized by the number
-of patterns in the song. We test each song in a leave-one-out setting.
-Leaving aside the test song, we represent each of the $20$ artists by the 
-average of
-the song histograms of that artist. The test song is compared to
-the histogram of each artist using Euclidean distance.
-
+The confusion matrix can be seen in Figure \ref{fig:conf_mat}, showing 
+that certain artists are recognized at an accuracy far above the average.
 
 \begin{figure}[t]
 %\begin{center}
 \includegraphics[width=.9\columnwidth]{conf_mat_per_artist}
 %\end{center}
-\caption{\small{Confusion matrix for artist recognition task.}}
+\caption{\small{Confusion matrix for the artist recognition task.}}
 \label{fig:conf_mat}
 \end{figure}
 
-Looking at the most typical patterns per artist can be insightful.
-To find these patterns, we compare its use by one artist and divide
-by its use by all artists. In Figure \ref{fig:typicalpat} we see 
-Metallica's pattern, then Tori Amos and
-Suzanne Vega's pattern. These three artists were easily identified.
-Artists such as Metallica are characterized by ``wideband'' patterns,
-containing features muddled by the noisy acoustics containing many
-transients,
-distortion, etc, which can be seen in Figure \ref{fig:metallica2}.
+%Looking at the most typical patterns per artist can be insightful.
+It is interesting to inspect the most ``discriminative'' patterns for 
+individual artists.  
+To find these patterns, we compare a pattern's use by one artist and divide
+by its use across all artists. Figure \ref{fig:typicalpat} 
+shows the dominant patterns for Metallica, and for Tori Amos and
+Suzanne Vega (who shared a `favorite' pattern). 
+These three artists were easily identified.
+Artists like Metallica are characterized by ``wideband'' patterns, 
+with energy spread across multiple adjacent chroma bins, 
+indicative of noise-like transients in the audio.
+%FIXME: ron, what di you mean: (not by cleaned up by EN's feature analysis)
 
 % ignoring the two following figures
 \iffalse
-\begin{figure}[t]
+\begin{figure}[htb]
 \begin{center}
 \includegraphics[width=.4\columnwidth]{metallica_pattern}
 \end{center}
@@ -759,7 +791,7 @@ COULD BE MIXED WITH TORI AMOS FIGURE.
 \label{fig:metallica}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[htb]
 \begin{center}
 \includegraphics[width=.4\columnwidth]{toriamos_suzannevega_pattern}
 \end{center}
@@ -770,7 +802,7 @@ COULD BE MIXED WITH TORI AMOS FIGURE.
 \fi
 
 
-\begin{figure}[t]
+\begin{figure}[h]
   \centering
   \subfloat[][\small{Metallica}]{\label{fig:metallica2}\includegraphics[width=0.32\columnwidth]{metallica_pattern}}
   \hspace{5mm}                
@@ -783,53 +815,37 @@ COULD BE MIXED WITH TORI AMOS FIGURE.
 
 
 \section{Conclusion and Future Work}
-We presented a practical method to perform large-scale clustering of
-harmonic patterns. We assessed the basic properties of the method through
-experiments on a large collection of music, and 
-demonstrated that these codebooks capture musically meaningful
-patterns, at least to contemporary pop music.
-%
- We suggested many ways
-to interpret the data %(such as LLE)
-and assert the merits of the codebook
+We have presented a practical method to perform large-scale clustering of
+tonal patterns, and assessed the basic properties of the method through
+experiments on a large collection of music. We have explored several ways
+to inspect and interpret the data 
+%(such as LLE) 
+and suggested the merit of the representation
 through further experiments.
-We discussed the possibility to move to even larger scales
-and provided our source code.\footnote{Code not yet released to preserve
-submission's anonymity}
-%
-Finally, we demonstrated the utility of unsupervised clustering to MIR
-tasks that are typically tackled in a supervised setting.
+We have discussed the possibility to move to even larger scales
+and we provide our source code for other interested researchers.
+\footnote{Code not yet released to preserve submission's anonymity}
 
-For even larger scales, we will focus on three facets.
-First, gather more songs from the Echo Nest API. 
-%
-Second,
-larger codebooks paired with computationally efficient algorithms.
-Improvements to $k$-means
-avoid comparing every code to every new sample. Initialization
-should also be modified, so every codeword is used (unlike in
-Figure \ref{fig:freqs}). 
-%
-Third, the learning
-algorithm must not converge too fast. We could add a filter that selects
-increasingly difficult examples to encode, or merge many codebooks in a 
-similar fashion as hierarchical Gaussian mixtures \cite{Vasconcelos2001}.
-
-%As for enhancements, we specifically did not compress our features using
-%Gaussian mixtures or other generative model. That being said, these methods
+Future work may include more sophisticated clustering that moves 
+beyond simple Euclidean-distance-based quantization, perhaps 
+by separately modeling the spread within each cluster (i.e., a Gaussian 
+mixture or other generative model). 
+%That being said, these methods
 %could be use to develop better distance measures between patterns.
-%The use of the Euclidean distance is arbitrary. Summarizing patches
-%with Gaussians, and then comparing the distance between those Gaussians,
-%could reduce the influence of the noise in the distance measure.
+%The use of the euclidean distance is arbitrary. 
+Summarizing patches
+with Gaussians, and then comparing the distance between those Gaussians,
+could reduce the influence of the noise in the distance measure.
 
-%Moving on to larger scales, we could imagine merging codes together and
-%splitting some on two if the clusters become too small or too large.  We could
-%also cluster codebooks themselves, in a similar fashion as hierarchical
-%Gaussian mixtures \cite{Vasconcelos2001}.
+Moving on to larger scales, we would like to pursue a scheme of incrementally 
+splitting and merging codewords in response to a continuous, online stream 
+of features, to create an increasingly-detailed, dynamic model.  We could
+also cluster codebooks themselves, in a fashion similar to hierarchical
+Gaussian mixtures \cite{Vasconcelos2001}.
 %  (similar idea used for indexing \cite{Muja2009})
 
 
-%\small
+\small
 %\section{Acknowledgements}
 %Thierry is NSERC graduate fellow, or some title like that.
 %Ron has a grant too.
