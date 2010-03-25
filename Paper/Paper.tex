@@ -277,7 +277,8 @@ The details are explained in Algorithm \ref{algo:vq}.
 As in standard $k$-means clustering, the codebook is initialized by
 choosing $K$ random points from our dataset.
 % ADDED BY TBM AFTER DAN
-Initialization had no significant effect in our experiments.
+Initialization had no significant effect on the distortion
+in our experiments.
 %
 Note that this algorithm, although not optimal, scales linearly with
 the number of patches seen and can be interrupted at any time
@@ -793,17 +794,27 @@ We discussed the possibility to move to even larger scales
 and we provided our source code.\footnote{Code not yet released to preserve
 submission's anonymity}
 
-As for enhancements, we specifically did not compress our features using
-Gaussian mixtures or other generative model. That being said, these methods
-could be use to develop better distance measures between patterns.
-The use of the Euclidean distance is arbitrary. Summarizing patches
-with Gaussians, and then comparing the distance between those Gaussians,
-could reduce the influence of the noise in the distance measure.
+The main future direction is larger scales. This implies $3$ improvements.
+First, gather more songs from the Echo Nest API. Second, efficiently work
+with larger codebooks. Some improvements have been published for $k$-means
+that avoid comparing every code to every sample. Initialization
+should also be modified, so every codeword is used (unlike in
+Figure \ref{fig:freqs}). Third, the learning
+algorithm must not converge too fast. We could add a filter that selects
+increasingly hard example to encode, or merge many codebooks in a similar
+fashion as hierarchical Gaussian mixtures \cite{Vasconcelos2001}.
 
-Moving on to larger scales, we could imagine merging codes together and
-splitting some on two if the clusters become too small or too large.  We could
-also cluster codebooks themselves, in a similar fashion as hierarchical
-Gaussian mixtures \cite{Vasconcelos2001}.
+%As for enhancements, we specifically did not compress our features using
+%Gaussian mixtures or other generative model. That being said, these methods
+%could be use to develop better distance measures between patterns.
+%The use of the Euclidean distance is arbitrary. Summarizing patches
+%with Gaussians, and then comparing the distance between those Gaussians,
+%could reduce the influence of the noise in the distance measure.
+
+%Moving on to larger scales, we could imagine merging codes together and
+%splitting some on two if the clusters become too small or too large.  We could
+%also cluster codebooks themselves, in a similar fashion as hierarchical
+%Gaussian mixtures \cite{Vasconcelos2001}.
 %  (similar idea used for indexing \cite{Muja2009})
 
 
