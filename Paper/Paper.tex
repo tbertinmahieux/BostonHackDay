@@ -502,12 +502,14 @@ are used only once in the training set, or not at all for test set.
 \label{fig:freqs}
 \end{figure}
 
-
-Another interesting visualization uses LLE\footnote{implementation:
-  \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
-algorithm \cite{Roweis2000} to display codewords arranged in
-coherent groups. See Figure \ref{fig:lle}. For instance, we see
-``wideband'' patterns grouping to the right.
+Figure \ref{fig:lle} visualizes the codebook using locally linear
+embedding \cite{Roweis2000} to group near neighbors on a 2 dimensional
+plane\footnote{We used the implementation from:
+  \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}.
+This visualization highlights different groups of codewords: sustained
+chords on the top left, chord changes on the bottom left, and more
+complex sustained chords and ``wideband'' noisy patterns grouping to
+the right.
 
 Finally, more related to our particular data, we try to assess how many
 sustained patterns are represented in the codebook. We look at
@@ -528,12 +530,12 @@ as they all are sustained patterns.
 \begin{center}
 \includegraphics[width=.9\columnwidth]{codes_lle}
 \end{center}
-\caption{\small{
-Locally linear embedding (LLE) visualization of the codebook.
-LLE tries to keep near neighbors (here according to Euclidean distance)
-in the same $2$D neighborhood. Shown patterns were randomly selected
-in each neighborhood.
-}}
+\caption{\small{ Locally linear embedding (LLE) visualization of the
+    codebook described in Section \ref{sec:visu}.  Each codeword is
+    represented by a point on the scatter plot.  Randomly selected
+    codewords from the embedded space are displayed over the plot.
+    %FIXME: does this figure really provide any new insight?
+  }}
 \label{fig:lle}
 \end{figure}
 
