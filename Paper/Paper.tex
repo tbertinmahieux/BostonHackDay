@@ -799,7 +799,9 @@ submission's anonymity}
 The main future direction is larger scales. This implies $3$ improvements.
 First, gather more songs from the Echo Nest API. Second, efficiently work
 with larger codebooks. Some improvements have been published for $k$-means
-that avoid comparing every code to every sample. Third, the learning
+that avoid comparing every code to every sample. Initialization
+should also be imrpoved, so every codeword is used (unlike in
+Figure \ref{fig:freqs}). Third, the learning
 algorithm must not converge too fast. We could add a filter that selects
 increasingly hard example to encode, our merge many codebooks in a similar
 fashion as hierarchical Gaussian mixtures \cite{Vasconcelos2001}.
