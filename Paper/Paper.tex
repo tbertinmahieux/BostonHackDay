@@ -116,25 +116,23 @@ instrumentation and other stylistic details.
 Specifically, this paper identifies common patterns in beat-synchronous
 chromagrams by learning codebooks from a large set of examples.
 The individual codewords consist of short beat-chroma patches of
-between 1 and 8 beats, which are able to represent the entire dataset
+between 1 and 8 beats, optionally aligned to bar boundaries.
+%
+The additional temporal alignment eliminates redundancy that would be
+created by learning multiple codewords to represent the same motive at
+multiple beat offsets.
+%
+The codewords are able to represent the entire dataset
 of millions of patterns with minimum error given a small codebook of
-a few hundred entries.  Our goal is to identify meaningful information
+a few hundred entries.
+%
+Our goal is to identify meaningful information
 about the musical structure represented in the entire database by
 examining individual entries in this codebook.  Since the common
 patterns represent a higher-level description of the musical content
 than the raw chroma,
 we also expect them to be useful in other applications, such as
 music classification and retrieving tonally-related items.
-
-One major issue in working with small patches concerns temporal
-alignment. Learning the same motifs with different offsets 
-(in time or beats) is redundant. We take advantage
-of rhythmic knowledge about the song to align patches with beats.
-We can further group beats into bars to produces patches
-for meaningful music segments.
-Our use of the Echo Nest API \cite{EchoNest} for this purpose is 
-explained in Section \ref{ssec:beatpatch}. Patches built around
-these temporal landmarks should capture music motifs more easily.
 
 Prior work using small patches of chroma features includes
 the ``shingles'' of \cite{Casey2007}, which were used to
@@ -155,9 +153,9 @@ develop a codebook whose entries are of interest
 in their own right.
 
 
-\begin{figure}[thb]
+\begin{figure}[t]
 \begin{center}
-\includegraphics[width=.6\columnwidth]{code}
+\includegraphics[width=.4\columnwidth]{code}
 \end{center}
 \caption{\small{A typical codeword from a codebook of size $200$ (code
     7 in Figure \ref{fig:codes1}), corresponding to a
@@ -375,7 +373,7 @@ resampling procedure described in Section \ref{sec:approach}.
 \caption{\small{Distortion for a codebook of size $100$ encoding one bar
 at a time with by $4$ columns.
 Therefore, each codeword has $12 \times 4 = 48$ elements.
-Distortion is measurde on the test set.  Training data sizes range
+Distortion is measured on the test set.  Training data sizes range
 from $0$ (just initialization) to $500,000$. Patterns were selected at
 random from the dataset of approximately $3.7$ million patterns.
 }}
@@ -845,7 +843,7 @@ Gaussian mixtures \cite{Vasconcelos2001}.
 %  (similar idea used for indexing \cite{Muja2009})
 
 
-\small
+%\small
 %\section{Acknowledgements}
 %Thierry is NSERC graduate fellow, or some title like that.
 %Ron has a grant too.
