@@ -630,16 +630,15 @@ $2$ bars at a time.
 
 
 \section{Applications}\label{sec:exps2}
-In this section we apply the result of our method to two tasks
-unrelated to clustering. We try to demonstrate that the codewords
-we learned capture musically meaningful patterns, at least to
-contemporary pop music. This also demonstrates the utility of unsupervised 
-clustering to other MIR tasks usually tackled in a supervised
-framework. In the first experiment, we show that bar information is retained 
-in the codewords. Thus we can discover the bar boundaries for new songs.
-The second experiment shows we can discriminate artists
-based on the encoding of their songs, hence we can associate artists
-with specific codes.
+In this section we investigate the application of beat-chroma
+codebooks to two tasks unrelated to clustering.
+%
+In the first experiment, we show that the codebooks retrain
+information related to bar alignment and can therefore be used to
+discover the bar boundaries for new songs.  The second experiment
+shows that we can discriminate artists based on the encoding of their
+songs, implying that some artists have a tendency to use different
+beat-chroma patterns than others.
 
 
 % Although our algorithm was not devised for any of these
@@ -787,12 +786,21 @@ COULD BE MIXED WITH TORI AMOS FIGURE.
 \section{Conclusion and Future Work}
 We presented a practical method to perform large-scale clustering of
 harmonic patterns. We assessed the basic properties of the method through
-experiments on a large collection of music. We suggested many ways
-to interpret the data (such as LLE) and assert the merit of the codebook
+experiments on a large collection of music, and 
+demonstrated that these codebooks capture musically meaningful
+patterns, at least to contemporary pop music.
+%
+ We suggested many ways
+to interpret the data %(such as LLE)
+and assert the merits of the codebook
 through further experiments.
 We discussed the possibility to move to even larger scales
-and we provided our source code.\footnote{Code not yet released to preserve
+and provided our source code.\footnote{Code not yet released to preserve
 submission's anonymity}
+%
+Finally, we demonstrated the utility of unsupervised clustering to MIR
+tasks that are typically tackled in a supervised setting.
+
 
 The main future direction is larger scales. This implies $3$ improvements.
 First, gather more songs from the Echo Nest API. Second, efficiently work
