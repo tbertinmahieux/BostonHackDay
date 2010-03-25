@@ -801,16 +801,20 @@ submission's anonymity}
 Finally, we demonstrated the utility of unsupervised clustering to MIR
 tasks that are typically tackled in a supervised setting.
 
-
-The main future direction is larger scales. This implies $3$ improvements.
-First, gather more songs from the Echo Nest API. Second, efficiently work
-with larger codebooks. Some improvements have been published for $k$-means
-that avoid comparing every code to every sample. Initialization
+For even larger scales, we will focus on three facets.
+First, gather more songs from the Echo Nest API. 
+%
+Second,
+larger codebooks paired with computationally efficient algorithms.
+Improvements to $k$-means
+avoid comparing every code to every new sample. Initialization
 should also be modified, so every codeword is used (unlike in
-Figure \ref{fig:freqs}). Third, the learning
+Figure \ref{fig:freqs}). 
+%
+Third, the learning
 algorithm must not converge too fast. We could add a filter that selects
-increasingly hard example to encode, or merge many codebooks in a similar
-fashion as hierarchical Gaussian mixtures \cite{Vasconcelos2001}.
+increasingly difficult examples to encode, or merge many codebooks in a 
+similar fashion as hierarchical Gaussian mixtures \cite{Vasconcelos2001}.
 
 %As for enhancements, we specifically did not compress our features using
 %Gaussian mixtures or other generative model. That being said, these methods
