@@ -263,7 +263,6 @@ clusters for every major triad in duple or triple meter.
 %%%% dpwe: I don't agree with this, I'd rather say nothing
 
 \subsection{Clustering}
-
 % We can then stack beat vectors for a number of bars (usually 1 or 2).
 
 We use an online version of the vector quantization algorithm
@@ -272,17 +271,17 @@ previous section.
 % This can also be seen as an online K-means.
 For each sample from the data, the algorithm finds the closest cluster
 in the codebook and updates the cluster centroid (codeword) to be
-closer to the sample, using a learning rate parameter $\ell$.
+closer to the sample according to a learning rate $\ell$.
 The clusters are updated as each data point is seen, as opposed to
-once per iteration in the standard k-means algorithm.
-The details can be found in Algorithm \ref{algo:vq}.
+once per iteration in the standard $k$-means algorithm.
+The details are explained in Algorithm \ref{algo:vq}.
 %
-As in standard k-means clustering, the codebook is initialized by
+As in standard $k$-means clustering, the codebook is initialized by
 choosing $K$ random points from our dataset.
 %
 Note that this algorithm, although not optimal, scales linearly with
 the number of patches seen and can be interrupted at any time
-while still resulting in an updated codebook. %not that this is important...
+to obtain an updated codebook. %not that this is important...
 % The setting of the learning rate might become trickier, but this is
 % not fundamentally a problem.
 
@@ -311,14 +310,10 @@ while still resulting in an updated codebook. %not that this is important...
 
 
 \section{Experiments}\label{sec:experiments}
-
-% In this section we present different clustering experiments. We introduce
-% our training data and our main testing data. Some detailed settings
-% of our algorithm are also provided. As for any clustering algorithm, we
-% measure the influence of the number of codewords and the training set size.
-In this section we present a set of experiments designed to evaluate
-quantization quality as a function of size of training set, codebook
-size, and patch length.
+In this section we present different clustering experiments and introduce
+our principal training and test data. Some detailed settings
+of our algorithm are also provided. As for any clustering algorithm, we
+measure the influence of the number of codewords and the training set size.
 
 
 \subsection{Data}
@@ -326,80 +321,85 @@ size, and patch length.
 \label{sec:traindata}
 %\subsection{Test data: USPOP}
 \label{sec:testdata}
-The training data consists of $43,300$ tracks that were uploaded to
+Our training data consists of $43,300$ tracks that were uploaded to
 morecowbell.dj,\footnote{http://www.morecowbell.dj/} an online service
-based on the Echo Nest analyze API which remixes music by
+based on the Echo Nest analyze API which remixes uploaded music by
 adding cowbell and other sound effects synchronized in time with the
-music.  The $43.3$K songs contain $\mathbf{3.7}$ million non silent
-bars which we cluster using the approach described in the previous
+music.  The $43.3$K songs contain $3.7$ million non-silent
+bars which we clustered using the approach described in the previous
 section.
 
-For testing, we made use of low quality (32kbps MP3) audio 
-from the uspop2002 dataset \cite{uspop2002}.  The collections
-includes a wide variety of popular music from 10 different sub-genres.
+For testing, we made use of low quality (32kbps, 8 kHz bandwidth mono MP3) versions of the songs
+from the {\it uspop2002} data set \cite{uspop2002}.  This well-known data set 
+contains pop songs from a range of artists and styles.
 % \footnote{We also tried to use Tzanetakis dataset,
 % %\cite{Tzanetakis2002a},
 % but the $30$ seconds segments seemed hard to analyze by the Echo Nest API, 
 % most did not contain any bar.}.
-We use this data to measure how well a codebook learned on
-the Cowbell dataset can represent new songs.  
-We obtained Echo Nest features for the $8651$ songs contained in the dataset.
+{\it uspop2002} serves as test set to measure how well a codebook learned on
+the Cowbell data set can represent new songs.  We obtained Echo Nest features
+for the $8651$ songs contained in the dataset.
+
 
 \subsection{Setting}\label{ssec:setting}
-We train codebooks based on beat-chroma patches composed of 4 or 8
-beats (one or two bars).
-Codebooks over the Cowbell
-dataset are trained using the VQ algorithm (Algorithm \ref{algo:vq}). We used a
-learning rate of $\ell=0.01$ for $200$ iterations over the data.
+We take one or two bars and resample the patches to 4 or 8 columns 
+respectively.  We learn a codebook of size $K$ over the Cowbell
+dataset using the online VQ algorithm (Algorithm \ref{algo:vq}). We use a
+learning rate of $\ell=0.01$ for $200$ iterations over the whole
+dataset.
 %
-Given these codebooks, we quantize the test set by assigning each
-patch to a single codeword.  We report the average
-distance between patches and their encodings and describe the usage
-frequency of the different codes. %, \ie the size of the cluster around a code.
+We then use the resulting codebook to encode the test set.
+Each pattern is encoded with only one code. We can measure the average
+distance between a pattern and its encoding. We can also measure the use
+of the different codes, 
+%\ie the size of the cluster around a code.
+i.e., the proportion of patterns that quantize to each code.
 
 We use the average squared Euclidean distance as the distortion
 measure between chroma patches.  Given a pattern $p_1$
-composed of elements $p_{1ij}$, and a second pattern $p_2$, the
+composed of elements $p_1(i,j)$, and a similar pattern $p_2$, the
 distance between them is:
 \begin{eqnarray}
-  \dist(p_1,p_2) = \sum_{i,j} \frac{(p_{1ij} - p_{2ij})^2}{\size(p_1)}
+  \dist(p_1,p_2) = \sum_{i,j} \frac{(p_1(i,j) - p_2(i,j))^2}{\size(p_1)}
   \label{eq:dist}
 \end{eqnarray}
-We assume that $p_1$ and $p_2$ have the same size.  This is enforced by the
-meter normalization procedure described in Section \ref{sec:approach}.
+We assume $p_1$ and $p_2$ have the same size.  This is enforced by the
+resampling procedure described in Section \ref{sec:approach}.
 
-
-\begin{figure}[htb]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=.8\columnwidth]{data_sizes}
 \end{center}
 \caption{\small{Distortion for a codebook of size $100$ encoding one bar
-at a time, a bar being represented by $4$ chroma feature vector.
-Therefore, a codeword or a pattern is of size $12$ x $4$ = $48$.
-Distortion measure on the test dataset. Data size tested range
-from $0$ (just initialization) to $500$ thousand. Patterns were selected at
-random from the dataset of approximately $3,7$ million patterns.
+at a time with by $4$ columns.
+Therefore, each codeword has $12 \times 4 = 48$ elements.
+Distortion is measurde on the test set.  Training data sizes range
+from $0$ (just initialization) to $500,000$. Patterns were selected at
+random from the dataset of approximately $3.7$ million patterns.
 }}
 \label{fig:data_sizes}
 \end{figure}
 
 
-\subsection{Basic Properties}
-This section present some fundamental results of the clustering algorithm.
-None of the result appear surprising,  but they are important for 
-reproducing the experiments.
+
+
+\subsection{Codebook properties}
+This section presents some basic results of the clustering.
+While unsurprising, these results may be useful for comparison 
+when reproducing this work.
 \begin{itemize}
 \item Encoding performance improves with increasing training data (Figure
-\ref{fig:data_sizes}). Regarding the convergence of the performance,
-we can imagine using $500$ or $1$K samples per codeword to learn if the
-training set size is problematic.
+\ref{fig:data_sizes}). Distortion improvements plateau by around $1000$ samples 
+per codeword ($100,000$ samples for the $100$-entry codebook of the figure).
 \item Encoding performance improves with increasing codebook size
-(Table \ref{tab:cbsize}). The increase seems significant, and
-increasing the size of the codebook in an efficient way
-is definitely part of our future work.
+(Table \ref{tab:cbsize}).  Computation costs scales with codebook size, 
+which limited the largest codebooks used in this work, but larger codebooks 
+(and more efficient algorithms to enable them) are clearly a promising future 
+direction.
 \item Larger patterns are more difficult to encode, thus requiring
-larger codebooks. See Figure \ref{fig:perbeat}. The increase is steeper
-until $4$ beats which usually corresponds to one bar.
+larger codebooks. See Figure \ref{fig:perbeat}. The increase is steepest
+below $4$ beats (1 bar), although there is no dramatic change at 
+this threshold.
 \end{itemize}
 
 
@@ -417,20 +417,20 @@ Codebook size & Distortion \\
 \bottomrule
 \end{tabular}
 \end{center}
-\caption{\small{Varying codebook size using $50,000$ training samples.
-    We train on patterns corresponding to $1$ bar resized to $4$ beats.
+\caption{\small{Distortion as a function of codebook size for a fixed training set 
+of $50,000$ samples.  Codebook consists of $1$ bar ($4$ beat) patterns.
   }}
 \label{tab:cbsize}
 \end{table}
 
 
-\begin{figure}[htb]
+\begin{figure}[b]
 \begin{center}
 \includegraphics[width=.8\columnwidth]{encoding_per_beat}
 \end{center}
-\caption{\small{Encoding larger and larger patterns with a fixed size
-codebook. The size of the pattern is defined by the number of beats,
-the bar information was not taken into account for this experiment.
+\caption{\small{Encoding patterns of different sizes with a fixed size
+codebook of 100 patterns. The size of the pattern is defined by the number of beats. 
+Downbeat (bar alignment) information was not used for this experiment. % why not?
 }}
 \label{fig:perbeat}
 \end{figure}
@@ -445,61 +445,61 @@ the bar information was not taken into account for this experiment.
 
 \subsection{Codebook}\label{sec:codebook}
 
-We train a codebook of size $200$ over patterns of size $12$x$8$ covering
-$2$ bars at a time.  The results shown are on the test set from
+We trained a codebook $200$ entries of patterns sized $12\times8$, covering
+$2$ bars at a time.  The results shown are on the {\it artist20} test set described in 
 Section \ref{ssec:artist}.
 
 
 The 25 most frequently used codewords in the test set are shown in
 Figure \ref{fig:codes1}.  
-The frequency of use of these codewords are shown in Figure \ref{fig:freqs}.
+The frequency of use of these codewords is shown in Figure \ref{fig:freqs}.
 The codewords primarily consist of sustained
 notes and simple chords.  Since they are designed to be key-invariant,
 specific notes do not appear.  Instead the first 7 codewords
 correspond to a single note sustained across two bars (codeword 0),
 perfect fifth (codewords 1 and 2) and fourth intervals (codewords 3
-and 6), and 
-major and minor triads (codewords 5 and 4, respectively).  Many of the remaining
+and 6, noting that the fourth occurs when the per-pattern transposition 
+detects the fifth rather than the root as the strongest chroma bin, and vice-versa), and a
+major triads transposed to the root and fifth (codewords 5 and 4, respectively).  Many of the remaining
 codewords correspond to common transitions from one chord to another,
-\eg a tonic-subdominant transition in codes 7 and 9
-(Cmaj
-$\rightarrow$ Fmaj or C5 $\rightarrow$ F5 as a guitar power chord)
+\eg a V-I transition in codes 7 and 9
+(e.g., Gmaj
+$\rightarrow$ Cmaj or G5 $\rightarrow$ C5 as a guitar power chord)
 % assuming that chroma 0 is C) 
-and the reverse tonic-dominant transition in code 21 (\ie Fmaj
-$\rightarrow$ Cmaj).
+and the reverse I-V transition in code 21 (e.g., Cmaj
+$\rightarrow$ Gmaj).
 %FIXME: Does this transition have a better name like ``relative x''?
 % C5 -> F5 in 'guitar chords', basically a power chord
 
-\begin{figure}[h]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=.9\columnwidth]{codes1}
 \end{center}
 \caption{\small{
-25 most frequently used codes in the codebook %in term of frequency of use
-in the artist20 test set. 
-This codebook contains $200$ codes trained on $2$ bar, $12 \times 8$
-patches.
-The numbers 
-%above each panel correspond to the display are the index (from most used to least) and
-in parentheses correspond to 
-the percentage of use in the test set.
+The 25 codes that are 
+most commonly used for the {\it artist20} test set. 
+Codes are from the $200$-entry codebook trained on $2$ bar, $12 \times 8$
+patches.  The proportion of patches accounted for by each pattern is shown 
+in parentheses.
 %There are $71832$ patterns in total in the dataset.
 }}
 \label{fig:codes1}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[bt]
 \begin{center}
 \includegraphics[width=.99\columnwidth]{freqs}
 \end{center}
-\caption{\small{Usage frequency of the patterns in the codebook from
-Figure \ref{fig:codes1} on the artist20 dataset.  There are $71,832$
-patterns in total in the dataset. Also frequency on the training set.
+\caption{\small{Usage proportions for all 200 codewords 
+on the {\it artist20} test set (which comprises $71,832$
+patterns).  Also shown are the usage proportions for the training set (``cowbell''), 
+which are similar.
 Note that even though all codewords are initialized from samples, some
-are used only once (training set) or never (test set).
+are used only once in the training set, or not at all for test set.
 }}
 \label{fig:freqs}
 \end{figure}
+
 
 Another interesting visualization uses LLE\footnote{implementation:
   \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}
