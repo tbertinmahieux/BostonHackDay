@@ -624,11 +624,18 @@ $2$ bars at a time.
 
 
 \section{Applications}\label{sec:exps2}
-In this section we describe two other applications of the clustering
-described in this paper: song segmentation, and artist
-recognition.  This demonstrates the utility of unsupervised clustering
-to supervised tasks. The representation created from large collections
-captures meaningful information without being forced to do so.
+In this section we apply the result of our method to two task
+not related to clustering. We try to demonstrate that the codewords
+we learned capture musically meaningful patterns, at least to
+contemporary pop music. This also demonstrates the utility of unsupervised 
+clustering to other MIR tasks usually tackled in a supervised
+framework. In the first experiment, we show that bar information is retained 
+in the codewords. Thus we can discover the bar boundaries for new songs.
+The second experiment shows we can discriminate artists
+based on the encoding of their songs, hence we can associate artists
+with specific codes.
+
+
 % Although our algorithm was not devised for any of these
 % tasks, but some information contained in the centroids can be
 % naturally used.
