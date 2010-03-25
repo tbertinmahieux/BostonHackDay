@@ -502,21 +502,23 @@ are used only once in the training set, or not at all for test set.
 \label{fig:freqs}
 \end{figure}
 
-Figure \ref{fig:lle} visualizes the codebook using locally linear
-embedding \cite{Roweis2000} to group near neighbors on a 2 dimensional
-plane\footnote{We used the implementation from:
+An alternate visualization of the codebook is shown in Figure
+\ref{fig:lle}.  We use locally linear embedding \cite{Roweis2000} to
+group near neighbors on a 2 dimensional plane\footnote{We used the
+  implementation from:
   \url{http://www.astro.washington.edu/users/vanderplas/coding/LLE/}}.
 This visualization highlights different groups of codewords: sustained
 chords on the top left, chord changes on the bottom left, and more
 complex sustained chords and ``wideband'' noisy patterns grouping to
-the right.
+the right of the figure.
 
-Finally, more related to our particular data, we try to assess how many
-sustained patterns are represented in the codebook. We look at
-the average variance over time in Figure \ref{fig:code_var}.
-25\% of the codebook correspond
-to very simple sustained patterns similar to the top row of Figure
-\ref{fig:codes1}. For $2$ bars codewords, it seems that patterns
+Given the prevalence of simple codewords in Figures \ref{fig:codes1}
+and \ref{fig:lle}, we assess the proportion of the codebook devoted to
+representing sustained chord patterns.  The average variance over time
+within each codeword is plotted in Figure \ref{fig:code_var}.  From
+this figure it is clear that 25\% of the codebook corresponds to very
+simple sustained patterns similar to the top row of Figure
+\ref{fig:codes1}. For $2$ bar codewords, it seems that patterns
 containing more complex temporal activity account for only $33$\% of
 the data.
 
