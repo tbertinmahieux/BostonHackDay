@@ -26,6 +26,14 @@ def euclidean_dist(a,b):
     #return np.sqrt(np.dot((a-b),(a-b).T)[0][0])
     return np.sqrt(np.square(a-b).sum())
 
+def euclidean_dist_batch(a,b):
+    """
+    Typical euclidean distance. B must be row vectors!!!!
+    A is a batch, one vector per row.
+    Do np.argmin() on the results to get the ndex of the smallest one
+    """
+    return np.sqrt(np.square(a-b).sum(axis=1))
+
 def euclidean_norm(a):
     """ regular euclidean norm of a numpy vector """
     #return np.sqrt((a*a).sum())
@@ -67,7 +75,8 @@ def encode_oneiter(signal,codebook):
     idx = idxs[0], dist = dists[idx]
     """
     # compute the distances
-    dists = [euclidean_dist(signal,r) for r in codebook]
+    #dists = [euclidean_dist(signal,r) for r in codebook] # DUMB WAY!
+    dists = euclidean_dist_batch(codebook,signal) # HUGE SPEEDUP
     # return the index, scaling, and distance for the MIN DISTANCE
     idxs = np.argsort(dists)
     return idxs,dists
@@ -94,7 +103,8 @@ def encode_scale_oneiter(signal,codebook,cbIsNormalized=False):
         alphas = [projection_factor(signal,r,cbIsNormalized) for r in codebook[:]]
         alphas = np.array(alphas).reshape(codebook.shape[0],1)
     # scale the codebook and compute the distance
-    dists = [euclidean_dist(signal,r) for r in (alphas*codebook)[:]]
+    #dists = [euclidean_dist(signal,r) for r in (alphas*codebook)[:]] # DUMB
+    dists = euclidean_dist_batch(alphas*codebook,signal) # HUGE SPEEDUP
     # return the index, scaling, and distance for the MIN DISTANCE
     idxs = np.argsort(dists)
     return idxs,alphas.flatten(),dists
