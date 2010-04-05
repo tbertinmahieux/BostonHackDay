@@ -142,6 +142,7 @@ class DataIterator:
                     self.fidx = self.fidx + 1
                     self.pidx = 0
                     self.barbts = []
+
                 else : # we use bars
                     x1 = self.pidx
                     idx1 = np.where(self.barbts == self.pidx)[0][0]
@@ -196,7 +197,8 @@ class DataIterator:
                 mat = sp.io.loadmat(self.matfiles[self.fidx], struct_as_record=True)
             self.currfeats = mat['btchroma']
             self.barbts = mat['barbts']
-            if sys.version_info[1] != 5:
+
+            if sys.version_info[1] != 5 and len(self.barbts) == 1:
                 self.barbts = self.barbts[0]
             # enough features?
             if type(self.barbts) == type(0.0): # weird problem sometimes
