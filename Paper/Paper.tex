@@ -240,7 +240,8 @@ energy. This can be seen in the example codeword of Figure \ref{fig:code}.
 % noise.
 Each patch within a song is normalized independently, so
 reconstruction of the original song requires knowledge of the
-rotation index (key) for each patch.
+rotation index for each patch. This rotation removes the key information
+of a patch.
 
 The representation resulting from this process is invariant to both
 the key and meter of the original song.  This enables the study of
@@ -474,6 +475,7 @@ patterns).  Also shown are the usage proportions for the training set (``cowbell
 which are similar.
 Note that even though all codewords are initialized from samples, some
 are used only once in the training set, or not at all for test set.
+This explains why the curves drop to $0$.
 }}
 \label{fig:freqs}
 \end{figure}
@@ -582,13 +584,15 @@ patterns.
 %in Figure \ref{fig:codes8bars}. Most used codewords would be less interesting,
 %as they all are sustained patterns.
 
-\begin{figure}[htb]
+\begin{figure}[t]
 \begin{center}
-\includegraphics[width=.9\columnwidth]{close_patterns1}
+\includegraphics[width=.95\columnwidth]{close_patterns1}
 \end{center}
 \caption{\small{Cluster around centroid presented in
 Figure \ref{fig:code}. Taken from the {\it artist20} dataset, the cluster
 size is actually $639$. Shown samples were randomly selected.
+This gives an intuition of the variance
+in a given cluster.
 }}
 \label{fig:cluster}
 \end{figure}
@@ -621,9 +625,9 @@ that the codebook has captured the important underlying trend.
 %\ref{fig:cluster_diff} really add much?
 
 
-\begin{figure}[htb]
+\begin{figure}[t]
 \begin{center}
-\includegraphics[width=.8\columnwidth]{close_patterns_diff}
+\includegraphics[width=.95\columnwidth]{close_patterns_diff}
 \end{center}
 \caption{\small{First three patterns of figure \ref{fig:cluster}
 ($2$nd line) presented with the centroid from Figure \ref{fig:code}
@@ -865,6 +869,7 @@ This material is based upon work supported by the IMLS (grant LG-06-08-0073-08).
 %Editorial Acme, Utrecht, 2004.
 %\end{thebibliography}
 
+\small
 \bibliography{tbm_bib}
 
 
