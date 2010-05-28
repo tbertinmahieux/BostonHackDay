@@ -14,7 +14,7 @@
 
 % added by tbm
 \usepackage{subfloat,subfig}
-\setlength{\abovecaptionskip}{-3pt}
+\setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{6pt} 
 
 \usepackage{booktabs}
@@ -44,7 +44,7 @@
 \threeauthors
   {Thierry Bertin-Mahieux} {Columbia University\\ {\tt tb2332@columbia.edu}}
   {Ron J. Weiss} {New York University \\ {\tt ronw@nyu.edu}}
-  {Dan Ellis} {Columbia University \\ {\tt dpwe@ee.columbia.edu}}
+  {Daniel P. W. Ellis} {Columbia University \\ {\tt dpwe@ee.columbia.edu}}
 % what order do we use? Thierry, Ron, Dan?  Dan, Thierry, Ron?
 
 
@@ -156,7 +156,7 @@ in their own right.
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width=.4\columnwidth]{code}
+\includegraphics[width=.4\columnwidth]{code_axis}
 \end{center}
 \caption{\small{A typical codeword from a codebook of size $200$ (code
     7 in Figure \ref{fig:codes1}), corresponding to a
@@ -667,7 +667,7 @@ We present two applications of the beat-chroma codebooks
 to illustrate how the ``natural'' structure identified via 
 unsupervised clustering can provide useful 
 features for subsequent supervised tasks.  We will discuss how 
-the codewords can be used in song segmentation, and for artist
+the codewords can be used in bar alignment, and for artist
 recognition.  
 %The representation created from large collections
 %captures meaningful information without being forced to do so.
@@ -676,7 +676,7 @@ recognition.
 % tasks, but some information contained in the centroids can be
 % naturally used.
 
-\subsection{Song Segmentation} \label{ssec:segment}
+\subsection{Bar Alignment} \label{ssec:segment}
 
 Since the clustering described in Section \ref{sec:approach} is based
 on the segmentation of the signal in to bars, 
@@ -735,7 +735,7 @@ Offset & \% of times chosen \\
 \end{tabular}
 \end{center}
 \caption{\small{
-Song segmentation experiment:
+Bar alignment experiment:
 offsets relative to ground-truth 4-beat bar boundaries 
 that gave minimum distortion encodings from the bar-aligned codebook.
 %The real one is $0$.
@@ -833,8 +833,8 @@ to inspect and interpret the data
 and suggested the merit of the representation
 through further experiments.
 We have discussed the possibility to move to even larger scales
-and we provide our source code for other interested researchers.
-\footnote{See \textit{Papers} section at \url{www.columbia.edu/~tb2332/}}
+and we provide our source code for other interested researchers
+\footnote{See \textit{Papers} section at \url{www.columbia.edu/~tb2332/}}.
 
 Future work may include more sophisticated clustering that moves 
 beyond simple Euclidean-distance-based quantization, perhaps 
@@ -859,8 +859,10 @@ Gaussian mixtures \cite{Vasconcelos2001}.
 \section{Acknowledgements}
 Thanks to Graham Grindlay for numerous discussions and helpful comments.
 T. Bertin-Mahieux is supported by a NSERC scholarship.
-This material is based upon work supported by the IMLS (grant LG-06-08-0073-08).
-
+This material is based upon work supported by the IMLS (grant LG-06-08-0073-08)
+and by NSF grant IIS-0713334. Any opinions, findings and
+conclusions or recommendations expressed in this material are those of
+the authors and do not necessarily reflect the views of the sponsors
 
 %\begin{thebibliography}{citations}
 %\bibitem{Someone:04} 
