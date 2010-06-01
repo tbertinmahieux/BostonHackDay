@@ -1,4 +1,3 @@
-
 % -*- TeX-PDF-mode: t -*-
 
 % -----------------------------------------------
@@ -97,7 +96,7 @@ What are the common features of pop music?  There are conventions
 of subject matter, instrumentation, form, rhythm, harmony, and melody, among
 others.  Our interest here is in the tonal content of the music -- \ie the
 harmony and melody.  As a computationally-convenient proxy for a richer
-description of the tonal content of audio, we use the popular Chroma
+description of the tonal content of audio, we use the popular chroma
 representation, which collapses an acoustic spectrum into a 12-dimensional
 description, with one bin for each semitone of the western musical octave.
 In addition, we simplify the time axis of our representation to take advantage
@@ -240,8 +239,8 @@ energy. This can be seen in the example codeword of Figure \ref{fig:code}.
 % noise.
 Each patch within a song is normalized independently, so
 reconstruction of the original song requires knowledge of the
-rotation index for each patch. This rotation removes the key information
-of a patch.
+rotation index for each patch.
+%This rotation removes the key information of a patch.
 
 The representation resulting from this process is invariant to both
 the key and meter of the original song.  This enables the study of
@@ -331,7 +330,7 @@ bars which we clustered using the approach described in the previous
 section.
 
 For testing, we made use of low quality (32kbps, 8 kHz bandwidth mono MP3) versions of the songs
-from the {\it uspop2002} data set \cite{uspop2002}.  This well-known data set 
+from the {\it uspop2002} data set \cite{uspop2002}.  This data set 
 contains pop songs from a range of artists and styles.
 % \footnote{We also tried to use Tzanetakis dataset,
 % %\cite{Tzanetakis2002a},
@@ -350,7 +349,7 @@ learning rate of $\ell=0.01$ for $200$ iterations over the whole
 dataset.
 %
 We then use the resulting codebook to encode the test set.
-Each pattern is encoded with only one code. We can measure the average
+Each pattern is encoded with a single code. We can measure the average
 distance between a pattern and its encoding. We can also measure the use
 of the different codes, 
 %\ie the size of the cluster around a code.
@@ -445,7 +444,7 @@ Downbeat (bar alignment) information was not used for this experiment. % why not
 
 \subsection{Codebook}\label{sec:codebook}
 
-We trained a codebook $200$ entries of patterns sized $12\times8$, covering
+We trained a codebook containing $200$ patterns sized $12\times8$, covering
 $2$ bars at a time.  The results shown are on the {\it artist20} test set described in 
 Section \ref{ssec:artist}.
 
@@ -667,7 +666,7 @@ We present two applications of the beat-chroma codebooks
 to illustrate how the ``natural'' structure identified via 
 unsupervised clustering can provide useful 
 features for subsequent supervised tasks.  We will discuss how 
-the codewords can be used in bar alignment, and for artist
+the codewords can be used in bar alignment, and artist
 recognition.  
 %The representation created from large collections
 %captures meaningful information without being forced to do so.
@@ -812,7 +811,7 @@ COULD BE MIXED WITH TORI AMOS FIGURE.
 \fi
 
 
-\begin{figure}[h]
+\begin{figure}[t]
   \centering
   \subfloat[][\small{Metallica}]{\label{fig:metallica2}\includegraphics[width=0.32\columnwidth]{metallica_pattern}}
   \hspace{5mm}                
@@ -860,10 +859,10 @@ Gaussian mixtures \cite{Vasconcelos2001}.
 \section{Acknowledgements}
 Thanks to Graham Grindlay for numerous discussions and helpful comments.
 T. Bertin-Mahieux is supported by a NSERC scholarship.
-This material is based upon work supported by the IMLS (grant LG-06-08-0073-08)
+This material is based upon work supported by IMLS grant LG-06-08-0073-08
 and by NSF grant IIS-0713334. Any opinions, findings and
 conclusions or recommendations expressed in this material are those of
-the authors and do not necessarily reflect the views of the sponsors
+the authors and do not necessarily reflect the views of the sponsors.
 
 %\begin{thebibliography}{citations}
 %\bibitem{Someone:04} 
