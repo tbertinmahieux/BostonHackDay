@@ -1,0 +1,287 @@
+\documentclass[landscape,a0b,final]{a0poster}
+
+\usepackage{epsfig}
+\usepackage{multicol}
+\usepackage{pstricks,pst-grad}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition of some variables and colors
+\setlength{\columnsep}{3cm}
+\setlength{\columnseprule}{2mm}
+\setlength{\parindent}{0.0cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               Background                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\background}[3]{
+  \newrgbcolor{cgradbegin}{#1}
+  \newrgbcolor{cgradend}{#2}
+  \psframe[fillstyle=gradient,gradend=cgradend,
+  gradbegin=cgradbegin,gradmidpoint=#3](0.,0.)(1.\textwidth,-1.\textheight)
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                Poster                        %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{poster}{
+  \begin{center}
+  \begin{minipage}[c]{0.98\textwidth}
+}{
+  \end{minipage} 
+  \end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                pcolumn                       %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{pcolumn}[1]{
+  \begin{minipage}{#1\textwidth}
+  \begin{center}
+}{
+  \end{center}
+  \end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                pbox                          %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newrgbcolor{lcolor}{00. 0. 0.80}
+\newrgbcolor{gcolor1}{1. 1. 1.}
+\newrgbcolor{gcolor2}{.80 .80 1.}
+
+\newcommand{\pbox}[4]{
+\psshadowbox[#3]{
+\begin{minipage}[t][#2][t]{#1}
+#4
+\end{minipage}
+}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                myfig                         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \myfig - replacement for \figure
+% necessary, since in multicol-environment 
+% \figure won't work
+\newcommand{\myfig}[3][0]{
+\begin{center}
+  \vspace{1.5cm}
+  \includegraphics[width=#3\hsize,angle=#1]{#2}
+  \nobreak\medskip
+\end{center}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                mytable                       %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \mytable - replacement for \table
+% necessary, since in multicol-environment 
+% \table won't work
+\newcommand{\mytable}[3][0]{
+\begin{center}
+  \vspace{1.5cm}
+  \includegraphics[width=#3\hsize,angle=#1]{#2}
+  \nobreak\medskip
+\end{center}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                mycaption                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \mycaption - replacement for \caption
+% necessary, since in multicol-environment \figure and
+% therefore \caption won't work
+
+%\newcounter{figure}
+\setcounter{figure}{1}
+\newcommand{\mycaption}[1]{
+  \vspace{0.5cm}
+  \begin{quote}
+    {{\sc Figure} \arabic{figure}: #1}
+  \end{quote}
+  \vspace{1cm}
+  \stepcounter{figure}
+}
+
+%\newcounter{table}
+\setcounter{table}{1}
+\newcommand{\mytablecaption}[1]{
+  \vspace{1.0cm}
+  \begin{quote}
+    {{\sc Table} \arabic{table}: #1}
+  \end{quote}
+  \vspace{1cm}
+  \stepcounter{table}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Begin of Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\background{1.0 1.0 1.0}{1.0 1.0 1.0}{0.3}
+
+\vspace*{2cm}
+
+\newrgbcolor{lightred}{0.7 0.0 0.0}
+\newrgbcolor{white}{1.0 1.0 1.0}
+\newrgbcolor{whitepink}{1.0 0.8 0.9}
+
+
+\begin{poster}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Header
+%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\begin{pcolumn}{0.98}
+
+\pbox{0.957\textwidth}{}{linewidth=2mm,framearc=0.3,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
+
+%%% Unisiegel
+\begin{minipage}[c][9cm][c]{0.1\textwidth}
+  \begin{center}
+    \includegraphics[width=7cm,angle=0]{labrosa-logo.eps}
+  \end{center}
+\end{minipage}
+%%% Titel
+\begin{minipage}[c][9cm][c]{0.78\textwidth}
+  \begin{center}
+    {\sc \Huge A Ground-breaking Work of Epic Proportions}\\[10mm]
+    {\Large Phil D. Student and Daniel P. W. Ellis\\[3.5mm]
+     \large LabROSA, Dept. of Electrical Engineering, Columbia University \\
+    \tt{\{phds,dpwe\}@ee.columbia.edu}}
+  \end{center}
+\end{minipage}
+%%% GK-Logo
+\begin{minipage}[c][9cm][c]{0.1\textwidth}
+  \begin{center}
+    \includegraphics[width=7cm,angle=0]{seas-logo.eps}
+  \end{center}
+\end{minipage}
+
+}
+\end{pcolumn}
+\end{center}
+
+\vspace*{0.5cm}
+
+
+%%% Begin of Multicols-Enviroment
+\begin{multicols}{3}
+
+
+%%% Section 1
+\begin{center}
+  \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
+    \begin{center}
+      \large Section 1
+    \end{center}}
+\end{center}
+
+\vspace{1.0cm}
+
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item A bullet point
+\item A bullet point
+\item A bullet point
+\item A bullet point
+\end{list}
+
+%%% Section 2
+\vspace{1.5cm}
+\begin{center}
+  \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
+    \begin{center}
+      \large Section 2
+    \end{center}}
+\end{center}
+
+\vspace{1.0cm}
+
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item A bullet point
+\item A bullet point
+\item A bullet point
+\end{list}
+
+%%% Figure example
+%\begin{center}
+  % first argument: eps-file
+  % second argument: stretching-factor relative to Column-width (<1)
+  % optional argument: rotation angle (0-360), default=0
+  %\myfig[0]{myfig.eps}{0.8}
+  %\mycaption{Some caption}
+%\end{center}
+
+% force a new column
+\newpage
+
+
+%%% Section 3
+\vspace{2cm}
+\begin{center}
+  \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
+    \begin{center}
+      \large Section 3
+    \end{center}}
+\end{center}
+
+\vspace{1.0cm}
+
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item A bullet point
+\item A bullet point
+\item A bullet point
+\item A bullet point
+\end{list}
+
+% force a new column
+\newpage
+
+
+%%% Section 4
+\vspace{2cm}
+\begin{center}
+  \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
+    \begin{center}
+      \large Section 4
+    \end{center}}
+\end{center}
+
+\vspace{1.0cm}
+
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item A bullet point
+\item A bullet point
+\item A bullet point
+\item A bullet point
+\end{list}
+
+
+%%% Section 5
+\vspace{0cm}
+\begin{center}
+  \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
+    \begin{center}
+      \large Section 5
+    \end{center}}
+\end{center}
+
+\vspace{1.0cm}
+
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item A bullet point
+\item A bullet point
+\end{list}
+
+
+%%% References
+\bibliographystyle{IEEEtran}
+\bibliography{refs.bib}
+
+
+\end{multicols}
+\end{poster}
+\end{document}
+

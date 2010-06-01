@@ -1,0 +1,16 @@
+Graham Grindlay
+grindlay@ee.columbia.edu
+06/01/2010
+
+This is my attempt at a LabROSA LaTeX poster template.  It's really just a
+repackaging of the a0poster style-file with LabROSA-specific stuff.  It's all
+pretty generic at the moment, although you'll probably want to replace refs.bib
+with your own BiBTeX file.  
+
+There's probably a cleaner way to build the final PDF, but here's what I do:
+
+1) latex poster.tex
+2) dvips -Ppdf poster.dvi -o poster.ps
+3) ps2pdf poster.ps poster.pdf
+
+or you can just run the included shell script, 'mkpdf.sh'.
