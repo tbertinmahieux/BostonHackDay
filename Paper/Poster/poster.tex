@@ -3,7 +3,8 @@
 \usepackage{epsfig}
 \usepackage{multicol}
 \usepackage{pstricks,pst-grad}
-
+\usepackage{url}
+\usepackage{wrapfig}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Definition of some variables and colors
@@ -237,7 +238,7 @@
 \item A bullet point
 \end{list}
 
-%%% Section 6
+%%% Section 4
 \vspace{0cm}
 \begin{center}
   \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
@@ -261,30 +262,66 @@
     \end{center}}
 \end{center}
 
-\vspace{1.0cm}
+\vspace{4.0cm}
+
+\begin{minipage}[c][9cm][c]{\columnwidth}
 
 We present two applications of the beat-chroma codebooks
 to illustrate how the ``natural'' structure identified via 
 unsupervised clustering can provide useful 
 features for subsequent supervised tasks.
-
 \vspace{1cm}
 
-%%% CONFUSION MATRIX
-\begin{minipage}[c][9cm][c]{0.1\textwidth}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \vspace{-20pt}
   \begin{center}
-    \includegraphics[width=15cm,angle=0]{conf_mat_per_artist.ps}
+    \includegraphics[width=0.48\textwidth]{conf_mat_per_artist.ps}
   \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+
+\textbf{Artist recognition task}.
+We use the {\it artist20} data set: $1402$ songs from $20$ artists, 
+mostly rock and pop of different subgenres.  
+Previously published results using GMMs on MFCC features achieve an 
+accuracy of $59\%$, whereas using only chroma as a representation yields an
+accuracy of $33\%$  \cite{Ellis2007}.
+
+We get an accuracy of $\mathbf{23.4\%}$, random baseline 
+is around $5\%$. 
+The confusion matrix is shown here, note 
+that certain artists are recognized at an accuracy far above the average.
+
+\end{minipage}
+
+\vspace{2cm}
+
+\begin{minipage}[c][9cm][c]{\columnwidth}
+  %\begin{center}
+\textbf{Bar alignment task}.
+Since the clustering described is based
+on the segmentation of the signal in to bars, 
+the codewords should contain information related to bar
+alignment, such as the presence of a strong beat on the first beat.\\
+  %\end{center}
 \end{minipage}
 \begin{minipage}[c][9cm][c]{0.21\textwidth}
   \begin{center}
-    fmkefeifiwefi comment on confusion matrix\\
-    cjsbdqwb\\
-    cecewe
+      \begin{tabular}{cc}
+        Offset & \% of times chosen \\ \hline \hline
+        0 & $\mathbf{62.6}$\\
+        1 & $16.5$\\
+        2 & $9.4$\\
+        3 & $11.5$
+      \end{tabular}
+      %\mytablecaption{\small{
+      %    Bar alignment experiment:
+      %    offsets relative to ground-truth 4-beat bar boundaries 
+      %    that gave minimum distortion encodings from the bar-aligned codebook.
+      %}}
+      \label{tab:offset}
   \end{center}
 \end{minipage}
-
-
 
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
 \item A bullet point
@@ -311,12 +348,26 @@ features for subsequent supervised tasks.
 \end{list}
 
 
+
+
 %%% References
 \bibliographystyle{IEEEtran}
 \bibliography{refs.bib}
 
 
 \end{multicols}
+
+% FOOTNOTE
+%\vspace{10cm}
+\begin{minipage}{\textwidth}
+\begin{flushright}
+Poster presented at ISMIR 2010 (Utrecht) for the paper:
+Clustering Beat-Chroma Patterns in a Large Music Database by
+T. Bertin-Mahieux, R. J. Weiss and D. P. W. Ellis. Contact:
+\url{tb2332@columbia.edu}, code: \url{http://www.columbia.edu/~tb2332/}.
+\end{flushright}
+\end{minipage}
+
 \end{poster}
 \end{document}
 
