@@ -184,6 +184,54 @@
 \vspace{1.0cm}
 
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item Availability of very large collections of music audio:
+can we infer anything about the underlying structure and common
+features of e.g. commercial pop music?
+\item Our interest: tonal content of the music -- i.e. the
+harmony and melody.
+\item Beat-synchronous chromagrams: rich enough
+to generate musically-relevant results, simplified enough to
+abstract away instrumentation and other stylistic details.
+\item This paper identifies common patterns in beat-synchronous
+chromagrams by learning codebooks from a large set of examples.
+The individual codewords consist of short beat-chroma patches of
+between 1 and 8 beats, optionally aligned to bar boundaries.
+\end{list}
+
+\myfig[0]{code_axis.ps}{.2}
+
+%
+Our goal is to identify meaningful information
+about the musical structure represented in the entire database by
+examining individual entries in this codebook.  Since the common
+patterns represent a higher-level description of the musical content
+than the raw chroma,
+we also expect them to be useful in other applications, such as
+music classification and retrieving tonally-related items.
+
+Prior work using small patches of chroma features includes
+the ``shingles'' of \cite{Casey2007}, which were used to
+identify ``remixes'', i.e., music based on some of the same
+underlying instrument tracks, and also for matching
+performances of Mazurkas \cite{Casey2008}.  That work,
+however, was not concerned with extracting the deeper
+common patterns underlying different pieces (and did not
+use either beat- or bar-synchronous features).  Earlier work in
+beat-synchronous analysis includes \cite{Bartsch2001},
+which looked for repeated patterns within single songs to
+identify the chorus, and \cite{Ellis2007a}, which 
+cross-correlated beat-chroma matrices to match cover
+versions of pop music tracks.  None of these works
+examined or interpreted the content of the chroma
+matrices in any detail.  In contrast, here we hope to
+develop a codebook whose entries are of interest
+in their own right.
+
+
+
+
+
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
 \item A bullet point
 \item A bullet point
 \item A bullet point
@@ -352,8 +400,7 @@ alignment, such as the presence of a strong beat on the first beat.\\
 
 %%% References
 \bibliographystyle{IEEEtran}
-\bibliography{refs.bib}
-
+\bibliography{tbm_bib.bib}
 
 \end{multicols}
 
