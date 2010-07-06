@@ -201,34 +201,14 @@ between 1 and 8 beats, optionally aligned to bar boundaries.
 \myfig[0]{code_axis.ps}{.2}
 
 %
-Our goal is to identify meaningful information
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item Goal: identify meaningful information
 about the musical structure represented in the entire database by
-examining individual entries in this codebook.  Since the common
-patterns represent a higher-level description of the musical content
-than the raw chroma,
-we also expect them to be useful in other applications, such as
-music classification and retrieving tonally-related items.
-
-Prior work using small patches of chroma features includes
-the ``shingles'' of \cite{Casey2007}, which were used to
-identify ``remixes'', i.e., music based on some of the same
-underlying instrument tracks, and also for matching
-performances of Mazurkas \cite{Casey2008}.  That work,
-however, was not concerned with extracting the deeper
-common patterns underlying different pieces (and did not
-use either beat- or bar-synchronous features).  Earlier work in
-beat-synchronous analysis includes \cite{Bartsch2001},
-which looked for repeated patterns within single songs to
-identify the chorus, and \cite{Ellis2007a}, which 
-cross-correlated beat-chroma matrices to match cover
-versions of pop music tracks.  None of these works
-examined or interpreted the content of the chroma
-matrices in any detail.  In contrast, here we hope to
-develop a codebook whose entries are of interest
-in their own right.
-
-
-
+examining individual entries in this codebook.
+\item Prior work: ``shingles'' of \cite{Casey2007}, 
+beat-synchronous analysis to indeitfy the chorus by \cite{Bartsch2001},
+and cover recognition by \cite{Ellis2007a}.
+\end{list}
 
 
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
@@ -400,19 +380,21 @@ alignment, such as the presence of a strong beat on the first beat.\\
 
 %%% References
 \bibliographystyle{IEEEtran}
-\bibliography{tbm_bib.bib}
+\bibliography{tbm_bib}
 
 \end{multicols}
 
 % FOOTNOTE
-%\vspace{10cm}
+\vspace{1cm}
 \begin{minipage}{\textwidth}
+\begin{small}
 \begin{flushright}
 Poster presented at ISMIR 2010 (Utrecht) for the paper:
 Clustering Beat-Chroma Patterns in a Large Music Database by
 T. Bertin-Mahieux, R. J. Weiss and D. P. W. Ellis. Contact:
 \url{tb2332@columbia.edu}, code: \url{http://www.columbia.edu/~tb2332/}.
 \end{flushright}
+\end{small}
 \end{minipage}
 
 \end{poster}
