@@ -5,6 +5,8 @@
 \usepackage{pstricks,pst-grad}
 \usepackage{url}
 \usepackage{wrapfig}
+\usepackage{algorithm,algorithmic}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Definition of some variables and colors
@@ -192,10 +194,6 @@ harmony and melody.
 \item Beat-synchronous chromagrams: rich enough
 to generate musically-relevant results, simplified enough to
 abstract away instrumentation and other stylistic details.
-\item This paper identifies common patterns in beat-synchronous
-chromagrams by learning codebooks from a large set of examples.
-The individual codewords consist of short beat-chroma patches of
-between 1 and 8 beats, optionally aligned to bar boundaries.
 \end{list}
 
 \myfig[0]{code_axis.ps}{.2}
@@ -205,17 +203,13 @@ between 1 and 8 beats, optionally aligned to bar boundaries.
 \item Goal: identify meaningful information
 about the musical structure represented in the entire database by
 examining individual entries in this codebook.
+\item Method: identify common patterns in beat-synchronous
+chromagrams by learning codebooks from a large set of examples.
+Individual codewords consist of short beat-chroma patches of
+between 1 and 8 beats, optionally aligned to bar boundaries.
 \item Prior work: ``shingles'' of \cite{Casey2007}, 
 beat-synchronous analysis to indeitfy the chorus by \cite{Bartsch2001},
 and cover recognition by \cite{Ellis2007a}.
-\end{list}
-
-
-\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
-\item A bullet point
-\item A bullet point
-\item A bullet point
-\item A bullet point
 \end{list}
 
 %%% Section 2
@@ -229,11 +223,28 @@ and cover recognition by \cite{Ellis2007a}.
 
 \vspace{1.0cm}
 
+\textbf{Chromagrams from the Echo Nest online API.}
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
-\item A bullet point
-\item A bullet point
-\item A bullet point
+\item Feature analysis based on Echo Nest analyze API \cite{EchoNest}.
+\item For any song, EchoNest provides a chroma
+vector (length $12$) for every music event (called ``segment''), and a
+segmentation of the song into beats and bars. Beats may span or 
+subdivide segments; bars span multiple beats.
+\item Averaging per-segment chroma over beat times results in a
+beat-synchronous chroma feature representation.
+\item Dataset size: $43,000$ songs.
 \end{list}
+
+\textbf{Beat-Chroma Patches.}
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item We use Echo Nest analysis to break a song into a collection of 
+beat-chroma ``patches'', typically one or two bars in length.
+\item $82\%$ of the bars in our data were 4 beats long.
+\item Other cases: we resample patches to a fixed length of 4 beats.
+\item We rotate patches so that the first row contains the most energy.
+Each patch is normalized independently.
+\end{list}
+
 
 %%% Figure example
 %\begin{center}
@@ -260,11 +271,32 @@ and cover recognition by \cite{Ellis2007a}.
 \vspace{1.0cm}
 
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
-\item A bullet point
-\item A bullet point
-\item A bullet point
-\item A bullet point
+\item Vector Quantization algorithm \cite{Gersho1991} to cluster beat-chroma
+patches
+\item VQ can be seen as online $k$-means
+\item VQ initialized with $k$ random patches from the data
+\item VQ, although not optimal, scales linearly with
+the number of patches seen
 \end{list}
+
+\begin{minipage}{\columnwidth}
+%\caption{Pseudocode of Vector Quantization}
+\begin{algorithmic}
+\begin{algorithm}[H]
+\STATE$\ell$ learning rate
+\STATE$\{P_n\}$ set of patches
+\STATE$\{C_k\}$ codebook of $K$ codes
+\REQUIRE $0 < \ell \leq 1$
+\FOR{$nIters$}
+\FOR{$p \in \{P_n\}$}
+\STATE{$c \leftarrow \min_{c \in C_k} \mbox{dist}(p,c)$}
+\STATE{$c \leftarrow c + (p - c) * \ell$}
+\ENDFOR
+\ENDFOR
+\RETURN $\{C_k\}$
+\end{algorithm}
+\end{algorithmic}
+\end{minipage}
 
 %%% Section 4
 \vspace{0cm}
@@ -379,8 +411,10 @@ alignment, such as the presence of a strong beat on the first beat.\\
 
 
 %%% References
+\begin{small}
 \bibliographystyle{IEEEtran}
 \bibliography{tbm_bib}
+\end{small}
 
 \end{multicols}
 
