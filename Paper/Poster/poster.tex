@@ -143,15 +143,16 @@
 \pbox{0.957\textwidth}{}{linewidth=2mm,framearc=0.3,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
 
 %%% Unisiegel
-\begin{minipage}[c][9cm][c]{0.1\textwidth}
+\begin{minipage}[c][10cm][c]{0.1\textwidth}
   \begin{center}
     \includegraphics[width=7cm,angle=0]{labrosa-logo.eps}
   \end{center}
 \end{minipage}
-%%% Titel
+%%% Title
 \begin{minipage}[c][9cm][c]{0.78\textwidth}
   \begin{center}
-    {\sc \Huge Clustering Beat-Chroma Patterns in a Large Music Database}\\[10mm]
+    {\sc \Huge Clustering Beat-Chroma Patterns}\\[5mm]
+  {\sc \Huge in a Large Music Database}\\[10mm]
     {\Large Thierry Bertin-Mahieux $^\dagger$, Ron J. Weiss $^\ddagger$ and Daniel P. W. Ellis $^\dagger$\\[3.5mm]
      \large $\dagger$ LabROSA, Dept. of Electrical Engineering, Columbia University \\
      \large $\ddagger$ MARL, New York University \\
@@ -197,7 +198,7 @@ to generate musically-relevant results, simplified enough to
 abstract away instrumentation and other stylistic details.
 \end{list}
 
-\myfig[0]{code_axis.ps}{.2}
+\myfig[0]{code_axis.ps}{.4}
 
 %
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
@@ -284,8 +285,7 @@ the number of patches seen
 
 \makebox[\columnwidth]{ % replace framebox by makebox
 
-\hspace{1cm}
-\begin{minipage}[l]{.3\columnwidth}
+\begin{minipage}[l]{.4\columnwidth}
 %\caption{Pseudocode of Vector Quantization}
 \begin{algorithmic}
 \begin{algorithm}[H]
@@ -306,8 +306,8 @@ the number of patches seen
 \end{algorithmic}
 \end{minipage}
 
-\hspace{2cm}
-\begin{minipage}[r]{.5\columnwidth}
+\hspace{1.5cm}
+\begin{minipage}[r]{.4\columnwidth}
 Intuitively:
 \begin{list}{\labelitemi}{\leftmargin=1em \labelsep=1em}
 \item For each new patch, find the closest codeword.
@@ -344,9 +344,9 @@ rate.
     \end{center}}
 \end{center}
 
-\vspace{4.0cm}
+\vspace{1.0cm}
 
-\begin{minipage}[c][9cm][c]{\columnwidth}
+\begin{minipage}[c]{\columnwidth}
 
 We present two applications of the beat-chroma codebooks
 to illustrate how the ``natural'' structure identified via 
@@ -354,10 +354,10 @@ unsupervised clustering can provide useful
 features for subsequent supervised tasks.
 \vspace{1cm}
 
-\begin{wrapfigure}{r}{0.5\textwidth}
+\begin{wrapfigure}{r}{0.6\textwidth}
   \vspace{-20pt}
   \begin{center}
-    \includegraphics[width=0.48\textwidth]{conf_mat_per_artist.ps}
+    \includegraphics[width=0.58\textwidth]{conf_mat_per_artist.ps}
   \end{center}
   \vspace{-20pt}
 \end{wrapfigure}
