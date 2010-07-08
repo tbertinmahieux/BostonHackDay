@@ -279,14 +279,20 @@ patches
 the number of patches seen
 \end{list}
 
-\begin{minipage}{\columnwidth}
+\vspace{1cm}
+
+\makebox[\columnwidth]{ % replace framebox by makebox
+
+\hspace{1cm}
+\begin{minipage}[l]{.3\columnwidth}
 %\caption{Pseudocode of Vector Quantization}
 \begin{algorithmic}
 \begin{algorithm}[H]
+\vspace{.7cm}
 \STATE$\ell$ learning rate
 \STATE$\{P_n\}$ set of patches
 \STATE$\{C_k\}$ codebook of $K$ codes
-\REQUIRE $0 < \ell \leq 1$
+%\REQUIRE $0 < \ell \leq 1$
 \FOR{$nIters$}
 \FOR{$p \in \{P_n\}$}
 \STATE{$c \leftarrow \min_{c \in C_k} \mbox{dist}(p,c)$}
@@ -294,12 +300,27 @@ the number of patches seen
 \ENDFOR
 \ENDFOR
 \RETURN $\{C_k\}$
+\vspace{.7cm}
 \end{algorithm}
 \end{algorithmic}
 \end{minipage}
 
+\hspace{2cm}
+\begin{minipage}[r]{.5\columnwidth}
+Intuitively:
+\begin{list}{\labelitemi}{\leftmargin=1em \labelsep=1em}
+\item For each new patch, find the closest codeword.
+\item Bring that codewords closer to the patch by some learning
+rate.
+\item Iterate.
+\end{list}
+\end{minipage}
+
+}
+
+
 %%% Section 4
-\vspace{0cm}
+\vspace{2cm}
 \begin{center}
   \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
     \begin{center}
