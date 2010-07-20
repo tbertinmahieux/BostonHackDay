@@ -143,13 +143,20 @@
 \pbox{0.957\textwidth}{}{linewidth=2mm,framearc=0.3,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
 
 %%% Unisiegel
-\begin{minipage}[c][10cm][c]{0.1\textwidth}
+\begin{minipage}[c][10cm][c]{0.2\textwidth}
   \begin{center}
-    \includegraphics[width=7cm,angle=0]{labrosa-logo.eps}
+    \includegraphics[width=7cm,angle=0]{labrosa-logo.eps} \\
+    \vspace{1cm}
+    \includegraphics[width=7cm,angle=0]{seas-logo.eps}
   \end{center}
 \end{minipage}
+%\begin{minipage}[c][9cm][c]{0.1\textwidth}
+%  \begin{center}
+%    \includegraphics[width=7cm,angle=0]{seas-logo.eps}
+%  \end{center}
+%\end{minipage}
 %%% Title
-\begin{minipage}[c][9cm][c]{0.78\textwidth}
+\begin{minipage}[c][9cm][c]{0.58\textwidth}
   \begin{center}
     {\sc \Huge Clustering Beat-Chroma Patterns}\\[5mm]
   {\sc \Huge in a Large Music Database}\\[10mm]
@@ -160,11 +167,15 @@
   \end{center}
 \end{minipage}
 %%% GK-Logo
-\begin{minipage}[c][9cm][c]{0.1\textwidth}
+\begin{minipage}[c][7cm][c]{0.2\textwidth}
   \begin{center}
-    \includegraphics[width=7cm,angle=0]{seas-logo.eps}
+    \includegraphics[width=10cm,angle=0]{MARL_logo_high_res.eps} \\
+    \vspace{1.5cm}
+    \includegraphics[width=8cm,angle=0]{nyu_music_tech_logo_2_2_bw.eps}
   \end{center}
 \end{minipage}
+
+
 
 }
 \end{pcolumn}
@@ -259,6 +270,8 @@ Each patch is normalized independently.
 
 \myfig[0]{song_encoded.ps}{.9}
 
+\myfig[0]{codes_8bars.ps}{.8}
+
 % force a new column
 \newpage
 
@@ -333,11 +346,15 @@ rate.
 
 \vspace{1.0cm}
 
+Boring graphs on distortion, codeword size, etc, can be seen in the paper.
+
 \myfig[0]{codes1.ps}{.8}
 
 \myfig[0]{close_patterns1.ps}{.8}
 
 \myfig[0]{close_patterns_diff.ps}{.8}
+
+\myfig[0]{codes_lle.ps}{.8}
 
 % force a new column
 \newpage
