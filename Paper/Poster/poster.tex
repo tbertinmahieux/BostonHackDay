@@ -209,7 +209,19 @@ to generate musically-relevant results, simplified enough to
 abstract away instrumentation and other stylistic details.
 \end{list}
 
-\myfig[0]{code_axis.ps}{.4}
+\vspace{-.3cm}
+\makebox[\columnwidth]{ % replace framebox by makebox
+\hspace{-4cm}
+\begin{minipage}[l]{.78\columnwidth}
+\myfig[0]{code_axis.ps}{.45}
+\end{minipage}
+\hspace{-3cm}
+\begin{minipage}[l]{.4\columnwidth}
+Typical learned codeword spanning $2$ bars, each bar
+considered to be $4$ beats. Codebook size was $200$.
+\end{minipage}
+} % end framebox / makebox
+\vspace{.5cm}
 
 %
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
@@ -248,6 +260,7 @@ beat-synchronous chroma feature representation.
 \item Dataset size: $43,000$ songs.
 \end{list}
 
+\vspace{.5cm}
 \textbf{Beat-Chroma Patches.}
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
 \item We use Echo Nest analysis to break a song into a collection of 
@@ -268,9 +281,32 @@ Each patch is normalized independently.
   %\mycaption{Some caption}
 %\end{center}
 
-\myfig[0]{song_encoded.ps}{.9}
+\myfig[0]{song_encoded.ps}{.7}
+% figure caption
+\begin{center}
+\begin{minipage}[c]{.7\columnwidth}
+\begin{small}
+Exemple of an encoded song (Good Day Sunshine
+by \textit{The Beatles}) using a codebook. Codebook size:
+$200$, codewords: $2$ bars.
+\end{small}
+\end{minipage}
+\end{center}
 
-\myfig[0]{codes_8bars.ps}{.8}
+\myfig[0]{codes_8bars.ps}{.7}
+% figure caption
+\begin{center}
+\begin{minipage}[c]{.7\columnwidth}
+\begin{small}
+Longer codewords spanning $8$ bars, randomly selected from
+a $100$-entry codebook. Most patterns consist of sustained notes 
+or chords, but code 0 shows one-bar alternations between 
+two chords, and code 4 contains two cycles of a
+$1\rightarrow1\rightarrow1\rightarrow2$ progression.
+
+\end{small}
+\end{minipage}
+\end{center}
 
 % force a new column
 \newpage
@@ -365,7 +401,7 @@ difficult to learn, and a larger training set improves the results.
 
 % figure caption
 \begin{center}
-\begin{minipage}[c]{.5\columnwidth}
+\begin{minipage}[c]{.7\columnwidth}
 \begin{small}
 Possible visualization of the codebook using locally linear
 embedding (LLE).
