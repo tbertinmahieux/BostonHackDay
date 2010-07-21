@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: poster.aux
+The style file: IEEEtran.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 140733193391032.
+Database file #1: tbm_bib.bib
+-- IEEEtran.bst version 1.10 (2002/09/27) by Michael Shell.
+-- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 6 entries,
+            3975 wiz_defined-function locations,
+            828 strings with 7974 characters,
+and the built_in function-call counts, 2475 in all, are:
+= -- 153
+> -- 41
+< -- 0
++ -- 19
+- -- 9
+* -- 105
+:= -- 406
+add.period$ -- 11
+call.type$ -- 6
+change.case$ -- 5
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 217
+empty$ -- 304
+format.name$ -- 13
+if$ -- 552
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 45
+newline$ -- 38
+num.names$ -- 5
+pop$ -- 137
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 202
+stack$ -- 0
+substring$ -- 6
+swap$ -- 106
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 0
+warning$ -- 0
+while$ -- 5
+width$ -- 7
+write$ -- 63

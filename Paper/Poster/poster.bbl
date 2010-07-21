@@ -1,0 +1,50 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{#1}
+\def\UrlFont{\rmfamily}
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{Casey2007}
+M.~Casey and M.~Slaney, ``Fast recognition of remixed music audio,'' in
+  \emph{{Proceedings of the International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP)}}, 2007.
+
+\bibitem{Bartsch2001}
+M.~A. Bartsch and G.~H. Wakefield, ``To catch a chorus: using chroma-based
+  representations for audio thumbnailing,'' in \emph{Proc. IEEE Workshop on
+  Applications of Signal Processing to Audio and Acoustics}, Mohonk, New York,
+  October 2001.
+
+\bibitem{Ellis2007a}
+D.~Ellis and G.~Poliner, ``Identifying cover songs with chroma features and
+  dynamic programming beat tracking,'' in \emph{{Proceedings of the
+  International Conference on Acoustics, Speech and Signal Processing
+  (ICASSP)}}, 2007.
+
+\bibitem{EchoNest}
+The Echo Nest Analyze, API, \url{http://developer.echonest.com}.
+
+\bibitem{Gersho1991}
+A.~Gersho and R.~Gray, \emph{Vector quantization and signal compression}.\hskip
+  1em plus 0.5em minus 0.4em\relax Kluwer Academic Publishers, 1991.
+
+\bibitem{Ellis2007}
+D.~Ellis, ``Classifying music audio with timbral and chroma features,'' in
+  \emph{{Proceedings of the 8th International Conference on Music Information
+  Retrieval ({ISMIR})}}, 2007.
+
+\end{thebibliography}
