@@ -146,7 +146,7 @@
 \begin{minipage}[c][10cm][c]{0.2\textwidth}
   \begin{center}
     \includegraphics[width=7cm,angle=0]{labrosa-logo.eps} \\
-    \vspace{1cm}
+    \vspace{.5cm}
     \includegraphics[width=7cm,angle=0]{seas-logo.eps}
   \end{center}
 \end{minipage}
@@ -170,7 +170,7 @@
 \begin{minipage}[c][7cm][c]{0.2\textwidth}
   \begin{center}
     \includegraphics[width=10cm,angle=0]{MARL_logo_high_res.eps} \\
-    \vspace{1.5cm}
+    \vspace{1.8cm}
     \includegraphics[width=8cm,angle=0]{nyu_music_tech_logo_2_2_bw.eps}
   \end{center}
 \end{minipage}
@@ -213,15 +213,15 @@ abstract away instrumentation and other stylistic details.
 
 %
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
-\item Goal: identify meaningful information
+\item \textbf{Goal}: identify meaningful information
 about the musical structure represented in the entire database by
 examining individual entries in this codebook.
-\item Method: identify common patterns in beat-synchronous
+\item \textbf{Method}: identify common patterns in beat-synchronous
 chromagrams by learning codebooks from a large set of examples.
 Individual codewords consist of short beat-chroma patches of
 between 1 and 8 beats, optionally aligned to bar boundaries.
 \item Prior work: ``shingles'' of \cite{Casey2007}, 
-beat-synchronous analysis to indeitfy the chorus by \cite{Bartsch2001},
+beat-synchronous analysis to identify the chorus by \cite{Bartsch2001},
 and cover recognition by \cite{Ellis2007a}.
 \end{list}
 
@@ -346,7 +346,9 @@ rate.
 
 \vspace{1.0cm}
 
-Boring graphs on distortion, codeword size, etc, can be seen in the paper.
+Additional graphs on distortion, codeword size, etc, can be seen in the paper.
+As expected, a larger codebook improves distortion, longer codewords are more
+difficult to learn, and a larger training set improves the results.
 
 \myfig[0]{codes1.ps}{.8}
 
@@ -354,11 +356,22 @@ Boring graphs on distortion, codeword size, etc, can be seen in the paper.
 
 \myfig[0]{close_patterns_diff.ps}{.8}
 
-\myfig[0]{codes_lle.ps}{.8}
-
 % force a new column
 \newpage
 
+\mbox{} % dumb, but need something before vspace
+\vspace{-1cm}
+\myfig[0]{codes_lle.ps}{.8}
+
+% figure caption
+\begin{center}
+\begin{minipage}[c]{.5\columnwidth}
+\begin{small}
+Possible visualization of the codebook using locally linear
+embedding (LLE).
+\end{small}
+\end{minipage}
+\end{center}
 
 %%% Section 5
 \vspace{2cm}
@@ -401,18 +414,11 @@ that certain artists are recognized at an accuracy far above the average.
 
 \end{minipage}
 
-\vspace{2cm}
+\vspace{1.5cm}
 
-\begin{minipage}[c][9cm][c]{\columnwidth}
-  %\begin{center}
-\textbf{Bar alignment task}.
-Since the clustering described is based
-on the segmentation of the signal in to bars, 
-the codewords should contain information related to bar
-alignment, such as the presence of a strong beat on the first beat.\\
-  %\end{center}
-\end{minipage}
-\begin{minipage}[c][9cm][c]{0.21\textwidth}
+\makebox[\columnwidth]{ % replace framebox by makebox for no edges
+
+\begin{minipage}[l]{0.21\columnwidth}
   \begin{center}
       \begin{tabular}{cc}
         Offset & \% of times chosen \\ \hline \hline
@@ -421,22 +427,23 @@ alignment, such as the presence of a strong beat on the first beat.\\
         2 & $9.4$\\
         3 & $11.5$
       \end{tabular}
-      %\mytablecaption{\small{
-      %    Bar alignment experiment:
-      %    offsets relative to ground-truth 4-beat bar boundaries 
-      %    that gave minimum distortion encodings from the bar-aligned codebook.
-      %}}
-      \label{tab:offset}
   \end{center}
 \end{minipage}
 
-\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
-\item A bullet point
-\item A bullet point
-\item A bullet point
-\item A bullet point
-\end{list}
+\hspace{5cm}
 
+\begin{minipage}[r]{.5\columnwidth}
+\textbf{Bar alignment task}.
+Since the clustering described is based
+on the segmentation of the signal in to bars, 
+the codewords should contain information related to bar
+alignment, such as the presence of a strong beat on the first beat.
+It is the case $62\%$ of the times, see paper for details.
+\end{minipage}
+
+} % end framebox / makebox
+
+\vspace{1.5cm}
 
 %%% Section 6
 \vspace{0cm}
@@ -450,8 +457,10 @@ alignment, such as the presence of a strong beat on the first beat.\\
 \vspace{1.0cm}
 
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
-\item A bullet point
-\item A bullet point
+\item Practical method for large-scale clustering of tonal patterns.
+\item Ways to inspect the resulting codebook.
+\item Links to existing MIR tasks.
+\item \textbf{Python code available.}
 \end{list}
 
 
@@ -470,6 +479,15 @@ alignment, such as the presence of a strong beat on the first beat.\\
 \begin{minipage}{\textwidth}
 \begin{small}
 \begin{flushright}
+Acknowledgements: thanks to G. Grindlay for
+helpful comments. TBM is supported by a
+NSERC scholarship. This material is based upon work
+supported by IMLS grant LG-06-08-0073-08 and by NSF
+grant IIS-0713334. \\
+%Any opinions, findings and conclu-
+%sions or recommendations expressed in this material are
+%those of the authors and do not necessarily reflect the views
+%of the sponsors.\\
 Poster presented at ISMIR 2010 (Utrecht) for the paper:
 Clustering Beat-Chroma Patterns in a Large Music Database by
 T. Bertin-Mahieux, R. J. Weiss and D. P. W. Ellis. Contact:
