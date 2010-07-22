@@ -140,10 +140,10 @@
 \begin{center}
 \begin{pcolumn}{0.98}
 
-\pbox{0.957\textwidth}{}{linewidth=2mm,framearc=0.3,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
+\makebox[0.957\textwidth]{
 
 %%% Unisiegel
-\begin{minipage}[c][10cm][c]{0.2\textwidth}
+\begin{minipage}[c][7cm][c]{0.2\textwidth}
   \begin{center}
     \includegraphics[width=7cm,angle=0]{labrosa-logo.eps} \\
     \vspace{.5cm}
@@ -155,23 +155,30 @@
 %    \includegraphics[width=7cm,angle=0]{seas-logo.eps}
 %  \end{center}
 %\end{minipage}
+
+\pbox{0.57\textwidth}{}{linewidth=2mm,framearc=0.3,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
 %%% Title
-\begin{minipage}[c][9cm][c]{0.58\textwidth}
+\begin{center}
+\begin{minipage}[c][10cm][c]{0.90\textwidth}
   \begin{center}
     {\sc \Huge Clustering Beat-Chroma Patterns}\\[5mm]
   {\sc \Huge in a Large Music Database}\\[10mm]
     {\Large Thierry Bertin-Mahieux $^\dagger$, Ron J. Weiss $^\ddagger$ and Daniel P. W. Ellis $^\dagger$\\[3.5mm]
      \large $\dagger$ LabROSA, Dept. of Electrical Engineering, Columbia University \\
-     \large $\ddagger$ MARL, New York University \\
+     \large $\ddagger$ Music and Audio Research Laboratory, New York University \\
     \tt{\{thierry,ronw,dpwe\}@ee.columbia.edu}}
   \end{center}
 \end{minipage}
+\end{center}
+}
+
 %%% GK-Logo
 \begin{minipage}[c][7cm][c]{0.2\textwidth}
   \begin{center}
     \includegraphics[width=10cm,angle=0]{MARL_logo_high_res.eps} \\
     \vspace{1.8cm}
-    \includegraphics[width=8cm,angle=0]{nyu_music_tech_logo_2_2_bw.eps}
+    %\includegraphics[width=8cm,angle=0]{nyu_music_tech_logo_2_2_bw.eps}
+    \includegraphics[width=14cm,angle=0]{NYU_logo.eps}
   \end{center}
 \end{minipage}
 
@@ -192,16 +199,16 @@
 \begin{center}
   \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
     \begin{center}
-      \large Introduction
+      \LARGE Introduction
     \end{center}}
 \end{center}
 
 \vspace{1.0cm}
 
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
-\item Availability of very large collections of music audio:
-can we infer anything about the underlying structure and common
-features of e.g. commercial pop music?
+\item Can we infer anything about the underlying structure and common
+features of commercial pop music by analyzing very large collections
+of music audio?
 \item Our interest: tonal content of the music -- i.e. the
 harmony and melody.
 \item Beat-synchronous chromagrams: rich enough
@@ -213,11 +220,12 @@ abstract away instrumentation and other stylistic details.
 \makebox[\columnwidth]{ % replace framebox by makebox
 \hspace{-4cm}
 \begin{minipage}[l]{.78\columnwidth}
-\myfig[0]{code_axis.ps}{.45}
+\myfig[0]{code_axis.ps}{.40}
 \end{minipage}
 \hspace{-3.5cm}
 \begin{minipage}[l]{.4\columnwidth}
-Typical learned codeword spanning $2$ bars, each bar
+Typical %learned 
+codeword spanning $2$ bars, each bar
 considered to be $4$ beats. Codebook size was $200$.\\
 
 A codewords can also be seen as the centroid of a cluster.
@@ -244,7 +252,7 @@ and cover recognition by \cite{Ellis2007a}.
 \begin{center}
   \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
     \begin{center}
-      \large Audio Features - Echo Nest
+      \LARGE Audio Features - Echo Nest
     \end{center}}
 \end{center}
 
@@ -255,8 +263,7 @@ and cover recognition by \cite{Ellis2007a}.
 \item Feature analysis based on Echo Nest analyze API \cite{EchoNest}.
 \item For any song, EchoNest provides a chroma
 vector (length $12$) for every music event (called ``segment''), and a
-segmentation of the song into beats and bars. Beats may span or 
-subdivide segments; bars span multiple beats.
+segmentation of the song into beats and bars.
 \item Averaging per-segment chroma over beat times results in a
 beat-synchronous chroma feature representation.
 \item Dataset size: $43,000$ songs.
@@ -270,7 +277,8 @@ beat-chroma ``patches'', typically one or two bars in length.
 \item $82\%$ of the bars in our data were 4 beats long.
 \item Other cases: we resample patches to a fixed length of 4 beats.
 \item We rotate patches so that the first row contains the most energy.
-Each patch is normalized independently.
+This is analogous to key normalization, but
+each patch is normalized independently.
 \end{list}
 
 
@@ -319,7 +327,7 @@ $1\rightarrow1\rightarrow1\rightarrow2$ progression.
 \begin{center}
   \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
     \begin{center}
-      \large Vector Quantization
+      \LARGE Vector Quantization
     \end{center}}
 \end{center}
 
@@ -328,9 +336,9 @@ $1\rightarrow1\rightarrow1\rightarrow2$ progression.
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
 \item Vector Quantization algorithm \cite{Gersho1991} to cluster beat-chroma
 patches
-\item VQ can be seen as online $k$-means
-\item VQ initialized with $k$ random patches from the data
-\item VQ, although not optimal, scales linearly with
+\item Can be seen as online $k$-means
+\item Initialized with $k$ random patches from the data
+\item Although not optimal, scales linearly with
 the number of patches seen
 \end{list}
 
@@ -378,7 +386,7 @@ rate.
 \begin{center}
   \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
     \begin{center}
-      \large Pattern Analysis
+      \LARGE Pattern Analysis
     \end{center}}
 \end{center}
 
@@ -389,19 +397,6 @@ difficult to learn, and a larger training set improves the results.\\
 
 Below are samples from actual codebooks and centroids.
 
-\myfig[0]{codes1.ps}{.8}
-% figure caption
-\begin{center}
-\begin{minipage}[c]{.7\columnwidth}
-\begin{small}
-The 25 codes most commonly used. 
-Codes are from a $200$-entry codebook trained
-on $2$ bars, $12 × 8$ patches. The proportion of patches accounted
-for by each pattern is shown in parentheses.
-\end{small}
-\end{minipage}
-\end{center}
-
 \myfig[0]{close_patterns1.ps}{.8}
 % figure caption
 \begin{center}
@@ -411,6 +406,19 @@ Cluster around first centroid (in \textit{introduction} section).
 Random selection from a cluster of size $639$. 
 This gives an intuition of the
 variance in one cluster.
+\end{small}
+\end{minipage}
+\end{center}
+
+\myfig[0]{codes1.ps}{.8}
+% figure caption
+\begin{center}
+\begin{minipage}[c]{.7\columnwidth}
+\begin{small}
+The 25 codes most commonly used. 
+Codes are from a $200$-entry codebook trained
+on $2$ bars, $12 × 8$ patches. The proportion of patches accounted
+for by each pattern is shown in parentheses.
 \end{small}
 \end{minipage}
 \end{center}
@@ -449,7 +457,7 @@ embedding (LLE).
 \begin{center}
   \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
     \begin{center}
-      \large Experiments
+      \LARGE Experiments
     \end{center}}
 \end{center}
 
@@ -472,16 +480,22 @@ features for subsequent supervised tasks.
 \end{wrapfigure}
 
 \textbf{Artist recognition task}.
-We use the {\it artist20} data set: $1402$ songs from $20$ artists, 
-mostly rock and pop of different subgenres.  
-Previously published results using GMMs on MFCC features achieve an 
-accuracy of $59\%$, whereas using only chroma as a representation yields an
-accuracy of $33\%$  \cite{Ellis2007}.
-
-We get an accuracy of $\mathbf{23.4\%}$, random baseline 
-is around $5\%$. 
-The confusion matrix is shown here, note 
-that certain artists are recognized at an accuracy far above the average.
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item {\it artist20} data set: $1402$ songs from $20$ artists.
+\item Baseline: GMM on MFCC ($59\%$), GMM on chromas ($33\%$),
+random ($5\%$).
+\item We get an accuracy of $\mathbf{23.4\%}$.
+\end{list}
+%We use the {\it artist20} data set: $1402$ songs from $20$ artists, 
+%mostly rock and pop of different subgenres.  
+%Previously published results using GMMs on MFCC features achieve an 
+%accuracy of $59\%$, whereas using only chroma as a representation yields an
+%accuracy of $33\%$  \cite{Ellis2007}.
+%
+%We get an accuracy of $\mathbf{23.4\%}$, random baseline 
+%is around $5\%$. 
+%The confusion matrix is shown here, note 
+%that certain artists are recognized at an accuracy far above the average.
 
 \end{minipage}
 
@@ -505,11 +519,17 @@ that certain artists are recognized at an accuracy far above the average.
 
 \begin{minipage}[r]{.5\columnwidth}
 \textbf{Bar alignment task}.
-Since the clustering described is based
-on the segmentation of the signal in to bars, 
-the codewords should contain information related to bar
-alignment, such as the presence of a strong beat on the first beat.
-It is the case $62\%$ of the times, see paper for details.
+\begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item Clustering based on the signal segmented in bars.
+\item Codewords should contain bar information (e.g. a strong
+first beat).
+\item Our encoding find the right alignment $62\%$ of the time.
+\end{list}
+%Since the clustering described is based
+%on the segmentation of the signal in to bars, 
+%the codewords should contain information related to bar
+%alignment, such as the presence of a strong beat on the first beat.
+%It is the case $62\%$ of the times, see paper for details.
 \end{minipage}
 
 } % end framebox / makebox
@@ -521,7 +541,7 @@ It is the case $62\%$ of the times, see paper for details.
 \begin{center}
   \pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightred,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whitepink,gradmidpoint=1.0,framesep=1em}{
     \begin{center}
-      \large Conclusion
+      \LARGE Conclusion
     \end{center}}
 \end{center}
 
@@ -536,11 +556,12 @@ It is the case $62\%$ of the times, see paper for details.
 
 
 %%% References
-\begin{small}
+%\begin{small}
 \bibliographystyle{IEEEtran}
 \bibliography{tbm_bib}
-\end{small}
+%\end{small}
 
+\iffalse
 % authors
 \vspace{-2cm}
 \myfig[0]{authors.eps}{.8}
@@ -555,7 +576,7 @@ Looking forward to discuss our work with you!
 \end{center}
 \end{minipage}
 \end{center}
-
+\fi
 
 
 \end{multicols}

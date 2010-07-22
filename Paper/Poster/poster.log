@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.6.4)  21 JUL 2010 15:16
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.6.4)  22 JUL 2010 14:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -260,35 +260,30 @@ File: labrosa-logo.eps Graphic file (type eps)
 <labrosa-logo.eps>
 File: seas-logo.eps Graphic file (type eps)
  <seas-logo.eps>
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 180
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 187
 .
-LaTeX Font Info:    No file OMScmtt.fd. on input line 180.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 187.
 
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 180.
+(Font)              for symbol `textbraceleft' on input line 187.
 
 File: MARL_logo_high_res.eps Graphic file (type eps)
 <MARL_logo_high_res.eps>
-File: nyu_music_tech_logo_2_2_bw.eps Graphic file (type eps)
- <nyu_music_tech_logo_2_2_bw.eps>
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 202.
+File: NYU_logo.eps Graphic file (type eps)
+ <NYU_logo.eps>
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 209.
 
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <24.88> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 202.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 209.
 File: code_axis.ps Graphic file (type eps)
  <code_axis.ps>
-Underfull \hbox (badness 10000) in paragraph at lines 225--225
-[]\OT1/cmr/m/n/24.88 Typical learned code-word
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 225--225
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
 
  []
 
@@ -296,21 +291,21 @@ File: song_encoded.ps Graphic file (type eps)
 <song_encoded.ps>
 File: codes_8bars.ps Graphic file (type eps)
  <codes_8bars.ps>
-Underfull \hbox (badness 10000) in paragraph at lines 373--373
+Underfull \hbox (badness 10000) in paragraph at lines 381--381
 []\OT1/cmr/m/n/24.88 Bring that code-words
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 386--389
+Underfull \hbox (badness 10000) in paragraph at lines 394--397
 
  []
 
+File: close_patterns1.ps Graphic file (type eps)
+<close_patterns1.ps>
 File: codes1.ps Graphic file (type eps)
-<codes1.ps>
+ <codes1.ps>
 Missing character: There is no Ã in font cmr17!
 Missing character: There is no — in font cmr17!
-File: close_patterns1.ps Graphic file (type eps)
- <close_patterns1.ps>
 File: close_patterns_diff.ps Graphic file (type eps)
  <close_patterns_diff.ps>
 File: codes_lle.ps Graphic file (type eps)
@@ -318,43 +313,26 @@ File: codes_lle.ps Graphic file (type eps)
 File: conf_mat_per_artist.ps Graphic file (type eps)
 
 <conf_mat_per_artist.ps>
-Underfull \hbox (badness 10000) in paragraph at lines 474--480
+Underfull \hbox (badness 10000) in paragraph at lines 482--483
 [][]\OT1/cmr/bx/n/24.88 Artist recog-ni-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 474--480
-\OT1/cmr/m/n/24.88 the \OT1/cmr/m/it/24.88 artist20 \OT1/cmr/m/n/24.88 data
+Underfull \hbox (badness 10000) in paragraph at lines 484--485
+[]\OT1/cmr/m/it/24.88 artist20 \OT1/cmr/m/n/24.88 data
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 474--480
-\OT1/cmr/m/n/24.88 20$ artists, mostly
+Underfull \hbox (badness 10000) in paragraph at lines 485--487
+[]\OT1/cmr/m/n/24.88 Baseline:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 474--480
-\OT1/cmr/m/n/24.88 rock and pop of
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 474--480
-\OT1/cmr/m/n/24.88 dif-fer-ent sub-gen-res.
- []
-
-
-Underfull \hbox (badness 5533) in paragraph at lines 474--480
-\OT1/cmr/m/n/24.88 on MFCC fea-tures
- []
-
-
-Overfull \hbox (103.61719pt too wide) in paragraph at lines 515--515
+Overfull \hbox (103.61719pt too wide) in paragraph at lines 535--535
  [] 
  []
 
-(./poster.bbl)
-File: authors.eps Graphic file (type eps)
- <authors.eps> [1
+(./poster.bbl) [1
 
 ] (./poster.aux)
 
@@ -362,12 +340,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 2976 strings out of 495062
- 38655 string characters out of 1182645
- 173382 words of memory out of 3000000
+ 2975 strings out of 495062
+ 38611 string characters out of 1182645
+ 170092 words of memory out of 3000000
  6115 multiletter control sequences out of 15000+50000
- 14773 words of font info for 53 fonts, out of 3000000 for 9000
+ 15072 words of font info for 54 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  32i,14n,52p,256b,743s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on poster.dvi (1 page, 21752 bytes).
+Output written on poster.dvi (1 page, 21128 bytes).
