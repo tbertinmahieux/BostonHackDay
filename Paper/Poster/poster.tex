@@ -7,7 +7,7 @@
 \usepackage{url}
 \usepackage{wrapfig}
 \usepackage{algorithm,algorithmic}
-\usepackage{time} % recommended by Ron
+\usepackage{times} % recommended by Ron
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Definition of some variables and colors
@@ -291,7 +291,7 @@ each patch is normalized independently.
   %\mycaption{Some caption}
 %\end{center}
 
-\myfig[0]{song_encoded.ps}{.7}
+\myfig[0]{song_encoded.ps}{.68}
 % figure caption
 \begin{center}
 \begin{minipage}[c]{.7\columnwidth}
@@ -303,7 +303,7 @@ $200$, codewords: $2$ bars.
 \end{minipage}
 \end{center}
 
-\myfig[0]{codes_8bars.ps}{.7}
+\myfig[0]{codes_8bars.ps}{.68}
 % figure caption
 \begin{center}
 \begin{minipage}[c]{.7\columnwidth}
@@ -440,7 +440,7 @@ both ($3$ row).
 
 \mbox{} % dumb, but need something before vspace
 \vspace{-1cm}
-\myfig[0]{codes_lle.ps}{.8}
+\myfig[0]{codes_lle.ps}{.9}
 
 % figure caption
 \begin{center}
@@ -471,21 +471,26 @@ unsupervised clustering can provide useful
 features for subsequent supervised tasks.
 \vspace{1cm}
 
-\begin{wrapfigure}{r}{0.6\textwidth}
-  \vspace{-20pt}
-  \begin{center}
-    \includegraphics[width=0.58\textwidth]{conf_mat_per_artist.ps}
-  \end{center}
-  \vspace{-20pt}
-\end{wrapfigure}
+
+%\begin{wrapfigure}{r}{0.5\textwidth}
+%  \vspace{-20pt}
+%  \begin{center}
+%    \hspace{-1cm}
+%    \includegraphics[width=0.52\textwidth]{conf_mat_per_artist.ps}
+%  \end{center}
+%  \vspace{-20pt}
+%\end{wrapfigure}
 
 \textbf{Artist recognition task}.
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
 \item {\it artist20} data set: $1402$ songs from $20$ artists.
-\item Baseline: GMM on MFCC ($59\%$), GMM on chromas ($33\%$),
-random ($5\%$).
+\item Baseline: GMM - MFCC $59\%$, GMM - chromas $33\%$,
+random $5\%$.
 \item We get an accuracy of $\mathbf{23.4\%}$.
 \end{list}
+
+\myfig[0]{conf_mat_per_artist.ps}{.55}
+
 %We use the {\it artist20} data set: $1402$ songs from $20$ artists, 
 %mostly rock and pop of different subgenres.  
 %Previously published results using GMMs on MFCC features achieve an 
