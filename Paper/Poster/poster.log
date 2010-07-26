@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.6.4)  22 JUL 2010 14:36
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.6.4)  26 JUL 2010 10:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -240,9 +240,6 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \c@ALC@depth=\count114
 \ALC@tlm=\skip48
 \algorithmicindent=\skip49
-)
-(/usr/share/texmf-texlive/tex/latex/psnfss/times.sty
-Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 ) (./poster.aux)
 \openout1 = `poster.aux'.
 
@@ -258,61 +255,48 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
 LaTeX Font Info:    ... okay on input line 124.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
 LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 124.
-
-
-(/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
-File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-)
 File: labrosa-logo.eps Graphic file (type eps)
- <labrosa-logo.eps>
+
+<labrosa-logo.eps>
 File: seas-logo.eps Graphic file (type eps)
-
-<seas-logo.eps>
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 187.
-
- (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 187.
+ <seas-logo.eps>
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 187
+.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 187.
 
 
-(/usr/share/texmf-texlive/tex/latex/psnfss/omspcr.fd
-File: omspcr.fd 
-)
-LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <29.86> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 187.
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 187.
+
 File: MARL_logo_high_res.eps Graphic file (type eps)
- <MARL_logo_high_res.eps>
+<MARL_logo_high_res.eps>
 File: NYU_logo.eps Graphic file (type eps)
+ <NYU_logo.eps>
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 209.
 
-<NYU_logo.eps>
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 209.
 
- (/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <24.88> not available
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <24.88> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 209.
 File: code_axis.ps Graphic file (type eps)
-
-<code_axis.ps>
+ <code_axis.ps>
 Underfull \hbox (badness 10000) in paragraph at lines 233--233
 
  []
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 238.
 File: song_encoded.ps Graphic file (type eps)
 <song_encoded.ps>
 File: codes_8bars.ps Graphic file (type eps)
  <codes_8bars.ps>
-Underfull \hbox (badness 10000) in paragraph at lines 381--381
-[]\OT1/ptm/m/n/24.88 Bring that code-words
+Underfull \hbox (badness 10000) in paragraph at lines 382--382
+[]\OT1/cmr/m/n/24.88 Bring that code-words
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--397
+Underfull \hbox (badness 10000) in paragraph at lines 395--398
 
  []
 
@@ -329,23 +313,24 @@ File: codes_lle.ps Graphic file (type eps)
 File: conf_mat_per_artist.ps Graphic file (type eps)
 
 <conf_mat_per_artist.ps>
-Overfull \hbox (110.80132pt too wide) in paragraph at lines 540--540
+Overfull \hbox (103.61719pt too wide) in paragraph at lines 541--541
  [] 
  []
 
-(./poster.bbl
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <35.83> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
-) [1
+(./poster.bbl) [1
 
-] (./poster.aux) ) 
+] (./poster.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3064 strings out of 495062
- 40043 string characters out of 1182645
- 168252 words of memory out of 3000000
- 6192 multiletter control sequences out of 15000+50000
- 19225 words of font info for 59 fonts, out of 3000000 for 9000
+ 2975 strings out of 495062
+ 38611 string characters out of 1182645
+ 169888 words of memory out of 3000000
+ 6115 multiletter control sequences out of 15000+50000
+ 15072 words of font info for 54 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  32i,14n,52p,256b,743s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on poster.dvi (1 page, 20744 bytes).
+Output written on poster.dvi (1 page, 21224 bytes).

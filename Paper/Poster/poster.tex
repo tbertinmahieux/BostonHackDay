@@ -7,7 +7,7 @@
 \usepackage{url}
 \usepackage{wrapfig}
 \usepackage{algorithm,algorithmic}
-\usepackage{times} % recommended by Ron
+%\usepackage{times} % recommended by Ron
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Definition of some variables and colors
@@ -206,14 +206,14 @@
 \vspace{1.0cm}
 
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
+\item Availability of very large collections of music.
 \item Can we infer anything about the underlying structure and common
-features of commercial pop music by analyzing very large collections
-of music audio?
+features of pop music?
 \item Our interest: tonal content of the music -- i.e. the
 harmony and melody.
 \item Beat-synchronous chromagrams: rich enough
-to generate musically-relevant results, simplified enough to
-abstract away instrumentation and other stylistic details.
+to generate musically-relevant results,
+abstract away instrumentation and stylistic details.
 \end{list}
 
 \vspace{-.3cm}
@@ -236,11 +236,12 @@ A codewords can also be seen as the centroid of a cluster.
 %
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
 \item \textbf{Goal}: identify meaningful information
-about the musical structure represented in the entire database by
-examining individual entries in this codebook.
+about the musical structure
 \item \textbf{Method}: identify common patterns in beat-synchronous
 chromagrams by learning codebooks from a large set of examples.
-Individual codewords consist of short beat-chroma patches of
+\item Entire database
+represented by individual entries in this codebook.
+\item Individual codewords consist of short beat-chroma patches of
 between 1 and 8 beats, optionally aligned to bar boundaries.
 \item Prior work: ``shingles'' of \cite{Casey2007}, 
 beat-synchronous analysis to identify the chorus by \cite{Bartsch2001},
@@ -262,7 +263,8 @@ and cover recognition by \cite{Ellis2007a}.
 \begin{list}{\labelitemi}{\leftmargin=2em \labelsep=1em}
 \item Feature analysis based on Echo Nest analyze API \cite{EchoNest}.
 \item For any song, EchoNest provides a chroma
-vector (length $12$) for every music event (called ``segment''), and a
+vector (length $12$) for every music event (called ``segment'')
+\item Also provides a
 segmentation of the song into beats and bars.
 \item Averaging per-segment chroma over beat times results in a
 beat-synchronous chroma feature representation.
@@ -276,9 +278,8 @@ beat-synchronous chroma feature representation.
 beat-chroma ``patches'', typically one or two bars in length.
 \item $82\%$ of the bars in our data were 4 beats long.
 \item Other cases: we resample patches to a fixed length of 4 beats.
-\item We rotate patches so that the first row contains the most energy.
-This is analogous to key normalization, but
-each patch is normalized independently.
+\item We rotate patches so that the first row contains the most energy
+(this is analogous to key normalization).
 \end{list}
 
 
@@ -296,7 +297,7 @@ each patch is normalized independently.
 \begin{center}
 \begin{minipage}[c]{.7\columnwidth}
 \begin{small}
-Exemple of an encoded song (Good Day Sunshine
+Example of an \textbf{encoded song} (Good Day Sunshine
 by \textit{The Beatles}) using a codebook. Codebook size:
 $200$, codewords: $2$ bars.
 \end{small}
@@ -308,7 +309,7 @@ $200$, codewords: $2$ bars.
 \begin{center}
 \begin{minipage}[c]{.7\columnwidth}
 \begin{small}
-Longer codewords spanning $8$ bars, randomly selected from
+Longer \textbf{codewords spanning $\mathbf{8}$ bars}, randomly selected from
 a $100$-entry codebook. Most patterns consist of sustained notes 
 or chords, but code 0 shows one-bar alternations between 
 two chords, and code 4 contains two cycles of a
@@ -395,14 +396,14 @@ Additional graphs on distortion, codeword size, etc, can be seen in the paper.
 As expected, a larger codebook improves distortion, longer codewords are more
 difficult to learn, and a larger training set improves the results.\\
 
-Below are samples from actual codebooks and centroids.
+Below are samples from \textbf{actual codebooks and centroids}.
 
 \myfig[0]{close_patterns1.ps}{.8}
 % figure caption
 \begin{center}
 \begin{minipage}[c]{.7\columnwidth}
 \begin{small}
-Cluster around first centroid (in \textit{introduction} section).
+\textbf{Cluster around first centroid} (in \textit{introduction} section).
 Random selection from a cluster of size $639$. 
 This gives an intuition of the
 variance in one cluster.
@@ -415,7 +416,7 @@ variance in one cluster.
 \begin{center}
 \begin{minipage}[c]{.7\columnwidth}
 \begin{small}
-The 25 codes most commonly used. 
+The 25 \textbf{codes most commonly used}. 
 Codes are from a $200$-entry codebook trained
 on $2$ bars, $12 × 8$ patches. The proportion of patches accounted
 for by each pattern is shown in parentheses.
@@ -429,8 +430,8 @@ for by each pattern is shown in parentheses.
 \begin{minipage}[c]{.7\columnwidth}
 \begin{small}
 First three patterns from figure above ($2$nd row) presented
-with the centroid ($1$st row) and the absolute difference between 
-both ($3$ row).
+with the centroid ($1$st row) and the \textbf{absolute difference} between 
+patterns and centroid ($3$ row).
 \end{small}
 \end{minipage}
 \end{center}
@@ -587,7 +588,7 @@ Looking forward to discuss our work with you!
 \end{multicols}
 
 % FOOTNOTE
-\vspace{1cm}
+\vspace{1.5cm}
 \begin{minipage}{\textwidth}
 \begin{small}
 \begin{flushright}
